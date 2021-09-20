@@ -3,6 +3,7 @@
 defined('NABU') || exit;
 
 require_once 'core/config.php';
+require_once 'libs/utils.php';
 
 $components = require 'core/routes.php';
 
@@ -16,16 +17,18 @@ foreach ($components as $alias => $component) {
 define('NABU_ROUTES', $routes);
 
 // Selecciona el controlador y la vista de una ruta solicitada.
-$controller = 'blogController';
-$view       = 'home';
-
 if (!empty($_GET['view'])) {
     foreach ($components as $alias => $component) {
         if ($component['route'] == $_GET['view']) {
             $controller = $component['controller'];
             $view       = $component['view'];
+            break;
         }
     }
+}
+
+if (empty($controller) || empty($view)) {
+    utils::redirect(NABU_ROUTES['home']);
 }
 
 unset($components, $routes);
