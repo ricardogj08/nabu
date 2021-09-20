@@ -9,4 +9,8 @@ class utils {
         header('Location: ' . $route);
         exit;
     }
+
+    static public function escape($pattern) {
+        //
+    }
 }
