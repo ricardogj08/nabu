@@ -24,14 +24,14 @@ class profilesController {
     }
 
     static private function view() {
-        //
+        require_once 'views/pages/profile.php';
     }
 
     static private function delete_profile() {
-        //
+        require_once 'views/pages/confirm-password.php';
     }
 
     static private function edit_profile() {
-        //
+        require_once 'views/pages/edit-profile.php';
     }
 }

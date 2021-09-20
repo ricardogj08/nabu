@@ -10,7 +10,7 @@ class communityController {
     }
 
     static public function favorites() {
-        //
+        require_once 'views/pages/favorites.php';
     }
 
     static public function like() {

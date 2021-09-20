@@ -30,11 +30,11 @@ class adminController {
     }
 
     static private function dashboard() {
-        //
+        require_once 'views/admin/dashboard.php';
     }
 
     static private function authorize_article() {
-        //
+        require_once 'views/pages/confirm-password.php';
     }
 
     static private function delete_article() {
@@ -42,10 +42,10 @@ class adminController {
     }
 
     static private function edit_article() {
-        //
+        require_once 'views/admin/edit-article.php';
     }
 
     static private function published_articles() {
-        //
+        require_once 'views/admin/published-articles.php';
     }
 }
