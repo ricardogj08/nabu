@@ -1,0 +1,112 @@
+/* Orden de los estilos
+1. Posicionamineto
+2. Modelo de caja
+3. Tipografia
+4. Visuales
+5. Otros
+Metodologia => BEM
+*/
+
+.card {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 290px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.25);
+    /* background-color: tomato; */
+}
+
+.banner {
+    width: 100%;
+    height: 259px;
+    display: block;
+}
+
+.banner__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card__info {
+    padding: 16px 24px 9px;
+    display: flex;
+    flex-direction: column;
+    color: #9D9D9D;
+}
+
+.card__text {
+    margin-bottom: 8px;
+    min-width: 241px;
+}
+
+.card__title {
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--color-secondary-purple);
+}
+
+.card__copy {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.card__details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*Imagen de perfil*/
+.profile {
+    display: block;
+    width: 28px;
+    border-radius: 50%;
+}
+
+.profile__image {
+    width: 100%;
+    border-radius: inherit;
+}
+
+.card__author {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card__stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0 7px;
+    height: auto;
+}
+
+.card__stats > span {
+    display: block;
+}
+
+.card__stats-hearth {
+    width: 14px;
+    height: 14px;
+    background-image: url(../../../icons/heart-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card__stats-comment {
+    width: 14px;
+    height: 14px;
+    background-image: url(../../../icons/comment-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card__stats-numlike,
+.card__stats-numcom {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
