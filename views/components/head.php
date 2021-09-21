@@ -8,8 +8,9 @@
     <!-- CSS files -->
     <link rel="icon" href="<?= NABU_DIRECTORY['images'] ?>/buho.svg"  type="image/svg+xml" sizes="any">
     <link rel="stylesheet" href="<?= NABU_DIRECTORY['styles'] ?>/normalize.css">
+    <?php foreach ($styles as $style): ?>
     <link rel="stylesheet" href="<?= $style ?>">
-    <link rel="stylesheet" href="<?= $style_desktop ?>">
+    <?php endforeach ?>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

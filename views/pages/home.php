@@ -1,7 +1,10 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title    = NABU_DEFAULT['website-name'] ?>
-<?php $style         = NABU_DIRECTORY['styles'] . '/pages/home/home.css' ?>
-<?php $style_desktop = NABU_DIRECTORY['styles'] . '/pages/home/home-desktop.css' ?>
+<?php $styles        = array(
+    NABU_DIRECTORY['styles'] . '/pages/home/home.css',
+    NABU_DIRECTORY['styles'] . '/pages/home/home-desktop.css',
+    NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
+) ?>
 <?php require_once 'views/components/head.php' ?>
 
 <header class="header">
