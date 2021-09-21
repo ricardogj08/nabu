@@ -1,6 +1,6 @@
 <?php defined('NABU') || exit ?>
 
-<form method="POST" action="<?= NABU['home'] ?>">
+<form method="POST" action="<?= NABU_ROUTES['home'] ?>">
     <input type="hidden" name="csrf" value="<?= $token ?>">
     <span>
         <input type="text" name="q" minlength="1" maxlength="246" required>
