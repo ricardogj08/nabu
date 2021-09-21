@@ -1,8 +1,9 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title    = 'Artículos publicados' ?>
-<?php $style         = NABU_DIRECTORY['styles'] . '/admin/published-articles/published-articles.css' ?>
-<?php $style_desktop = NABU_DIRECTORY['styles'] . '/admin/published-articles/published-articles-desktop.css' ?>
-<?php $search        = NABU_ROUTES['admin'] ?>
+<?php $styles        = array(
+    NABU_DIRECTORY['styles'] . '/admin/published-articles/published-articles.css',
+    NABU_DIRECTORY['styles'] . '/admin/published-articles/published-articles-desktop.css',
+) ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/admin-navbar.php' ?>
 

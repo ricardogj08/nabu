@@ -6,11 +6,11 @@ require_once 'models/adminModel.php';
 
 class adminController {
     static public function admin() {
-        if (empty($_GET['page'])) {
+        if (empty($_GET['section'])) {
             self::dashboard();
         }
         else {
-            switch ($_GET['page']) {
+            switch ($_GET['section']) {
                 case 'authorize':
                     self::authorize_article();
                     break;
@@ -38,7 +38,7 @@ class adminController {
     }
 
     static private function delete_article() {
-        //
+        require_once 'views/pages/confirm-password.php';
     }
 
     static private function edit_article() {
