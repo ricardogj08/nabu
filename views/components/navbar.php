@@ -25,9 +25,9 @@
             <?php else: ?>
                 <?php $username = $_SESSION['user']['username'] ?>
                 <?php if (false): ?>
-                <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['admin'] ?>">Administración</a>
-                </li>
+                    <li class="nav__item">
+                        <a href="<?= NABU_ROUTES['admin'] ?>">Administración</a>
+                    </li>
                 <?php endif ?>
                 <li class="nav__item">
                     <a href="<?= NABU_ROUTES['sent-articles'] ?>">Artículos enviados</a>

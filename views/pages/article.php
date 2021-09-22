@@ -12,7 +12,7 @@
 <div>
     <p>Autor:</p>
     <a href="<?= $author_profile ?>"><img src="<?= $article['author_avatar'] ?>" alt="Foto de perfil del autor" width="8%"></a>
-    <p><a href="<?= $author_profile ?>"><?= $article['author_username'] ?></a></p>
+    <p><a href="<?= $author_profile ?>"><?= $article['author-username'] ?></a></p>
     <p><?= $article['date'] ?></p>
 </div>
 
@@ -23,9 +23,9 @@
 <h2>Datos del autor</h2>
 
 <div>
-    <a href="<?= $author_profile ?>"><img src="<?= $article['author_avatar'] ?>" alt="Foto de perfil del autor" width="8%"></a>
+    <a href="<?= $author_profile ?>"><img src="<?= $article['author-avatar'] ?>" alt="Foto de perfil del autor" width="8%"></a>
     <p><a href="<?= $author_profile ?>"><?= $article['author'] ?></a></p>
-    <p><?= $article['author_description'] ?></p>
+    <p><?= $article['author-description'] ?></p>
 </div>
 
 <h2>Otros artículos</h2>

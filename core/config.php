@@ -26,7 +26,7 @@ define('NABU_DEFAULT', array(
     'background'    => NABU_URL . '/assets/images/background.jpg',
     'cover'         => NABU_URL . '/assets/images/cover.jpg',
     'image-formats' => 'image/gif, image/jpeg, image/png, image/svg+xml',
-    'image-size'    => 1048576 * 3, // 3 MB (en bytes).
+    'image-size'    => 1048576 * 2, // 2 MB (en bytes).
 ));
 
 // Define la zona horario de todas las funciones de fecha/tiempo.

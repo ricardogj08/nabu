@@ -43,7 +43,7 @@
             <label for="content"><b>Contenido del artículo <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">formato Markdown</a></b></label>
         </div>
         <div>
-            <textarea type="text" id="content" name="content" minlength="1" maxlength="<?= NABU_DEFAULT['article_size'] ?>" rows="32" cols="100" required><?= $article['content'] ?></textarea>
+            <textarea type="text" id="content" name="content" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required><?= $article['content'] ?></textarea>
         </div>
         <div>
             <input type="submit" name="edit-article" value="Guardar">

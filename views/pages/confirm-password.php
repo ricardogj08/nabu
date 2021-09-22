@@ -21,8 +21,8 @@
         <input type="password" id="password" name="password" minleght="6" maxlenght="255" required>
     </div>
     <div>
-        <label for="password-confirm">Confirmar contraseña</label>
-        <input type="password" id="password-confirm" name="password-confirm" minlenght="6" maxlenght="255" required>
+        <label for="confirm-password">Confirmar contraseña</label>
+        <input type="password" id="confirm-password" name="confirm-password" minlenght="6" maxlenght="255" required>
     </div>
     <div>
         <input type="submit" name="confirm-password-submit" value="Enviar">
