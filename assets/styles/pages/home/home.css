@@ -36,7 +36,6 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
     padding-top: 30px;
     padding-bottom: 40px;
     background-color: var(--color-background);
@@ -150,6 +149,18 @@ html {
 }
 
 /* Estilos para la visualizacion del menu */
+.overlay {
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 400ms linear;
+}
+
 .overlay__is-active {
     opacity: 1;
     border-radius: 0;
@@ -202,18 +213,6 @@ html {
     font-weight: 500;
     background-color: var(--color-primary-red);
     color: #FFF;
-}
-
-.overlay {
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 400ms linear;
 }
 
 /* Estilos a la seccion de posts populares */
