@@ -11,7 +11,7 @@
 
 <div>
     <p>Autor:</p>
-    <a href="<?= $author_profile ?>"><img src="<?= $article['author_avatar'] ?>" alt="Foto de perfil del autor" width="8%"></a>
+    <a href="<?= $author_profile ?>"><img src="<?= $article['author-avatar'] ?>" alt="Foto de perfil del autor" width="8%"></a>
     <p><a href="<?= $author_profile ?>"><?= $article['author-username'] ?></a></p>
     <p><?= $article['date'] ?></p>
 </div>
@@ -35,5 +35,4 @@
 <h2>Comentarios</h2>
 
 <?php require_once 'views/components/messages.php' ?>
-
 <?php require_once 'views/components/footer.php' ?>
