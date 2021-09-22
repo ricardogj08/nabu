@@ -149,6 +149,18 @@ html {
     background-image: url('../../../icons/write-icon.svg');
 }
 
+/* Estilos para la visualizacion del menu */
+.overlay__is-active {
+    opacity: 1;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stop-scrolling {
+    height: 100vh;
+    overflow: hidden;
+}
 
 /* Estilos para el hero */
 .hero {
@@ -202,17 +214,46 @@ html {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);
     transition: all 400ms linear;
-
 }
 
-.overlay__is-active {
-    opacity: 1;
-    border-radius: 0;
+/* Estilos a la seccion de posts populares */
+
+.popular-posts {
     width: 100%;
-    height: 100%;
+    min-width: 320px;
+    padding: 23px 0;
+    text-align: center;
+    background-color: var(--color-secundary-background);
 }
 
-.stop-scrolling {
-    height: 100vh;
-    overflow: hidden;
+.popular-posts__title {
+    margin-bottom: 11px;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 3.6rem;
+    color: #000;
 }
+
+.cards__container {
+    width: 100%;
+    display: flex;
+    gap: 0 20px;
+    padding: 15px 20px;
+    overflow-x: scroll;
+    margin-left:auto;
+    scroll-snap-type: x mandatory;
+}
+
+/* Estilos a la barra del scroll */
+.cards__container::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+ 
+.cards__container::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary-purple);
+}
+ 
+
+
+

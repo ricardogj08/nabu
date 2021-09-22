@@ -11,11 +11,14 @@ Metodologia => BEM
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    max-width: 290px;
+    width: 60%;
+    max-width: 500px;
+    min-width: 288px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 8px 4px 0 rgba(0, 0, 0, 0.25);
-    /* background-color: tomato; */
+    background-color: #FFF;
+    scroll-snap-align: center;
 }
 
 .banner {
@@ -38,6 +41,7 @@ Metodologia => BEM
 }
 
 .card__text {
+    text-align: left;
     margin-bottom: 8px;
     min-width: 241px;
 }

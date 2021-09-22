@@ -22,16 +22,23 @@
 </header>
 
 <main>
-    <section></section>
+    <section class="popular-posts">
+        <h2 class="popular-posts__title">Posts imperdibles del mes, échales un ojo</h2>
+        <section class="cards__container">
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+        </section>
+    </section>
     <section></section>
     <section></section>
 </main>
 
-<h2>Artículos más valorados</h2>
-<?php require 'views/components/articles.php' ?>
 
 <h2>Artículos recientes</h2>
 <?php $articles = $recent_articles ?>
-<?php require 'views/components/articles.php' ?>
+<!-- <?php require 'views/components/articles.php' ?> -->
 
 <?php require_once 'views/components/footer.php' ?>
