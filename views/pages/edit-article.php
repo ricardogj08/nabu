@@ -1,5 +1,5 @@
 <?php defined('NABU') || exit ?>
-<?php $head_title = 'Publicar un artículo' ?>
+<?php $head_title = 'Editar artículo' ?>
 <?php $styles     = array(
     NABU_DIRECTORY['styles'] . '/pages/edit-article/edit-article.css',
     NABU_DIRECTORY['styles'] . '/pages/edit-article/edit-article-desktop.css',
