@@ -21,6 +21,26 @@
     </span>
 </form>
 
-<?php require_once 'views/components/table-articles.php' ?>
+<?php if (!empty($articles)): ?>
+<table>
+    <tr>
+        <td>Título</td>
+        <td>Autor</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <?php foreach ($articles as $article): ?>
+    <?php $author = $article['author'] ?>
+        <tr>
+            <td><?= $article['title'] ?></td>
+            <td><a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($author) ?>" target="_blank"><?= utils::escape($author) ?></a></td>
+            <td><a href="<?= NABU_ROUTES['edit-article'] . '&slug=' . $article['slug'] ?>">Editar</a></td>
+            <td><a href="<?= NABU_ROUTES['delete-article'] . '&slug=' . $article['slug'] ?>">Eliminar</a></td>
+        </tr>
+    <?php endforeach ?>
+</table>
+<?php endif ?>
+
 <?php require_once 'views/components/pagination.php' ?>
 <?php require_once 'views/components/footer.php' ?>
+<?php defined('NABU') || exit ?>
