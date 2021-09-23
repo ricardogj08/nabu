@@ -24,7 +24,7 @@
 <main>
     <section class="popular-posts">
         <h2 class="popular-posts__title">Posts imperdibles del mes, échales un ojo</h2>
-        <section class="cards__container">
+        <section class="popular-cards__container">
             <?php require 'views/components/articles.php' ?>
             <?php require 'views/components/articles.php' ?>
             <?php require 'views/components/articles.php' ?>
@@ -32,7 +32,16 @@
             <?php require 'views/components/articles.php' ?>
         </section>
     </section>
-    <section></section>
+    <section class="recent__posts">
+        <h2 class="recent-posts__title">Posts más recientes</h2>
+        <section class="recent-cards__container">
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+            <?php require 'views/components/articles.php' ?>
+        </section>
+    </section>
     <section></section>
 </main>
 
