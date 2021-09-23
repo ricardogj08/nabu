@@ -276,4 +276,55 @@ html {
     gap: 30px 0;
 }
 
+/* Estilos para el CTA del final de la pagina*/
 
+.CTA {
+    position: relative;
+    min-width: 320px;
+    width: 100%;
+    min-height: 362px;
+    height: auto;
+    padding: 0 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-black);
+}
+
+.CTA__plane {
+    position: absolute;
+    right: 27px;
+    top: 8%;
+    width: 55px;
+    height: 63px;
+    background-image: url(../../../images/paper-plane.svg);
+    background-position: center;
+
+}
+
+.CTA__container {
+    text-align: center;
+    color: #FFF;
+}
+
+.CTA__title {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 2.7rem;
+}
+
+.CTA__button {
+    display: inline-block;
+    min-width: 215px;
+    width: 70%;
+    padding: 13px;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 2.1rem;
+    border-radius: 40px;
+    background-color: var(--color-primary-red);
+    color:#fff;
+    cursor: pointer;
+}
