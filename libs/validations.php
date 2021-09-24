@@ -43,7 +43,7 @@ class validations {
     private function is_space() {
         $str = $this -> value;
 
-        if (preg_replace('/\s+/', '', $str) != $str) {
+        if (preg_replace('/\s+/', '', $str) !== $str) {
             messages::add('El campo "' . $this -> field . '" contiene espacios');
         }
     }
