@@ -4,6 +4,7 @@
     NABU_DIRECTORY['styles'] . '/pages/home/home.css',
     NABU_DIRECTORY['styles'] . '/pages/home/home-desktop.css',
     NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
+    NABU_DIRECTORY['styles'] . '/components/footer/footer.css'
 ) ?>
 <?php require_once 'views/components/head.php' ?>
 
@@ -50,9 +51,6 @@
         </div>
     </section>
 </main>
-
-
-<h2>Artículos recientes</h2>
 <?php $articles = $recent_articles ?>
 <!-- <?php require 'views/components/articles.php' ?> -->
 
