@@ -17,10 +17,13 @@ class usersController {
     // y registra un usuario por el método POST.
     static public function signup() {
         if (empty($_POST['signup-submit'])) {
+            $token    = csrf::generate();
             $messages = messages::get();
             require_once 'views/pages/signup.php';
         }
         else {
+            csrf::validate($_POST['csrf']);
+
             $validations = new validations(NABU_ROUTES['signup']);
 
             $user = $validations -> validate_form($_POST, array(

@@ -7,6 +7,7 @@ session_start();
 require_once 'core/config.php';
 require_once 'libs/utils.php';
 require_once 'libs/messages.php';
+require_once 'libs/csrf.php';
 require_once 'libs/validations.php';
 
 $components = require 'core/routes.php';
