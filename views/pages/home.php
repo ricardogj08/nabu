@@ -4,7 +4,7 @@
     NABU_DIRECTORY['styles'] . '/pages/home/home.css',
     NABU_DIRECTORY['styles'] . '/pages/home/home-desktop.css',
     NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
-    NABU_DIRECTORY['styles'] . '/components/footer/footer.css'
+    NABU_DIRECTORY['styles'] . '/components/footer/footer.css',
 ) ?>
 <?php require_once 'views/components/head.php' ?>
 

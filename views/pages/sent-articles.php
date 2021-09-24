@@ -17,7 +17,7 @@
         <td>Título</td>
         <td></td>
         <td></td>
-1    </tr>
+    </tr>
     <?php foreach ($articles as $article): ?>
         <tr>
             <td><?= $article['title'] ?></td>
