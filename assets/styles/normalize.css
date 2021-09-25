@@ -8,6 +8,17 @@
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
+/* Base Styles to nabu project */
+/* Estilos base */
+:root {
+  --color-background: hsl(197, 24%, 94%);
+  --color-primary-red: hsl(355, 83%, 71%);
+  --color-secondary-green: hsl(169, 36%, 57%);
+  --color-secondary-purple: hsl(237, 58%, 69%);
+  --color-black: hsl(229, 18%, 19%);
+  --color-secundary-background: hsl(0, 0%, 91%);
+}
+
  * {
     box-sizing: border-box;
     margin: 0;
@@ -16,6 +27,8 @@
 
 
  html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
   }
