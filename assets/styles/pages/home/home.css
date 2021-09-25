@@ -7,22 +7,6 @@
 Metodologia => BEM
 */
 
-/* Estilos base */
-:root {
-    --color-background: hsl(197, 24%, 94%);
-    --color-primary-red: hsl(355, 83%, 71%);
-    --color-secondary-green: hsl(169, 36%, 57%);
-    --color-secondary-purple: hsl(237, 58%, 69%);
-    --color-black: hsl(229, 18%, 19%);
-    --color-secundary-background: hsl(0, 0%, 91%);
-}
-
-
-html {
-    font-size: 62.5%;
-    font-family: 'Poppins', sans-serif;
-}
-
 /* Estilos al header */
 .header {
     min-width: 320px;
