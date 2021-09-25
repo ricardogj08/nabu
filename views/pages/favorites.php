@@ -2,8 +2,10 @@
 <?php $head_title = 'Artículos favoritos' ?>
 <?php $styles     = array(
     'pages/favorites/favorites.css',
-    'pages/favorites/favorites-desktop.css',
     'components/articles/articles.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/favorites/favorites-desktop.css', 'attributes' => '')
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

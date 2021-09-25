@@ -2,8 +2,10 @@
 <?php $head_title = 'Muro' ?>
 <?php $styles     = array(
     'pages/all-articles/all-articles.css',
-    'pages/all-articles/all-articles-desktop.css',
     'components/articles/articles.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/all-articles/all-articles-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

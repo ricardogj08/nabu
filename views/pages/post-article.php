@@ -2,7 +2,9 @@
 <?php $head_title = 'Publicar un artículo' ?>
 <?php $styles     = array(
     'pages/post-article/post-article.css',
-    'pages/post-article/post-article-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/post-article/post-article-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

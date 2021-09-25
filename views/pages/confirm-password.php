@@ -2,7 +2,9 @@
 <?php $head_title = 'Confirmar contraseña' ?>
 <?php $styles     = array(
     'pages/confirm-password/confirm-password.css',
-    'pages/confirm-password/confirm-password-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/confirm-password/confirm-password-desktop.css', 'attributes' => '')
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

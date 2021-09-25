@@ -2,7 +2,9 @@
 <?php $head_title = 'Artículos enviados' ?>
 <?php $styles     = array(
     'pages/sent-articles/sent-articles.css',
-    'pages/sent-articles/sent-articles-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/sent-articles/sent-articles-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

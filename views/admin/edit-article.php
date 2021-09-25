@@ -2,7 +2,9 @@
 <?php $head_title = 'Editar artículo' ?>
 <?php $styles     = array(
     'admin/edit-article/edit-article.css',
-    'admin/edit-article/edit-article-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('admin/edit-article/edit-article-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

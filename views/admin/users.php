@@ -2,7 +2,9 @@
 <?php $head_title    = 'Usuarios registrados' ?>
 <?php $styles        = array(
     'admin/users/users.css',
-    'admin/users/users-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('admin/users/users-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

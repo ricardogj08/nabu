@@ -2,8 +2,10 @@
 <?php $head_title = 'Artículo' ?>
 <?php $styles     = array(
     'pages/article/article.css',
-    'pages/article/article-desktop.css',
     'components/articles/articles.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/article/article-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

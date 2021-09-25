@@ -2,8 +2,10 @@
 <?php $head_title = 'Búsquedas' ?>
 <?php $styles     = array(
     'pages/search/search.css',
-    'pages/search/search-desktop.css',
     'components/articles/articles.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/search/search-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

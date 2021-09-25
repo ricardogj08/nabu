@@ -2,7 +2,9 @@
 <?php $head_title = 'Iniciar sesión' ?>
 <?php $styles     = array(
     'pages/login/login.css',
-    'pages/login/login-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/login/login-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

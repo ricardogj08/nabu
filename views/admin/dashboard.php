@@ -2,7 +2,9 @@
 <?php $head_title    = 'Administración' ?>
 <?php $styles        = array(
     'admin/dashboard/dashboard.css',
-    'admin/dashboard/dashboard-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('admin/dashboard/dashboard-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

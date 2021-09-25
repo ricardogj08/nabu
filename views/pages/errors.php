@@ -2,7 +2,9 @@
 <?php $head_title = 'Error' ?>
 <?php $styles     = array(
     'pages/errors/errors.css',
-    'pages/errors/errors-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/errors/errors-desktop.css', 'attributes' => '')
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

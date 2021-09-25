@@ -2,6 +2,7 @@
 
 defined('NABU') || exit;
 
+// Valida formularios contra ataques CSRF.
 class csrf {
     private const size       = 32;
     private const hash       = 'sha256';

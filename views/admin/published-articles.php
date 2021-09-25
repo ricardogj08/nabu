@@ -2,7 +2,9 @@
 <?php $head_title    = 'Artículos publicados' ?>
 <?php $styles        = array(
     'admin/published-articles/published-articles.css',
-    'admin/published-articles/published-articles-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('admin/published-articles/published-articles-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

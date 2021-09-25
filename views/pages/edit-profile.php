@@ -2,7 +2,9 @@
 <?php $head_title = 'Editar perfil' ?>
 <?php $styles     = array(
     'pages/edit-profile/edit-profile.css',
-    'pages/edit-profile/edit-profile-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/edit-profile/edit-profile-desktop.css', 'attributes' => '')
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

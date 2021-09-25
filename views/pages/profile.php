@@ -2,8 +2,10 @@
 <?php $head_title = 'Perfil' ?>
 <?php $styles     = array(
     'pages/profile/profile.css',
-    'pages/profile/profile-desktop.css',
     'components/articles/articles.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/profile/profile-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

@@ -2,7 +2,9 @@
 <?php $head_title = 'Crea una cuenta' ?>
 <?php $styles     = array(
     'pages/signup/signup.css',
-    'pages/signup/signup-desktop.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/signup/signup-desktop.css', 'attributes' => ''),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>

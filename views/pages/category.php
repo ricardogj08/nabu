@@ -2,8 +2,10 @@
 <?php $head_title = 'Categoría' ?>
 <?php $styles     = array(
     'pages/category/category.css',
-    'pages/category/category-desktop.css',
     'components/articles/articles.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/category/category-desktop.css', 'attributes' => '')
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
