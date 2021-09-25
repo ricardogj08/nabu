@@ -32,7 +32,7 @@ class csrf {
 
     // Valida si un token no está expirado y es igual al generado.
     public static function validate($token2) {
-        if (empty($_SESSION['csrf'])) {
+        if (empty($_SESSION['csrf']) || empty($token2)) {
             self::errors('Token inválido');
         }
 
