@@ -3,6 +3,7 @@
 <?php $styles     = array(
     NABU_DIRECTORY['styles'] . '/pages/signup/signup.css',
     NABU_DIRECTORY['styles'] . '/pages/signup/signup-desktop.css',
+    NABU_DIRECTORY['styles'] . '/components/footer/footer.css',
 ) ?>
 <?php require_once 'views/components/head.php' ?>
 
