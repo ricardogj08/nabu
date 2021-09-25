@@ -1,10 +1,11 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Perfil' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/profile/profile.css',
-    NABU_DIRECTORY['styles'] . '/pages/profile/profile-desktop.css',
-    NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
+    'pages/profile/profile.css',
+    'pages/profile/profile-desktop.css',
+    'components/articles/articles.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/navbar.php' ?>
 

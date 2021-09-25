@@ -1,9 +1,10 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Iniciar sesión' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/login/login.css',
-    NABU_DIRECTORY['styles'] . '/pages/login/login-desktop.css',
+    'pages/login/login.css',
+    'pages/login/login-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
 <h1>Iniciar sesión</h1>

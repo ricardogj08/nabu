@@ -1,14 +1,13 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Confirmar contraseña' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/confirm-password/confirm-password.css',
-    NABU_DIRECTORY['styles'] . '/pages/confirm-password/confirm-password-desktop.css',
+    'pages/confirm-password/confirm-password.css',
+    'pages/confirm-password/confirm-password-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
 <h1>Confirmar contraseña</h1>
-
-<p><a href="<?= $back ?>">Volver</a></p>
 
 <?php require_once 'views/components/messages.php' ?>
 

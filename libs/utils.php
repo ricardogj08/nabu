@@ -10,7 +10,7 @@ class utils {
         exit;
     }
 
-    static public function escape(string $str) {
+    static public function escape($str) {
         //
     }
 }

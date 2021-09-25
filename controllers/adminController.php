@@ -23,6 +23,9 @@ class adminController {
                 case 'published':
                     self::published_articles();
                     break;
+                case 'users':
+                    self::users();
+                    break;
                 default:
                     utils::redirect(NABU_ROUTES['admin']);
             }
@@ -47,5 +50,9 @@ class adminController {
 
     static private function published_articles() {
         require_once 'views/admin/published-articles.php';
+    }
+
+    static private function users() {
+        require_once 'views/admin/users.php';
     }
 }

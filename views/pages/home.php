@@ -1,10 +1,13 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title    = NABU_DEFAULT['website-name'] ?>
 <?php $styles        = array(
-    NABU_DIRECTORY['styles'] . '/pages/home/home.css',
-    NABU_DIRECTORY['styles'] . '/pages/home/home-desktop.css',
-    NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
-    NABU_DIRECTORY['styles'] . '/components/footer/footer.css',
+    'pages/home/home.css',
+    'pages/home/home-desktop.css',
+    'components/articles/articles.css',
+    'components/footer/footer.css',
+) ?>
+<?php $scripts = array(
+    'home.js',
 ) ?>
 <?php require_once 'views/components/head.php' ?>
 

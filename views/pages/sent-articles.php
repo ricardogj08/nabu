@@ -1,9 +1,10 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Artículos enviados' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/sent-articles/sent-articles.css',
-    NABU_DIRECTORY['styles'] . '/pages/sent-articles/sent-articles-desktop.css',
+    'pages/sent-articles/sent-articles.css',
+    'pages/sent-articles/sent-articles-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/navbar.php' ?>
 

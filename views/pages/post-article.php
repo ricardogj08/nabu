@@ -1,9 +1,10 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Publicar un artículo' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/post-article/post-article.css',
-    NABU_DIRECTORY['styles'] . '/pages/post-article/post-article-desktop.css',
+    'pages/post-article/post-article.css',
+    'pages/post-article/post-article-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/navbar.php' ?>
 

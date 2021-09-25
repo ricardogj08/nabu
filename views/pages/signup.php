@@ -1,9 +1,10 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Crea una cuenta' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/signup/signup.css',
-    NABU_DIRECTORY['styles'] . '/pages/signup/signup-desktop.css',
+    'pages/signup/signup.css',
+    'pages/signup/signup-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
 <h1>Crea una cuenta</h1>

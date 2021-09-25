@@ -1,15 +1,14 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Editar artículo' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/admin/edit-article/edit-article.css',
-    NABU_DIRECTORY['styles'] . '/admin/edit-article/edit-article-desktop.css',
+    'admin/edit-article/edit-article.css',
+    'admin/edit-article/edit-article-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/admin-navbar.php' ?>
 
 <h1>Editar artículo</h1>
-
-<p><a href="<?= NABU_ROUTES['admin'] ?>">Volver</a></p>
 
 <?php require_once 'views/components/messages.php' ?>
 

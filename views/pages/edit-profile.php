@@ -1,14 +1,13 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Editar perfil' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/edit-profile/edit-profile.css',
-    NABU_DIRECTORY['styles'] . '/pages/edit-profile/edit-profile-desktop.css',
+    'pages/edit-profile/edit-profile.css',
+    'pages/edit-profile/edit-profile-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
 <h1>Editar perfil</h1>
-
-<p><a href="<?= $back ?>">Volver</a></p>
 
 <?php require_once 'views/components/messages.php' ?>
 

@@ -1,9 +1,10 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title    = 'Artículos publicados' ?>
 <?php $styles        = array(
-    NABU_DIRECTORY['styles'] . '/admin/published-articles/published-articles.css',
-    NABU_DIRECTORY['styles'] . '/admin/published-articles/published-articles-desktop.css',
+    'admin/published-articles/published-articles.css',
+    'admin/published-articles/published-articles-desktop.css',
 ) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/admin-navbar.php' ?>
 
