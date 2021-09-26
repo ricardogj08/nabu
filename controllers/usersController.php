@@ -14,7 +14,7 @@ class usersController {
     }
 
     // Renderiza la página de registro de usuarios
-    // y registra un usuario por el método POST.
+    // y registra un usuario con el método POST.
     static public function signup() {
         if (empty($_POST['signup-submit'])) {
             $token    = csrf::generate();

@@ -9,6 +9,7 @@ require_once 'libs/utils.php';
 require_once 'libs/messages.php';
 require_once 'libs/csrf.php';
 require_once 'libs/validations.php';
+require_once 'database/connection.php';
 
 $components = require 'core/routes.php';
 

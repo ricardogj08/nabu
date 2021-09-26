@@ -96,9 +96,6 @@ class validations {
         $data = array();
 
         foreach ($options as $option) {
-            if (!is_array($option))
-                $this -> errors('The validation options are not an array');
-
             if (empty($option[0]) || !is_string($option[0]))
                 $this -> errors('Not found field name');
 
