@@ -38,6 +38,8 @@ class usersController {
 
             $usersModel = new usersModel();
 
+            $users = $usersModel -> find($data['username'], $data['email']);
+
             // Genera una llave aleatoria de verificación de dirección de e-mail.
             $key = bin2hex(random_bytes(32));
 
