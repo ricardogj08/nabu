@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 CREATE TABLE IF NOT EXISTS `verifications` (
     `id`         INT UNSIGNED        NOT NULL,
-    `hash`       VARCHAR(255),       NOT NULL,
+    `hash`       VARCHAR(255)        NOT NULL,
     `expiration` INT UNSIGNED        NOT NULL,
     CONSTRAINT   verifications_id_pk PRIMARY KEY(id),
     CONSTRAINT   verifications_id_fk FOREIGN KEY(id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE

@@ -6,6 +6,7 @@ require_once 'models/usersModel.php';
 
 class usersController {
     private const cost = array('cost' => 12);
+    private const hash = 'sha256';
 
     static public function login() {
         require_once 'views/pages/login.php';
@@ -28,7 +29,7 @@ class usersController {
 
             $validations = new validations(NABU_ROUTES['signup']);
 
-            $user = $validations -> validate_form($_POST, array(
+            $data = $validations -> validate_form($_POST, array(
                 array('name',     'exists' => true, 'trim_all'   => true, 'min_lenght' => 5,    'max_lenght' => 255),
                 array('username', 'exists' => true, 'trim'       => true, 'min_lenght' => 1,    'max_lenght' => 255,  'not_spaces' => true),
                 array('email',    'exists' => true, 'is_email'   => true, 'trim'       => true, 'min_lenght' => 5,    'max_lenght' => 255, 'not_spaces' => true),
@@ -37,17 +38,34 @@ class usersController {
 
             $usersModel = new usersModel();
 
+            // Genera una llave aleatoria de verificación de dirección de e-mail.
+            $key = bin2hex(random_bytes(32));
+
             // Formatea en minúsculas la dirección de e-mail.
-            $user['email'] = strtolower($user['email']);
+            $data['email'] = strtolower($data['email']);
+
+            // Hash de verificación de e-mail.
+            $hash = hash_hmac(self::hash, $data['email'], $key);
 
             // Cifra la contraseña.
-            $user['password'] = password_hash($user['password'], PASSWORD_DEFAULT, self::cost);
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT, self::cost);
 
             // Define la fecha de registro.
-            $user['creation_date'] = utils::current_date();
+            $data['creation_date'] = utils::current_date();
 
             // Registra el nuevo usuario.
-            $usersModel -> save($user);
+            $usersModel -> save($data);
+
+            $user = $usersModel -> get('username', $data['username']);
+
+            $verification = array(
+                'id'         => $user['id'],
+                'hash'       => $hash,
+                'expiration' => time() + 60 * 60
+            );
+
+            // Registra el hash de verificación de dirección de e-mail.
+            $usersModel -> verification($verification);
         }
     }
 }
