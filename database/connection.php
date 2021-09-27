@@ -7,11 +7,15 @@ class connection {
     protected $pdo;
 
     public function __construct() {
+        if (!file_exists(NABU_DIRECTORY['database'])) {
+            exit('Create a database config file.');
+        }
+
         // Carga el archivo de configuración de la base de datos.
         $config = file_get_contents(NABU_DIRECTORY['database']);
 
         if ($config === false) {
-            exit('Create a database config file.');
+            exit('The database config file is invalid.');
         }
 
         $config = json_decode($config, true);
