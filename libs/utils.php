@@ -10,6 +10,11 @@ class utils {
         exit;
     }
 
+    // @return la fecha actual.
+    static public function current_date() {
+        return date('Y-m-d H:i:s');
+    }
+
     static public function escape($str) {
         //
     }

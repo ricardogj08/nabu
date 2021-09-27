@@ -57,11 +57,6 @@ class connection {
         messages::errors('¡Lo sentimos mucho! &#x1F61E;, ' . $error . ', por favor inténtelo más tarde', 500);
     }
 
-    // @return la fecha actual.
-    public function current_date() {
-        return date('Y-m-d H:i:s');
-    }
-
     // Finaliza la conexión con la base de datos.
     public function __destruct() {
         $this -> pdo = null;

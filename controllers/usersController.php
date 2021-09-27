@@ -5,6 +5,8 @@ defined('NABU') || exit;
 require_once 'models/usersModel.php';
 
 class usersController {
+    private const cost = array('cost' => 12);
+
     static public function login() {
         require_once 'views/pages/login.php';
     }
@@ -33,7 +35,19 @@ class usersController {
                 array('password', 'exists' => true, 'min_lenght' => 6,    'max_lenght' => 255,  'not_spaces' => true, 'equal'      => $_POST['confirm-password'])
             ));
 
+            $usersModel = new usersModel();
+
+            // Formatea en minúsculas la dirección de e-mail.
             $user['email'] = strtolower($user['email']);
+
+            // Cifra la contraseña.
+            $user['password'] = password_hash($user['password'], PASSWORD_DEFAULT, self::cost);
+
+            // Define la fecha de registro.
+            $user['creation_date'] = utils::current_date();
+
+            // Registra el nuevo usuario.
+            $usersModel -> save($user);
         }
     }
 }

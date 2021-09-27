@@ -9,8 +9,6 @@
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
-<p><a href="<?= NABU_ROUTES['home'] ?>">Volver</a></p>
-
 <p><mark><?= $error ?>.</mark></p>
 
 <?php require_once 'views/components/footer.php' ?>
