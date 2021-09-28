@@ -17,6 +17,7 @@
     <?php require_once 'views/components/navbar.php' ?>
     <div class="hero">
         <picture class="hero__img-wrapper">
+            <source srcset="<?= NABU_DIRECTORY['images'] ?>/hero-desktop.png" media="(min-width: 600px)">
             <img src="<?= NABU_DIRECTORY['images'] ?>/hero.png" alt="Imagen inspiración en cualquier momento y cualquier lugar" class="hero__img">
         </picture>
         <h1 class="hero__CTA">Lee, inspírate y escribe</h1>
