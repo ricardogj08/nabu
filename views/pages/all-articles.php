@@ -1,10 +1,13 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Muro' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/all-articles/all-articles.css',
-    NABU_DIRECTORY['styles'] . '/pages/all-articles/all-articles-desktop.css',
-    NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
+    'pages/all-articles/all-articles.css',
+    'components/articles/articles.css',
 ) ?>
+<?php $desktop_styles = array(
+    array('pages/all-articles/all-articles-desktop.css', 'attributes' => ''),
+) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/navbar.php' ?>
 

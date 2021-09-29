@@ -1,10 +1,13 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = 'Artículo' ?>
 <?php $styles     = array(
-    NABU_DIRECTORY['styles'] . '/pages/article/article.css',
-    NABU_DIRECTORY['styles'] . '/pages/article/article-desktop.css',
-    NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
+    'pages/article/article.css',
+    'components/articles/articles.css',
 ) ?>
+<?php $desktop_styles = array(
+    array('pages/article/article-desktop.css', 'attributes' => ''),
+) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
 <h1><?= $article['title'] ?></h1>

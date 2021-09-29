@@ -1,9 +1,12 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title    = 'Administración' ?>
 <?php $styles        = array(
-    NABU_DIRECTORY['styles'] . '/admin/dashboard/dashboard.css',
-    NABU_DIRECTORY['styles'] . '/admin/dashboard/dashboard-desktop.css',
+    'admin/dashboard/dashboard.css',
 ) ?>
+<?php $desktop_styles = array(
+    array('admin/dashboard/dashboard-desktop.css', 'attributes' => ''),
+) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/admin-navbar.php' ?>
 

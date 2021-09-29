@@ -1,9 +1,12 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title    = 'Usuarios registrados' ?>
 <?php $styles        = array(
-    NABU_DIRECTORY['styles'] . '/admin/users/users.css',
-    NABU_DIRECTORY['styles'] . '/admin/users/users-desktop.css',
+    'admin/users/users.css',
 ) ?>
+<?php $desktop_styles = array(
+    array('admin/users/users-desktop.css', 'attributes' => ''),
+) ?>
+<?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/admin-navbar.php' ?>
 

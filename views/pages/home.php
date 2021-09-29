@@ -1,10 +1,15 @@
 <?php defined('NABU') || exit ?>
-<?php $head_title    = NABU_DEFAULT['website-name'] ?>
-<?php $styles        = array(
-    NABU_DIRECTORY['styles'] . '/pages/home/home.css',
-    NABU_DIRECTORY['styles'] . '/pages/home/home-desktop.css',
-    NABU_DIRECTORY['styles'] . '/components/articles/articles.css',
-    NABU_DIRECTORY['styles'] . '/components/footer/footer.css',
+<?php $head_title = NABU_DEFAULT['website-name'] ?>
+<?php $styles     = array(
+    'pages/home/home.css',
+    'components/articles/articles.css',
+    'components/footer/footer.css',
+) ?>
+<?php $desktop_styles = array(
+    array('pages/home/home-desktop.css', 'attributes' => 'media="(max-width: 720px)"'),
+) ?>
+<?php $scripts = array(
+    'home.js',
 ) ?>
 <?php require_once 'views/components/head.php' ?>
 
@@ -12,6 +17,7 @@
     <?php require_once 'views/components/navbar.php' ?>
     <div class="hero">
         <picture class="hero__img-wrapper">
+            <source srcset="<?= NABU_DIRECTORY['images'] ?>/hero-desktop.png" media="(min-width: 600px)">
             <img src="<?= NABU_DIRECTORY['images'] ?>/hero.png" alt="Imagen inspiración en cualquier momento y cualquier lugar" class="hero__img">
         </picture>
         <h1 class="hero__CTA">Lee, inspírate y escribe</h1>
