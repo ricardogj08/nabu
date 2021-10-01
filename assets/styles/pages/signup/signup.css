@@ -46,8 +46,13 @@ body {
 .sign-up__plane {
     width: 58px;
     height: 105px;
+    left: 230px;
+    top: -5px;
     position: absolute;
-    background-image: url('../../../images/paper-plane.svg');
+    background-image: url('../../../images/flying-plane.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
