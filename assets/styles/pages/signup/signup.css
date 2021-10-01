@@ -3,7 +3,7 @@ body {
     background-image: url('../../../images/background-form.svg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-blend-mode: saturation;
+    background-blend-mode: overlay;
 }
 
 /* Contenedor */
@@ -47,7 +47,7 @@ body {
     width: 58px;
     height: 105px;
     left: 230px;
-    top: -5px;
+    top: -10px;
     position: absolute;
     background-image: url('../../../images/flying-plane.svg');
     background-position: center;
@@ -58,37 +58,59 @@ body {
 
 /* Section del form */
 
-/* .form__container {
-    padding-top: 10px;
-} */
+.form__container {
+    margin: 15px 0;
+}
 
 .form__sign-up label {
     display: inline-block;
     width: 100%;
-    margin: 20px 0;
-    height: 25px;
+    margin: 15px 0;
+    height: 40px;
+    position: relative;
 }
 
 .sign-up__input {
     width: 100%;
     height: inherit;
+    padding: 0 8px;
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 2.1rem;
     color: var(--color-black);
     outline: 0;
-    border: 0;
-    border-bottom: 2px solid var(--color-primary-red);
-    background-color: transparent;
+    border-radius: 10px;
+    border: 2px solid var(--color-secondary-green);
+    background-color: var(--color-background);
 }
 
-.sign-up__input::placeholder {
-    color: rgba(40, 43, 57,0.6);
+.sign-up__input:-webkit-autofill {
+    box-shadow: 0 0 0 100px var(--color-background) inset;
+    -webkit-box-shadow: 0 0 0 100px var(--color-background) inset;
 }
+
+.name__field {
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 1rem;
+    color: rgba(40, 43, 57,0.7);
+    padding: 0 5px;
+    transition: all ease-in 0.35s;
+}
+
+.sign-up__input:focus ~ span,
+.sign-up__input:valid ~ span {
+    top: 0;
+    color: #FFF;
+    background-color: var(--color-secondary-green);
+}
+
 
 .sign-up__button {
     display: block;
-    margin: 0 auto;
+    margin: 20px auto;
     width: 236px;
     height: 60px;
     font-size: 1.6rem;
@@ -97,7 +119,7 @@ body {
     border: 0;
     border-radius: 40px;
     color: #FFF;
-    background-color: var(--color-primary-red);
+    background-color: var(--color-secondary-green);
     cursor: pointer;
 }
 

@@ -28,24 +28,29 @@
             <section class="form__container">
                 <form class="form__sign-up" action="POST" action="<?= NABU_ROUTES['signup'] ?>">
                     <label for="name">
-                        <input class="sign-up__input" type="text" placeholder="Nombre Completo" minlength="5" maxlength="255" id="name" name="name" required autofocus aria-label="Ingresa tu nombre completo" autocomplete="name">
+                        <input class="sign-up__input" type="text" minlength="5" maxlength="255" id="name" name="name" required autofocus aria-label="Ingresa tu nombre completo" autocomplete="name">
+                        <span class="name__field">Nombre completo</span>
                     </label>
         
                     <label for="username">
-                        <input class="sign-up__input" type="text" placeholder="Nombre de usuario" id="username" name="username" minlength="1" maxlength="255" required aria-label="Ingresa tu nombre de usuario" autocomplete="username">
+                        <input class="sign-up__input" type="text" id="username" name="username" minlength="1" maxlength="255" required aria-label="Ingresa tu nombre de usuario" autocomplete="username">
+                        <span class="name__field">Nombre de usuario</span>
                     </label>
         
                     <label for="email">
-                        <input class="sign-up__input" type="email" placeholder="Correo(institucional)" id="email" name="email" minlength="5" maxlength="255" required aria-label="Ingresa su correo o email" autocomplete="email">
+                        <input class="sign-up__input" type="email" id="email" name="email" minlength="5" maxlength="255" required aria-label="Ingresa su correo o email" autocomplete="email">
+                        <span class="name__field">Correo(institucional)</span>
                     </label>
         
                     
                     <label for="password">
-                        <input class="sign-up__input" type="password" placeholder="Contraseña" id="password" name="password" minlength="6" maxlength="255" required aria-label="Ingresa tu contraseña">
+                        <input class="sign-up__input" type="password"  id="password" name="password" minlength="6" maxlength="255" required aria-label="Ingresa tu contraseña">
+                        <span class="name__field">Contraseña</span>
                     </label>
         
                     <label for="confirm-password">
-                        <input class="sign-up__input" type="password" placeholder="Confirmar contraseña" id="confirm-password" name="confirm-password" minlength="6" maxlength="255" required aria-label="Confirma tu contraseña">
+                        <input class="sign-up__input" type="password"  id="confirm-password" name="confirm-password" minlength="6" maxlength="255" required aria-label="Confirma tu contraseña">
+                        <span class="name__field">Confirmar contraseña</span>
                     </label>
         
                     <input class="sign-up__button"type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
