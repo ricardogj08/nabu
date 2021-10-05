@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    max-width: 900px;
+    box-shadow: 7px 10px 10px 2px rgba(0, 0, 0, .25);
+}
+
+.content {
+    flex-basis: 45%;
+    padding: 25px;
+    background-color: var(--color-background);
+}
+
+.form__image-container {
+    display: initial;
+    flex-basis: 55%;
+}
+
+.form__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sign-up__button {
+    box-shadow: initial;
+}
