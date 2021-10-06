@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 // Realiza la conexión con la base de datos.
 class connection {
@@ -50,7 +50,7 @@ class connection {
             // Define la codificación de caracteres para el cliente del SGBD y los resultados de las consultas.
             $this -> pdo -> exec('SET CHARSET ' . $config['charset']);
         }
-        catch(PDOException $e) {
+        catch (PDOException $e) {
             exit($e -> getMessage());
         }
     }

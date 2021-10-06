@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 class adminModel extends connection {
     public function __construct() {

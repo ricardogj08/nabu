@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Artículos enviados' ?>
 <?php $styles     = array(
     'pages/sent-articles/sent-articles.css',

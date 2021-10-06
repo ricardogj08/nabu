@@ -1,21 +1,23 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 // Administra mensajes sobre advertencias, avisos y errores en las páginas.
 class messages {
     // Agrega mensajes sobre advertencias o avisos.
     static public function add(string $message) {
-        if (empty($_SESSION['messages']))
+        if (empty($_SESSION['messages'])) {
             $_SESSION['messages'] = array();
+        }
 
         array_push($_SESSION['messages'], $message);
     }
 
     // @return un array de mensajes.
     static public function get() {
-        if (empty($_SESSION['messages']))
+        if (empty($_SESSION['messages'])) {
             return array();
+        }
 
         $messages = $_SESSION['messages'];
 

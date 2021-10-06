@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Muro' ?>
 <?php $styles     = array(
     'pages/all-articles/all-articles.css',

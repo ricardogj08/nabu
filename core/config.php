@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 define('NABU_URL', 'http://localhost:8000');
 
@@ -33,7 +33,7 @@ define('NABU_DEFAULT', array(
 date_default_timezone_set('America/Mexico_City');
 
 /*
-// Nivel de reporte de errores.
+// Nivel de reporte de errores (todos los errores).
 ini_set('error_reporting', E_ALL);
 
 // No muestra en pantalla todos los errores.
@@ -45,7 +45,7 @@ ini_set('display_startup_errors', false);
 // No registra mensajes repetidos.
 ini_set('ignore_repeated_errros', true);
 
-// Configura los registros de errores en 'error_log' (manejador de errores de PHP).
+// Selecciona el manejador de errores de PHP 'error_log'.
 ini_set('log_errors', true);
 
 // Define la ruta del archivo de registro de errores para 'error_log'.

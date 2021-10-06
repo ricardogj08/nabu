@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 class usersModel extends connection {
     public function __construct() {
@@ -27,7 +27,7 @@ class usersModel extends connection {
 
             return $users;
         }
-        catch(PDOException $e) {
+        catch (PDOException $e) {
             $this -> errors($e -> getMessage(), 'tuvimos un problema para validar si tu apodo y dirección de correo electrónico son únicos');
         }
     }
@@ -40,7 +40,7 @@ class usersModel extends connection {
         try {
             $this -> pdo -> prepare($query) -> execute($data);
         }
-        catch(PDOException $e) {
+        catch (PDOException $e) {
             $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar tu cuenta de usuario');
         }
     }
@@ -65,25 +65,26 @@ class usersModel extends connection {
 
             return $user;
         }
-        catch(PDOException $e) {
+        catch (PDOException $e) {
             $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar tu cuenta de usuario');
         }
     }
 
-    // Registra el 'hash de verificación de dirección de e-mail' con tiempo de expiración.
-    public function verification(array $verification) {
-        $query = 'INSERT INTO verifications(id, hash, expiration) VALUES(:id, :hash, :expiration)';
+    // Elimina un usuario.
+    public function delete(int $id) {
+        $query = 'DELETE FROM users WHERE id = ?';
 
         try {
-            $this -> pdo -> prepare($query) -> execute($verification);
+            $this -> pdo -> prepare($query) -> execute(array($id));
         }
-        catch(PDOException $e) {
-            $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar tu clave de verificación de dirección de correo electrónico');
+        catch (PDOException) {
+            $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar una cuenta de usuario');
         }
     }
 
     public function __destruct() {
         parent::__destruct();
+
         $this -> pdo = null;
     }
 }

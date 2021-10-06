@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Error' ?>
 <?php $styles     = array(
     'pages/errors/errors.css',

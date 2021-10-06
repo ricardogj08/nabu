@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Editar artículo' ?>
 <?php $styles     = array(
     'admin/edit-article/edit-article.css',

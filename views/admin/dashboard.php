@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title    = 'Administración' ?>
 <?php $styles        = array(
     'admin/dashboard/dashboard.css',

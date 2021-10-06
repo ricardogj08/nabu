@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 return array(
     'admin'              => array('route' => 'admin',                   'controller' => 'adminController',         'view' => 'admin'),

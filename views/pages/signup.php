@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Crea una cuenta' ?>
 <?php $styles     = array(
     'components/footer/footer.css',

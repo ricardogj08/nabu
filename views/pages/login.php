@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Iniciar sesión' ?>
 <?php $styles     = array(
     'pages/login/login.css',

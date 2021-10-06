@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $username = $_SESSION['user']['username'] ?>
 
 <header>

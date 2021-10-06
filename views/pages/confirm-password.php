@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Confirmar contraseña' ?>
 <?php $styles     = array(
     'pages/confirm-password/confirm-password.css',
