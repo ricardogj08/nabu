@@ -43,7 +43,7 @@ class usersController {
 
             $users = $usersModel -> find($data['username'], $data['email']);
 
-            $msg = 'Existe una cuenta registrada con el mismo apodo o dirección de correo electrónico, por favor intételo de nuevo';
+            $msg = 'Existe una cuenta registrada con el mismo apodo o dirección de correo electrónico, por favor inténtelo de nuevo';
 
             // Valida si la cuenta es única y elimina cuentas expiradas.
             foreach ($users as $user) {
@@ -71,6 +71,10 @@ class usersController {
 
             // Hash de verificación de e-mail.
             $hash = hash_hmac(self::hash, $data['email'], $key);
+
+            require_once 'libs/emails.php';
+
+            $emails = new emails();
 
             // Cifra la contraseña.
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT, self::cost);
