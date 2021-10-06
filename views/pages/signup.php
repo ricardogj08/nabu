@@ -56,8 +56,8 @@
                     <div class="sign-up__container">
                         <input class="sign-up__button"type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
                         <span></span>
-                        
                     </div>
+                    
                     <p class="form__already">¿Ya tienes cuenta?
                          <a href="<?= NABU_ROUTES['login'] ?>">Inicia sesión</a>.
                     </p>

@@ -36,7 +36,11 @@
                         <span class="name__field">Contraseña</span>
                     </label>
 
-                    <input class="sign-up__button"type="submit" name="signup-submit" value="Iniciar sesión" aria-label="Registrar">
+                    <div class="sign-up__container">
+                        <input class="sign-up__button"type="submit"name="signup-submit" value="Iniciar sesión" aria-label="Registrar">
+                        <span></span>
+                    </div>
+                    
                     <p class="form__already">¿No tienes cuenta?
                          <a href="<?= NABU_ROUTES['signup'] ?>">Registrate</a>.
                     </p>
