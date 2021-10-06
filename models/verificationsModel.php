@@ -43,6 +43,25 @@ class verificationsModel extends connection {
         }
     }
 
+    // Activa la cuenta, elimina la verificación y
+    // crea el perfil de un usuario.
+    public function activate(int $id) {
+        $query_activate = 'UPDATE users SET activated = TRUE WHERE id = ?';
+        $query_delete   = 'DELETE FROM verifications WHERE id = ?';
+        $query_profile  = 'INSERT INTO profiles(id) VALUES(?)';
+
+        $id = array($id);
+
+        try {
+            $this -> pdo -> prepare($query_activate) -> execute($id);
+            $this -> pdo -> prepare($query_delete) -> execute($id);
+            $this -> pdo -> prepare($query_profile) -> execute($id);
+        }
+        catch (PDOException $e) {
+            $this -> errors($e -> getMessage(), 'tuvimos un problema para activar tu cuenta de ususario');
+        }
+    }
+
     public function __destruct() {
         parent::__destruct();
         $this -> pdo = null;

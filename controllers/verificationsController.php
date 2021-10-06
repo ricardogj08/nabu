@@ -39,6 +39,10 @@ class verificationsController {
         }
 
         // Activa la cuenta del usuario y crea su perfil.
-        echo "ok";
+        $verificationsModel -> activate($user['id']);
+
+        messages::add('Tu dirección de correo electrónico se ha verificado correctamente');
+
+        utils::redirect(NABU_ROUTES['login']);
     }
 }

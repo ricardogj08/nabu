@@ -8,14 +8,6 @@ class usersController {
     private const cost = array('cost' => 12);
     private const hash = 'sha256';
 
-    static public function login() {
-        require_once 'views/pages/login.php';
-    }
-
-    static public function logout() {
-        //
-    }
-
     // Renderiza la página de registro de usuarios
     // y registra un usuario con el método POST.
     static public function signup() {
@@ -100,6 +92,8 @@ class usersController {
 
             $user = $usersModel -> get('username', $data['username']);
 
+            unset($usersModel);
+
             $verification = array(
                 'id'         => $user['id'],
                 'hash'       => $hash,
@@ -108,14 +102,24 @@ class usersController {
 
             require_once 'models/verificationsModel.php';
 
-            // Registra el hash de verificación de dirección de e-mail.
             $verificationsModel = new verificationsModel();
 
+            // Registra el hash de verificación de dirección de e-mail.
             $verificationsModel -> save($verification);
 
             messages::add('Su cuenta se ha registrado correctamente, por favor verifica tu dirección de correo electrónico');
 
             utils::redirect(NABU_ROUTES['signup']);
         }
+    }
+
+    static public function login() {
+        $token    = csrf::generate();
+        $messages = messages::get();
+        require_once 'views/pages/login.php';
+    }
+
+    static public function logout() {
+        //
     }
 }
