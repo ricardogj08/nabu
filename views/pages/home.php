@@ -1,9 +1,9 @@
 <?php defined('NABU') || exit ?>
 <?php $head_title = NABU_DEFAULT['website-name'] ?>
 <?php $styles     = array(
-    'pages/home/home.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
+    'pages/home/home.css',
 ) ?>
 <?php $desktop_styles = array(
     array('pages/home/home-desktop.css', 'attributes' => 'media="(max-width: 720px)"'),

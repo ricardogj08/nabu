@@ -1,0 +1,168 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 90px;
+    background-color: rgba(0, 183, 255, 0.4);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(180deg, rgba(255, 186, 255, 0.4) 0, rgba(247, 172, 255, 0.4) 25%, rgba(213, 157, 242,0.4) 50%, rgba(181, 142, 218, 0.4) 75%, rgba(153, 127, 196,0.4) 100%);
+    background-blend-mode: difference;
+    opacity: 0.8;
+}
+
+/* Contenedor */
+
+.wrapper {
+    width: 90%;
+    max-width: 550px;
+    min-width: 300px;
+    margin: 30px auto;
+}   
+
+/* Section del header */
+
+.header__logo-container {
+    display: inline-block;
+    width: 35%;
+    min-width: 70px;
+    max-width: 126px;
+
+}
+
+.header__logo {
+    width: 100%;
+    height: 100%;
+}
+
+.sign-up {
+    /* max-width: 360px; */
+    padding-top: 15px;
+}
+
+.sign-up__title {
+    position: relative;
+}
+
+.sign-up__text {
+    max-width: 300px;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 4.3rem;
+    margin: 0;
+}
+
+.sign-up__plane {
+    width: 58px;
+    height: 105px;
+    left: 230px;
+    top: -10px;
+    position: absolute;
+    background-image: url('../../../images/flying-plane.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* Section del form */
+
+.form__container {
+    margin: 15px 0;
+}
+
+.form__sign-up label {
+    display: inline-block;
+    width: 100%;
+    margin: 15px 0;
+    height: 40px;
+    position: relative;
+}
+
+.sign-up__input {
+    width: 100%;
+    height: inherit;
+    padding: 0 8px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.1rem;
+    color: var(--color-black);
+    outline: 0;
+    border-radius: 10px;
+    border: 2px solid var(--color-secondary-purple);
+    background-color: var(--color-background);
+}
+
+.sign-up__input:-webkit-autofill {
+    box-shadow: 0 0 0 100px var(--color-background) inset;
+    -webkit-box-shadow: 0 0 0 100px var(--color-background) inset;
+    -moz-box-shadow: 0 0 0 100px var(--color-background) inset;
+}
+
+.name__field {
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translate(0, -50%);
+    font-size: 1rem;
+    color: rgba(40, 43, 57,0.7);
+    padding: 0 5px;
+    transition: all ease-in 0.35s;
+}
+
+.sign-up__input:focus ~ span,
+.sign-up__input:valid ~ span {
+    top: 0;
+    color: #FFF;
+    background-color: var(--color-secondary-purple);
+}
+
+.sign-up__button {
+    display: block;
+    margin: 20px auto;
+    width: 236px;
+    height: 60px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.7rem;
+    border: 0;
+    border-radius: 40px;
+    color: #FFF;
+    background-color: var(--color-secondary-purple);
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 50%);
+    cursor: pointer;
+}
+
+.sign-up__button:active {
+    transform: scale(1.1);
+}
+
+.form__already {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Oculatar imagen */
+.form__image-container {
+    display: none;
+}
+
+/* Cambios a los estilos del footer */
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--color-black);
+}
+
+.footer .rights {
+    color: var(--color-background);
+}
+
+.footer .media svg path {
+    fill: var(--color-background);
+}
