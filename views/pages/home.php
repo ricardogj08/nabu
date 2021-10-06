@@ -42,6 +42,7 @@
     <section class="recent__posts">
         <h2 class="recent-posts__title">Posts más recientes</h2>
         <section class="recent-cards__container">
+            <?php $articles = $recent_articles ?>
             <?php require 'views/components/articles.php' ?>
             <?php require 'views/components/articles.php' ?>
             <?php require 'views/components/articles.php' ?>
@@ -57,7 +58,5 @@
         </div>
     </section>
 </main>
-<?php $articles = $recent_articles ?>
-<!-- <?php require 'views/components/articles.php' ?> -->
 
 <?php require_once 'views/components/footer.php' ?>
