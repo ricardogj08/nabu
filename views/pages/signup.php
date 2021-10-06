@@ -52,7 +52,7 @@
                         <input class="sign-up__input" type="password"  id="confirm-password" name="confirm-password" minlength="6" maxlength="255" required aria-label="Confirma tu contraseña">
                         <span class="name__field">Confirmar contraseña</span>
                     </label>
-        
+
                     <input class="sign-up__button"type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
                     <p class="form__already">¿Ya tienes cuenta?
                          <a href="<?= NABU_ROUTES['login'] ?>">Inicia sesión</a>.

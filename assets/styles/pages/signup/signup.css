@@ -135,6 +135,10 @@ body {
     cursor: pointer;
 }
 
+.sign-up__button:active {
+    transform: scale(1.1);
+}
+
 .form__already {
     margin-top: 10px;
     text-align: center;

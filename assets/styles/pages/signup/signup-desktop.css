@@ -22,5 +22,15 @@
 }
 
 .sign-up__button {
+    font-weight: bold;
+    background-color: transparent;
+    border: 2px solid var(--color-secondary-purple);
+    color: var(--color-secondary-purple);
     box-shadow: initial;
+    transition: all ease-in 0.35s;
+}
+
+.sign-up__button:hover {
+    background-color: var(--color-secondary-purple);
+    color: var(--color-background);
 }
