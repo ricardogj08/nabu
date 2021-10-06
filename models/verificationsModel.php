@@ -19,9 +19,32 @@ class verificationsModel extends connection {
         }
     }
 
+    // @return un array asociativo con los datos de verificación de un usuario.
+    public function get(string $username) {
+        $query = 'SELECT u.id, u.email, v.hash, v.expiration as hash_expiration ' .
+                 'FROM users AS u LEFT JOIN verifications AS v ON u.id = v.id ' .
+                 'WHERE u.username = ? LIMIT 1';
+
+        try {
+            $prepare = $this -> pdo -> prepare($query);
+
+            $prepare -> execute(array($username));
+
+            $user = $prepare -> fetch();
+
+            if (empty($user)) {
+                return array();
+            }
+
+            return $user;
+        }
+        catch (PDOException $e) {
+            $this -> errors($e -> getMessage(), 'tuvimos un problema para validar tu dirección de correo electrónico');
+        }
+    }
+
     public function __destruct() {
         parent::__destruct();
-
         $this -> pdo = null;
     }
 }

@@ -9,7 +9,7 @@ class usersModel extends connection {
 
     // @return un lista de arrays asociativos con los datos de usuarios.
     public function find(string $username, string $email) {
-        $query = 'SELECT u.id, u.role_id AS role, u.username, u.email, u.password, u.activated, u.creation_date,' .
+        $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, u.creation_date,' .
                  'v.hash, v.expiration AS hash_expiration FROM users AS u ' .
                  'LEFT JOIN verifications AS v on u.id = v.id ' .
                  'WHERE u.username = ? OR u.email = ? LIMIT 2';
@@ -59,8 +59,8 @@ class usersModel extends connection {
 
             $user = $prepare -> fetch();
 
-            if ($user !== false) {
-                $user['role'] = $this -> role_format($user['role']);
+            if (empty($user)) {
+                return array();
             }
 
             return $user;
@@ -84,7 +84,6 @@ class usersModel extends connection {
 
     public function __destruct() {
         parent::__destruct();
-
         $this -> pdo = null;
     }
 }
