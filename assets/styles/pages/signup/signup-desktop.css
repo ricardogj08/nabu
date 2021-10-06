@@ -22,6 +22,9 @@
 }
 
 .sign-up__button {
+    position: relative;
+    z-index: 2;
+    margin: 0;
     font-weight: bold;
     background-color: transparent;
     border: 2px solid var(--color-secondary-purple);
@@ -30,7 +33,33 @@
     transition: all ease-in 0.35s;
 }
 
-.sign-up__button:hover {
+.sign-up__container {
+    width: 236px;
+    height: 60px;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+.sign-up__container > span {
+    content: "";
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: -236px;
+    z-index: 1;
+    pointer-events: none;
     background-color: var(--color-secondary-purple);
-    color: var(--color-background);
+    transition: all ease-in-out 600ms;
+}
+
+.sign-up__container:hover > span {
+    left: 0;
+    border-radius: inherit;
+}
+
+.sign-up__container:hover > .sign-up__button {
+    color: white;
 }
