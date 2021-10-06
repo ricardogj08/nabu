@@ -6,7 +6,7 @@
     'pages/login/login.css',
 ) ?>
 <?php $desktop_styles = array(
-     array('pages/signup/signup-desktop.css', 'pages/login/login-desktop.css', 'attributes' => 'media="screen and (min-width: 900px)"'),
+     array('pages/signup/signup-desktop.css', 'attributes' => 'media="screen and (min-width: 900px)"'),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
