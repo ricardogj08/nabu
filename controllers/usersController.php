@@ -75,6 +75,19 @@ class usersController {
             require_once 'libs/emails.php';
 
             $emails = new emails();
+            $emails -> prepare($data['email'], $data['name']);
+
+            // Genera una URL de verificación de dirección de e-mail.
+            $url = NABU_ROUTES['verifications'] . '&user=' . urlencode($data['username']) . '&key=' . $key;
+
+            $username = utils::escape($data['username']);
+
+            $body = require_once 'views/emails/verifications.php';
+
+            // Envía primero la URL de verificación de dirección de e-mail antes de registrar el usuario.
+            if (!$emails -> send('¡Ya casi está listo!', $body)) {
+                messages::errors('tuvimos un problema al enviar tu mensaje de verificación de e-mail', 500);
+            }
 
             // Cifra la contraseña.
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT, self::cost);

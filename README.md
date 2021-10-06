@@ -27,7 +27,7 @@ Estructura del archivo de configuración:
 
 ```json
 {
-    "smtp":     "smtp.google.com",
+    "smtp":     "smtp.gmail.com",
     "port":     587,
     "address":  "foo@gmail.com",
     "password": "xxxxx"

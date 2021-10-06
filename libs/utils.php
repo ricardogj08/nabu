@@ -16,6 +16,6 @@ class utils {
     }
 
     static public function escape($str) {
-        //
+        return htmlentities($str, ENT_COMPAT | ENT_HTML5, 'UTF-8');
     }
 }

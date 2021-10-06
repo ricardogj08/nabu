@@ -28,8 +28,6 @@ class emails {
 
         $config = json_decode($config, true);
 
-        exit(var_dump($config));
-
         $keys = array('smtp', 'port', 'address', 'password');
 
         foreach ($keys as $key) {
