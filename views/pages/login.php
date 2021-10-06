@@ -6,7 +6,7 @@
     'pages/login/login.css',
 ) ?>
 <?php $desktop_styles = array(
-     array('pages/signup/signup-desktop.css', 'attributes' => 'media="screen and (min-width: 900px)"'),
+    array('pages/signup/signup-desktop.css', 'attributes' => 'media="screen and (min-width: 900px)"'),
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
@@ -19,13 +19,15 @@
                 <img src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu" class="header__logo">
             </picture>
         </header>
-        
+
         <main class="sign-up">
             <section class="sign-up__title">
                 <h1 class="sign-up__text">Bienvenido de nuevo.<br><strong>inicia sesión </strong>para continuar</h1>
             </section>
             <section class="form__container">
                 <form class="form__sign-up" method="POST" action="<?= NABU_ROUTES['login'] ?>">
+                    <input type="hidden" name="csrf" value="<?= $token ?>">
+
                     <label for="identity">
                         <input class="sign-up__input" type="text" id="identity" name="identity" minlength="1" maxlength="255" autofocus required aria-label="Ingresa tu nombre de usuario o correo" autocomplete="username">
                         <span class="name__field">Nombre de usuario o correo electrónico</span>
@@ -37,11 +39,11 @@
                     </label>
 
                     <div class="sign-up__container">
-                        <input class="sign-up__button"type="submit"name="signup-submit" value="Iniciar sesión" aria-label="Registrar">
+                        <input class="sign-up__button" type="submit" name="signup-submit" value="Iniciar sesión" aria-label="Registrar">
                         <span></span>
                     </div>
-                    
-                    <p class="form__already">¿No tienes cuenta?
+
+                    <p class="form__already">¿No tienes una cuenta?
                          <a href="<?= NABU_ROUTES['signup'] ?>">Registrate</a>.
                     </p>
                 </form>

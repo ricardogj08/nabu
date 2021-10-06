@@ -10,7 +10,6 @@
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
 
-
 <?php require_once 'views/components/messages.php' ?>
 <div class="wrapper">
     <div class="content">
@@ -33,33 +32,32 @@
                         <input class="sign-up__input" type="text" minlength="5" maxlength="255" id="name" name="name" required autofocus aria-label="Ingresa tu nombre completo" autocomplete="name">
                         <span class="name__field">Nombre completo</span>
                     </label>
-        
+
                     <label for="username">
                         <input class="sign-up__input" type="text" id="username" name="username" minlength="1" maxlength="255" required aria-label="Ingresa tu nombre de usuario" autocomplete="username">
                         <span class="name__field">Nombre de usuario</span>
                     </label>
-        
+
                     <label for="email">
                         <input class="sign-up__input" type="email" id="email" name="email" minlength="5" maxlength="255" required aria-label="Ingresa su correo o email" autocomplete="email">
                         <span class="name__field">Correo(institucional)</span>
                     </label>
-        
-                    
+
                     <label for="password">
                         <input class="sign-up__input" type="password"  id="password" name="password" minlength="6" maxlength="255" required aria-label="Ingresa tu contraseña">
                         <span class="name__field">Contraseña</span>
                     </label>
-        
+
                     <label for="confirm-password">
                         <input class="sign-up__input" type="password"  id="confirm-password" name="confirm-password" minlength="6" maxlength="255" required aria-label="Confirma tu contraseña">
                         <span class="name__field">Confirmar contraseña</span>
                     </label>
-                  
+
                     <div class="sign-up__container">
                         <input class="sign-up__button"type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
                         <span></span>
                     </div>
-              
+
                     <p class="form__already">¿Ya tienes cuenta?
                          <a href="<?= NABU_ROUTES['login'] ?>">Inicia sesión</a>.
                     </p>
@@ -68,7 +66,7 @@
             </section>
         </main>
     </div>
-    
+
     <picture class="form__image-container">
         <img class="form__image" src="https://cdna.artstation.com/p/assets/images/images/017/677/304/large/kerasumi-1.jpg?1556911326" alt="">
     </picture>
