@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Editar perfil' ?>
 <?php $styles     = array(
     'pages/edit-profile/edit-profile.css',

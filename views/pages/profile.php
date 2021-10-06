@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Perfil' ?>
 <?php $styles     = array(
     'pages/profile/profile.css',

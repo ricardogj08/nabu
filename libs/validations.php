@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 // Valida los campos de un formulario.
 class validations {
@@ -96,8 +96,9 @@ class validations {
         $data = array();
 
         foreach ($options as $option) {
-            if (empty($option[0]) || !is_string($option[0]))
+            if (empty($option[0]) || !is_string($option[0])) {
                 $this -> errors('Not found field name');
+            }
 
             $type = 'string';
 

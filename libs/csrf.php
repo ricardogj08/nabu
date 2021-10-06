@@ -1,6 +1,6 @@
 <?php
 
-defined('NABU') || exit;
+defined('NABU') || exit();
 
 // Valida formularios contra ataques CSRF.
 class csrf {

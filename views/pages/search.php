@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Búsquedas' ?>
 <?php $styles     = array(
     'pages/search/search.css',

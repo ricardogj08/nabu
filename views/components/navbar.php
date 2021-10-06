@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 
 <div class="overlay"></div>
 <nav class="nav">

@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title    = 'Artículos publicados' ?>
 <?php $styles        = array(
     'admin/published-articles/published-articles.css',

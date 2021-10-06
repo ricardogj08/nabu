@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title    = 'Usuarios registrados' ?>
 <?php $styles        = array(
     'admin/users/users.css',

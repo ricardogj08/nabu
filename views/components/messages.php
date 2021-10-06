@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 
 <!-- Muestra mensajes sobre advertencias o avisos. -->
 <?php if (!empty($messages)): ?>

@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 <?php $head_title = 'Artículos favoritos' ?>
 <?php $styles     = array(
     'pages/favorites/favorites.css',

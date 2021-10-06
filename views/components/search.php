@@ -1,4 +1,4 @@
-<?php defined('NABU') || exit ?>
+<?php defined('NABU') || exit() ?>
 
 <form method="POST" action="<?= NABU_ROUTES['home'] ?>">
     <input type="hidden" name="csrf" value="<?= $token ?>">

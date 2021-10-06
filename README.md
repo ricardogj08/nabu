@@ -19,6 +19,21 @@ Estructura del archivo de configuración:
 }
 ```
 
+## Archivo de configuración del cliente de correo electrónico
+
+Por defecto, `Nabu` escanea el archivo `email-config.json` dentro de la carpeta raíz del proyecto.
+
+Estructura del archivo de configuración:
+
+```json
+{
+    "smtp":     "smtp.gmail.com",
+    "port":     587,
+    "address":  "foo@gmail.com",
+    "password": "xxxxx"
+}
+```
+
 ## Licencia
 
 ```text
