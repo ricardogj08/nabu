@@ -153,13 +153,13 @@ class usersController {
             $msg = 'La identificación de sesión o la contraseña es incorrecta';
 
             // Valida si es una cuenta activa o inactiva con registro de datos de usuario.
-            if (empty($user) || empty($user['activated'])) {
+            if (empty($user)) {
                 messages::add($msg);
             }
             else {
                 if (empty($user['hash_expiration'])) {
                     // Valida la contraseña del usuario y define las creedenciales de acceso.
-                    if (password_verify($data['password'], $user['password'])) {
+                    if (!empty($user['activated']) && password_verify($data['password'], $user['password'])) {
                         $_SESSION['user'] = array(
                             'id'       => $user['id'],
                             'username' => $user['username'],
@@ -172,12 +172,17 @@ class usersController {
                 }
                 else {
                     // Valida si es una cuenta expirada.
-                    if (time() > $user['hash_expiration']) {
-                        $userModel -> delete($user['id']);
-                        messages::add('Tu cuenta a expirado, por favor vuelve a registrarte');
+                    if (empty($user['activated'])) {
+                        if (time() > $user['hash_expiration']) {
+                            $userModel -> delete($user['id']);
+                            messages::add('Tu cuenta a expirado, por favor vuelve a registrarte');
+                        }
+                        else {
+                            messages::add('Por favor confirma tu dirección de correo electrónico');
+                        }
                     }
                     else {
-                        messages::add('Por favor confirma tu dirección de correo electrónico');
+                        messages::add($msg);
                     }
                 }
             }
