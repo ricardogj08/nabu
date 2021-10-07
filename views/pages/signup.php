@@ -54,7 +54,7 @@
                     </label>
 
                     <div class="sign-up__container">
-                        <input class="sign-up__button"type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
+                        <input class="sign-up__button" type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
                         <span></span>
                     </div>
 
