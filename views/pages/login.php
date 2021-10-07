@@ -16,7 +16,7 @@
     <div class="content">
         <header class="header">
             <picture class="header__logo-container">
-                <img src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu" class="header__logo">
+                <a href="<?= NABU_ROUTES['home'] ?>"><img src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu" class="header__logo"></a>
             </picture>
         </header>
 
