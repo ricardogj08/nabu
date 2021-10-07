@@ -9,8 +9,8 @@
 ) ?>
 <?php $scripts = array() ?>
 <?php require_once 'views/components/head.php' ?>
-
 <?php require_once 'views/components/messages.php' ?>
+
 <div class="wrapper">
     <div class="content">
         <header class="header">
@@ -68,7 +68,7 @@
     </div>
 
     <picture class="form__image-container">
-        <img class="form__image" src="https://cdna.artstation.com/p/assets/images/images/017/677/304/large/kerasumi-1.jpg?1556911326" alt="">
+        <img class="form__image" src="https://cdna.artstation.com/p/assets/images/images/017/677/304/large/kerasumi-1.jpg" alt="">
     </picture>
 </div>
 <?php require_once 'views/components/footer.php' ?>

@@ -51,7 +51,7 @@
         </main>
     </div>
     <picture class="form__image-container">
-        <img class="form__image" src="https://cdna.artstation.com/p/assets/images/images/017/677/304/large/kerasumi-1.jpg?1556911326" alt="">
+        <img class="form__image" src="https://cdna.artstation.com/p/assets/images/images/017/677/304/large/kerasumi-1.jpg" alt="">
     </picture>
 </div>
 <span class="login-plane"></span>
