@@ -152,27 +152,22 @@ class usersController {
 
             $msg = 'La identificación de sesión o la contraseña es incorrecta';
 
-            if (empty($user)) {
+            // Valida si es una cuenta activa o inactiva con registro de datos de usuario.
+            if (empty($user) || empty($user['activated'])) {
                 messages::add($msg);
             }
             else {
-                // Valida si es una cuenta activa o inactiva con registro de datos de usuario.
                 if (empty($user['hash_expiration'])) {
-                    if (empty($user['activated'])) {
-                        messages::add($msg);
+                    // Valida la contraseña del usuario y define las creedenciales de acceso.
+                    if (password_verify($data['password'], $user['password'])) {
+                        $_SESSION['user'] = array(
+                            'id'       => $user['id'],
+                            'username' => $user['username'],
+                            'role'     => $user['role']
+                        );
                     }
                     else {
-                        // Valida la contraseña del usuario y define las creedenciales de acceso.
-                        if (password_verify($data['password'], $user['password'])) {
-                            $_SESSION['user'] = array(
-                                'id'       => $user['id'],
-                                'username' => $user['username'],
-                                'role'     => $user['role']
-                            );
-                        }
-                        else {
-                            messages::add($msg);
-                        }
+                        messages::add($msg);
                     }
                 }
                 else {
