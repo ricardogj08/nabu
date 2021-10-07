@@ -152,13 +152,15 @@ class usersController {
 
             $msg = 'La identificación de sesión o la contraseña es incorrecta';
 
-            // Valida si es una cuenta activa o inactiva con registro de datos de usuario.
+            // Valida si existe el usuario.
             if (empty($user)) {
                 messages::add($msg);
             }
             else {
+                // Valida si el usuario tiene fecha de expiración para la verificación de e-mail.
                 if (empty($user['hash_expiration'])) {
-                    // Valida la contraseña del usuario y define las creedenciales de acceso.
+                    // Define las creedenciales de acceso si es una cuenta activa
+                    // y si la contraseña coincide.
                     if (!empty($user['activated']) && password_verify($data['password'], $user['password'])) {
                         $_SESSION['user'] = array(
                             'id'       => $user['id'],
@@ -171,8 +173,9 @@ class usersController {
                     }
                 }
                 else {
-                    // Valida si es una cuenta expirada.
+                    // Valida si es una cuenta inactiva.
                     if (empty($user['activated'])) {
+                        // Valida si es una cuenta expirada.
                         if (time() > $user['hash_expiration']) {
                             $userModel -> delete($user['id']);
                             messages::add('Tu cuenta a expirado, por favor vuelve a registrarte');
@@ -199,7 +202,10 @@ class usersController {
         }
     }
 
+    // Cierra una sesión de usuario.
     static public function logout() {
-        //
+        session_unset();
+        session_destroy();
+        utils::redirect(NABU_ROUTES['home']);
     }
 }
