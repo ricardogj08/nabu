@@ -1,4 +1,5 @@
 <?php defined('NABU') || exit() ?>
+<?php $user = empty($_SESSION['user']) ? array() : $_SESSION['user'] ?>
 
 <div class="overlay"></div>
 <nav class="nav">
@@ -15,7 +16,7 @@
             <li class="nav__item">
                 <span></span><a href="<?= NABU_ROUTES['all-articles'] ?>">Artículos</a>
             </li>
-            <?php if (true): ?>
+            <?php if (empty($user)): ?>
                 <li class="nav__item">
                     <span></span><a href="<?= NABU_ROUTES['login'] ?>">Inicia sesión</a>
                 </li>
@@ -23,8 +24,7 @@
                     <span></span><a href="<?= NABU_ROUTES['signup'] ?>">Comienza a escribir</a>
                 </li>
             <?php else: ?>
-                <?php $username = $_SESSION['user']['username'] ?>
-                <?php if (false): ?>
+                <?php if ($user['role'] == 'admin'): ?>
                     <li class="nav__item">
                         <a href="<?= NABU_ROUTES['admin'] ?>">Administración</a>
                     </li>
@@ -39,7 +39,7 @@
                     <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
                 </li>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($username) ?>"><?= utils::escape($username) ?></a>
+                    <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>
                 </li>
                 <li class="nav__item">
                     <span></span><a href="<?= NABU_ROUTES['logout'] ?>">Cerrar sesión</a>

@@ -133,8 +133,8 @@ class usersController {
             $validations = new validations(NABU_ROUTES['login']);
 
             $data = $validations -> validate_form($_POST, array(
-                array('identity', 'exists' => true, 'trim' => true, 'min_lenght' => 1, 'max_lenght' => 255, 'not_spaces' => true),
-                array('password', 'exists' => true, 'trim' => true, 'min_lenght' => 6, 'max_lenght' => 255, 'not_spaces' => true)
+                array('identity', 'exists' => true, 'trim'       => true, 'min_lenght' => 1,   'max_lenght' => 255, 'not_spaces' => true),
+                array('password', 'exists' => true, 'min_lenght' => 6,    'max_lenght' => 255, 'not_spaces' => true)
             ));
 
             $column = 'username';
