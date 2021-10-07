@@ -2,8 +2,8 @@
 
 <footer class="footer">
     <div class="rights">
-        <p class="rights__info">Nabu Ⓒ 2021 - Todos los derechos reservados.</p>
-        <p class="rights__info">Creado con 💜 en épocas interesantes.</p>
+        <p class="rights__info">Nabu &copy; 2021 - Todos los derechos reservados.</p>
+        <p class="rights__info">Creado con &#x1F49C; en épocas interesantes.</p>
     </div>
     <div class="media">
         <a href="https://www.instagram.com/astra_exe/" target="_blank" class="media__icon">
