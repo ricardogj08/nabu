@@ -15,7 +15,15 @@ class utils {
         return date('Y-m-d H:i:s');
     }
 
+    // @return un string escapado para HTML.
     static public function escape($str) {
         return htmlentities($str, ENT_COMPAT | ENT_HTML5, 'UTF-8');
+    }
+
+    // Redirecciona a 'route' si existe una sesión de usuario.
+    static public function session_exists(string $route) {
+        if (!empty($_SESSION['user'])) {
+            self::redirect($route);
+        }
     }
 }

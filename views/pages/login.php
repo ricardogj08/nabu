@@ -39,7 +39,7 @@
                     </label>
 
                     <div class="sign-up__container">
-                        <input class="sign-up__button" type="submit" name="signup-submit" value="Iniciar sesión" aria-label="Registrar">
+                        <input class="sign-up__button" type="submit" name="login-submit" value="Iniciar sesión" aria-label="Registrar">
                         <span></span>
                     </div>
 

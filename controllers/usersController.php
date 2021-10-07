@@ -12,8 +12,11 @@ class usersController {
     // y registra un usuario con el método POST.
     static public function signup() {
         if (empty($_POST['signup-submit'])) {
+            utils::session_exists(NABU_ROUTES['home']);
+
             $token    = csrf::generate();
             $messages = messages::get();
+
             require_once 'views/pages/signup.php';
         }
         else {
@@ -113,10 +116,87 @@ class usersController {
         }
     }
 
+    // Renderiza la página de inicio de sesión
+    // y asigna credeciales de acceso a los usuarios.
     static public function login() {
-        $token    = csrf::generate();
-        $messages = messages::get();
-        require_once 'views/pages/login.php';
+        if (empty($_POST['login-submit'])) {
+            utils::session_exists(NABU_ROUTES['home']);
+
+            $token    = csrf::generate();
+            $messages = messages::get();
+
+            require_once 'views/pages/login.php';
+        }
+        else {
+            csrf::validate($_POST['csrf']);
+
+            $validations = new validations(NABU_ROUTES['login']);
+
+            $data = $validations -> validate_form($_POST, array(
+                array('identity', 'exists' => true, 'trim' => true, 'min_lenght' => 1, 'max_lenght' => 255, 'not_spaces' => true),
+                array('password', 'exists' => true, 'trim' => true, 'min_lenght' => 6, 'max_lenght' => 255, 'not_spaces' => true)
+            ));
+
+            $column = 'username';
+
+            // Selecciona el tipo de identificación (por apodo o e-mail).
+            if (filter_var($data['identity'], FILTER_VALIDATE_EMAIL)) {
+                $column           = 'email';
+                $data['identity'] = strtolower($data['identity']);
+            }
+
+            $usersModel = new usersModel();
+
+            // Busca el usuario de acceso.
+            $user = $usersModel -> get($column, $data['identity']);
+
+            $msg = 'La identificación de sesión o la contraseña es incorrecta';
+
+            if (empty($user)) {
+                messages::add($msg);
+            }
+            else {
+                // Valida si es una cuenta activa o inactiva con registro de datos de usuario.
+                if (empty($user['hash_expiration'])) {
+                    if (empty($user['activated'])) {
+                        messages::add($msg);
+                    }
+                    else {
+                        // Valida la contraseña del usuario y define las creedenciales de acceso.
+                        if (password_verify($data['password'], $user['password'])) {
+                            $_SESSION['user'] = array(
+                                'id'       => $user['id'],
+                                'username' => $user['username'],
+                                'role'     => $user['role']
+                            );
+                        }
+                        else {
+                            messages::add($msg);
+                        }
+                    }
+                }
+                else {
+                    // Valida si es una cuenta expirada.
+                    if (time() > $user['hash_expiration']) {
+                        $userModel -> delete($user['id']);
+                        messages::add('Tu cuenta a expirado, por favor vuelve a registrarte');
+                    }
+                    else {
+                        messages::add('Por favor confirma tu dirección de correo electrónico');
+                    }
+                }
+            }
+
+            messages::exist(NABU_ROUTES['login']);
+
+            // Redirecciona al panel de administración en base al rol.
+            if ($user['role'] == 'admin') {
+                utils::redirect(NABU_ROUTES['admin']);
+            }
+
+            // Redirecciona al perfil del usuario.
+            utils::redirect(NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']));
+        }
     }
 
     static public function logout() {

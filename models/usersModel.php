@@ -47,7 +47,7 @@ class usersModel extends connection {
 
     // @return un array asociativo con los datos de un solo usuario.
     public function get(string $column, $pattern) {
-        $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, u.creation_date,' .
+        $query = 'SELECT u.id, u.role_id AS role, u.username, u.email, u.password, u.activated, u.creation_date,' .
                  'v.hash, v.expiration AS hash_expiration FROM users AS u ' .
                  'LEFT JOIN verifications AS v on u.id = v.id ' .
                  'WHERE u.' . $column .  ' = ? LIMIT 1';
@@ -62,6 +62,8 @@ class usersModel extends connection {
             if (empty($user)) {
                 return array();
             }
+
+            $user['role'] = $this -> role_format($user['role']);
 
             return $user;
         }
