@@ -6,7 +6,7 @@
     'pages/home/home.css',
 ) ?>
 <?php $desktop_styles = array(
-    array('pages/home/home-desktop.css', 'attributes' => 'media="(max-width: 720px)"'),
+    array('pages/home/home-desktop.css', 'attributes' => 'media="screen and (min-width: 600px)"'),
 ) ?>
 <?php $scripts = array(
     'home.js',
@@ -20,11 +20,13 @@
             <source srcset="<?= NABU_DIRECTORY['images'] ?>/hero-desktop.png" media="(min-width: 600px)">
             <img src="<?= NABU_DIRECTORY['images'] ?>/hero.png" alt="Imagen inspiración en cualquier momento y cualquier lugar" class="hero__img">
         </picture>
-        <h1 class="hero__CTA">Lee, inspírate y escribe</h1>
-        <p class="hero__secundary-CTA">
-            Lo mejor que puedes compartir es tu conocimiento.
-        </p>
-        <a href="<?= NABU_ROUTES['signup'] ?>" class="hero__button">Comienza a escribir</a>
+        <div class="hero__text-container">
+            <h1 class="hero__CTA">Lee, inspírate y escribe</h1>
+            <p class="hero__secundary-CTA">
+                Lo mejor que puedes compartir es tu conocimiento.
+            </p>
+            <a href="<?= NABU_ROUTES['signup'] ?>" class="hero__button">Comienza a escribir</a>
+        </div>
     </div>
 </header>
 
