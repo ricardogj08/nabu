@@ -8,7 +8,7 @@ class usersModel extends connection {
         parent::__construct();
     }
 
-    // @return un lista de arrays asociativos con los datos de usuarios.
+    // @return un lista de arrays asociativos con los datos de los usuarios.
     public function find(string $username, string $email) {
         $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, u.creation_date,' .
                  'v.hash, v.expiration AS hash_expiration FROM users AS u ' .
