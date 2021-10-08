@@ -75,6 +75,7 @@ class validations {
         foreach ($formats as $format) {
             if (trim($format) == $this -> value['type']) {
                 $extension = $format;
+                break;
             }
         }
 

@@ -4,6 +4,8 @@ defined('NABU') || exit();
 
 require_once 'models/verificationsModel.php';
 
+// Activa la cuenta de un usuario desde una URL
+// de verificación de dirección de e-mail.
 class verificationsController {
     public static function verifications() {
         if (empty($_GET['user']) || empty($_GET['key'])) {
@@ -12,7 +14,7 @@ class verificationsController {
 
         $verificationsModel = new verificationsModel();
 
-        // Busca los datos de verificación del usuario.
+        // Busca los datos de verificación de e-mail del usuario.
         $user = $verificationsModel -> get($_GET['user']);
 
         if (empty($user['hash']) || empty($user['hash_expiration'])) {
@@ -27,14 +29,18 @@ class verificationsController {
             utils::redirect(NABU_ROUTES['home']);
         }
 
-        // Valida si el hash está expirado y elimina el usuario.
+        // Valida si el hash de verificación de e-mail está expirado
+        // y elimina el usuario.
         if (time() > $user['hash_expiration']) {
+            unset($verificationsModel);
+
             require_once 'models/usersModel.php';
 
             $usersModel = new usersModel();
             $usersModel -> delete($user['id']);
 
             messages::add('Tu cuenta ha expirado, por favor vuelva a registrarse');
+
             utils::redirect(NABU_ROUTES['signup']);
         }
 

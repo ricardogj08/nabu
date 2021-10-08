@@ -2,6 +2,7 @@
 
 defined('NABU') || exit();
 
+// Manipula los datos de los usuarios.
 class usersModel extends connection {
     public function __construct() {
         parent::__construct();

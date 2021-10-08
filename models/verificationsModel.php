@@ -2,12 +2,13 @@
 
 defined('NABU') || exit();
 
+// Manipula los datos de verificación de e-mail.
 class verificationsModel extends connection {
     public function __construct() {
         parent::__construct();
     }
 
-    // Registra el 'hash de verificación de dirección de e-mail' con tiempo de expiración.
+    // Registra el hash de verificación de e-mail con tiempo de expiración.
     public function save(array $verification) {
         $query = 'INSERT INTO verifications(id, hash, expiration) VALUES(:id, :hash, :expiration)';
 
@@ -19,7 +20,7 @@ class verificationsModel extends connection {
         }
     }
 
-    // @return un array asociativo con los datos de verificación de un usuario.
+    // @return un array asociativo con los datos de verificación de e-mail de un usuario.
     public function get(string $username) {
         $query = 'SELECT u.id, u.email, v.hash, v.expiration as hash_expiration ' .
                  'FROM users AS u LEFT JOIN verifications AS v ON u.id = v.id ' .
@@ -43,8 +44,7 @@ class verificationsModel extends connection {
         }
     }
 
-    // Activa la cuenta, elimina la verificación y
-    // crea el perfil de un usuario.
+    // Activa la cuenta, elimina la verificación y crea el perfil de un usuario.
     public function activate(int $id) {
         $query_activate = 'UPDATE users SET activated = TRUE WHERE id = ?';
         $query_delete   = 'DELETE FROM verifications WHERE id = ?';
@@ -58,7 +58,7 @@ class verificationsModel extends connection {
             $this -> pdo -> prepare($query_profile) -> execute($id);
         }
         catch (PDOException $e) {
-            $this -> errors($e -> getMessage(), 'tuvimos un problema para activar tu cuenta de ususario');
+            $this -> errors($e -> getMessage(), 'tuvimos un problema para activar tu cuenta de usuario');
         }
     }
 

@@ -4,6 +4,7 @@ defined('NABU') || exit();
 
 require_once 'models/usersModel.php';
 
+// Registra, define credenciales de acceso y cierra sesiones de usuario.
 class usersController {
     // Renderiza la página de registro de usuarios
     // y registra un usuario con el método POST.
@@ -171,16 +172,16 @@ class usersController {
         if (password_verify($data['password'], $user['password'])) {
             // Valida si el usuario tiene fecha de expiración del hash de verificación de e-mail.
             if (empty($user['hash_expiration'])) {
-                // Establece las credenciales de acceso si es una cuenta activa.
+                // Define las credenciales de acceso si es una cuenta activa.
                 if (empty($user['activated'])) {
+                    messages::add($msg);
+                }
+                else {
                     $_SESSION['user'] = array(
                         'id'       => $user['id'],
                         'username' => $user['username'],
                         'role'     => $user['role']
                     );
-                }
-                else {
-                    messages::add($msg);
                 }
             }
             else {

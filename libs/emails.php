@@ -6,7 +6,7 @@ require_once 'libs/php-smtp-2.0.4/Email.php';
 
 use Snipworks\Smtp\Email;
 
-// Envía mesajes de e-mail en formato HTML.
+// Envía mensajes de e-mail en formato HTML.
 class emails {
     private $mail;
 

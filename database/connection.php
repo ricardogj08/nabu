@@ -61,7 +61,7 @@ class connection {
         messages::errors('¡Lo sentimos mucho! &#x1F61E;, ' . $error . ', por favor inténtelo más tarde', 500);
     }
 
-    // @return el alias de un 'id de role'.
+    // @return el alias de un id de role.
     protected function role_format($id) {
         $role = 'user';
 
