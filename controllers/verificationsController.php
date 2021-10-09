@@ -17,7 +17,8 @@ class verificationsController {
         // Busca los datos de verificación de e-mail del usuario.
         $user = $verificationsModel -> get($_GET['user']);
 
-        if (empty($user['hash']) || empty($user['hash_expiration'])) {
+        if (empty($user['hash']) || empty($user['hash_expiration']) ||
+            !empty($user['activated'])) {
             utils::redirect(NABU_ROUTES['home']);
         }
 

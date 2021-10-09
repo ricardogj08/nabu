@@ -22,7 +22,7 @@ class verificationsModel extends connection {
 
     // @return un array asociativo con los datos de verificación de e-mail de un usuario.
     public function get(string $username) {
-        $query = 'SELECT u.id, u.email, v.hash, v.expiration as hash_expiration ' .
+        $query = 'SELECT u.id, u.email, u.activated, v.hash, v.expiration as hash_expiration ' .
                  'FROM users AS u LEFT JOIN verifications AS v ON u.id = v.id ' .
                  'WHERE u.username = ? LIMIT 1';
 
