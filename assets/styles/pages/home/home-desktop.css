@@ -1,50 +1,63 @@
-/* Estilos para el header */
-
-.hero {
-    flex-direction: row-reverse;
-    text-align: initial;
-    justify-content: space-between;
-}
-
 .hero__img-wrapper {
-    flex-basis: 40%;
-    max-width: 400px;
-    margin: 0;
-}
-
-.hero__text-container {
     flex-basis: 50%;
-}
-
-
-.hero__CTA {
-     margin: 0;
-     margin-bottom: 10px;
-}
-
-.hero__secundary-CTA {
-    margin-top: 0;
-}
-
-.hero__button {
-    margin: 0;
-}
-
-/* Estilos para la seccion de posts mas recientes */
-
-.recent__posts {
-    width: 90%;
-    margin: 0 auto;
-}
-
-.recent-cards__container {
-    grid-template-columns: repeat(auto-fill,minmax(288px, 1fr));
-    gap: 30px 10px;
-    justify-content: center;
-}
-
-.CTA__button {
-    width: 40%;
+    max-width: 450px;
 }
 
 /* Estilos para la seccion de los post mas populares */
+.popular-posts {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 60px auto;
+    padding: 0;
+    text-align: initial;
+    background-color: initial;
+}
+
+.popular-posts__title {
+    width: 30%;
+    margin-bottom: 0;
+}
+
+.popular-cards__container {
+    width: auto;
+    padding: 15px 0;
+    gap: 0;
+    overflow-x: hidden;
+    scroll-snap-type: initial;
+}
+
+.popular-cards__container > .card {
+    width: auto;
+    max-width: 280px;
+}
+
+.popular-cards__container .card:not(.card:last-child) {
+    min-width: initial;
+    width: 80px;
+    transition: all ease-in-out 400ms;
+    
+}
+
+.popular-cards__container .card:hover:not(.card:last-child) {
+    width: 280px;
+}
+
+/* Esta regla se pondra en los estilos de la card del componenete */
+.popular-cards__container .card:not(.card:last-child) .profile {
+    min-width: 27px;
+}
+
+.popular-cards__container .card:not(.card:last-child) .card__author {
+    opacity: 0;
+    transition: all ease-in 400ms;
+}
+
+.popular-cards__container .card:hover:not(.card:last-child)  .card__author{
+    opacity: 1;
+}
+
+/* .popular-cards__container .card:hover:not(.card:last-child) ~ .card:last-child {
+    right: -200px;
+} */

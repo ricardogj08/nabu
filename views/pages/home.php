@@ -10,7 +10,8 @@
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
     array('components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('pages/home/home-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('pages/home/home-tablet.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('pages/home/home-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
 ) ?>
 <!-- Archivos de javascript -->
 <?php $scripts = array(
