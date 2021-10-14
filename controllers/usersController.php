@@ -190,7 +190,7 @@ class usersController {
                     // Valida si es una cuenta con hash expirado.
                     if (time() > $user['hash_expiration']) {
                         $userModel -> delete($user['id']);
-                        messages::add('Tu cuenta a expirado, por favor vuelve a registrarte');
+                        messages::add('Tu cuenta a expirado, por favor vuelva a registrarse');
                     }
                     else {
                         messages::add('Por favor confirma tu dirección de correo electrónico');

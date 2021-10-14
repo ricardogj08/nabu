@@ -34,7 +34,7 @@ class csrf {
     // Valida si un token no está expirado y es igual al generado.
     public static function validate($token2) {
         if (empty($_SESSION['csrf']) || empty($token2)) {
-            self::errors('Token inválido');
+            self::errors('El token del formulario es inválido');
         }
 
         if (time() > $_SESSION['csrf']['expiration']) {
@@ -42,7 +42,7 @@ class csrf {
         }
 
         if (!hash_equals($_SESSION['csrf']['token'], $token2)) {
-            self::errors('Los tokens no coinciden');
+            self::errors('Los tokens del formulario no coinciden');
         }
 
         self::destroy();

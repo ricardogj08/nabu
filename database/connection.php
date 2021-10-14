@@ -58,7 +58,7 @@ class connection {
     protected function errors(string $exception, string $error) {
         // error_log($exception);
 
-        messages::errors('¡Lo sentimos mucho! &#x1F61E;, ' . $error . ', por favor inténtelo más tarde', 500);
+        messages::errors('¡Lo sentimos mucho! &#x1F61E;, ' . $error . ', por favor inténtalo más tarde', 500);
     }
 
     // @return el alias de un id de role.
