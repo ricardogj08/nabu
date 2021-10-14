@@ -1,0 +1,51 @@
+/* Estilos para el header */
+
+.hero {
+    flex-direction: row-reverse;
+    text-align: initial;
+    justify-content: space-between;
+}
+
+.hero__img-wrapper {
+    flex-basis: 40%;
+    max-width: 400px;
+    margin: 0;
+}
+
+.hero__text-container {
+    flex-basis: 50%;
+}
+
+
+.hero__CTA {
+     margin: 0;
+     margin-bottom: 10px;
+}
+
+.hero__secundary-CTA {
+    margin-top: 0;
+}
+
+.hero__button {
+    margin: 0;
+}
+
+/* Estilos para la seccion de posts mas recientes */
+
+.recent__posts {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.recent-cards__container {
+    grid-template-columns: repeat(auto-fill,minmax(288px, 1fr));
+    gap: 30px 10px;
+    justify-content: center;
+}
+
+.CTA__button {
+    width: 40%;
+}
+
+
+

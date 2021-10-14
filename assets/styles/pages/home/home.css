@@ -6,156 +6,18 @@
 5. Otros
 Metodologia => BEM
 */
+body {
+    background-color: var(--color-background);
+}
 
 /* Estilos al header */
 .header {
-    min-width: 320px;
-    padding: 0 20px;
+    width: 90%;
+    margin: 0 auto;
+    min-width: 310px;
+    /* padding: 0 20px; */
     padding-bottom: 30px;
     background-color: var(--color-background);
-}
-
-/* Estilos al menu */
-.nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 30px;
-    padding-bottom: 40px;
-    background-color: var(--color-background);
-}
-
-.nav__logo-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.nav__logo{
-    width: 100%;
-}
-
-.nav__burger-icon {
-    background-image: url("../../../icons/burger-icon.svg");
-    width: 14px;
-    height: 14px;
-    cursor: pointer;
-}
-
-/* Estilos para menú */
-.nav__menu {
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
-    left: -85%;
-    top: 0;
-    bottom: 0;
-    list-style: none;
-    background-color: #FFF;
-    transition: all ease-in-out 600ms;
-}
-
-.nav__menu-isactive {
-    left: 0;
-    transition: all ease-in-out 600ms;
-    z-index: 1;
-}
-
-.nav__item-logo {
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 50px;
-}
-
-.nav__item--logo a {
-    display: block;
-}
-
-.nav__item {
-    /* background-color: hsla(237, 58%, 69%, 0.4); */
-    display: flex;
-    align-items: center;
-    height: auto;
-    padding: 3px 20px;
-    margin-bottom: 15px;
-    gap: 0 10px;
-    position: relative;
-}
-
-.nav__item-isactive {
-    background-color: hsla(237, 58%, 69%, 0.4);
-}
-
-.nav__item-isactive::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 5px;
-    background-color: var(--color-secondary-purple);
-}
-
-.nav__item-tab {
-    display: block;
-}
-
-.nav__item:active {
-    background-color: hsla(237, 58%, 69%, 0.4);
-}
-
-.nav__item a {
-    font-size: 1.4rem;
-    font-weight: 500;
-    text-decoration: none;
-    color: #000;
-}
-
-.nav__item span {
-    display: block;
-    width: 16px;
-    height: 16px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.nav__item:nth-child(2) span {
-    background-image: url('../../../icons/articles-icon.svg');
-}
-
-.nav__item:nth-child(3) span {
-    background-image: url('../../../icons/login-icon.svg');
-}
-
-.nav__item:nth-child(4) span {
-    background-image: url('../../../icons/write-icon.svg');
-}
-
-/* Estilos para la visualizacion del menu */
-.overlay {
-    opacity: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 400ms linear;
-}
-
-.overlay__is-active {
-    opacity: 1;
-    border-radius: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.stop-scrolling {
-    height: 100vh;
-    overflow: hidden;
 }
 
 /* Estilos para el hero */
@@ -168,11 +30,11 @@ Metodologia => BEM
 
 .hero__img-wrapper {
     width: 100%;
-    margin-bottom: 30px;
 }
 
 .hero__img {
     width: 100%;
+    height: 100%;
 }
 
 .hero__CTA {
@@ -190,11 +52,15 @@ Metodologia => BEM
 }
 
 .hero__button {
-    min-width: 200px;
+    display: block;
     border-radius: 40px;
-    padding: 10px 20px;
+    width: 200px;
+    height: 45px;
     text-decoration: none;
+    text-align: center;
     font-size: 1.4rem;
+    line-height: 45px;
+    margin: 0 auto;
     font-weight: 500;
     background-color: var(--color-primary-red);
     color: #FFF;
@@ -246,7 +112,7 @@ Metodologia => BEM
     min-width: 320px;
     text-align: center;
     padding: 33px 0;
-    background-color: var(--color-background);
+    /* background-color: var(--color-background); */
 }
 
 .recent-posts__title {

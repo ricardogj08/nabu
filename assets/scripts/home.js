@@ -1,3 +1,4 @@
+'use strict';
 const controlMenu = document.querySelector('#control-menu');
 const menu = document.querySelector('#menu');
 const overlay = document.querySelector('.overlay');

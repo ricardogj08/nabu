@@ -1,30 +1,40 @@
 <?php defined('NABU') || exit() ?>
 <?php $head_title = NABU_DEFAULT['website-name'] ?>
+<!-- Estilos cargados -->
 <?php $styles     = array(
+    'components/navbar/navbar.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
     'pages/home/home.css',
 ) ?>
+<!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
-    array('pages/home/home-desktop.css', 'attributes' => 'media="(max-width: 720px)"'),
+    array('components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('pages/home/home-tablet.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('pages/home/home-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
 ) ?>
+<!-- Archivos de javascript -->
 <?php $scripts = array(
     'home.js',
 ) ?>
+
+<!-- Componente head -->
 <?php require_once 'views/components/head.php' ?>
 
 <header class="header">
     <?php require_once 'views/components/navbar.php' ?>
     <div class="hero">
         <picture class="hero__img-wrapper">
-            <source srcset="<?= NABU_DIRECTORY['images'] ?>/hero-desktop.png" media="(min-width: 600px)">
+            <source srcset="<?= NABU_DIRECTORY['images'] ?>/hero-desktop.png" media="(min-width: 500px)">
             <img src="<?= NABU_DIRECTORY['images'] ?>/hero.png" alt="Imagen inspiración en cualquier momento y cualquier lugar" class="hero__img">
         </picture>
-        <h1 class="hero__CTA">Lee, inspírate y escribe</h1>
-        <p class="hero__secundary-CTA">
-            Lo mejor que puedes compartir es tu conocimiento.
-        </p>
-        <a href="<?= NABU_ROUTES['signup'] ?>" class="hero__button">Comienza a escribir</a>
+        <div class="hero__text-container">
+            <h1 class="hero__CTA">Lee, inspírate y escribe</h1>
+            <p class="hero__secundary-CTA">
+                Lo mejor que puedes compartir es tu conocimiento.
+            </p>
+            <a href="<?= NABU_ROUTES['signup'] ?>" class="hero__button">Comienza a escribir</a>
+        </div>
     </div>
 </header>
 
