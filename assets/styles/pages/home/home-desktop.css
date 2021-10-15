@@ -44,11 +44,6 @@
     width: 280px;
 }
 
-/* Esta regla se pondra en los estilos de la card del componenete */
-.popular-cards__container .card:not(.card:last-child) .profile {
-    min-width: 27px;
-}
-
 .popular-cards__container .card:not(.card:last-child) .card__author {
     opacity: 0;
     transition: all ease-in 400ms;
