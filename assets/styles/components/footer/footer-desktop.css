@@ -1,0 +1,13 @@
+.rights {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.rights__info {
+    font-size: 1.2rem;
+}
+
+.media__icon svg{
+    width: 25px;
+    height: 25px;
+}
