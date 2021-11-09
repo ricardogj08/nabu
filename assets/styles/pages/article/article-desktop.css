@@ -1,0 +1,63 @@
+/* Fix the width to se in a tablet and desktop */
+.nav, 
+.post__head, 
+.post__copy,
+.author-info__container,
+.comments__container {
+    width: 80%;
+}
+
+/* Estilso al header */
+header {
+    box-shadow: inset 0 0 0 100vh rgba(0,0,0,0.4);
+}
+
+header:hover {
+    box-shadow: inset 0 0 0 100vh rgba(0,0,0,0.2);
+}
+
+/* Estilos a la seccion de otros posts */
+.popular-posts {
+    width: 100%;
+    background-color: initial;   
+}
+
+.popular-cards__container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 0 auto;
+    padding: 15px 0;
+    overflow: initial;
+    scroll-snap-type: initial;
+}
+
+/* Estilos para la seccion del autor */
+.author-info__title {
+    font-size: 2.4rem;
+}
+
+.author-info__description {
+    font-size: 1.4rem;
+}
+
+/* Seccion de comentarios */
+
+.comments__form {
+    max-width: 660px;
+}
+
+.comment__user-image-container {
+    align-self: flex-start;
+}
+
+/* Text area */
+.comments__textarea {
+    font-size: 1.4rem;
+}
+
+/* Boton mandar comentario */
+.comments__button {
+    font-size: 1.4rem;
+}
