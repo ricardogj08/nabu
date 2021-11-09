@@ -27,9 +27,9 @@ header::before {
   content: "";
   position: absolute;
   z-index: 1;
-  left: 0; 
+  left: 0;
   right: 0;
-  top: 0; 
+  top: 0;
   bottom: 0;
   background: rgba(0, 0, 0, .5);
 }
@@ -37,7 +37,7 @@ header::before {
 /* Sobreescribiendo estilos del componente nav */
 .nav {
     background-color: initial;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
     width: 90%;
     margin: 0 auto;
     position: relative;
@@ -46,6 +46,32 @@ header::before {
 
 .overlay {
     z-index: 2;
+}
+
+/* Liston del navbar */
+.nav__polygon {
+    display: initial;
+    width: 80px;
+    height: 85px;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    clip-path: polygon(100% 100%, 100% 0%, 0% 0%, 0% 100%, 50% 75%);
+    background: rgba(255,255,255,0.8);
+}
+
+.nav__logo-wrapper{
+    width: 80px;
+}
+
+.nav__logo-wrapper > a {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.nav__logo {
+    width: 100%;
 }
 
 /* Estilos al texto del post */
@@ -110,7 +136,7 @@ header::before {
     width: 90%;
     margin: 0 auto;
 }
-
+/* Estilos generales de las etiquetas */
 .post__copy > p:not(p:first-child) {
     margin-top: 2.8rem;
 }
@@ -168,7 +194,7 @@ header::before {
   width: 2px;
   height: 2px;
 }
- 
+
 .popular-cards__container::-webkit-scrollbar-thumb {
   background-color: var(--color-secondary-purple);
 }

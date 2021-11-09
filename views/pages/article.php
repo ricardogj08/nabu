@@ -20,6 +20,7 @@
 <?php require_once 'views/components/head.php' ?>
 <!-- HTML body -->
 <header>
+    <!-- Nav bar -->
     <?php require_once 'views/components/navbar.php' ?>
     <div class="post__head">
         <h1 class="post__title">
@@ -49,7 +50,7 @@
     <article class="post__copy">
         <p>
         <?= $article['content'] ?>
-        A las personas que estudiamos una ingeniería, desde pequeño se nos dicen frases como "Eres bueno para los números, no para lo demás", "Desarrollaste más la parte izquierda del cerebro", "La creatividad no va con personas como tu" y cosas por el estilo. Afortunadamente a lo largo de la vida me he dado cuenta de que la creatividad está dentro de todos y aún la persona más cuadrada puede ser creativa en un punto excelso. 
+        A las personas que estudiamos una ingeniería, desde pequeño se nos dicen frases como "Eres bueno para los números, no para lo demás", "Desarrollaste más la parte izquierda del cerebro", "La creatividad no va con personas como tu" y cosas por el estilo. Afortunadamente a lo largo de la vida me he dado cuenta de que la creatividad está dentro de todos y aún la persona más cuadrada puede ser creativa en un punto excelso.
         </p>
         <p>
         El estudiar en un ambiente ingenieril puede reprimir nuestro sentido creativo demasiado, llegando a un punto en que pensamos que no nacimos para ser creativos, por eso hoy me permito compartir tres simples consejos que me han funcionado a lo largo de la carrera para no dejar de lado mi "Yo" artista, soñador y creativo.
@@ -63,7 +64,7 @@
         Para despertar un poco más tu instinto creativo, no nos debemos quedar encerrados en hacer cosas similares siempre, a veces es bueno salir un poco de tu zona de confort y buscar algunas cosas que te puedan gustar además de tu ingeniería, bailar, pintar, escribir, crear contenido audiovisual e incluso meternos en temas de otras ingenierías.
         </p>
         <p>
-        Todas esas cosas que parecen no estar relacionadas con nuestra carrera pueden estarlo más de lo que nos imaginamos, pues el pensar en cosas distintas y resolver problemas a los que nunca nos imaginamos que nos enfrentaríamos , puede ser de mucho apoyo para pensar diferente dentro de nuestra área y pensar mas allá, e incluso mezclar conceptos de distintas áreas para crear aplicaciones de interés dentro de nuestra carrea y darles ese valor agregado que todos necesitamos para destacar un poquito y alimentar nuestra marca personal. 
+        Todas esas cosas que parecen no estar relacionadas con nuestra carrera pueden estarlo más de lo que nos imaginamos, pues el pensar en cosas distintas y resolver problemas a los que nunca nos imaginamos que nos enfrentaríamos , puede ser de mucho apoyo para pensar diferente dentro de nuestra área y pensar mas allá, e incluso mezclar conceptos de distintas áreas para crear aplicaciones de interés dentro de nuestra carrea y darles ese valor agregado que todos necesitamos para destacar un poquito y alimentar nuestra marca personal.
         </p>
         <p>
             <em>
@@ -114,7 +115,7 @@
     <div class="comments__container">
         <h2 class="comments__title">Deja tu opinión al autor</h2>
         <div class="comments__list">
-            
+
         </div>
         <div class="comments__box">
             <picture class="author-info__image comment__user-image-container">

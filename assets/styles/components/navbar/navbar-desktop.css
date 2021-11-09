@@ -8,13 +8,13 @@
     position: initial;
     width: auto;
     flex-direction: row;
-    justify-content: center;   
+    justify-content: center;
     background-color: initial;
 }
 
 .nav__logo-wrapper {
     width: 20%;
-    max-width: 136px;
+    max-width: 110px;
     max-height: 60px;
 }
 

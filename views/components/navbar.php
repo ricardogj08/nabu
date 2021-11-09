@@ -3,14 +3,17 @@
 
 <div class="overlay"></div>
 <nav class="nav">
+    <div class='nav__polygon'></div>
     <figure class="nav__logo-wrapper">
-        <img class="nav__logo" src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu">
+            <a href="<?= NABU_ROUTES['home'] ?>">
+                <img class="nav__logo" src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu">
+            </a>
     </figure>
     <span class="nav__burger-icon" id="control-menu"></span>
         <ul class="nav__menu" id="menu">
             <li class="nav__item-logo">
                 <a href="<?= NABU_ROUTES['home'] ?>">
-                    <img class="nav__logo" src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu">
+                    <img class="nav__logo-menu" src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu">
                 </a>
             </li>
             <li class="nav__item">
