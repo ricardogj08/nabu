@@ -13,7 +13,10 @@
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
     array('components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('pages/all-articles/all-articles-desktop.css', 'attributes' => ''),
+    array('components/footer/footer-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('components/search/search-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('pages/all-articles/all-articles-tablet.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('pages/all-articles/all-articles-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
 ) ?>
 
 <!-- Archivos de javascript -->
@@ -54,12 +57,12 @@
             <div class="CTA__text">
                 <h2 class="CTA__title">Interesante, ¿No? 🤔</h2>
                 <p class="CTA__description">Déjanos tu e-mail y te compartiremos los posts más recientes, además de recursos para mejorar tu escritura en medios digitales. 😉</p>
-            </div>
-            <div class="CTA__mail">
-                <form class="CTA__form" method="POST" action="">
-                    <input class = "form__input-mail" type="text" minlength="1" placeholder="Tu e-mail" maxlength="246" required>
-                    <input class = "form__join" type="submit" name="mail-submit" value="Unirme">
-                </form>
+                <div class="CTA__mail">
+                    <form class="CTA__form" method="POST" action="">
+                        <input class = "form__input-mail" type="text" minlength="1" placeholder="Tu e-mail" maxlength="246" required>
+                        <input class = "form__join" type="submit" name="mail-submit" value="Unirme">
+                    </form>
+                </div>
             </div>
             <span class="CTA__image"></span>
         </div>
