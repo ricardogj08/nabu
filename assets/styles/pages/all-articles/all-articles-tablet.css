@@ -1,0 +1,70 @@
+/* Estilos desktop para el buscador*/
+.searcher__content {
+    width: 95%;
+    display: flex;
+    padding: 0 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    
+}
+
+.searcher__image {
+    display: block;
+    width: 287px;
+    height: 262px;
+    background-image: url(../../../images/reading-muro.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+/*Estilos desktop para los artículos*/
+
+.articles {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.articles__data {
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.articles__title {
+    font-size: 4.8rem;
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+.articles__icon {
+    display: block;
+    width: 51px;
+    height: 28px;
+    background-image: url(../../../icons/arrow-muro.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.articles__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(288px, 1fr));
+    gap: 30px 10px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    /* margin: 0 30px; */
+}
+
+/* Texto del CTA */
+.CTA__title {
+    font-size: 2.6rem;
+    line-height: 5.4rem;
+}
+
+.CTA__description {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+}

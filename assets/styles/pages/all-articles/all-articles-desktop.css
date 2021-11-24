@@ -1,0 +1,59 @@
+/* Estilos para el CTA desktop*/
+
+.CTA {
+    min-height: 340px;
+    height: auto;
+}
+
+.CTA__container {
+    display: flex;
+    margin: 0 auto;
+    text-align: initial;
+}
+
+.CTA__text {
+    max-width: 70%;
+    margin: 0;
+}
+
+.CTA__title {
+    font-size: 3.2rem;
+    line-height: 5.4rem;
+}
+
+.CTA__description {
+    font-size: 1.8rem;
+    line-height: 3.1rem;
+}
+
+.CTA__form {
+    max-width: 60%;
+    height: 46px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: initial;
+    padding: 0 8px;
+    border-radius: 30px;
+    background-color: #fff;
+}
+
+.form__input-mail {
+    margin: 0;
+    text-align: initial;
+    font-size: 1.6rem;
+}
+
+.form__join {
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.CTA__image {
+    display: block;
+    width: 326px;
+    height: 208px;
+    background-image: url(../../../images/CTA-muro.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
