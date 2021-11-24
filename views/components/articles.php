@@ -1,7 +1,7 @@
 <?php defined('NABU') || exit() ?>
 
 <article class="card">
-    <picture class="banner">
+    <picture class="banner skeleton">
         <img src="https://static.collectui.com/shots/4415922/lady-on-balcony-large" alt="Inspirandome en la ventana, con mi gato" class="banner__image">
     </picture>
     <div class="card__info">
