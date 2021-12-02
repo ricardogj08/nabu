@@ -1,0 +1,296 @@
+/* Orden de los estilos
+1. Posicionamineto
+2. Modelo de caja
+3. Tipografia
+4. Visuales
+5. Otros
+Metodologia => BEM
+*/
+
+body {
+    background-color: var(--color-background);
+}
+/* Estilos al header */
+header {
+    min-width: 320px;
+    width: 100%;
+    position: relative;
+    background-image: url('https://static.collectui.com/shots/4371077/target-right-customers-blog-large');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    box-shadow: inset 0 0 0 100vh rgba(0,0,0,0.2);
+}
+
+
+header::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 0; 
+  right: 0;
+  top: 0; 
+  bottom: 0;
+  background: rgba(0, 0, 0, .5);
+}
+
+/* Sobreescribiendo estilos del componente nav */
+.nav {
+    background-color: initial;
+    padding-bottom: 20px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.overlay {
+    z-index: 2;
+}
+
+/* Estilos al texto del post */
+.post__head {
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    color: #FFF;
+    position: relative;
+    z-index: 1;
+}
+
+.post__title {
+    margin-top: 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 2.8rem;
+}
+
+.post__details {
+    display: flex;
+    align-items: center;
+}
+
+.post__profile {
+    display: inline-block;
+    min-width: 40px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.post__img-author {
+    width: 100%;
+}
+
+.post__info {
+    margin-left: 8px;
+}
+
+.post__author-name a {
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.post__date {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Post copy */
+
+.post__body {
+    width: 100%;
+}
+
+.post__copy {
+    padding: 20px 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.post__copy > p:not(p:first-child) {
+    margin-top: 2.8rem;
+}
+
+.post__copy > p {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: normal;
+    letter-spacing: -0.03px;
+    word-wrap: break-word;
+}
+
+.post__copy > h3 {
+    margin-top: 2.2rem;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+.post__body .post__copy > h3 + p {
+    margin-top: 1rem;
+}
+
+/* Estilos para la seccion de otros post para mostrar */
+.popular-posts {
+    width: 100%;
+    min-width: 320px;
+    padding: 23px 0;
+    text-align: center;
+    background-color: var(--color-secundary-background);
+}
+
+.popular-posts__title,
+.recent-posts__title {
+    margin-bottom: 11px;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 3.6rem;
+    color: #000;
+}
+
+.popular-cards__container {
+    width: 100%;
+    display: flex;
+    gap: 0 20px;
+    padding: 15px 20px;
+    overflow-x: scroll;
+    margin-left:auto;
+    scroll-snap-type: x mandatory;
+}
+
+/* Estilos a la barra del scroll */
+.pupular-cards__container::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+ 
+.popular-cards__container::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary-purple);
+}
+
+/* Estilos para la seccion del autor */
+.author-info__container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.author-info__image {
+    display: inline-block;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.author__image {
+    width: 100%;
+    border-radius: inherit;
+}
+
+.author-info__text {
+    margin-top: 7px;
+}
+
+.author-info__title {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    font-weight: 600;
+}
+
+.author-info__title a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+}
+
+.author-info__description {
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+}
+
+/* Estilos para la caja de comentarios */
+.comments {
+    width: 100%;
+    padding: 40px 0;
+    min-width: 320px;
+}
+
+.comments__container {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.comments__title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 3.6rem;
+    color: #000;
+}
+
+.comments__box {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment__user-image-container {
+    display: inline-block;
+    overflow: hidden;
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
+}
+
+.comments__form {
+    width: 100%;
+    max-width: 370px;
+    text-align: right;
+}
+
+.comments__textarea {
+    resize: none;
+    min-width: 180px;
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1.2rem;
+    border: 0;
+    outline-color: var(--color-secondary-purple);
+}
+
+.comments__button {
+    min-width: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    font-size: 1.2rem;
+    background-color: var(--color-secondary-purple);
+    color: #FFF;
+    cursor: pointer;
+}
+
+.comments__button:active {
+    transform: scale(1.1);
+}
+
+/* Estilos para el footer */
+.footer {
+    background-color: var(--color-black);
+}
+
+.footer .rights {
+    color: var(--color-background);
+}
+
+.footer .media svg path {
+    fill: var(--color-background);
+}
