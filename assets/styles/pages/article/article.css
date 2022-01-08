@@ -125,10 +125,19 @@ header::before {
     font-weight: 300;
 }
 
-/* Post copy */
-
+/* Post text */
 .post__body {
     width: 100%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+}
+
+.post__aside {
+    width: 90%;
+    margin: 0 auto;
+    /* background-color: tomato; */
 }
 
 .post__copy {
@@ -136,6 +145,44 @@ header::before {
     width: 90%;
     margin: 0 auto;
 }
+
+/* Estilos para el like */
+.icon {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+    /* position: fixed;
+    top: 50%;
+    left: 50%; */
+    /* transform: translateX(-100%); */
+  }
+
+  #icon-heart > path {
+    fill: var(--color-primary-red);
+  }
+
+  .icon.beat {
+    animation: 2s beat-heart ease-in-out forwards;
+  }
+
+  @keyframes beat-heart {
+    0%{
+      opacity: 0.9;
+      transform: scale(0.7);
+
+    }
+    20%{
+      transform: scale(1.8);
+    }
+    40% {
+      transform: scale(1.2);
+    }
+    80%{
+      opacity: 0;
+      transform: scale(0.7);
+    }
+  }
+
 /* Estilos generales de las etiquetas */
 .post__copy > p:not(p:first-child) {
     margin-top: 2.8rem;
