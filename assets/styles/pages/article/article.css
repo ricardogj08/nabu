@@ -129,6 +129,7 @@ header::before {
 .post__body {
     width: 100%;
     padding-top: 10px;
+    min-width: 320px;
     display: flex;
     flex-direction: column;
     /* position: relative; */
@@ -137,51 +138,46 @@ header::before {
 .post__aside {
     width: 90%;
     margin: 0 auto;
-    /* background-color: tomato; */
+    position: relative;
 }
 
+/* Heart toggle animation */
+.heart {
+    position: absolute;
+    z-index: 3;
+    top: -90px;
+    right: 0;
+}
+
+.post__aside [for='toggle__heart'] {
+    font-size: 4rem;
+    color: #aab8c2;
+    cursor: pointer;
+}
+
+.post__aside [id='toggle__heart'] {
+   visibility: hidden;
+}
+
+.post__aside [id='toggle__heart']:checked + label {
+    color: #e2264d;
+    animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+  }
+  
+@keyframes heart { 
+    0%, 
+    15% {
+      font-size: 0; 
+    } 
+}
+
+
+/* Estilos para el copy */
 .post__copy {
     padding: 20px 0;
     width: 90%;
     margin: 0 auto;
 }
-
-/* Estilos para el like */
-.icon {
-    width: 30px;
-    height: 30px;
-    opacity: 1;
-    /* position: fixed;
-    top: 50%;
-    left: 50%; */
-    /* transform: translateX(-100%); */
-  }
-
-  #icon-heart > path {
-    fill: var(--color-primary-red);
-  }
-
-  .icon.beat {
-    animation: 2s beat-heart ease-in-out forwards;
-  }
-
-  @keyframes beat-heart {
-    0%{
-      opacity: 0.9;
-      transform: scale(0.7);
-
-    }
-    20%{
-      transform: scale(1.8);
-    }
-    40% {
-      transform: scale(1.2);
-    }
-    80%{
-      opacity: 0;
-      transform: scale(0.7);
-    }
-  }
 
 /* Estilos generales de las etiquetas */
 .post__copy > p:not(p:first-child) {
@@ -247,6 +243,10 @@ header::before {
 }
 
 /* Estilos para la seccion del autor */
+.author-info {
+    min-width: 320px;
+}
+
 .author-info__container {
     width: 90%;
     margin: 0 auto;

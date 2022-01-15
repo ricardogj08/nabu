@@ -34,6 +34,52 @@ header:hover {
     color: #FFF;
 }
 
+/* Estilos al heart like */
+.heart {
+    top: -120px;
+    right: 6%;
+}
+
+.post__aside [for='toggle__heart'] {
+    font-size: 6rem;
+    color: #aab8c2;
+    cursor: pointer;
+}
+
+/* .post__body {
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: row;
+}
+
+.post__aside {
+    width: 8%;
+    margin: 0;
+    margin-right: 10px;
+    position: initial;  
+}
+
+.heart {
+    position: sticky;
+}
+
+.post__aside [for='toggle__heart'] {
+    font-size: 4rem;
+    color: #aab8c2;
+    cursor: pointer;
+    position: sticky;
+}
+
+.post__aside [id='toggle__heart'] {
+   visibility: hidden;
+}
+
+.post__copy {
+    width: initial;
+} */
+
+
+
 
 /* Estilos a la seccion de otros posts */
 .popular-posts {
