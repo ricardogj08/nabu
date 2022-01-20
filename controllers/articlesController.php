@@ -18,11 +18,13 @@
 
 defined('NABU') || exit();
 
+require_once 'models/articlesModel.php';
+
 class articlesController {
   // Renderiza la página para publicar artículos
   // y envía un artículo para su aprobación con el método POST.
   static public function post_article() {
-    utils::session_check(NABU_ROUTES['home']);
+    utils::check_session(NABU_ROUTES['home']);
 
     if (empty($_POST['post-article-form'])) {
       $token    = csrf::generate();
@@ -43,6 +45,32 @@ class articlesController {
       array('field' => 'synopsis', 'trim_all' => true, 'min_length' => 1, 'max_length' => 255),
       array('field' => 'content',  'trim'     => true, 'min_length' => 1, 'max_length' => NABU_DEFAULT['article-size']),
     ));
+
+    $data['slug'] = utils::url_slug($data['title']);
+
+    // Valida la longitud de la URL.
+    $validations -> validate($data, array(
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
+    ));
+
+    $articlesModel = new articlesModel();
+
+    $article = $articlesModel -> find($data['slug']);
+
+    // Valida si el título del artículo es único en el día.
+    if (!empty($article)) {
+      messages::add('Por favor define un título diferente o espera máximo un día para enviar tu publicación');
+      utils::redirect(NABU_ROUTES['post-article']);
+    }
+
+    $data['user_id']       = $_SESSION['user']['id'];
+    $data['creation_date'] = utils::current_date();
+
+    // Registra un artículo para su aprobación.
+    $articlesModel -> save($data);
+
+    messages::add('Tu publicación se ha enviado correctamente, en breve autorizaremos tu publicación');
+    utils::redirect(NABU_ROUTES['sent-articles']);
   }
 
   static public function all_articles() {

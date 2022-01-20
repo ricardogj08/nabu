@@ -19,5 +19,7 @@
 defined('NABU') || exit();
 
 class profilesController {
-
+  static public function sent_articles() {
+    //
+  }
 }

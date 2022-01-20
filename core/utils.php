@@ -43,8 +43,13 @@ class utils {
   }
 
   // Redirecciona a una ruta si no existe una sesión de usuario.
-  static public function session_check(string $route) {
+  static public function check_session(string $route) {
     if (empty($_SESSION['user']))
       self::redirect($route);
+  }
+
+  // Genera la URL de un artículo.
+  public static function url_slug(string $title) {
+    return date('Ymd') . '-' . preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($title));
   }
 }
