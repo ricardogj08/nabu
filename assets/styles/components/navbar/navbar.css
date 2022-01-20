@@ -18,6 +18,15 @@
     width: 100%;
 }
 
+.nav__logo-wrapper > a {
+    display: block;
+    width: 100%;
+}
+
+.nav__polygon {
+    display: none;
+}
+
 .nav__burger-icon {
     background-image: url("../../../icons/burger-icon.svg");
     width: 14px;
@@ -54,6 +63,10 @@
 
 .nav__item--logo a {
     display: block;
+}
+
+.nav__logo-menu{
+    width: 100%;
 }
 
 .nav__item {
