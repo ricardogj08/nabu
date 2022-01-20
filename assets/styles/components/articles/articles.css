@@ -1,23 +1,42 @@
-/* Orden de los estilos
-1. Posicionamineto
-2. Modelo de caja
-3. Tipografia
-4. Visuales
-5. Otros
-Metodologia => BEM
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
+
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
+*/
+
 .skeleton {
     opacity: 0.8;
     animation: skeleton-loading 1s linear infinite alternate; 
 }
 
-@keyframes skeleton-loading  {
-    0%{
-      background-color: hsl(200, 20%, 70%);
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 70%);
     }
-    
+
     100% {
-      background-color: hsl(200, 20%, 95%);
+        background-color: hsl(200, 20%, 95%);
     }
 }
 
@@ -71,7 +90,6 @@ Metodologia => BEM
     margin-bottom: 8px;
     font-size: 1.6rem;
     font-weight: 600;
-    
 }
 
 .card__copy {
@@ -85,7 +103,7 @@ Metodologia => BEM
     justify-content: space-between;
 }
 
-/*Imagen de perfil*/
+/* Imagen de perfil */
 .profile {
     display: block;
     min-width: 25px;

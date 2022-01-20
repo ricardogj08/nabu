@@ -1,4 +1,22 @@
+<!--
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+-->
+
 <?php defined('NABU') || exit() ?>
+
 <?php $head_title = 'Muro' ?>
 
 <!-- Estilos cargados -->
@@ -12,11 +30,11 @@
 
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
-    array('components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('components/footer/footer-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('components/search/search-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('pages/all-articles/all-articles-tablet.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('pages/all-articles/all-articles-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
+    array('file' => 'components/navbar/navbar-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/footer/footer-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/search/search-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'pages/all-articles/all-articles-tablet.css',  'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'pages/all-articles/all-articles-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
 ) ?>
 
 <!-- Archivos de javascript -->

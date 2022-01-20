@@ -1,4 +1,21 @@
-/* Estilos al menu */
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
+/* Estilos para el menú */
 .nav {
     width: 100%;
     display: flex;
@@ -34,7 +51,7 @@
     cursor: pointer;
 }
 
-/* Estilos para menú */
+/* Estilos para el menú */
 .nav__menu {
     width: 65%;
     display: flex;
@@ -63,10 +80,6 @@
 
 .nav__item--logo a {
     display: block;
-}
-
-.nav__logo-menu{
-    width: 100%;
 }
 
 .nav__item {
@@ -129,7 +142,7 @@
     background-image: url('../../../icons/write-icon.svg');
 }
 
-/* Estilos para la visualizacion del menu */
+/* Estilos para la visualización del menú */
 .overlay {
     opacity: 0;
     position: fixed;

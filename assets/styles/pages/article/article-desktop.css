@@ -1,4 +1,22 @@
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
 /* Fix the width to se in a tablet and desktop */
+
 .nav,
 .post__head,
 .post__copy,
@@ -7,7 +25,8 @@
     width: 80%;
 }
 
-/* Estilso al header */
+/* Estilos del header */
+
 header {
     box-shadow: inset 0 0 0 100vh rgba(0,0,0,0.4);
 }
@@ -16,7 +35,7 @@ header:hover {
     box-shadow: inset 0 0 0 100vh rgba(0,0,0,0.2);
 }
 
-/* Estilos al nav bar */
+/* Estilos para el navbar */
 .nav__logo-wrapper{
     width: 100px;
 }
@@ -34,8 +53,8 @@ header:hover {
     color: #FFF;
 }
 
+/* Estilos de la sección de otros posts */
 
-/* Estilos a la seccion de otros posts */
 .popular-posts {
     width: 100%;
     background-color: initial;
@@ -52,7 +71,8 @@ header:hover {
     scroll-snap-type: initial;
 }
 
-/* Estilos para la seccion del autor */
+/* Estilos de la sección del autor */
+
 .author-info__title {
     font-size: 2.4rem;
 }
@@ -61,7 +81,7 @@ header:hover {
     font-size: 1.4rem;
 }
 
-/* Seccion de comentarios */
+/* Sección de comentarios */
 
 .comments__form {
     max-width: 660px;
@@ -72,11 +92,13 @@ header:hover {
 }
 
 /* Text area */
+
 .comments__textarea {
     font-size: 1.4rem;
 }
 
-/* Boton mandar comentario */
+/* Botón para enviar un comentario */
+
 .comments__button {
     font-size: 1.4rem;
 }

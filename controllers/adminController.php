@@ -1,58 +1,23 @@
 <?php
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
 
 defined('NABU') || exit();
 
-require_once 'models/adminModel.php';
-
 class adminController {
-    static public function admin() {
-        if (empty($_GET['section'])) {
-            self::dashboard();
-        }
-        else {
-            switch ($_GET['section']) {
-                case 'authorize':
-                    self::authorize_article();
-                    break;
-                case 'delete':
-                    self::delete_article();
-                    break;
-                case 'edit':
-                    self::edit_article();
-                    break;
-                case 'published':
-                    self::published_articles();
-                    break;
-                case 'users':
-                    self::users();
-                    break;
-                default:
-                    utils::redirect(NABU_ROUTES['admin']);
-            }
-        }
-    }
 
-    static private function dashboard() {
-        require_once 'views/admin/dashboard.php';
-    }
-
-    static private function authorize_article() {
-        require_once 'views/pages/confirm-password.php';
-    }
-
-    static private function delete_article() {
-        require_once 'views/pages/confirm-password.php';
-    }
-
-    static private function edit_article() {
-        require_once 'views/admin/edit-article.php';
-    }
-
-    static private function published_articles() {
-        require_once 'views/admin/published-articles.php';
-    }
-
-    static private function users() {
-        require_once 'views/admin/users.php';
-    }
 }

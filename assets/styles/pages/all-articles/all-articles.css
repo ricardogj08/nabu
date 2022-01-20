@@ -1,16 +1,36 @@
-/* Orden de los estilos
-1. Posicionamineto
-2. Modelo de caja
-3. Tipografia
-4. Visuales
-5. Otros
-Metodologia => BEM
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
+
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
+*/
+
 body {
     background-color: var(--color-background);
 }
 
-/* Estilos al header */
+/* Estilos del header */
+
 .header {
     width: 90%;
     margin: 0 auto;
@@ -18,7 +38,7 @@ body {
     background-color: var(--color-background);
 }
 
-/*Estilos para la seccion de los artículos*/
+/* Estilos para la sección de artículos */
 
 .articles__data {
     display: flex;
@@ -54,7 +74,6 @@ body {
     width: 90%;
     padding: 20px 0;
     text-align: center;
-    
 }
 
 .CTA__title {

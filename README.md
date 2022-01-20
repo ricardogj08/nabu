@@ -1,48 +1,49 @@
 # Nabu
 
-Un sistema gestor de contenido (CMS) para artículos en `Markdown`, escrito en `HTML`, `CSS`, `JavaScript` y `PHP`.
+Un sistema gestor de contenido (CMS) de artículos en `Markdown` para la [Universidad de Guanajuato](https://www.ugto.mx/) escrito en `HTML`, `CSS`, `JavaScript` y `PHP`.
 
-## Archivo de configuración de la base de datos
+## Dependencias
 
-Por defecto, `Nabu` escanea el archivo `database-config.json` dentro de la carpeta raíz del proyecto.
+## Estructura del proyecto
 
-Estructura del archivo de configuración:
+## Configuración de la base de datos
+
+Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa, el archivo de configuración `config/db.json`
 
 ```json
 {
-    "dbms":     "mysql",
-    "host":     "localhost",
-    "database": "nabu",
-    "user":     "root",
-    "password": "root",
-    "charset":  "utf8mb4"
+	"dbms":     "mysql",
+	"host":     "localhost",
+	"database": "nabu",
+	"user":     "root",
+	"password": "root",
+	"charset":  "utf8mb4"
 }
 ```
 
-## Archivo de configuración del cliente de correo electrónico
+## Configuración del cliente de correo electrónico
 
-Por defecto, `Nabu` escanea el archivo `email-config.json` dentro de la carpeta raíz del proyecto.
-
-Estructura del archivo de configuración:
+Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa, el archivo de configuración `config/email.json`
 
 ```json
 {
-    "smtp":     "smtp.gmail.com",
-    "port":     587,
-    "address":  "foo@gmail.com",
-    "password": "xxxxx"
+	"smtp":     "smtp.example.com",
+	"port":     587,
+	"address":  "foo@example.com",
+	"password": "xxxxx"
 }
 ```
 
 ## Licencia
 
 ```text
-Nabu - Un sistema gestor de contenido (CMS) para artículos en Markdown, escrito en HTML, CSS, JavaScript y PHP.
+Nabu - Un sistema gestor de contenido (CMS) de artículos en Markdown para
+       la Universidad de Guanajuato escrito en HTML, CSS, JavaScript y PHP.
 
-Copyright (C) 2021  Ricardo García Jiménez          <ricardogj08@riseup.net>,
-                    Juan José Ramírez López         <juan.ramirez.j99@gmail.com>,
-                    Francisco Solís Martínez        <franciscosolism08@gmail.com>,
-                    Fernando Andrés Chávez Gavaldón <fernandochg26@gmail.com>
+Copyright (C) 2021 - Ricardo García Jiménez          <ricardogj08@riseup.net>,
+                     Juan José Ramírez López         <juan.ramirez.j99@gmail.com>,
+                     Francisco Solís Martínez        <franciscosolism08@gmail.com>,
+                     Fernando Andrés Chávez Gavaldón <fernandochg26@gmail.com>
 
 Este programa es software libre: puedes redistribuirlo y/o modificarlo
 bajo los términos de la Licencia Pública General de GNU Affero publicada por

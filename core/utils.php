@@ -1,3 +1,4 @@
+<?php
 /*
 * Este archivo es parte de Nabu.
 *
@@ -15,32 +16,29 @@
 * junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
 
-/*
-* Orden de los estilos
-*   1. Posicionamiento
-*   2. Modelo de caja
-*   3. Tipografía
-*   4. Visuales
-*   5. Otros
-* Metodología => BEM
-*/
+defined('NABU') || exit();
 
-.sign-up__text {
-    max-width: 310px;
-}
+// Colección de herramientas propias para Nabu.
+class utils {
+  // Redirecciona a una ruta y termina la ejecución de todos los scripts de PHP.
+  static public function redirect(string $route) {
+    header('Location: ' . $route);
+    exit();
+  }
 
-.login-plane {
-    display: block;
-    width: 180px;
-    height: 224px;
-    background-image: url(../../../images/login-plane.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+  // Redirecciona a una ruta si existe una sesión de usuario.
+  static public function session_exists(string $route) {
+    if (isset($_SESSION['user']))
+      self::redirect($route);
+  }
 
-@media screen and (min-width: 900px){
-    .login-plane {
-        display: none;
-    }
+  // @return un string escapado para HTML.
+  static public function escape(string $str) {
+    return htmlentities($str, ENT_COMPAT | ENT_HTML5, 'UTF-8');
+  }
+
+  // @return la fecha actual.
+  static public function current_date() {
+    return date('Y-m-d H:i:s');
+  }
 }

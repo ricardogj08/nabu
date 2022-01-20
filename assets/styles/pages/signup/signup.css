@@ -1,3 +1,30 @@
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
+*/
+
 html {
     position: relative;
     min-height: 100%;
@@ -22,7 +49,7 @@ body {
     margin: 30px auto;
 }   
 
-/* Section del header */
+/* Sección del header */
 
 .header__logo-container {
     display: inline-block;
@@ -66,8 +93,7 @@ body {
     background-size: cover;
 }
 
-
-/* Section del form */
+/* Sección del form */
 
 .form__container {
     margin: 15px 0;
@@ -145,12 +171,13 @@ body {
     font-size: 1rem;
 }
 
-/* Oculatar imagen */
+/* Oculta la imagen */
+
 .form__image-container {
     display: none;
 }
 
-/* Cambios a los estilos del footer */
+/* Cambia los estilos del footer */
 
 .footer {
     position: absolute;

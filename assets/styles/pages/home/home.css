@@ -1,16 +1,36 @@
-/* Orden de los estilos
-1. Posicionamineto
-2. Modelo de caja
-3. Tipografia
-4. Visuales
-5. Otros
-Metodologia => BEM
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
+
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
+*/
+
 body {
     background-color: var(--color-background);
 }
 
-/* Estilos al header */
+/* Estilos del header */
+
 .header {
     width: 90%;
     margin: 0 auto;
@@ -20,7 +40,8 @@ body {
     background-color: var(--color-background);
 }
 
-/* Estilos para el hero */
+/* Estilos del hero */
+
 .hero {
     display: flex;
     flex-direction: column;
@@ -66,7 +87,7 @@ body {
     color: #FFF;
 }
 
-/* Estilos a la seccion de posts populares */
+/* Estilos de la sección de los posts más populares */
 
 .popular-posts {
     width: 100%;
@@ -91,21 +112,21 @@ body {
     gap: 0 20px;
     padding: 15px 20px;
     overflow-x: scroll;
-    margin-left:auto;
+    margin-left: auto;
     scroll-snap-type: x mandatory;
 }
 
-/* Estilos a la barra del scroll */
+/* Estilos de la barra de scroll */
 .cards__container::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+    width: 2px;
+    height: 2px;
 }
- 
+
 .cards__container::-webkit-scrollbar-thumb {
-  background-color: var(--color-secondary-purple);
+    background-color: var(--color-secondary-purple);
 }
  
-/* Estilos para la seccion de posts mas recientes */
+/* Estilos de la sección de los posts más recientes */
 
 .recent__posts {
     width: 100%;
@@ -116,7 +137,7 @@ body {
 }
 
 .recent-posts__title {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .recent-cards__container {
@@ -126,7 +147,7 @@ body {
     gap: 30px 0;
 }
 
-/* Estilos para el CTA del final de la pagina*/
+/* Estilos para el CTA del final de la página */
 
 .CTA {
     position: relative;
@@ -149,7 +170,6 @@ body {
     height: 63px;
     background-image: url(../../../images/paper-plane.svg);
     background-position: center;
-
 }
 
 .CTA__container {

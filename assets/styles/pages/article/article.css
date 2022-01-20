@@ -1,16 +1,36 @@
-/* Orden de los estilos
-1. Posicionamineto
-2. Modelo de caja
-3. Tipografia
-4. Visuales
-5. Otros
-Metodologia => BEM
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
 */
 
 body {
     background-color: var(--color-background);
 }
-/* Estilos al header */
+
+/* Estilos del header */
+
 header {
     min-width: 320px;
     width: 100%;
@@ -22,19 +42,19 @@ header {
     box-shadow: inset 0 0 0 100vh rgba(0,0,0,0.2);
 }
 
-
 header::before {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, .5);
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
 }
 
-/* Sobreescribiendo estilos del componente nav */
+/* Sobrescribe los estilos del componente nav */
+
 .nav {
     background-color: initial;
     padding-bottom: 50px;
@@ -48,7 +68,8 @@ header::before {
     z-index: 2;
 }
 
-/* Liston del navbar */
+/* Listón del navbar */
+
 .nav__polygon {
     display: initial;
     width: 80px;
@@ -74,7 +95,8 @@ header::before {
     width: 100%;
 }
 
-/* Estilos al texto del post */
+/* Estilos del texto del post */
+
 .post__head {
     width: 90%;
     margin: 0 auto;
@@ -126,6 +148,7 @@ header::before {
 }
 
 /* Post text */
+
 .post__body {
     width: 100%;
     padding-top: 10px;
@@ -147,6 +170,7 @@ header::before {
 }
 
 /* Estilos para el like */
+
 .icon {
     width: 30px;
     height: 30px;
@@ -184,6 +208,7 @@ header::before {
   }
 
 /* Estilos generales de las etiquetas */
+
 .post__copy > p:not(p:first-child) {
     margin-top: 2.8rem;
 }
@@ -208,7 +233,8 @@ header::before {
     margin-top: 1rem;
 }
 
-/* Estilos para la seccion de otros post para mostrar */
+/* Estilos de la sección de otros post para mostrar */
+
 .popular-posts {
     width: 100%;
     min-width: 320px;
@@ -232,21 +258,23 @@ header::before {
     gap: 0 20px;
     padding: 15px 20px;
     overflow-x: scroll;
-    margin-left:auto;
+    margin-left: auto;
     scroll-snap-type: x mandatory;
 }
 
-/* Estilos a la barra del scroll */
+/* Estilos de la barra de scroll */
+
 .pupular-cards__container::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+    width: 2px;
+    height: 2px;
 }
 
 .popular-cards__container::-webkit-scrollbar-thumb {
-  background-color: var(--color-secondary-purple);
+    background-color: var(--color-secondary-purple);
 }
 
-/* Estilos para la seccion del autor */
+/* Estilos de la sección del autor */
+
 .author-info__container {
     width: 90%;
     margin: 0 auto;
@@ -287,7 +315,8 @@ header::before {
     line-height: 1.4rem;
 }
 
-/* Estilos para la caja de comentarios */
+/* Estilos de la caja de comentarios */
+
 .comments {
     width: 100%;
     padding: 40px 0;
@@ -355,7 +384,8 @@ header::before {
     transform: scale(1.1);
 }
 
-/* Estilos para el footer */
+/* Estilos del footer */
+
 .footer {
     background-color: var(--color-black);
 }

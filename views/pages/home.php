@@ -1,22 +1,41 @@
+<!--
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+-->
+
 <?php defined('NABU') || exit() ?>
-<?php $head_title = NABU_DEFAULT['website-name'] ?>
-<!-- Estilos cargados -->
-<?php $styles     = array(
+
+<!-- Estilos a cargar -->
+<?php $styles = array(
     'components/navbar/navbar.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
-    'pages/home/home.css',
+    'pages/home/home.css'
 ) ?>
-<!-- Estilos para el responsive design -->
+
+<!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('components/footer/footer-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('pages/home/home-tablet.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('pages/home/home-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
+    array('file' => 'components/footer/footer-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'pages/home/home-tablet.css',           'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'pages/home/home-desktop.css',          'attributes' => 'media="screen and (min-width: 1024px)"')
 ) ?>
-<!-- Archivos de javascript -->
+
+<!-- Archivos de javascript a cargar -->
 <?php $scripts = array(
-    'home.js',
+    'home.js'
 ) ?>
 
 <!-- Componente head -->
@@ -44,10 +63,6 @@
         <h2 class="popular-posts__title">Posts imperdibles del mes, échales un ojo</h2>
         <section class="popular-cards__container">
             <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
         </section>
     </section>
     <section class="recent__posts">
@@ -55,16 +70,12 @@
         <section class="recent-cards__container">
             <?php $articles = $recent_articles ?>
             <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
         </section>
     </section>
     <section class = "CTA">
         <span class="CTA__plane"></span>
         <div class="CTA__container">
-            <h3 class="CTA__title">Tus palabras merecen ser leidas, escribe algo e inicia un viaje de descubrimiento</h3>
+            <h3 class="CTA__title">Tus palabras merecen ser leídas, escribe algo e inicia un viaje de descubrimiento</h3>
             <a href="<?= NABU_ROUTES['signup'] ?>" class="CTA__button">Quiero compartir lo que sé</a>
         </div>
     </section>

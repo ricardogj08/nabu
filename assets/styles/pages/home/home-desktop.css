@@ -1,9 +1,27 @@
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
 .hero__img-wrapper {
     flex-basis: 50%;
     max-width: 450px;
 }
 
-/* Estilos para la seccion de los post mas populares */
+/* Estilos de la sección de los post más populares */
+
 .popular-posts {
     width: 90%;
     display: flex;
@@ -37,7 +55,6 @@
     min-width: initial;
     width: 80px;
     transition: all ease-in-out 400ms;
-    
 }
 
 .popular-cards__container .card:hover:not(.card:last-child) {
@@ -53,6 +70,8 @@
     opacity: 1;
 }
 
-/* .popular-cards__container .card:hover:not(.card:last-child) ~ .card:last-child {
+/*
+.popular-cards__container .card:hover:not(.card:last-child) ~ .card:last-child {
     right: -200px;
-} */
+}
+*/

@@ -1,4 +1,22 @@
-/* Estilos desktop para el buscador*/
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
+/* Estilos desktop para el buscador */
+
 .searcher__content {
     width: 95%;
     display: flex;
@@ -6,7 +24,6 @@
     justify-content: center;
     align-items: center;
     gap: 10%;
-    
 }
 
 .searcher__image {
@@ -19,8 +36,7 @@
     background-size: cover;
 }
 
-
-/*Estilos desktop para los artículos*/
+/* Estilos desktop para los artículos */
 
 .articles {
     margin: 0 auto;
@@ -59,6 +75,7 @@
 }
 
 /* Texto del CTA */
+
 .CTA__title {
     font-size: 2.6rem;
     line-height: 5.4rem;

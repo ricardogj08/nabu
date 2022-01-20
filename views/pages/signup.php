@@ -1,13 +1,35 @@
+<!--
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+-->
+
 <?php defined('NABU') || exit() ?>
+
 <?php $head_title = 'Crea una cuenta' ?>
-<?php $styles     = array(
+
+<!-- Estilos a cargar -->
+<?php $styles = array(
     'components/footer/footer.css',
-    'pages/signup/signup.css',
+    'pages/signup/signup.css'
 ) ?>
+
+<!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('pages/signup/signup-desktop.css', 'attributes' => 'media="screen and (min-width: 900px)"'),
+    array('file' => 'pages/signup/signup-desktop.css', 'attributes' => 'media="screen and (min-width: 900px)"'),
 ) ?>
-<?php $scripts = array() ?>
+
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/messages.php' ?>
 
@@ -54,7 +76,7 @@
                     </label>
 
                     <div class="sign-up__container">
-                        <input class="sign-up__button" type="submit" name="signup-submit" value="Registrarme" aria-label="Registrar">
+                        <input class="sign-up__button" type="submit" name="signup-form" value="Registrarme" aria-label="Registrar">
                         <span></span>
                     </div>
 

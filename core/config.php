@@ -1,4 +1,20 @@
 <?php
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
 
 defined('NABU') || exit();
 
@@ -8,13 +24,13 @@ define('NABU_DIRECTORY', array(
     'avatars'             => NABU_URL . '/storage/avatars',
     'backgrounds'         => NABU_URL . '/storage/backgrounds',
     'covers'              => NABU_URL . '/storage/covers',
-    'database'            => './database-config.json',
-    'email'               => './email-config.json',
+    'db'                  => 'config/db.json',
+    'email'               => 'config/email.json',
     'icons'               => NABU_URL . '/assets/icons',
     'images'              => NABU_URL . '/assets/images',
-    'storage-avatars'     => './storage/avatars',
-    'storage-backgrounds' => './storage/backgrounds',
-    'storage-covers'      => './storage/covers',
+    'storage-avatars'     => 'storage/avatars',
+    'storage-backgrounds' => 'storage/backgrounds',
+    'storage-covers'      => 'storage/covers',
     'scripts'             => NABU_URL . '/assets/scripts',
     'styles'              => NABU_URL . '/assets/styles',
 ));
@@ -33,21 +49,21 @@ define('NABU_DEFAULT', array(
 date_default_timezone_set('America/Mexico_City');
 
 /*
-// Nivel de reporte de errores (todos los errores).
+// Establece el nivel de reporte de errores "todos los errores".
 ini_set('error_reporting', E_ALL);
 
-// No muestra en pantalla todos los errores.
+// Desactiva en pantalla todos los errores.
 ini_set('display_errors', 'Off');
 
-// No muestra en pantalla todos los errores de inicio de ejecución de PHP.
+// Desactiva en pantalla todos los errores de inicio de ejecución de PHP.
 ini_set('display_startup_errors', false);
 
-// No registra mensajes repetidos.
+// Desactiva el registro de mensajes repetidos sobre la última línea.
 ini_set('ignore_repeated_errros', true);
 
-// Selecciona el manejador de errores de PHP 'error_log'.
+// Habilita el registro de errores desde un archivo externo.
 ini_set('log_errors', true);
 
-// Define la ruta del archivo de registro de errores para 'error_log'.
+// Define la ruta del archivo de registro de errores.
 ini_set('error_log', 'logs/errors.log');
 */

@@ -1,4 +1,3 @@
-database-config.json
-email-config.json
+config/
 logs/
 storage/

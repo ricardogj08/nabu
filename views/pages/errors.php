@@ -1,12 +1,17 @@
 <?php defined('NABU') || exit() ?>
+
 <?php $head_title = 'Error' ?>
-<?php $styles     = array(
-    'pages/errors/errors.css',
+
+<!-- Estilos a cargar -->
+<?php $styles = array(
+    'pages/errors/errors.css'
 ) ?>
+
+<!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('pages/errors/errors-desktop.css', 'attributes' => '')
+    array('file' => 'pages/errors/errors-desktop.css', 'attributes' => '')
 ) ?>
-<?php $scripts = array() ?>
+
 <?php require_once 'views/components/head.php' ?>
 
 <p><mark><?= $error ?>.</mark></p>
