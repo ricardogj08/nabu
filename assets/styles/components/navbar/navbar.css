@@ -16,6 +16,7 @@
 */
 
 /* Estilos para el menú */
+
 .nav {
     width: 100%;
     display: flex;
@@ -31,7 +32,7 @@
     align-items: center;
 }
 
-.nav__logo{
+.nav__logo {
     width: 100%;
 }
 
@@ -52,6 +53,7 @@
 }
 
 /* Estilos para el menú */
+
 .nav__menu {
     width: 65%;
     display: flex;
@@ -143,6 +145,7 @@
 }
 
 /* Estilos para la visualización del menú */
+
 .overlay {
     opacity: 0;
     position: fixed;

@@ -4,11 +4,59 @@ Un sistema gestor de contenido (CMS) de artículos en `Markdown` para la [Univer
 
 ## Dependencias
 
+* [PHP >= 7.0.0](https://www.php.net/)
+* [MariaDB >= 10.5.10](https://mariadb.org/)
+* Habilita y modifica los siguientes parámetros en el archivo de configuración `php.ini`:
+    * `extension=pdo_mysql`
+    * `upload_max_filesize = 3M`
+
 ## Estructura del proyecto
+
+```text
+nabu/
+├── assets
+│   ├── icons
+│   ├── images
+│   ├── scripts
+│   └── styles
+├── config
+├── controllers
+├── core
+├── db
+├── libs
+├── models
+├── storage
+│   ├── avatars
+│   ├── backgrounds
+│   ├── covers
+└── views
+    ├── admin
+    ├── components
+    ├── emails
+    └── pages
+```
+
+* `assets` - Contiene elementos estáticos.
+    * `icons` - Favicon, paquetes de iconos, etc.
+    * `images` - Imágenes de banners, logos, etc.
+    * `scripts` - Contiene scripts de `JavaScript`.
+    * `styles` - Contiene hojas de estilo `CSS`.
+* `config` - Contiene archivos de configuración de la base de datos y del cliente de correo electrónico.
+* `controllers` - Scripts de `PHP` que gestionan el flujo de los datos del cliente y la base de datos.
+* `core` - Contiene herramientas propias de `Nabu`, gestión de mensajes, configuración y sistema de rutas del sitio web.
+* `db` - Realiza la conexión con la base de datos.
+* `libs` - Contiene bibliotecas propias de `Nabu` o de terceros.
+* `models` - Representan tablas de datos de la base de datos.
+* `storage` - Almacena imágenes de banners, fotos de perfil y portadas de los artículos.
+* `views` - Contiene plantillas que generan páginas web `HTML`. Muestran la interpretación de los datos al cliente.
+    * `admin` - Contiene plantillas que construyen el panel de administración del sitio web.
+    * `components` - Contiene elementos de una página web (`header`, `navbar`, `footer`, etc.).
+    * `emails` - Contiene plantillas `HTML` de mensajes de correo electrónico.
+    * `pages` - Contiene plantillas que construyen el sitio web (página principal, inicio de sesión, registro de usuarios, vista de artículos, etc.).
 
 ## Configuración de la base de datos
 
-Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa, el archivo de configuración `config/db.json`
+Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo de configuración `config/db.json`:
 
 ```json
 {
@@ -23,7 +71,7 @@ Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa, el archiv
 
 ## Configuración del cliente de correo electrónico
 
-Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa, el archivo de configuración `config/email.json`
+Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo de configuración `config/email.json`:
 
 ```json
 {

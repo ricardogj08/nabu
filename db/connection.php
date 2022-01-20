@@ -75,7 +75,7 @@ class dbconnection {
 
     if ($id == 1)
       $role = 'admin';
-    if ($id == 2)
+    elseif ($id == 2)
       $role = 'moderator';
 
     return $role;

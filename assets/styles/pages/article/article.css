@@ -81,7 +81,7 @@ header::before {
     background: rgba(255,255,255,0.8);
 }
 
-.nav__logo-wrapper{
+.nav__logo-wrapper {
     width: 80px;
 }
 
@@ -181,31 +181,30 @@ header::before {
     /* transform: translateX(-100%); */
   }
 
-  #icon-heart > path {
+#icon-heart > path {
     fill: var(--color-primary-red);
-  }
+}
 
-  .icon.beat {
+.icon.beat {
     animation: 2s beat-heart ease-in-out forwards;
-  }
+}
 
-  @keyframes beat-heart {
-    0%{
-      opacity: 0.9;
-      transform: scale(0.7);
-
+@keyframes beat-heart {
+    0% {
+        opacity: 0.9;
+        transform: scale(0.7);
     }
-    20%{
-      transform: scale(1.8);
+    20% {
+        transform: scale(1.8);
     }
     40% {
-      transform: scale(1.2);
+        transform: scale(1.2);
     }
-    80%{
-      opacity: 0;
-      transform: scale(0.7);
+    80% {
+        opacity: 0;
+        transform: scale(0.7);
     }
-  }
+}
 
 /* Estilos generales de las etiquetas */
 

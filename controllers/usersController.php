@@ -211,7 +211,7 @@ class usersController {
 
     messages::check($route);
 
-    // Redireccion al panel de administración en base al role.
+    // Redirecciona al panel de administración en base al role.
     if ($user['role'] == 'admin')
       utils::redirect(NABU_ROUTES['admin']);
 

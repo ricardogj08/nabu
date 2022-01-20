@@ -77,6 +77,10 @@ class articlesController {
     require_once 'views/pages/all-articles.php';
   }
 
+  static public function search() {
+    //
+  }
+
   static public function article() {
     require_once 'views/pages/article.php';
   }

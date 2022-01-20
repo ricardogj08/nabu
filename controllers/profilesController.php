@@ -22,4 +22,20 @@ class profilesController {
   static public function sent_articles() {
     //
   }
+
+  static public function profile() {
+    //
+  }
+
+  static public function edit_profile() {
+    //
+  }
+
+  static public function delete_profile() {
+    //
+  }
+
+  static public function favorites() {
+    //
+  }
 }

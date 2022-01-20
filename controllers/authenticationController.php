@@ -21,6 +21,8 @@ defined('NABU') || exit();
 require_once 'models/authenticationModel.php';
 
 class authenticationController {
+  // Activa la cuenta de un usuario desde una URL
+  // de autenticación de dirección de e-mail.
   public static function authentication() {
     if (empty($_GET['user']) || empty($_GET['key']))
       utils::redirect(NABU_ROUTES['home']);
