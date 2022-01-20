@@ -1,0 +1,67 @@
+<!--
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+-->
+
+<?php defined('NABU') || exit() ?>
+
+<!-- Estilos a cargar -->
+<?php $styles = array(
+    '',
+) ?>
+
+<!-- Estilos a cargar para el responsive design -->
+<?php $desktop_styles = array(
+    array('file' => '', 'attributes' => ''),
+) ?>
+
+<!-- Archivos de javascript a cargar -->
+<?php $scripts = array(
+    '',
+) ?>
+
+<?php require_once 'views/components/head.php' ?>
+<?php require_once 'views/components/navbar.php' ?>
+
+<h1>Publicar un artículo</h1>
+
+<?php require_once 'views/components/messages.php' ?>
+
+<form method="POST" action="<?= NABU_ROUTES['post-article'] ?>" enctype="multipart/form-data">
+    <input type="hidden" name="csrf" value="<?= $token ?>">
+    <div>
+        <label for="title"><b>Título del artículo</b></label>
+    </div>
+    <div>
+        <input type="text" id="title" name="title" minlength="1" maxlength="246" size="101" required>
+    </div>
+    <div>
+        <label for="synopsis"><b>Resumen del artículo</b></label>
+    </div>
+    <div>
+        <textarea type="text" id="synopsis" name="synopsis" minlength="1" maxlength="255" rows="3" cols="100" required></textarea>
+    </div>
+    <div>
+        <label for="content"><b>Contenido del artículo <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">formato Markdown</a></b></label>
+    </div>
+    <div>
+        <textarea type="text" id="content" name="content" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required></textarea>
+    </div>
+    <div>
+        <input type="submit" name="post-article-form" value="Enviar">
+    </div>
+</form>
+
+<?php require_once 'views/components/footer.php' ?>

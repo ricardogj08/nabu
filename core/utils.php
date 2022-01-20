@@ -41,4 +41,10 @@ class utils {
   static public function current_date() {
     return date('Y-m-d H:i:s');
   }
+
+  // Redirecciona a una ruta si no existe una sesión de usuario.
+  static public function session_check(string $route) {
+    if (empty($_SESSION['user']))
+      self::redirect($route);
+  }
 }
