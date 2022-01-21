@@ -47,11 +47,11 @@ nabu/
 * `db` - Realiza la conexión con la base de datos.
 * `libs` - Contiene bibliotecas propias de `Nabu` o de terceros.
 * `models` - Representan tablas de datos de la base de datos.
-* `storage` - Almacena imágenes de banners, fotos de perfil y portadas de los artículos.
+* `storage` - Almacena fotos de perfil, imágenes de banners y portadas de los artículos.
 * `views` - Contiene plantillas que generan páginas web `HTML`. Muestran la interpretación de los datos al cliente.
     * `admin` - Contiene plantillas que construyen el panel de administración del sitio web.
     * `components` - Contiene elementos de una página web (`header`, `navbar`, `footer`, etc.).
-    * `emails` - Contiene plantillas `HTML` de mensajes de correo electrónico.
+    * `emails` - Contiene plantillas de mensajes de correo electrónico.
     * `pages` - Contiene plantillas que construyen el sitio web (página principal, inicio de sesión, registro de usuarios, vista de artículos, etc.).
 
 ## Configuración de la base de datos
