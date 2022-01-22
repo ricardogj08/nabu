@@ -21,12 +21,12 @@
 
 <!-- Estilos a cargar -->
 <?php $styles = array(
-    'pages/post-article/post-article.css',
+    'pages/edit-profile/edit-profile.css',
 ) ?>
 
 <!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('file' => 'pages/post-article/post-article-desktop.css', 'attributes' => ''),
+    array('file' => 'pages/edit-profile/edit-profile-desktop.css', 'attributes' => ''),
 ) ?>
 
 <?php require_once 'views/components/head.php' ?>
@@ -45,7 +45,7 @@
                 <label for="avatar"><b>Editar foto de perfil</b></label>
             </div>
             <div>
-                <img src="<?= $user['avatar'] ?>" alt="Foto de perfil" width="8%">
+                <img src="<?= $profile['avatar'] ?>" alt="Foto de perfil" width="8%">
             </div>
             <div>
                 <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>">
@@ -56,7 +56,7 @@
                 <label for="background"><b>Editar fondo de perfil</b></label>
             </div>
             <div>
-                <img src="<?= $user['background'] ?>" alt="Fondo de perfil" width="32%">
+                <img src="<?= $profile['background'] ?>" alt="Fondo de perfil" width="32%">
             </div>
             <div>
                 <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>">
@@ -67,7 +67,7 @@
                 <label for="description"><b>Descripción</b></label>
             </div>
             <div>
-                <textarea id="description" name="description" maxlength="255" rows="5" cols="51"><?= $user['description'] ?></textarea>
+                <textarea id="description" name="description" maxlength="255" rows="5" cols="51"><?= $profile['description'] ?></textarea>
             </div>
         </div>
     </fieldset>
@@ -75,11 +75,11 @@
         <legend>Datos personales</legend>
         <div>
             <label for="name"><b>Nombre completo</b></label>
-            <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= $user['name'] ?>">
+            <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= $profile['name'] ?>">
         </div>
         <div>
             <label for="username"><b>Apodo</b></label>
-            <input type="text" id="username" name="username" minlength="1" value="<?= $user['username'] ?>" maxlength="255">
+            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= $profile['username'] ?>">
         </div>
         <div>
             <label for="password"><b>Nueva constraseña</b></label>

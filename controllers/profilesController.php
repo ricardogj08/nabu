@@ -18,6 +18,8 @@
 
 defined('NABU') || exit();
 
+require_once 'models/profilesModel.php';
+
 class profilesController {
   static public function sent_articles() {
     //
@@ -33,7 +35,21 @@ class profilesController {
     if (empty($_POST['edit-profile-form'])) {
       utils::check_session(NABU_ROUTES['home']);
 
-      $user = array();
+      $profilesModel = new profilesModel();
+
+      // Obtiene los datos de perfil del usuario de sesión.
+      $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
+
+      unset($profilesModel);
+
+      if (empty($profile))
+        utils::redirect(NABU_ROUTES['home']);
+
+      $profile['avatar']     = utils::url_image('avatar', $profile['avatar']);
+      $profile['background'] = utils::url_image('background', $profile['background']);
+
+      if (empty($profile['description']))
+        $profile['description'] = '';
 
       $token    = csrf::generate();
       $messages = messages::get();

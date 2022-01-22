@@ -36,8 +36,8 @@
                 <span></span><a href="<?= NABU_ROUTES['all-articles'] ?>">Artículos</a>
             </li>
             <?php if (isset($_SESSION['user'])): ?>
-                <?php $nav_user = $_SESSION['user'] ?>
-                <?php if ($nav_user['role'] == 'admin'): ?>
+                <?php $user = $_SESSION['user'] ?>
+                <?php if ($user['role'] == 'admin'): ?>
                     <li class="nav__item">
                         <a href="<?= NABU_ROUTES['admin'] ?>">Administración</a>
                     </li>
@@ -52,7 +52,7 @@
                     <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
                 </li>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($nav_user['username']) ?>"><?= utils::escape($nav_user['username']) ?></a>
+                    <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>
                 </li>
                 <li class="nav__item">
                     <span></span><a href="<?= NABU_ROUTES['logout'] ?>">Cerrar sesión</a>

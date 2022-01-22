@@ -52,4 +52,15 @@ class utils {
   public static function url_slug(string $title) {
     return date('Ymd') . '-' . preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($title));
   }
+
+  // @return la URL completa de una imagen.
+  public static function url_image(string $category, $filename) {
+    $url = NABU_DEFAULT[$category];
+
+    if (!empty($filename))
+      if (file_exists(NABU_DIRECTORY['storage_' . $category . 's'] . '/' . $filename))
+        $url = NABU_DIRECTORY[$category . 's'] . '/' . $filename;
+
+    return $url;
+  }
 }
