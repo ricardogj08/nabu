@@ -17,19 +17,16 @@
 
 <?php defined('NABU') || exit() ?>
 
+<?php $head_title = 'Publica un post' ?>
+
 <!-- Estilos a cargar -->
 <?php $styles = array(
-    '',
+    'pages/post-article/post-article.css',
 ) ?>
 
 <!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('file' => '', 'attributes' => ''),
-) ?>
-
-<!-- Archivos de javascript a cargar -->
-<?php $scripts = array(
-    '',
+    array('file' => 'pages/post-article/post-article-desktop.css', 'attributes' => ''),
 ) ?>
 
 <?php require_once 'views/components/head.php' ?>
