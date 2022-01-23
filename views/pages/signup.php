@@ -17,7 +17,7 @@
 
 <?php defined('NABU') || exit() ?>
 
-<?php $head_title = 'Crea una cuenta' ?>
+<?php $head_title = 'Registrate' ?>
 
 <!-- Estilos a cargar -->
 <?php $styles = array(

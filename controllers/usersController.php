@@ -24,10 +24,10 @@ class usersController {
   // Renderiza la página de registro de usuarios
   // y registra usuarios con el método POST.
   static public function signup() {
-    if (empty($_POST['signup-form'])) {
-      // Redirecciona a "home" si existe una sesión de usuario.
-      utils::session_exists(NABU_ROUTES['home']);
+    // Redirecciona a "home" si existe una sesión de usuario.
+    utils::session_exists(NABU_ROUTES['home']);
 
+    if (empty($_POST['signup-form'])) {
       $token    = csrf::generate();
       $messages = messages::get();
 
@@ -133,9 +133,9 @@ class usersController {
   // Renderiza la página de inicio de sesión
   // y asigna credenciales de acceso con el método POST.
   static public function login() {
-    if (empty($_POST['login-form'])) {
-      utils::session_exists(NABU_ROUTES['home']);
+    utils::session_exists(NABU_ROUTES['home']);
 
+    if (empty($_POST['login-form'])) {
       $token    = csrf::generate();
       $messages = messages::get();
 
