@@ -41,6 +41,26 @@ class profilesModel extends dbConnection {
     }
   }
 
+  // Actualiza los datos de perfil de un usuario.
+  public function update(int $id, array $data) {
+    $columns = array_keys($data);
+    $query   = '';
+
+    foreach ($columns as $column)
+      $query = $query . $column . ' = :' . $column . ', ';
+
+    $query = 'UPDATE profiles SET ' . rtrim($query, ', ') . ' WHERE id = :id';
+
+    $data['id'] = $id;
+
+    try {
+      $this -> pdo -> prepare($query) -> execute($data);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos de tu perfil');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

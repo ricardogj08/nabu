@@ -196,6 +196,26 @@ class profilesController {
       $update = array();
     }
 
+    // Valida si hay cambios en la descripción de perfil.
+    if (empty($data['description'])) {
+      if (isset($profile['description'])) {
+        $update['description'] = null;
+
+        messages::add('Tu descripción se ha actualizado correctamente');
+      }
+    }
+    else {
+      if ($data['description'] != $profile['description']) {
+        $update['description'] = $data['description'];
+
+        messages::add('Tu descripción se ha actualizado correctamente');
+      }
+    }
+
+    // Actualiza los datos de perfil de un usuario en la base de datos.
+    if (!empty($update))
+      $profilesModel -> update($id, $update);
+
     utils::redirect(NABU_ROUTES['edit-profile']);
   }
 
