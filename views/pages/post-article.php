@@ -32,7 +32,7 @@
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/navbar.php' ?>
 
-<h1>Publicar un artículo</h1>
+<h1>Publica un post</h1>
 
 <?php require_once 'views/components/messages.php' ?>
 

@@ -17,7 +17,7 @@
 
 <?php defined('NABU') || exit() ?>
 
-<?php $head_title = 'Iniciar sesión' ?>
+<?php $head_title = 'Inicia sesión' ?>
 
 <!-- Estilos a cargar -->
 <?php $styles = array(

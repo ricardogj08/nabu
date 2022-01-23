@@ -44,6 +44,6 @@
     <?php foreach ($scripts as $script): ?>
         <script src="<?= NABU_DIRECTORY['scripts'] . '/' . $script ?>" defer></script>
     <?php endforeach ?>
-    <title><?= isset($head_title) ? $head_title : NABU_DEFAULT['website-name'] ?></title>
+    <title><?= isset($head_title) ? $head_title . ' | ' . NABU_DEFAULT['website-name'] : NABU_DEFAULT['website-name'] ?></title>
 </head>
 <body>

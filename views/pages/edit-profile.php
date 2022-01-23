@@ -17,7 +17,7 @@
 
 <?php defined('NABU') || exit() ?>
 
-<?php $head_title = 'Editar perfil' ?>
+<?php $head_title = 'Edita tu perfil' ?>
 
 <!-- Estilos a cargar -->
 <?php $styles = array(
@@ -32,7 +32,7 @@
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/navbar.php' ?>
 
-<h1>Editar perfil</h1>
+<h1>Edita tu perfil</h1>
 
 <?php require_once 'views/components/messages.php' ?>
 

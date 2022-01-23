@@ -17,7 +17,7 @@
 
 <?php defined('NABU') || exit() ?>
 
-<?php $head_title = $profile['name'] ?>
+<?php $head_title = $profile['username'] ?>
 
 <!-- Estilos cargados -->
 <?php $styles = array(
