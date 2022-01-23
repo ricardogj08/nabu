@@ -25,8 +25,47 @@ class profilesController {
     //
   }
 
+  // Renderiza la página de un perfil de usuario.
   static public function profile() {
-    //
+    if (empty($_GET['user']))
+      utils::redirect(NABU_ROUTES['home']);
+
+    $profilesModel = new profilesModel();
+
+    // Obtiene los datos de perfil del usuario.
+    $profile = $profilesModel -> get('username', $_GET['user']);
+
+    unset($profilesModel);
+
+    if (empty($profile))
+      utils::redirect(NABU_ROUTES['home']);
+
+    $isMyProfile = false;
+
+    if (isset($_SESSION['user']))
+      if ($_SESSION['user']['username'] == $profile['username'])
+        $isMyProfile = true;
+
+    $view = NABU_ROUTES['profile'] . '&user=' . urlencode($profile['username']);
+
+    // Escapa los caracteres del nombre completo y el apodo a HTML5.
+    $profile['name']     = utils::escape($profile['name']);
+    $profile['username'] = utils::escape($profile['username']);
+
+    // Define la URL completa de la foto y fondo de perfil.
+    $profile['avatar']     = utils::url_image('avatar', $profile['avatar']);
+    $profile['background'] = utils::url_image('background', $profile['background']);
+
+    if (empty($profile['description']))
+      $profile['description'] = 'Compartiendo conocimiento...';
+
+    $profile['description'] = utils::escape($profile['description']);
+
+    $page = 1;
+
+    $articles = array();
+
+    require_once 'views/pages/profile.php';
   }
 
   // Renderiza la página de edición de perfil
