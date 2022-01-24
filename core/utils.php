@@ -64,6 +64,16 @@ class utils {
     return $url;
   }
 
+  // Elimina una imagen.
+  public static function remove_image(string $category, $filename) {
+    if (!empty($filename)) {
+      $path = NABU_DIRECTORY['storage-' . $category . 's'] . '/' . $filename;
+
+      if (file_exists($path))
+        unlink($path);
+    }
+  }
+
   // @return el nombre de una imagen y reemplaza una imagen por otra.
   public static function update_image(string $model, string $category, $original, array $replacement) {
     $extension = explode('/', $replacement['type'])[1];
@@ -82,19 +92,11 @@ class utils {
 
     unset($Model);
 
-    $path = NABU_DIRECTORY['storage-' . $category . 's'] . '/';
-
-    $destination = $path . $filename;
+    $destination = NABU_DIRECTORY['storage-' . $category . 's'] . '/' . $filename;
 
     // Mueve la imagen subida a la carpeta de almacenamiento de fotos de perfil.
     if (move_uploaded_file($replacement['tmp_name'], $destination)) {
-      // Elimina la imagen anterior.
-      if (!empty($original)) {
-        $origin = $path . $original;
-
-        if (file_exists($origin))
-          unlink($origin);
-      }
+      self::remove_image($category, $original);
 
       return $filename;
     }

@@ -8,7 +8,7 @@ Un sistema gestor de contenido (CMS) de artículos en `Markdown` para la [Univer
 * [MariaDB >= 10.5.10](https://mariadb.org/)
 * Habilita y modifica los siguientes parámetros en el archivo de configuración `php.ini`:
     * `extension=pdo_mysql`
-    * `upload_max_filesize = 3M`
+    * `upload_max_filesize = 2M`
 
 ## Estructura del proyecto
 
