@@ -94,7 +94,7 @@ class utils {
 
     $destination = NABU_DIRECTORY['storage-' . $category . 's'] . '/' . $filename;
 
-    // Mueve la imagen subida a la carpeta de almacenamiento de fotos de perfil.
+    // Mueve la imagen subida a la carpeta de almacenamiento.
     if (move_uploaded_file($replacement['tmp_name'], $destination)) {
       self::remove_image($category, $original);
 

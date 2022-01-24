@@ -44,7 +44,7 @@ nabu/
 * `config` - Contiene archivos de configuración de la base de datos y del cliente de correo electrónico.
 * `controllers` - Scripts de `PHP` que gestionan el flujo de los datos del cliente y la base de datos.
 * `core` - Contiene herramientas propias de `Nabu`, gestión de mensajes, configuración y sistema de rutas del sitio web.
-* `db` - Realiza la conexión con la base de datos.
+* `db` - Contiene el script `SQL` y realiza la conexión con la base de datos.
 * `libs` - Contiene bibliotecas propias de `Nabu` o de terceros.
 * `models` - Representan tablas de datos de la base de datos.
 * `storage` - Almacena fotos de perfil, imágenes de banners y portadas de los artículos.
@@ -81,6 +81,15 @@ Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo
 	"password": "xxxxx"
 }
 ```
+
+## Ejecuta Nabu en un servidor local
+
+```shell
+$ cd nabu
+$ php -S localhost:8000
+```
+
+* <http://localhost:8000/>
 
 ## Licencia
 

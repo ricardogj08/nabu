@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 );
 
 CREATE TABLE IF NOT EXISTS `authentications` (
-    `id`         INT UNSIGNED        NOT NULL,
-    `hash`       VARCHAR(255)        NOT NULL,
-    `expiration` INT UNSIGNED        NOT NULL,
+    `id`         INT UNSIGNED          NOT NULL,
+    `hash`       VARCHAR(255)          NOT NULL,
+    `expiration` INT UNSIGNED          NOT NULL,
     CONSTRAINT   authentications_id_pk PRIMARY KEY(id),
     CONSTRAINT   authentications_id_fk FOREIGN KEY(id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
