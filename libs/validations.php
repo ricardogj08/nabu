@@ -66,6 +66,33 @@ class validations {
       messages::add('El campo "' . $this -> field . '" contiene una dirección de correo electrónico no válido');
   }
 
+  // Valida si la información de un archivo proviene de la variable global $_FILE.
+  private function is_file() {
+    $file = $this -> value;
+    return is_array($file) && !empty($file['tmp_name']);
+  }
+
+  // Valida si es una imagen.
+  private function is_image() {
+    $image = $this -> value;
+
+    // Valida el tamaño de la imagen.
+    if ($image['size'] > NABU_DEFAULT['image-size'])
+      messages::add('Por favor elija una imagen de menor peso');
+
+    $formats = explode(',', NABU_DEFAULT['image-formats']);
+
+    // Valida el formato de la imagen.
+    foreach ($formats as $format)
+      if (trim($format) == $image['type']) {
+        $extension = $format;
+        break;
+      }
+
+    if (empty($extension))
+      messages::add('Formato de imagen no válido');
+  }
+
   // Valida si dos datos son iguales.
   private function equal($foo) {
     if ($this -> value !== $foo)
@@ -116,7 +143,15 @@ class validations {
           $this -> is_email();
       }
       elseif ($type == 'image') {
-        //
+        // Valida si el campo para subir imágenes es obligatorio u opcional.
+        if (!$this -> is_file()) {
+          if (empty($param['optional']))
+            messages::add('El campo "' . $this -> field . '" require obligatoriamente de un archivo de imagen');
+
+          continue;
+        }
+
+        $this -> is_image();
       }
 
       if (isset($param['equal']))

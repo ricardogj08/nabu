@@ -61,6 +61,22 @@ class profilesModel extends dbConnection {
     }
   }
 
+  // @return el id de un perfil si existe una imagen.
+  public function find_image(string $column, string $filename) {
+    $query = 'SELECT id FROM profiles WHERE ' . $column . ' = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($filename));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar tus imágenes de perfil');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

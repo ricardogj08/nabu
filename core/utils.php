@@ -58,9 +58,47 @@ class utils {
     $url = NABU_DEFAULT[$category];
 
     if (!empty($filename))
-      if (file_exists(NABU_DIRECTORY['storage_' . $category . 's'] . '/' . $filename))
+      if (file_exists(NABU_DIRECTORY['storage-' . $category . 's'] . '/' . $filename))
         $url = NABU_DIRECTORY[$category . 's'] . '/' . $filename;
 
     return $url;
+  }
+
+  // @return el nombre de una imagen y reemplaza una imagen por otra.
+  public static function update_image(string $model, string $category, $original, array $replacement) {
+    $extension = explode('/', $replacement['type'])[1];
+
+    if ($extension == 'svg+xml')
+      $extension = 'svg';
+
+    require_once 'models/' . $model . '.php';
+
+    $Model = new $model();
+
+    // Valida si el nombre de la imagen es único.
+    do
+      $filename = bin2hex(random_bytes(32)) . '.' . $extension;
+    while(!empty($Model -> find_image($category, $filename)));
+
+    unset($Model);
+
+    $path = NABU_DIRECTORY['storage-' . $category . 's'] . '/';
+
+    $destination = $path . $filename;
+
+    // Mueve la imagen subida a la carpeta de almacenamiento de fotos de perfil.
+    if (move_uploaded_file($replacement['tmp_name'], $destination)) {
+      // Elimina la imagen anterior.
+      if (!empty($original)) {
+        $origin = $path . $original;
+
+        if (file_exists($origin))
+          unlink($origin);
+      }
+
+      return $filename;
+    }
+
+    return false;
   }
 }

@@ -102,8 +102,10 @@ class profilesController {
 
     $validations = new validations(NABU_ROUTES['edit-profile']);
 
+    $form = array_merge($_POST, $_FILES);
+
     // Valida el formulario de edición de perfil.
-    $data = $validations -> validate($_POST, array(
+    $data = $validations -> validate($form, array(
       array('field' => 'avatar',      'type'       => 'image', 'optional'   => true),
       array('field' => 'background',  'type'       => 'image', 'optional'   => true),
       array('field' => 'description', 'trim_all'   => true,    'min_length' => 1,   'max_length' => 255,  'optional' => true),
@@ -210,6 +212,32 @@ class profilesController {
 
         messages::add('Tu descripción se ha actualizado correctamente');
       }
+    }
+
+    // Valida si hay cambios en la foto de perfil.
+    if (isset($data['avatar'])) {
+      $update['avatar'] = utils::update_image('profilesModel', 'avatar', $profile['avatar'], $data['avatar']);
+
+      if ($update['avatar'] === false) {
+        messages::add('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos actualizar tu foto de perfil');
+
+        unset($update['avatar']);
+      }
+      else
+        messages::add('Tu foto de perfil se ha actualizado correctamente');
+    }
+
+    // Valida si hay cambios en el fondo de perfil.
+    if (isset($data['background'])) {
+      $update['background'] = utils::update_image('profilesModel', 'background', $profile['background'], $data['background']);
+
+      if ($update['background'] === false) {
+        messages::add('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos actualizar el fondo de tu perfil');
+
+        unset($update['background']);
+      }
+      else
+        messages::add('El fondo de tu perfil se ha actualizado correctamente');
     }
 
     // Actualiza los datos de perfil de un usuario en la base de datos.
