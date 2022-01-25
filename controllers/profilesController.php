@@ -73,11 +73,13 @@ class profilesController {
   static public function edit_profile() {
     utils::check_session(NABU_ROUTES['home']);
 
+    $id = $_SESSION['user']['id'];
+
     if (empty($_POST['edit-profile-form'])) {
       $profilesModel = new profilesModel();
 
       // Obtiene los datos de perfil del usuario de sesión.
-      $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
+      $profile = $profilesModel -> get('id', $id);
 
       unset($profilesModel);
 
@@ -118,8 +120,6 @@ class profilesController {
 
     if (empty($data))
       utils::redirect($view);
-
-    $id = $_SESSION['user']['id'];
 
     $profilesModel = new profilesModel();
 
@@ -274,6 +274,30 @@ class profilesController {
     ));
 
     $id = $_SESSION['user']['id'];
+
+    $profilesModel = new profilesModel();
+
+    $profile = $profilesModel -> get('id', $id);
+
+    if (empty($profile))
+      utils::redirect(NABU_ROUTES['logout']);
+
+    // Valida la contraseña del usuario.
+    if (!password_verify($data['password'], $profile['password'])) {
+      messages::add('La contraseña es incorrecta');
+      utils::redirect($view);
+    }
+
+    // Elimina la foto de perfil.
+    utils::remove_image('avatar', $profile['avatar']);
+
+    // Elimina el fondo de perfil.
+    utils::remove_image('background', $profile['background']);
+
+    // Elimina el perfil y desactiva la cuenta del usuario.
+    $profilesModel -> delete($id);
+
+    utils::redirect(NABU_ROUTES['logout']);
   }
 
   static public function favorites() {

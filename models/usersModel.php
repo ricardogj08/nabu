@@ -25,7 +25,7 @@ class usersModel extends dbConnection {
 
   // @return una lista de arrays asociativos con los datos de los usuarios.
   public function find(string $username, string $email) {
-    $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, u.registration_date,' .
+    $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, ' .
              'a.hash, a.expiration FROM users AS u ' .
              'LEFT JOIN authentications AS a ON u.id = a.id ' .
              'WHERE u.username = ? OR u.email = ? LIMIT 2';

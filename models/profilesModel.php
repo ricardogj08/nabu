@@ -25,7 +25,7 @@ class profilesModel extends dbConnection {
 
   // @return un array asociativo con los datos de perfil de un usuario.
   public function get(string $column, $pattern) {
-    $query = 'SELECT u.name, u.username, p.avatar, p.background, p.description '.
+    $query = 'SELECT u.name, u.username, u.password, p.avatar, p.background, p.description '.
              'FROM users AS u INNER JOIN profiles AS p ON u.id = p.id ' .
              'WHERE u.' . $column . ' = ? LIMIT 1';
 
@@ -74,6 +74,22 @@ class profilesModel extends dbConnection {
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar tus imágenes de perfil');
+    }
+  }
+
+  // Elimina el perfil de un usuario y desactiva su cuenta.
+  public function delete(int $id) {
+    $query_delete   = 'DELETE FROM profiles WHERE id = ?';
+    $query_disable  = 'UPDATE users SET email = NULL, activated = FALSE WHERE id = ?';
+
+    $id = array($id);
+
+    try {
+      $this -> pdo -> prepare($query_delete) -> execute($id);
+      $this -> pdo -> prepare($query_disable) -> execute($id);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar tu cuenta de usuario');
     }
   }
 
