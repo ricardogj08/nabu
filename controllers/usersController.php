@@ -38,7 +38,9 @@ class usersController {
 
     csrf::validate($_POST['csrf']);
 
-    $validations = new validations(NABU_ROUTES['signup']);
+    $view = NABU_ROUTES['signup'];
+
+    $validations = new validations($view);
 
     // Valida el formulario de registro de usuarios.
     $data = $validations -> validate($_POST, array(
@@ -56,7 +58,6 @@ class usersController {
     $users = $usersModel -> find($data['username'], $data['email']);
 
     $msg   = 'Existe un cuenta registrada con el mismo apodo o dirección de correo electrónico, por favor inténtelo de nuevo';
-    $route = NABU_ROUTES['signup'];
 
     // Valida si la cuenta es única y elimina cuentas con autenticación expirada.
     foreach ($users as $user) {
@@ -67,12 +68,12 @@ class usersController {
           $usersModel -> delete($user['id']);
         else {
           messages::add($msg);
-          messages::check($route);
+          messages::check($view);
         }
       }
       else {
         messages::add($msg);
-        messages::check($route);
+        messages::check($view);
       }
     }
 
@@ -127,7 +128,7 @@ class usersController {
 
     messages::add('Su cuenta se ha registrado correctamente, por favor verifica tu dirección de correo electrónico');
 
-    utils::redirect(NABU_ROUTES['signup']);
+    utils::redirect($view);
   }
 
   // Renderiza la página de inicio de sesión
@@ -146,7 +147,9 @@ class usersController {
 
     csrf::validate($_POST['csrf']);
 
-    $validations = new validations(NABU_ROUTES['login']);
+    $view = NABU_ROUTES['login'];
+
+    $validations = new validations($view);
 
     // Valida el formulario de inicio de sesión.
     $data = $validations -> validate($_POST, array(
@@ -168,18 +171,17 @@ class usersController {
     $user = $usersModel -> get($column, $data['identity']);
 
     $msg   = 'La identificación de sesión o la contraseña son incorrectas';
-    $route = NABU_ROUTES['login'];
 
     // Valida si existe el usuario.
     if (empty($user)) {
       messages::add($msg);
-      utils::redirect($route);
+      utils::redirect($view);
     }
 
     // Valida la contraseña del usuario.
     if (!password_verify($data['password'], $user['password'])) {
       messages::add($msg);
-      utils::redirect($route);
+      utils::redirect($view);
     }
 
     // Valida si el usuario tiene fecha de expiración del hash de autenticación de e-mail.
@@ -209,7 +211,7 @@ class usersController {
         messages:add($msg);
     }
 
-    messages::check($route);
+    messages::check($view);
 
     // Redirecciona al panel de administración en base al role.
     if ($user['role'] == 'admin')

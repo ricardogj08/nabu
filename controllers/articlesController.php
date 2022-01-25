@@ -37,7 +37,9 @@ class articlesController {
 
     csrf::validate($_POST['csrf']);
 
-    $validations = new validations(NABU_ROUTES['post-article']);
+    $view = NABU_ROUTES['post-article'];
+
+    $validations = new validations($view);
 
     // Valida el formulario de inicio de sesión.
     $data = $validations -> validate($_POST, array(
@@ -60,7 +62,7 @@ class articlesController {
     // Valida si el título del artículo es único en el día.
     if (!empty($article)) {
       messages::add('Por favor define un título diferente o espera máximo un día para enviar tu publicación');
-      utils::redirect(NABU_ROUTES['post-article']);
+      utils::redirect($view);
     }
 
     $data['user_id']       = $_SESSION['user']['id'];
@@ -74,6 +76,9 @@ class articlesController {
   }
 
   static public function all_articles() {
+    $token    = csrf::generate();
+    $articles = array();
+
     require_once 'views/pages/all-articles.php';
   }
 

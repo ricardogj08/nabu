@@ -100,7 +100,9 @@ class profilesController {
 
     csrf::validate($_POST['csrf']);
 
-    $validations = new validations(NABU_ROUTES['edit-profile']);
+    $view = NABU_ROUTES['edit-profile'];
+
+    $validations = new validations($view);
 
     $form = array_merge($_POST, $_FILES);
 
@@ -115,7 +117,7 @@ class profilesController {
     ));
 
     if (empty($data))
-      utils::redirect(NABU_ROUTES['edit-profile']);
+      utils::redirect($view);
 
     $id = $_SESSION['user']['id'];
 
@@ -244,7 +246,7 @@ class profilesController {
     if (!empty($update))
       $profilesModel -> update($id, $update);
 
-    utils::redirect(NABU_ROUTES['edit-profile']);
+    utils::redirect($view);
   }
 
   // Renderiza la página para eliminar una cuenta de usuario.

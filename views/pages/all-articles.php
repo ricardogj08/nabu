@@ -20,7 +20,7 @@
 <?php $head_title = 'Muro' ?>
 
 <!-- Estilos cargados -->
-<?php $styles     = array(
+<?php $styles = array(
     'components/navbar/navbar.css',
     'components/search/search.css',
     'pages/all-articles/all-articles.css',
