@@ -77,10 +77,10 @@ class profilesModel extends dbConnection {
     }
   }
 
-  // Elimina el perfil de un usuario y desactiva su cuenta.
+  // Elimina el perfil y desactiva la cuenta de un usuario.
   public function delete(int $id) {
-    $query_delete   = 'DELETE FROM profiles WHERE id = ?';
-    $query_disable  = 'UPDATE users SET email = NULL, activated = FALSE WHERE id = ?';
+    $query_delete  = 'DELETE FROM profiles WHERE id = ?';
+    $query_disable = 'UPDATE users SET email = NULL, activated = FALSE WHERE id = ?';
 
     $id = array($id);
 
