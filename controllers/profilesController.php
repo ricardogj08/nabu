@@ -247,8 +247,31 @@ class profilesController {
     utils::redirect(NABU_ROUTES['edit-profile']);
   }
 
+  // Renderiza la página para eliminar una cuenta de usuario.
   static public function delete_profile() {
-    //
+    utils::check_session(NABU_ROUTES['home']);
+
+    $view = NABU_ROUTES['delete-profile'];
+
+    if (empty($_POST['confirm-password-form'])) {
+      $token    = csrf::generate();
+      $messages = messages::get();
+
+      require_once 'views/pages/confirm-password.php';
+
+      exit();
+    }
+
+    csrf::validate($_POST['csrf']);
+
+    $validations = new validations($view);
+
+    // Valida el formulario para eliminar una cuenta de usuario.
+    $data = $validations -> validate($_POST, array(
+      array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password']),
+    ));
+
+    $id = $_SESSION['user']['id'];
   }
 
   static public function favorites() {
