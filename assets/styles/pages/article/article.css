@@ -167,7 +167,7 @@ header::before {
 /* Heart toggle animation */
 .heart {
     position: absolute;
-    z-index: 3;
+    z-index: 1;
     top: -90px;
     right: 0;
 }
