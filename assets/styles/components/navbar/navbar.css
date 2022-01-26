@@ -46,7 +46,7 @@
 }
 
 .nav__burger-icon {
-    background-image: url("../../../icons/burger-icon.svg");
+    color: white;
     width: 14px;
     height: 14px;
     cursor: pointer;

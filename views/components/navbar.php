@@ -25,7 +25,7 @@
             <img class="nav__logo" src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu">
         </a>
     </figure>
-    <span class="nav__burger-icon" id="control-menu"></span>
+    <span class="nav__burger-icon" id="control-menu">&#9776;</span>
         <ul class="nav__menu" id="menu">
             <li class="nav__item-logo">
                 <a href="<?= NABU_ROUTES['home'] ?>">
