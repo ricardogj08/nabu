@@ -39,7 +39,7 @@
                 <?php $user = $_SESSION['user'] ?>
                 <?php if ($user['role'] == 'admin'): ?>
                     <li class="nav__item">
-                        <a href="<?= NABU_ROUTES['admin'] ?>">Administración</a>
+                        <a href="<?= NABU_ROUTES['approve-articles'] ?>">Administración</a>
                     </li>
                 <?php endif ?>
                 <li class="nav__item">
