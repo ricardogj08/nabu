@@ -19,19 +19,25 @@
 defined('NABU') || exit();
 
 class adminController {
+  // Renderiza la página de administración para aprobar un artículo
+  // y aprueba un artículo con el método POST.
+  static public function approve_articles() {
+    require_once 'views/admin/approve-articles.php';
+  }
+
+  // Renderiza la página de administración para editar un artículo
+  // y actualiza los datos del artículo con el método POST.
   static public function review_article() {
     require_once 'views/admin/review-article.php';
   }
 
+  // Renderiza la página de administración para buscar artículos publicados.
   static public function published_articles() {
     require_once 'views/admin/published-articles.php';
   }
 
+  // Renderiza la página de administración para buscar usuarios registrados.
   static public function registered_users() {
     require_once 'views/admin/registered-users.php';
-  }
-
-  static public function approve_articles() {
-    require_once 'views/admin/approve-articles.php';
   }
 }

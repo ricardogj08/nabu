@@ -29,7 +29,7 @@
 <h1>Administración</h1>
 <nav>
     <ul>
-        <li><a href="<?= NABU_ROUTES['approve-articles'] ?>">Aprobar Artículos</a></li>
+        <li><a href="<?= NABU_ROUTES['approve-articles'] ?>">Aprobar artículos</a></li>
         <li><a href="<?= NABU_ROUTES['published-articles'] ?>">Artículos publicados</a></li>
         <li><a href="<?= NABU_ROUTES['registered-users'] ?>">Usuarios registrados</a></li>
         <li><a href="<?= NABU_ROUTES['home'] ?>"><?= NABU_DEFAULT['website-name'] ?></a></li>
