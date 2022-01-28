@@ -1,5 +1,4 @@
-<?php
-/*
+<!--
 * Este archivo es parte de Nabu.
 *
 * Nabu es software libre: puedes redistribuirlo y/o modificarlo
@@ -14,24 +13,12 @@
 *
 * Debería haber recibido una copia de la Licencia Pública General de GNU Affero
 * junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
-*/
+-->
 
-defined('NABU') || exit();
+<?php defined('NABU') || exit() ?>
 
-class adminController {
-  static public function review_article() {
-    require_once 'views/admin/review-article.php';
-  }
+<?php $head_title = 'Aprobar artículos' ?>
 
-  static public function published_articles() {
-    require_once 'views/admin/published-articles.php';
-  }
-
-  static public function registered_users() {
-    require_once 'views/admin/registered-users.php';
-  }
-
-  static public function approve_articles() {
-    require_once 'views/admin/approve-articles.php';
-  }
-}
+<?php require_once 'views/components/dashboard.php' ?>
+<h1>Aprobar artículos</h1>
+<?php require_once 'views/components/footer.php' ?>
