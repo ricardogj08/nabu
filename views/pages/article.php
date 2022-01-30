@@ -29,7 +29,7 @@
 
 <!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 768px)"'),
     array('file' => 'pages/article/article-desktop.css',    'attributes' => 'media="screen and (min-width: 768px)"')
 ) ?>
 
