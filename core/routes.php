@@ -19,10 +19,12 @@
 defined('NABU') || exit();
 
 return array(
-  'authentication'     => array('route' => 'authentication',     'controller' => 'authenticationController', 'view' => 'authentication'),
   'all-articles'       => array('route' => 'all-articles',       'controller' => 'articlesController',       'view' => 'all_articles'),
   'approve-articles'   => array('route' => 'approve-articles',   'controller' => 'adminController',          'view' => 'approve_articles'),
   'article'            => array('route' => 'article',            'controller' => 'articlesController',       'view' => 'article'),
+  'authentication'     => array('route' => 'authentication',     'controller' => 'authenticationController', 'view' => 'authentication'),
+  'authorize-article'  => array('route' => 'authorize-article',  'controller' => 'adminController',          'view' => 'authorize_article'),
+  'delete-article'     => array('route' => 'delete-article',     'controller' => 'adminController',          'view' => 'delete_article'),
   'delete-profile'     => array('route' => 'delete-profile',     'controller' => 'profilesController',       'view' => 'delete_profile'),
   'edit-profile'       => array('route' => 'edit-profile',       'controller' => 'profilesController',       'view' => 'edit_profile'),
   'errors'             => array('route' => 'errors',             'controller' => 'blogController',           'view' => 'errors'),

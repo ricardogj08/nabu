@@ -23,6 +23,35 @@ class adminModel extends dbConnection {
     parent::__construct();
   }
 
+  // @return un array asociativo de artículos en espera de aprobación.
+  public function sent(string $pattern = '') {
+    $query = 'SELECT a.title, a.slug, u.username AS author ' .
+             'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
+             'WHERE a.authorized = FALSE ORDER BY a.creation_date DESC';
+
+    if (!empty($pattern))
+      $query = $query . 'LIMIT ? OFFSET ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute();
+      else
+        $prepare -> execute();
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para mostrar los artículos en espera de aprobación');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

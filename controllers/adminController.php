@@ -18,10 +18,20 @@
 
 defined('NABU') || exit();
 
+require_once 'models/adminModel.php';
+
 class adminController {
   // Renderiza la página de administración para aprobar un artículo
   // y aprueba un artículo con el método POST.
   static public function approve_articles() {
+    $adminModel = new adminModel();
+
+    $articles = $adminModel -> sent();
+
+    unset($adminModel);
+
+    $messages = messages::get();
+
     require_once 'views/admin/approve-articles.php';
   }
 
@@ -29,6 +39,16 @@ class adminController {
   // y actualiza los datos del artículo con el método POST.
   static public function review_article() {
     require_once 'views/admin/review-article.php';
+  }
+
+  // Renderiza la página para eliminar un artículo.
+  static public function delete_article() {
+    require_once 'views/pages/confirm-password.php';
+  }
+
+  // Renderiza la página autorizar la publicación de un artículo
+  static public function authorize_article() {
+    require_once 'views/pages/confirm-password.php';
   }
 
   // Renderiza la página de administración para buscar artículos publicados.
