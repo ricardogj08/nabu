@@ -28,7 +28,7 @@ class adminModel extends dbConnection {
     $query = 'SELECT COUNT(*) AS total FROM articles WHERE authorized = FALSE';
 
     if (!empty($pattern))
-      $query = $query . 'AND title LIKE ?';
+      $query = $query . ' AND title LIKE ?';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
