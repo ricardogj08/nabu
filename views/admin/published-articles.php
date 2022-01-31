@@ -20,5 +20,9 @@
 <?php $head_title = 'Artículos publicados' ?>
 
 <?php require_once 'views/components/dashboard.php' ?>
+
 <h1>Artículos publicados</h1>
+
+<?php require_once 'views/components/admin-search.php' ?>
+
 <?php require_once 'views/components/footer.php' ?>

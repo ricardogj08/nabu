@@ -21,15 +21,30 @@ defined('NABU') || exit();
 require_once 'models/adminModel.php';
 
 class adminController {
+  private const limit = 10;
+
   // Renderiza la página de administración para aprobar un artículo
   // y aprueba un artículo con el método POST.
   static public function approve_articles() {
+    $view  = NABU_ROUTES['approve-articles'];
+    $max   = 246;
+    $query = '';
+
     $adminModel = new adminModel();
 
-    $articles = $adminModel -> sent();
+    // Obtiene el número total de artículos autorizados.
+    $total = $adminModel -> count_sent($query);
 
-    unset($adminModel);
+    $pagination = utils::pagination($total, self::limit, $view);
 
+    // Lista de artículos en espera de aprobación.
+    $articles = $adminModel -> sent(self::limit, $pagination['accumulation'], $query);
+
+    $page = $pagination['page'];
+
+    unset($adminModel, $total, $pagination);
+
+    $token    = csrf::generate();
     $messages = messages::get();
 
     require_once 'views/admin/approve-articles.php';
@@ -38,26 +53,49 @@ class adminController {
   // Renderiza la página de administración para editar un artículo
   // y actualiza los datos del artículo con el método POST.
   static public function review_article() {
+    $token    = csrf::generate();
+    $messages = messages::get();
+
     require_once 'views/admin/review-article.php';
   }
 
   // Renderiza la página para eliminar un artículo.
   static public function delete_article() {
+    $token    = csrf::generate();
+    $messages = messages::get();
+
     require_once 'views/pages/confirm-password.php';
   }
 
-  // Renderiza la página autorizar la publicación de un artículo
+  // Renderiza la página para autorizar la publicación de un artículo.
   static public function authorize_article() {
+    $token    = csrf::generate();
+    $messages = messages::get();
+
     require_once 'views/pages/confirm-password.php';
   }
 
   // Renderiza la página de administración para buscar artículos publicados.
   static public function published_articles() {
+    $view  = NABU_ROUTES['published-articles'];
+    $max   = 246;
+    $query = '';
+
+    $token    = csrf::generate();
+    $messages = messages::get();
+
     require_once 'views/admin/published-articles.php';
   }
 
   // Renderiza la página de administración para buscar usuarios registrados.
   static public function registered_users() {
+    $view  = NABU_ROUTES['registered-users'];
+    $max   = 255;
+    $query = '';
+
+    $token    = csrf::generate();
+    $messages = messages::get();
+
     require_once 'views/admin/registered-users.php';
   }
 }

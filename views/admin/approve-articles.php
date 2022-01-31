@@ -20,7 +20,10 @@
 <?php $head_title = 'Aprobar artículos' ?>
 
 <?php require_once 'views/components/dashboard.php' ?>
+
 <h1>Aprobar artículos</h1>
+
+<?php require_once 'views/components/admin-search.php' ?>
 
 <table>
     <tr>
@@ -41,4 +44,5 @@
     <?php endforeach ?>
 </table>
 
+<?php require_once 'views/components/pagination.php' ?>
 <?php require_once 'views/components/footer.php' ?>

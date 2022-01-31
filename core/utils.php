@@ -103,4 +103,33 @@ class utils {
 
     return false;
   }
+
+  // @return un array asociativo con la gestión de páginas de resultados.
+  public static function pagination(int $total, int $limit, string $route) {
+    // Página de resultado inicial.
+    $page = 1;
+
+    // Calcula el número total de páginas de resultados.
+    $results = ceil($total/$limit);
+
+    if (isset($_GET['page']) && is_numeric($_GET['page']))
+      $page = $_GET['page'];
+
+    if ($page < 1)
+      self::redirect($route);
+
+    if ($results < 1)
+      $results = 1;
+
+    if ($page > $results)
+      self::redirect($route . '&page=' . $results);
+
+    // Calcula el número de resultados acumulados por paginación.
+    $pagination = array(
+      'page'         => $page,
+      'accumulation' => ($page - 1) * $limit
+    );
+
+    return $pagination;
+  }
 }

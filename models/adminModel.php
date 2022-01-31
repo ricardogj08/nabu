@@ -23,14 +23,12 @@ class adminModel extends dbConnection {
     parent::__construct();
   }
 
-  // @return un array asociativo de artículos en espera de aprobación.
-  public function sent(string $pattern = '') {
-    $query = 'SELECT a.title, a.slug, u.username AS author ' .
-             'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
-             'WHERE a.authorized = FALSE ORDER BY a.creation_date DESC';
+  // @return el número total de artículos en espera de aprobación.
+  public function count_sent(string $pattern) {
+    $query = 'SELECT COUNT(*) AS total FROM articles WHERE authorized = FALSE';
 
     if (!empty($pattern))
-      $query = $query . 'LIMIT ? OFFSET ?';
+      $query = $query . 'AND title LIKE ?';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
@@ -38,7 +36,38 @@ class adminModel extends dbConnection {
       if (empty($pattern))
         $prepare -> execute();
       else
-        $prepare -> execute();
+        $prepare -> execute(array('%' . $pattern . '%'));
+
+      $count = $prepare -> fetch();
+
+      if (empty($count))
+        return $count;
+
+      return $count['total'];
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para calcular el número total de artículos en espera de aprobación');
+    }
+  }
+
+  // @return un array asociativo de artículos en espera de aprobación.
+  public function sent(int $limit, int $accumulation, string $pattern) {
+    $query = 'SELECT a.title, a.slug, u.username AS author ' .
+             'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
+             'WHERE a.authorized = FALSE ';
+
+    if (!empty($pattern))
+      $query = $query . 'AND a.title LIKE ? ';
+
+    $query = $query . 'ORDER BY a.creation_date DESC LIMIT ? OFFSET ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute(array($limit, $accumulation));
+      else
+        $prepare -> execute(array('%' . $pattern . '%', $limit, $accumulation));
 
       $articles = $prepare -> fetchAll();
 
