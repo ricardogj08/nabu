@@ -36,9 +36,9 @@ header {
     width: 100%;
     min-height: 120px;
     position: relative;
-    background-image: url("/assets/images/background.jpg");
+    /* se hace de forma dinamica desde HTML en la etiqueta header => background-image: url("/assets/images/background.png"); */ 
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
 }
 

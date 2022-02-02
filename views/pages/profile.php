@@ -42,12 +42,12 @@
 <?php require_once 'views/components/head.php' ?>
 
 <!-- HTML body -->
-<header>
+<header style='background-image: url("<?= $profile['background']?>");'>
     <!-- Nav bar -->
     <?php require_once 'views/components/navbar.php' ?>
     <!-- <div>
         <img src="<?= $profile['background'] ?>" alt="Fondo de perfil" width="20%">
-    </div> -->    
+    </div>  -->
     <div class="profile-own">
         <picture class="profile-own__image-wrapper">
             <img src="<?= $profile['avatar'] ?>" class="profile-own__image" alt='Foto de Perfil'>
