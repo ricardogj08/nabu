@@ -25,6 +25,11 @@
 * Metodología => BEM
 */
 
+/* Agregando un z-index mayor al overlay  */
+.overlay {
+    z-index: 2;
+}
+
 /* Estilos al header */
 header {
     min-width: 320px;
@@ -75,7 +80,7 @@ header::before {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    background-color: tomato;
+    /* background-color: tomato; */
 }
 
 .profile-own__image-wrapper {
@@ -95,4 +100,41 @@ header::before {
 
 .profile-own__description {
     text-align: center;
+}
+
+.profile__link-edit {
+    position: absolute;
+    right: 25px;
+    font-size: 2.4rem;
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.public-posts {
+    margin-top: 100px;
+    width: 100%;
+    min-width: 320px;
+    padding: 23px 0;
+    text-align: center;
+}
+.public-posts__title {
+    font-size: 1.8rem;
+}
+
+.public-cards__container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Reescribiendo estilos de footer para esta page */
+.footer {
+    background-color: var(--color-black);
+}
+
+.footer .rights {
+    color: var(--color-background);
+}
+
+.footer .media svg path {
+    fill: var(--color-background);
 }
