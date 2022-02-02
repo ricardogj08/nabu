@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav__item">
-                <span></span><a href="<?= NABU_ROUTES['all-articles'] ?>">Artículos</a>
+                <span></span><a href="<?= NABU_ROUTES['all-articles'] ?>">Muro</a>
             </li>
             <?php if (isset($_SESSION['user'])): ?>
                 <?php $user = $_SESSION['user'] ?>
@@ -43,13 +43,13 @@
                     </li>
                 <?php endif ?>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['sent-articles'] ?>">Artículos enviados</a>
+                    <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
                 </li>
                 <li class="nav__item">
                     <a href="<?= NABU_ROUTES['favorites'] ?>">Favoritos</a>
                 </li>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
+                    <a href="<?= NABU_ROUTES['sent-articles'] ?>">Artículos enviados</a>
                 </li>
                 <li class="nav__item">
                     <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>

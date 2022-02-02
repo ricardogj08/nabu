@@ -38,6 +38,8 @@ header:hover {
 /* Estilos para el navbar */
 .nav__logo-wrapper {
     width: 100px;
+    position: relative;
+    top: -25px;
 }
 
 .nav__logo-wrapper > a {
@@ -53,9 +55,6 @@ header:hover {
     color: #FFF;
 }
 
-<<<<<<< HEAD
-/* Estilos de la sección de otros posts */
-=======
 /* Estilos al heart like */
 .heart {
     top: -120px;
@@ -102,7 +101,6 @@ header:hover {
 
 
 
->>>>>>> open-article
 
 .popular-posts {
     width: 100%;
