@@ -46,8 +46,17 @@ header {
     bottom: -125px;
 }
 
+.profile-own__title {
+    font-size: 1.8rem;
+  }
+  
+.profile-own__description {
+      text-align: center;
+      font-size: 1.2rem;
+}
+
 .profile-own__image-wrapper {
-    width: 80%;
+    width: 50%;
 }
 
 .profile-own__image {
@@ -58,8 +67,9 @@ header {
 
 
 .profile__link-edit {
-    right: 19px;
+    right: 35px;
     bottom: 60px;
+    font-size: 2.8rem;
 }
 
 .public-posts {
