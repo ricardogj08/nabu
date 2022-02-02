@@ -23,7 +23,7 @@
 
 <h1>Aprobar artículos</h1>
 
-<?php require_once 'views/components/admin-search.php' ?>
+<?php require_once 'views/components/search.php' ?>
 
 <table>
     <tr>

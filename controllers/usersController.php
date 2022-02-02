@@ -208,7 +208,7 @@ class usersController {
           messages::add('Por favor confirma tu dirección de correo electrónico');
       }
       else
-        messages:add($msg);
+        messages::add($msg);
     }
 
     messages::check($view);
