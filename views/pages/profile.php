@@ -50,7 +50,7 @@
     </div> -->    
     <div class="profile-own">
         <picture class="profile-own__image-wrapper">
-            <img src="https://scontent.fcyw4-1.fna.fbcdn.net/v/t39.30808-6/272064856_452115463212117_8803840504382002522_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=89WY9ZJx95kAX8l2zDx&_nc_ht=scontent.fcyw4-1.fna&oh=00_AT-JtlgB-xr8qubXrinO_E3XUCpz3yWg-YvtvIYu33-C6w&oe=61FE3DE7" class="profile-own__image" alt='Foto de Perfil'>
+            <img src="<?= $profile['avatar'] ?>" class="profile-own__image" alt='Foto de Perfil'>
         </picture>
         <h2 class='profile-own__title'><?= $profile['username'] ?></h2>
         <p class='profile-own__description'><?= $profile['description'] ?></p>
@@ -59,12 +59,6 @@
         <?php endif ?>
     </div>
 </header>
-
-
-<!-- <div>
-    <img src="<?= $profile['avatar'] ?>" alt="Foto de perfil" width="8%">
-</div> -->
-
 
 <section class="public-posts">
     <h2 class='public-posts__title'>Post publicados</h2>
