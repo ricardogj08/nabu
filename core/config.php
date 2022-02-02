@@ -38,8 +38,8 @@ define('NABU_DIRECTORY', array(
 define('NABU_DEFAULT', array(
     'website-name'  => 'Nabu',
     'article-size'  => 1048576 * 1, // 1 MB (en bytes).
-    'avatar'        => NABU_URL . '/assets/images/avatar.png',
-    'background'    => NABU_URL . '/assets/images/background.png',
+    'avatar'        => NABU_URL . '/assets/images/avatar.svg',
+    'background'    => NABU_URL . '/assets/images/background.svg',
     'cover'         => NABU_URL . '/assets/images/cover.jpg',
     'image-formats' => 'image/gif, image/jpeg, image/png, image/svg+xml',
     'image-size'    => 1048576 * 2, // 2 MB (en bytes).
