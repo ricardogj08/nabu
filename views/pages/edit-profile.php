@@ -21,15 +21,13 @@
 
 <!-- Estilos a cargar -->
 <?php $styles = array(
-    'components/navbar/navbar.css',
     'components/footer/footer.css',
-    'pages/profile/profile.css',
     'pages/edit-profile/edit-profile.css',
 ) ?>
 
 <!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
-    array('file' => 'pages/edit-profile/edit-profile-desktop.css', 'attributes' => ''),
+    array('file' => 'pages/edit-profile/edit-profile-desktop.css', 'attributes' => 'media="screen and (min-width: 768px)"'),
 ) ?>
 
 <!-- Archivos de javascript a cargar -->
@@ -42,8 +40,6 @@
 
 <!-- HTML body -->
 <header style='background-image: url("<?= $profile['background']?>");'>
-    <!-- Nav bar -->
-    <?php require_once 'views/components/navbar.php' ?>
     <div class="profile-own">
         <picture class="profile-own__image-wrapper">
             <img src="<?= $profile['avatar'] ?>" class="profile-own__image" alt='Foto de Perfil'>
@@ -52,10 +48,42 @@
     </div>
 </header>
 
+<section class='profile-edit'>
+    <form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data">
+        <input type="hidden" name="csrf" value="<?= $token ?>">
+        <label for="avatar"><b>Editar foto de perfil</b></label>
+        <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>">
+        
+        <label for="background"><b>Editar fondo de perfil</b></label>
+        <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>">
+        <label for="description"><b>Descripción</b></label>
+        <textarea id="description" name="description" maxlength="255" rows="5" cols="51"><?= $profile['description'] ?></textarea>
+
+     
+        <label for="name"><b>Nombre completo</b></label>
+        <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= $profile['name'] ?>">
+      
+        
+        <label for="username"><b>Apodo</b></label>
+        <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= $profile['username'] ?>">
+        
+        
+        <label for="password"><b>Nueva constraseña</b></label>
+        <input type="password" id="password" name="password" minlength="6" maxlength="255">
+       
+        <label for="confirm-password"><b>Confirmar contraseña</b></label>
+        <input type="password" id="confirm-password" name="confirm-password" minlength="6" maxlength="255">
+
+        <div>
+            <a href="<?= NABU_ROUTES['delete-profile'] ?>">Eliminar cuenta</a>
+            <input type="submit" name="edit-profile-form" value="Guardar">
+        </div>
+    </form>
+</section>
 
 <?php require_once 'views/components/messages.php' ?>
 
-<form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data">
+<!-- <form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data">
     <fieldset>
         <legend>Perfil</legend>
         <input type="hidden" name="csrf" value="<?= $token ?>">
@@ -113,6 +141,6 @@
         <a href="<?= NABU_ROUTES['delete-profile'] ?>">Eliminar cuenta</a>
         <input type="submit" name="edit-profile-form" value="Guardar">
     </div>
-</form>
+</form> -->
 
 <?php require_once 'views/components/footer.php' ?>
