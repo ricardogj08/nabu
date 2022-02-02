@@ -21,6 +21,9 @@
 
 <!-- Estilos a cargar -->
 <?php $styles = array(
+    'components/navbar/navbar.css',
+    'components/footer/footer.css',
+    'pages/profile/profile.css',
     'pages/edit-profile/edit-profile.css',
 ) ?>
 
@@ -29,10 +32,26 @@
     array('file' => 'pages/edit-profile/edit-profile-desktop.css', 'attributes' => ''),
 ) ?>
 
-<?php require_once 'views/components/head.php' ?>
-<?php require_once 'views/components/navbar.php' ?>
+<!-- Archivos de javascript a cargar -->
+<?php $scripts = array(
+    'home.js'
+) ?>
 
-<h1>Edita tu perfil</h1>
+<!-- HTML head -->
+<?php require_once 'views/components/head.php' ?>
+
+<!-- HTML body -->
+<header style='background-image: url("<?= $profile['background']?>");'>
+    <!-- Nav bar -->
+    <?php require_once 'views/components/navbar.php' ?>
+    <div class="profile-own">
+        <picture class="profile-own__image-wrapper">
+            <img src="<?= $profile['avatar'] ?>" class="profile-own__image" alt='Foto de Perfil'>
+        </picture>
+        <h2 class='profile-own__title'><?= $profile['username'] ?></h2>
+    </div>
+</header>
+
 
 <?php require_once 'views/components/messages.php' ?>
 
