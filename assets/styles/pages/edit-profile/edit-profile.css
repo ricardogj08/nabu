@@ -24,3 +24,61 @@
 *   5. Otros
 * Metodología => BEM
 */
+
+/* Estilos al header */
+header {
+    min-width: 320px;
+    width: 100%;
+    min-height: 120px;
+    position: relative;
+    /* se hace de forma dinamica desde HTML en la etiqueta header => background-image: url("/assets/images/background.png"); */ 
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+.profile-own {
+    width: 65%;
+    max-width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.profile-own__image-wrapper {
+    display: flex;
+    width: 45%;
+    min-width: 40px;
+    max-width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-own__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.profile-own__title {
+  margin-top: 5px;
+  font-size: 1.6rem;
+}

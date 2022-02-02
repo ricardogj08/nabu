@@ -14,3 +14,25 @@
 * Debería haber recibido una copia de la Licencia Pública General de GNU Affero
 * junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
+
+header {
+    min-height: 220px;
+}
+
+.profile-own {
+    bottom: -83px;
+}
+
+.profile-own__title {
+    font-size: 1.8rem;
+}
+
+.profile-own__image-wrapper {
+    width: 50%;
+}
+
+.profile-own__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
