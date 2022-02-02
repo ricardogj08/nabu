@@ -23,6 +23,6 @@
 
 <h1>Usuarios registrados</h1>
 
-<?php require_once 'views/components/admin-search.php' ?>
+<?php require_once 'views/components/search.php' ?>
 
 <?php require_once 'views/components/footer.php' ?>

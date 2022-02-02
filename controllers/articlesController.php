@@ -76,6 +76,8 @@ class articlesController {
   }
 
   static public function all_articles() {
+    $view     = NABU_ROUTES['home'];
+    $max      = 246;
     $token    = csrf::generate();
     $articles = array();
 
