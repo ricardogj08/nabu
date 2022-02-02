@@ -38,6 +38,10 @@ header {
     color: white;
 }
 
+.nav__item:nth-child(2) a {
+    padding: 10px 15px;
+}
+
 .profile-own {
     bottom: -125px;
 }
