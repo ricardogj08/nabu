@@ -19,7 +19,7 @@
 
 <footer class="footer">
     <div class="rights">
-        <p class="rights__info">Nabu &copy; 2021 - Todos los derechos reservados.</p>
+        <p class="rights__info">Nabu &copy; 2021-2022 - Todos los derechos reservados.</p>
         <p class="rights__info">Creado con &#x1F49C; en épocas interesantes.</p>
     </div>
     <div class="media">

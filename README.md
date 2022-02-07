@@ -98,10 +98,10 @@ $ php -S localhost:8000
 Nabu - Un sistema gestor de contenido (CMS) de artículos en Markdown para
        la Universidad de Guanajuato escrito en HTML, CSS, JavaScript y PHP.
 
-Copyright (C) 2021 - Ricardo García Jiménez          <ricardogj08@riseup.net>,
-                     Juan José Ramírez López         <juan.ramirez.j99@gmail.com>,
-                     Francisco Solís Martínez        <franciscosolism08@gmail.com>,
-                     Fernando Andrés Chávez Gavaldón <fernandochg26@gmail.com>
+Copyright (C) 2021-2022 - Ricardo García Jiménez          <ricardogj08@riseup.net>,
+                          Juan José Ramírez López         <juan.ramirez.j99@gmail.com>,
+                          Francisco Solís Martínez        <franciscosolism08@gmail.com>,
+                          Fernando Andrés Chávez Gavaldón <fernandochg26@gmail.com>
 
 Este programa es software libre: puedes redistribuirlo y/o modificarlo
 bajo los términos de la Licencia Pública General de GNU Affero publicada por

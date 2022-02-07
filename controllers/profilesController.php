@@ -234,7 +234,7 @@ class profilesController {
       $update['background'] = utils::update_image('profilesModel', 'background', $profile['background'], $data['background']);
 
       if ($update['background'] === false) {
-        messages::add('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos actualizar el fondo de tu perfil');
+        messages::add('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos actualizar tu fondo de perfil');
 
         unset($update['background']);
       }
