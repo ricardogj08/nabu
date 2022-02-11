@@ -48,47 +48,46 @@
     </div>
 </header>
 
-<section class='profile-edit'>
-    <form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data">
+<section class='profile__edit'>
+    <form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data" class='edit__form'>
         <input type="hidden" name="csrf" value="<?= $token ?>">
 
-        <label for="avatar"><b>Editar foto de perfil</b></label>
+        <!-- <label for="avatar"><b>Editar foto de perfil</b></label>
         <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>">
         
         <label for="background"><b>Editar fondo de perfil</b></label>
-        <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>">
-        
-        <label for="description">
-            <span>Descripción</span>
-            <textarea id="description" name="description" maxlength="255" rows="5" cols="51"><?= $profile['description'] ?></textarea>
-        </label>
+        <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>"> -->
 
-     
-        <label for="name">
-            <span>Nombre Completo</span>
-            <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= $profile['name'] ?>">
-        </label>
-      
-        
-        <label for="username">
-            <span>Nombre de Usuario</span>
-            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= $profile['username'] ?>">
+        <label for="username" class="edit__field">
+            <span class="edit__entry">Nombre de Usuario</span>
+            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= $profile['username'] ?>" class="edit__input">
         </label>
         
+        <label for="name" class="edit__field">
+            <span class="edit__entry">Nombre Completo</span>
+            <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= $profile['name'] ?>" class="edit__input">
+        </label>
         
-        <label for="password">
-            <span>Nueva Contraseña</span>
-            <input type="password" id="password" name="password" minlength="6" maxlength="255">
+        <label for="description" class="edit__field">
+            <span class="edit__entry">Descripción</span>
+            <textarea id="description" name="description" maxlength="255" rows="5" cols="51" class="edit__input"><?= $profile['description'] ?></textarea>
+        </label>
+        
+        <label for="password" class="edit__field">
+            <span class="edit__entry">Nueva Contraseña</span>
+            <input type="password" id="password" name="password" minlength="6" maxlength="255" class="edit__input" required>
         </label>
        
-        <label for="confirm-password">
-            <span>Confirmar contraseña</span>
-            <input type="password" id="confirm-password" name="confirm-password" minlength="6" maxlength="255">
+        <label for="confirm-password" class="edit__field">
+            <span class="edit__entry">Confirmar contraseña</span>
+            <input type="password" id="confirm-password" name="confirm-password" minlength="6" maxlength="255" class="edit__input" required>
         </label>
 
-        <div>
-            <a href="<?= NABU_ROUTES['delete-profile'] ?>">Eliminar cuenta</a>
-            <input type="submit" name="edit-profile-form" value="Guardar">
+        <div class="edit__buttons">
+            <a href=""<?= NABU_ROUTES['delete-profile'] ?>"" class="edit__btn">
+                Eliminar pefil
+            </a>
+            <input type="submit" name="edit-profile-form" value="Guardar" class="edit__btn">
         </div>
     </form>
 </section>

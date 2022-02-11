@@ -24,6 +24,7 @@
 *   5. Otros
 * Metodología => BEM
 */
+/* Estils sobrescritos */
 
 /* Estilos al header */
 header {
@@ -81,4 +82,87 @@ header::before {
 .profile-own__title {
   margin-top: 5px;
   font-size: 1.6rem;
+}
+
+/* Estilos al form de edicion */
+
+.profile__edit {
+    min-width: 300px;
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 80px;
+    margin-bottom: 30px;
+}
+
+.edit__form {
+    width: 100%;
+}
+
+
+.edit__field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile__edit .edit__field:not(.profile__edit:last-child) {
+    margin-bottom: 20px;
+}
+
+.edit__entry {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.4rem;
+}
+
+
+.edit__input {
+    padding: 12px;
+    border: 2px solid var(--color-black);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+}
+
+.edit__buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit__btn {
+    padding: 20px 10px;
+    width: 40%;
+    max-width: 200px;
+    border: 0;
+    border-radius: 10px;
+    color: var(--color-background);
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.edit__buttons .edit__btn:first-child {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--color-primary-red);
+}
+
+.edit__buttons .edit__btn:last-child {
+    background-color: var(--color-secondary-green);
+}
+
+
+/* Estilos para footer, sobreescribir para cambiar color */
+.footer {
+    background-color: var(--color-black);
+}
+
+.footer .rights {
+    color: var(--color-background);
+}
+
+.footer .media svg path {
+    fill: var(--color-background);
 }
