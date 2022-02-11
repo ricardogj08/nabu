@@ -49,9 +49,6 @@
                     <a href="<?= NABU_ROUTES['favorites'] ?>">Favoritos</a>
                 </li>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['sent-articles'] ?>">Artículos enviados</a>
-                </li>
-                <li class="nav__item">
                     <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>
                 </li>
                 <li class="nav__item">
