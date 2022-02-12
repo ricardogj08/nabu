@@ -24,3 +24,187 @@
 *   5. Otros
 * Metodología => BEM
 */
+/* Estils sobrescritos */
+
+/* Estilos al header */
+header {
+    min-width: 320px;
+    width: 100%;
+    min-height: 120px;
+    position: relative;
+    /* se hace de forma dinamica desde HTML en la etiqueta header => background-image: url("/assets/images/background.png"); */ 
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    margin-bottom: 50px;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+}
+
+.profile-own {
+    width: 65%;
+    max-width: 250px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.profile-own__image-wrapper {
+    display: flex;
+    width: 45%;
+    min-width: 40px;
+    max-width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--color-black);
+}
+
+.profile-own__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: opacity(0.7);
+}
+
+.profile-own__title {
+  margin-top: 5px;
+  font-size: 1.6rem;
+}
+
+/* Estilos al form de edicion */
+
+.profile__edit {
+    min-width: 300px;
+    max-width: 800px;
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.edit__form {
+    width: 100%;
+}
+
+/* Estilos paralos input en absoluto */
+
+.edit__btn-photo{
+    color: transparent;
+}
+
+.edit__btn-photo::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.edit__btn-photo::before {
+    content: '✎';
+    color: white;
+    display: inline-block;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    outline: none;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+    transition: all ease-in 300ms;
+}
+
+.btn-photo::before {
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-backPhoto::before {
+    right: 0;
+    top: -25%;
+    font-size: 2rem;
+}
+
+.edit__field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile__edit .edit__field:not(.profile__edit:last-child) {
+    margin-bottom: 20px;
+}
+
+.edit__entry {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2.4rem;
+}
+
+.edit__input {
+    padding: 12px;
+    border: 2px solid var(--color-black);
+    border-radius: 10px;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+}
+
+.edit__buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit__btn {
+    padding: 20px 10px;
+    width: 40%;
+    max-width: 200px;
+    border: 0;
+    border-radius: 10px;
+    color: var(--color-background);
+    cursor: pointer;
+    font-size: 1.4rem;
+}
+
+.edit__buttons .edit__btn:first-child {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    background-color: var(--color-primary-red);
+}
+
+.edit__buttons .edit__btn:last-child {
+    background-color: var(--color-secondary-green);
+}
+
+
+/* Estilos para footer, sobreescribir para cambiar color */
+.footer {
+    background-color: var(--color-black);
+}
+
+.footer .rights {
+    color: var(--color-background);
+}
+
+.footer .media svg path {
+    fill: var(--color-background);
+}
