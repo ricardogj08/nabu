@@ -21,10 +21,6 @@ defined('NABU') || exit();
 require_once 'models/profilesModel.php';
 
 class profilesController {
-  static public function sent_articles() {
-    //
-  }
-
   // Renderiza la página de un perfil de usuario.
   static public function profile() {
     if (empty($_GET['user']))
