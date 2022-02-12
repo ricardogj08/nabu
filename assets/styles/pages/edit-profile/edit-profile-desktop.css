@@ -17,6 +17,7 @@
 
 header {
     min-height: 220px;
+    margin-bottom: 70px;
 }
 
 .profile-own {
@@ -35,4 +36,15 @@ header {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+/* Estilos para los bototnes de editar fotos de perfil y fondo */
+.btn-backPhoto::before {
+    top: -44%;
+    font-size: 2.8rem;
+}
+
+.btn-photo::before {
+    top: -95px;
+    font-size: 2.4rem;
 }

@@ -36,6 +36,7 @@ header {
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover;
+    margin-bottom: 50px;
 }
 
 header::before {
@@ -71,12 +72,14 @@ header::before {
     max-width: 200px;
     border-radius: 50%;
     overflow: hidden;
+    background-color: var(--color-black);
 }
 
 .profile-own__image {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    filter: opacity(0.7);
 }
 
 .profile-own__title {
@@ -90,8 +93,8 @@ header::before {
     min-width: 300px;
     max-width: 800px;
     width: 90%;
+    position: relative;
     margin: 0 auto;
-    margin-top: 80px;
     margin-bottom: 30px;
 }
 
@@ -99,6 +102,46 @@ header::before {
     width: 100%;
 }
 
+/* Estilos paralos input en absoluto */
+
+.edit__btn-photo{
+    color: transparent;
+}
+
+.edit__btn-photo::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.edit__btn-photo::before {
+    content: '✎';
+    color: white;
+    display: inline-block;
+    padding: 5px 8px;
+    position: absolute;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 100%;
+    outline: none;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+    transition: all ease-in 300ms;
+}
+
+.btn-photo::before {
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-backPhoto::before {
+    right: 0;
+    top: -25%;
+    font-size: 2rem;
+}
 
 .edit__field {
     display: flex;
@@ -115,7 +158,6 @@ header::before {
     font-weight: 500;
     line-height: 2.4rem;
 }
-
 
 .edit__input {
     padding: 12px;
