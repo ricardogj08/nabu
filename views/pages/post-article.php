@@ -51,10 +51,10 @@
         <textarea type="text" id="synopsis" name="synopsis" minlength="1" maxlength="255" rows="3" cols="100" required></textarea>
     </div>
     <div>
-        <label for="content"><b>Contenido del artículo <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">formato Markdown</a></b></label>
+        <label for="body"><b>Contenido del artículo <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">formato Markdown</a></b></label>
     </div>
     <div>
-        <textarea type="text" id="content" name="content" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required></textarea>
+        <textarea type="text" id="body" name="body" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required></textarea>
     </div>
     <div>
         <input type="submit" name="post-article-form" value="Enviar">

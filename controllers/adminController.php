@@ -24,7 +24,7 @@ class adminController {
   private const limit = 10;
 
   // Renderiza la página de administración para aprobar un artículo
-  // y aprueba un artículo con el método POST.
+  // y realiza búsquedas con el método POST.
   static public function approve_articles() {
     $max    = 246;
     $search = utils::validate_search(NABU_ROUTES['approve-articles'], $max);
@@ -52,8 +52,27 @@ class adminController {
   }
 
   // Renderiza la página de administración para editar un artículo
-  // y actualiza los datos del artículo con el método POST.
+  // y actualiza los datos de un artículo con el método POST.
   static public function review_article() {
+    $validations = new validations(NABU_ROUTES['approve-articles']);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255),
+    ));
+
+    $adminModel = new adminModel();
+
+    $article = $adminModel -> get_article($data['slug']);
+
+    unset($adminModel, $validations, $data);
+
+    if (empty($article))
+      utils::redirect(NABU_ROUTES['approve-articles']);
+
+    // Define la URL completa de la portada del artículo.
+    $article['cover'] = utils::url_image('cover', $article['cover']);
+
     $token    = csrf::generate();
     $messages = messages::get();
 

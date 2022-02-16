@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `articles` (
     `user_id`           INT UNSIGNED        NOT NULL,
     `title`             VARCHAR(246)        NOT NULL,
     `synopsis`          VARCHAR(255)        NOT NULL,
-    `content`           MEDIUMTEXT          NOT NULL,
+    `body`              MEDIUMTEXT          NOT NULL,
     `slug`              VARCHAR(255)        NOT NULL,
     `cover`             VARCHAR(255),
     `authorized`        TINYINT(1)          NOT NULL DEFAULT FALSE,

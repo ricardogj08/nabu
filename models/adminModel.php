@@ -81,6 +81,22 @@ class adminModel extends dbConnection {
     }
   }
 
+  // @return un array asocitivo con los datos de un artículo.
+  public function get_article(string $slug) {
+    $query = 'SELECT id, title, synopsis, body, cover, slug FROM articles WHERE slug = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($slug));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de un artículo');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

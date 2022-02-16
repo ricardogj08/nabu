@@ -43,8 +43,8 @@ class articlesModel extends dbConnection {
 
   // Registra un artículo en espera de aprobación.
   public function save(array $data) {
-    $query = 'INSERT INTO articles(user_id, title, synopsis, content, slug, creation_date) ' .
-             'VALUES(:user_id, :title, :synopsis, :content, :slug, :creation_date)';
+    $query = 'INSERT INTO articles(user_id, title, synopsis, body, slug, creation_date) ' .
+             'VALUES(:user_id, :title, :synopsis, :body, :slug, :creation_date)';
 
     try {
       $this -> pdo -> prepare($query) -> execute($data);

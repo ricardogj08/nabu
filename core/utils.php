@@ -133,7 +133,7 @@ class utils {
     return $pagination;
   }
 
-  // @return un string de búsqueda validado.
+  // @return un array asociativo con el string de búsqueda.
   public static function validate_search(string $view, int $max) {
     $search = array('query' => '', 'view' => $view);
 
