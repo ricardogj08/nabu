@@ -132,4 +132,38 @@ class utils {
 
     return $pagination;
   }
+
+  // @return un string de búsqueda validado.
+  public static function validate_search(string $view, int $max) {
+    $search = array('query' => '', 'view' => '');
+
+    // Selecciona si se realiza una búsqueda por el método POST o GET.
+    if (!empty($_POST['q'])) {
+      csrf::validate($_POST['csrf']);
+
+      $form = $_POST;
+    }
+    elseif (!empty($_GET['q']))
+      $form = $_GET;
+
+    if (!empty($form)) {
+      $validations = new validations($view);
+
+      // Valida el string de búsqueda.
+      $data = $validations -> validate($form, array(
+        array('field' => 'q', 'trim_all' => true, 'min_length' => 0, 'max_length' => $max)
+      ));
+
+      $search['query'] = $data['q'];
+
+      $view = $view . '&q=' . urlencode($data['q']);
+      $search['view'] = $view;
+    }
+
+    // Redirecciona a una búsqueda por el método GET si se realiza una búsqueda por el método POST.
+    if (!empty($_POST['q']))
+      utils::redirect($view);
+
+    return $search;
+  }
 }

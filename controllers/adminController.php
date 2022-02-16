@@ -26,37 +26,13 @@ class adminController {
   // Renderiza la página de administración para aprobar un artículo
   // y aprueba un artículo con el método POST.
   static public function approve_articles() {
-    $view  = NABU_ROUTES['approve-articles'];
-    $max   = 246;
-    $query = '';
+    $view   = NABU_ROUTES['approve-articles'];
+    $max    = 246;
+    $search = utils::validate_search($view, $max);
+    $query  = $search['query'];
 
-    // Selecciona si se realiza una búsqueda por el método POST o GET.
-    if (!empty($_POST['q'])) {
-      csrf::validate($_POST['csrf']);
-
-      $form = $_POST;
-    }
-    elseif (!empty($_GET['q']))
-      $form = $_GET;
-
-    if (!empty($form)) {
-      $validations = new validations($view);
-
-      // Valida la búsqueda de artículos en espera de aprobación.
-      $data = $validations -> validate($form, array(
-        array('field' => 'q', 'trim_all' => true, 'min_length' => 0, 'max_length' => $max)
-      ));
-
-      $query = $data['q'];
-
-      $view = $view . '&q=' . urlencode($query);
-
-      unset($form, $validations, $data);
-    }
-
-    // Redirecciona a una búsqueda por el método GET si se realiza una búsqueda por el método POST.
-    if (!empty($_POST['q']))
-      utils::redirect($view);
+    if (!empty($search['view']))
+      $view = $search['view'];
 
     $adminModel = new adminModel();
 
@@ -70,7 +46,7 @@ class adminController {
 
     $page = $pagination['page'];
 
-    unset($adminModel, $total, $pagination);
+    unset($search, $adminModel, $total, $pagination);
 
     $token    = csrf::generate();
     $messages = messages::get();
