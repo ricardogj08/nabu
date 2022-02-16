@@ -41,7 +41,7 @@ class articlesController {
 
     $validations = new validations($view);
 
-    // Valida el formulario de inicio de sesión.
+    // Valida el formulario para enviar un artículo.
     $data = $validations -> validate($_POST, array(
       array('field' => 'title',    'trim_all' => true, 'min_length' => 1, 'max_length' => 246),
       array('field' => 'synopsis', 'trim_all' => true, 'min_length' => 1, 'max_length' => 255),

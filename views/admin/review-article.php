@@ -25,7 +25,7 @@
 
 <?php require_once 'views/components/messages.php' ?>
 
-<form method="POST" action="<?= NABU_ROUTES['review-article'] . '&=slug' . $article['slug'] ?>" enctype="multipart/form-data">
+<form method="POST" action="<?= NABU_ROUTES['review-article'] . '&slug=' . $article['slug'] ?>" enctype="multipart/form-data">
     <input type="hidden" name="csrf" value="<?= $token ?>">
     <div>
         <label for="cover"><b>Portada del artículo</b></label>

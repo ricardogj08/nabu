@@ -63,20 +63,27 @@ class adminController {
 
     $adminModel = new adminModel();
 
+    // Obtiene los datos del artículo.
     $article = $adminModel -> get_article($data['slug']);
-
-    unset($adminModel, $validations, $data);
 
     if (empty($article))
       utils::redirect(NABU_ROUTES['approve-articles']);
 
-    // Define la URL completa de la portada del artículo.
-    $article['cover'] = utils::url_image('cover', $article['cover']);
+    if (empty($_POST['review-article-form'])) {
+      unset($adminModel, $validations, $data);
 
-    $token    = csrf::generate();
-    $messages = messages::get();
+      // Define la URL completa de la portada del artículo.
+      $article['cover'] = utils::url_image('cover', $article['cover']);
 
-    require_once 'views/admin/review-article.php';
+      $token    = csrf::generate();
+      $messages = messages::get();
+
+      require_once 'views/admin/review-article.php';
+
+      exit();
+    }
+
+    csrf::validate($_POST['csrf']);
   }
 
   // Renderiza la página para eliminar un artículo.

@@ -75,16 +75,16 @@ class profilesController {
 
     $id = $_SESSION['user']['id'];
 
+    $profilesModel = new profilesModel();
+
+    // Obtiene los datos de perfil del usuario de sesión.
+    $profile = $profilesModel -> get('id', $id);
+
+    if (empty($profile))
+      utils::redirect(NABU_ROUTES['logout']);
+
     if (empty($_POST['edit-profile-form'])) {
-      $profilesModel = new profilesModel();
-
-      // Obtiene los datos de perfil del usuario de sesión.
-      $profile = $profilesModel -> get('id', $id);
-
       unset($profilesModel);
-
-      if (empty($profile))
-        utils::redirect(NABU_ROUTES['home']);
 
       $profile['avatar']     = utils::url_image('avatar', $profile['avatar']);
       $profile['background'] = utils::url_image('background', $profile['background']);
@@ -120,14 +120,6 @@ class profilesController {
 
     if (empty($data))
       utils::redirect($view);
-
-    $profilesModel = new profilesModel();
-
-    // Obtiene los datos de perfil actual del usuario.
-    $profile = $profilesModel -> get('id', $id);
-
-    if (empty($profile))
-      utils::redirect(NABU_ROUTES['logout']);
 
     require_once 'models/usersModel.php';
 
