@@ -47,7 +47,7 @@ class usersController {
       array('field' => 'name',     'trim_all'   => true, 'min_length' => 5,   'max_length' => 255),
       array('field' => 'username', 'trim'       => true, 'min_length' => 1,   'max_length' => 255,  'not_spaces' => true),
       array('field' => 'email',    'trim'       => true, 'min_length' => 5,   'max_length' => 255,  'not_spaces' => true, 'type' => 'email'),
-      array('field' => 'password', 'min_length' => 6,    'max_length' => 255, 'not_spaces' => true, 'equal'      => $_POST['confirm-password']),
+      array('field' => 'password', 'min_length' => 6,    'max_length' => 255, 'not_spaces' => true, 'equal'      => $_POST['confirm-password'])
     ));
 
     // Formatea en minúsculas la dirección de e-mail.
@@ -154,7 +154,7 @@ class usersController {
     // Valida el formulario de inicio de sesión.
     $data = $validations -> validate($_POST, array(
       array('field' => 'identity', 'trim'       => true, 'min_length' => 1,   'max_length' => 255, 'not_spaces' => true),
-      array('field' => 'password', 'min_length' => 6,    'max_length' => 255, 'not_spaces' => true),
+      array('field' => 'password', 'min_length' => 6,    'max_length' => 255, 'not_spaces' => true)
     ));
 
     $column = 'username';

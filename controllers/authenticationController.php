@@ -24,19 +24,24 @@ class authenticationController {
   // Activa la cuenta de un usuario desde una URL
   // de autenticación de dirección de e-mail.
   public static function authentication() {
-    if (empty($_GET['user']) || empty($_GET['key']))
-      utils::redirect(NABU_ROUTES['home']);
+    $validations = new validations(NABU_ROUTES['home']);
+
+    // Valida los parámetros de la URL.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'user', 'min_length' => 1, 'max_length' => 255),
+      array('field' => 'key',  'min_length' => 1, 'max_length' => 255)
+    ));
 
     $authenticationModel = new authenticationModel();
 
     // Busca los datos de autenticación de e-mail de un usuario.
-    $user = $authenticationModel -> get($_GET['user']);
+    $user = $authenticationModel -> get($data['user']);
 
     if (empty($user['hash']) || empty($user['expiration']) || !empty($user['activated']))
       utils::redirect(NABU_ROUTES['home']);
 
     // Reconstruye el hash con la llave de autenticación de la URL.
-    $hash = hash_hmac('sha256', $user['email'], $_GET['key']);
+    $hash = hash_hmac('sha256', $user['email'], $data['key']);
 
     if (!hash_equals($user['hash'], $hash))
       utils::redirect(NABU_ROUTES['home']);

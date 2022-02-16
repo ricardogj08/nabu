@@ -23,13 +23,17 @@ require_once 'models/profilesModel.php';
 class profilesController {
   // Renderiza la página de un perfil de usuario.
   static public function profile() {
-    if (empty($_GET['user']))
-      utils::redirect(NABU_ROUTES['home']);
+    $validations = new validations(NABU_ROUTES['home']);
+
+    // Valida los parámetros de la URL.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'user', 'min_length' => 1, 'max_length' => 255)
+    ));
 
     $profilesModel = new profilesModel();
 
     // Obtiene los datos de perfil del usuario.
-    $profile = $profilesModel -> get('username', $_GET['user']);
+    $profile = $profilesModel -> get('username', $data['user']);
 
     unset($profilesModel);
 
@@ -111,7 +115,7 @@ class profilesController {
       array('field' => 'description', 'trim_all'   => true,    'min_length' => 1,   'max_length' => 255,  'optional' => true),
       array('field' => 'name',        'trim_all'   => true,    'min_length' => 5,   'max_length' => 255,  'optional' => true),
       array('field' => 'username',    'trim'       => true,    'min_length' => 1,   'max_length' => 255,  'optional' => true, 'not_spaces' => true),
-      array('field' => 'password',    'min_length' => 6,       'max_length' => 255, 'not_spaces' => true, 'optional' => true, 'equal'      => $_POST['confirm-password']),
+      array('field' => 'password',    'min_length' => 6,       'max_length' => 255, 'not_spaces' => true, 'optional' => true, 'equal'      => $_POST['confirm-password'])
     ));
 
     if (empty($data))
@@ -266,7 +270,7 @@ class profilesController {
 
     // Valida el formulario para eliminar una cuenta de usuario.
     $data = $validations -> validate($_POST, array(
-      array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password']),
+      array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password'])
     ));
 
     $id = $_SESSION['user']['id'];

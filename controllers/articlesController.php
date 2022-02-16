@@ -45,7 +45,7 @@ class articlesController {
     $data = $validations -> validate($_POST, array(
       array('field' => 'title',    'trim_all' => true, 'min_length' => 1, 'max_length' => 246),
       array('field' => 'synopsis', 'trim_all' => true, 'min_length' => 1, 'max_length' => 255),
-      array('field' => 'body',     'trim'     => true, 'min_length' => 1, 'max_length' => NABU_DEFAULT['article-size']),
+      array('field' => 'body',     'trim'     => true, 'min_length' => 1, 'max_length' => NABU_DEFAULT['article-size'])
     ));
 
     $data['slug'] = utils::url_slug($data['title']);

@@ -28,6 +28,8 @@ class blogController {
     $articles        = array();
     $recent_articles = array();
 
+    $messages = messages::get();
+
     require_once 'views/pages/home.php';
   }
 

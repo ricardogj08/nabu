@@ -41,6 +41,8 @@
 <!-- Componente head -->
 <?php require_once 'views/components/head.php' ?>
 
+<?php require_once 'views/components/messages.php' ?>
+
 <header class="header">
     <?php require_once 'views/components/navbar.php' ?>
     <div class="hero">

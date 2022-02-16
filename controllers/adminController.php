@@ -58,7 +58,7 @@ class adminController {
 
     // Valida la URL del artículo.
     $data = $validations -> validate($_GET, array(
-      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255),
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
     ));
 
     $adminModel = new adminModel();
