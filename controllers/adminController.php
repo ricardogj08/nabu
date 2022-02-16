@@ -26,13 +26,10 @@ class adminController {
   // Renderiza la página de administración para aprobar un artículo
   // y aprueba un artículo con el método POST.
   static public function approve_articles() {
-    $view   = NABU_ROUTES['approve-articles'];
     $max    = 246;
-    $search = utils::validate_search($view, $max);
+    $search = utils::validate_search(NABU_ROUTES['approve-articles'], $max);
     $query  = $search['query'];
-
-    if (!empty($search['view']))
-      $view = $search['view'];
+    $view   = $search['view'];
 
     $adminModel = new adminModel();
 

@@ -135,7 +135,7 @@ class utils {
 
   // @return un string de búsqueda validado.
   public static function validate_search(string $view, int $max) {
-    $search = array('query' => '', 'view' => '');
+    $search = array('query' => '', 'view' => $view);
 
     // Selecciona si se realiza una búsqueda por el método POST o GET.
     if (!empty($_POST['q'])) {
@@ -155,14 +155,12 @@ class utils {
       ));
 
       $search['query'] = $data['q'];
-
-      $view = $view . '&q=' . urlencode($data['q']);
-      $search['view'] = $view;
+      $search['view']  = $view . '&q=' . urlencode($search['query']);
     }
 
     // Redirecciona a una búsqueda por el método GET si se realiza una búsqueda por el método POST.
     if (!empty($_POST['q']))
-      utils::redirect($view);
+      utils::redirect($search['view']);
 
     return $search;
   }
