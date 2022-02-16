@@ -21,7 +21,7 @@
     <form class="form" method="POST" action="<?= $view ?>">
         <input type="hidden" name="csrf" value="<?= $token ?>">
         <div class="search__content">
-            <input class="search__input" type="text" name="q" minlength="1" placeholder="Buscar un blogpost" maxlength="<?= $max ?>" required>
+            <input class="search__input" type="text" name="q" placeholder="Buscar..." maxlength="<?= $max ?>">
             <span class="glass__icon"></span>
         </div>
     </form>

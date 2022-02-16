@@ -72,7 +72,7 @@ class articlesController {
     $articlesModel -> save($data);
 
     messages::add('Tu publicación se ha enviado correctamente, en breve autorizaremos tu publicación');
-    utils::redirect(NABU_ROUTES['sent-articles']);
+    utils::redirect($view);
   }
 
   static public function all_articles() {
