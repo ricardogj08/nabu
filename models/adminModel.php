@@ -97,6 +97,42 @@ class adminModel extends dbConnection {
     }
   }
 
+  // @return el id de un artículo si existe una imagen.
+  public function find_image(string $column, string $filename) {
+    $query = 'SELECT id FROM articles WHERE ' . $column . ' = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($filename));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar la portada del artículo');
+    }
+  }
+
+  // Actualiza los datos de un artículo.
+  public function update_article(int $id, array $data) {
+    $columns = array_keys($data);
+    $query   = '';
+
+    foreach ($columns as $column)
+      $query = $query . $column . ' = :' . $column . ', ';
+
+    $query = 'UPDATE articles SET ' . rtrim($query, ', ') . ' WHERE id = :id';
+
+    $data['id'] = $id;
+
+    try {
+      $this -> pdo -> prepare($query) -> execute($data);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos del artículo');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

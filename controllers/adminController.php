@@ -94,11 +94,67 @@ class adminController {
 
     // Valida el formulario para actualizar los datos de un artículo.
     $data = $validations -> validate($form, array(
-      array('field' => 'cover',    'type'     => 'image'),
+      array('field' => 'cover',    'type'     => 'image', 'optional' => true),
       array('field' => 'title',    'trim_all' => true, 'min_length' => 1, 'max_length' => 246),
       array('field' => 'synopsis', 'trim_all' => true, 'min_length' => 1, 'max_length' => 255),
       array('field' => 'body',     'trim'     => true, 'min_length' => 1, 'max_length' => NABU_DEFAULT['article-size'])
     ));
+
+    $update = array();
+
+    // Valida si hay cambios en la portada del artículo.
+    if (isset($data['cover'])) {
+      $update['cover'] = utils::update_image('adminModel', 'cover', $article['cover'], $data['cover']);
+
+      if ($update['cover'] === false) {
+        messages::add('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos actualizar la portada del artículo');
+
+        unset($update['cover']);
+      }
+      else
+        messages::add('La porta del artículo se ha actualizado correctamente');
+    }
+
+    // Valida si hay cambios en el título del artículo.
+    if ($data['title'] != $article['title']) {
+      $data['slug'] = utils::url_slug($data['title']);
+
+      // Valida la longitud de la URL.
+      $validations -> validate($data, array(
+        array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
+      ));
+
+      if (empty($adminModel -> get_article($data['slug']))) {
+        $update['title'] = $data['title'];
+        $update['slug']  = $data['slug'];
+
+        messages::add('El título del artículo se ha actualizado correctamente');
+      }
+      else
+        messages::add('Por favor define un título diferente o espera máximo un día para actualizar el artículo');
+    }
+
+    // Valida si hay cambios en el resumen del artículo.
+    if ($data['synopsis'] != $article['synopsis']) {
+      $update['synopsis'] = $data['synopsis'];
+      messages::add('El resumen del artículo se ha actualizado correctamente');
+    }
+
+    // Valida si hay cambios en el cuerpo del artículo.
+    if ($data['body'] != $article['body']) {
+      $update['body'] = $data['body'];
+      messages::add('El contenido del artículo se ha actualizado correctamente');
+    }
+
+    // Actualiza los datos del artículo en la base de datos.
+    if (!empty($update)) {
+      $adminModel -> update_article($article['id'], $update);
+
+      if (!empty($update['slug']))
+        $view = NABU_ROUTES['review-article'] . '&slug=' . $update['slug'];
+    }
+
+    utils::redirect($view);
   }
 
   // Renderiza la página para eliminar un artículo.
