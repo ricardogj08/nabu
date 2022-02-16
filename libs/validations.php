@@ -20,7 +20,7 @@ defined('NABU') || exit();
 
 // Valida los campos de un formulario.
 class validations {
-  private $route;
+  public $route;
   private $field;
   private $value;
 

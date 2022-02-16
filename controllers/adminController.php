@@ -56,6 +56,8 @@ class adminController {
   static public function review_article() {
     $validations = new validations(NABU_ROUTES['approve-articles']);
 
+    $messages = messages::get();
+
     // Valida la URL del artículo.
     $data = $validations -> validate($_GET, array(
       array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
@@ -77,8 +79,7 @@ class adminController {
       // Define la URL completa de la portada del artículo.
       $article['cover'] = utils::url_image('cover', $article['cover']);
 
-      $token    = csrf::generate();
-      $messages = messages::get();
+      $token = csrf::generate();
 
       require_once 'views/admin/review-article.php';
 
@@ -87,7 +88,7 @@ class adminController {
 
     csrf::validate($_POST['csrf']);
 
-    $validations = new validations($view);
+    $validations -> route = $view;
 
     $form = array_merge($_POST, $_FILES);
 
