@@ -84,7 +84,7 @@
         </label>
 
         <div class="edit__buttons">
-            <a href="<?= NABU_ROUTES['delete-profile'] ?>"" class="edit__btn">
+            <a href="<?= NABU_ROUTES['delete-profile'] ?>" class="edit__btn">
                 Eliminar pefil
             </a>
             <input type="submit" name="edit-profile-form" value="Guardar" class="edit__btn">
