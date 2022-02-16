@@ -18,7 +18,7 @@
 
 defined('NABU') || exit();
 
-// Colección de herramientas propias para Nabu.
+// Colección de herramientas propias de Nabu.
 class utils {
   // Redirecciona a una ruta y termina la ejecución de todos los scripts de PHP.
   static public function redirect(string $route) {

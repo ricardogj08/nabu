@@ -69,6 +69,8 @@ class adminController {
     if (empty($article))
       utils::redirect(NABU_ROUTES['approve-articles']);
 
+    $view = NABU_ROUTES['review-article'] . '&slug=' . $article['slug'];
+
     if (empty($_POST['review-article-form'])) {
       unset($adminModel, $validations, $data);
 
@@ -84,6 +86,18 @@ class adminController {
     }
 
     csrf::validate($_POST['csrf']);
+
+    $validations = new validations($view);
+
+    $form = array_merge($_POST, $_FILES);
+
+    // Valida el formulario para actualizar los datos de un artículo.
+    $data = $validations -> validate($form, array(
+      array('field' => 'cover',    'type'     => 'image'),
+      array('field' => 'title',    'trim_all' => true, 'min_length' => 1, 'max_length' => 246),
+      array('field' => 'synopsis', 'trim_all' => true, 'min_length' => 1, 'max_length' => 255),
+      array('field' => 'body',     'trim'     => true, 'min_length' => 1, 'max_length' => NABU_DEFAULT['article-size'])
+    ));
   }
 
   // Renderiza la página para eliminar un artículo.
