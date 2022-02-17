@@ -43,7 +43,7 @@ class usersModel extends dbConnection {
       return $users;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para validar si tu apodo y dirección de correo electrónico son únicos');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de varios usuarios');
     }
   }
 
@@ -68,7 +68,7 @@ class usersModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($data);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar tu cuenta de usuario');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar una cuenta de usuario');
     }
   }
 
@@ -94,7 +94,7 @@ class usersModel extends dbConnection {
       return $user;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para validar si tu apodo y dirección de correo electrónico son únicos');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de un usuario');
     }
   }
 
@@ -114,7 +114,7 @@ class usersModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($data);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar tus datos personales');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos personales de un usuario');
     }
   }
 

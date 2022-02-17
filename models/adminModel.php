@@ -77,7 +77,7 @@ class adminModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para mostrar los artículos en espera de aprobación');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos en espera de aprobación');
     }
   }
 
@@ -109,7 +109,7 @@ class adminModel extends dbConnection {
       return $prepare -> fetch();
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar la portada del artículo');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar la portada de un artículo');
     }
   }
 
@@ -129,7 +129,31 @@ class adminModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($data);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos del artículo');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos de un artículo');
+    }
+  }
+
+  // @return los datos de un usuario administrador.
+  public function get_admin(int $id) {
+    $query = 'SELECT id, role_id AS role, username, email, password FROM users '.
+             'WHERE id = ? AND activated = TRUE AND (role_id = 1 OR role_id = 2)';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id));
+
+      $user = $prepare -> fetch();
+
+      if (empty($user))
+        return array();
+
+      $user['role'] = $this -> role($user['role']);
+
+      return $user;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de un usuario administrador');
     }
   }
 

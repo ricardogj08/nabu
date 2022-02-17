@@ -213,9 +213,11 @@ class usersController {
 
     messages::check($view);
 
+    $role = $user['role'];
+
     // Redirecciona al panel de administración en base al role.
-    if ($user['role'] == 'admin')
-      utils::redirect(NABU_ROUTES['admin']);
+    if ($role == 'admin' || $role == 'moderator')
+      utils::redirect(NABU_ROUTES['approve-articles']);
 
     // Redirecciona al perfil del usuario.
     utils::redirect(NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']));

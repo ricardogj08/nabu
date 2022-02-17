@@ -37,7 +37,7 @@ class profilesModel extends dbConnection {
       return $prepare -> fetch();
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para mostrar los datos de tu perfil');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de perfil de un usuario');
     }
   }
 
@@ -57,7 +57,7 @@ class profilesModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($data);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos de tu perfil');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos de perfil de un usuario');
     }
   }
 
@@ -73,7 +73,7 @@ class profilesModel extends dbConnection {
       return $prepare -> fetch();
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar tus imágenes de perfil');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar las imágenes de perfil de un usuario');
     }
   }
 
@@ -89,7 +89,7 @@ class profilesModel extends dbConnection {
       $this -> pdo -> prepare($query_disable) -> execute($id);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar tu cuenta de usuario');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar el perfil de un usuario');
     }
   }
 

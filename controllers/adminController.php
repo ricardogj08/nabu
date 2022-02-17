@@ -23,8 +23,8 @@ require_once 'models/adminModel.php';
 class adminController {
   private const limit = 10;
 
-  // Renderiza la página de administración para aprobar un artículo
-  // y realiza búsquedas con el método POST.
+  // Renderiza la página de administración con la lista de artículos
+  // en espera de aprobación y realiza búsquedas con el método POST.
   static public function approve_articles() {
     $max    = 246;
     $search = utils::validate_search(NABU_ROUTES['approve-articles'], $max);
@@ -54,9 +54,9 @@ class adminController {
   // Renderiza la página de administración para editar un artículo
   // y actualiza los datos de un artículo con el método POST.
   static public function review_article() {
-    $validations = new validations(NABU_ROUTES['approve-articles']);
-
     $messages = messages::get();
+
+    $validations = new validations(NABU_ROUTES['approve-articles']);
 
     // Valida la URL del artículo.
     $data = $validations -> validate($_GET, array(
@@ -92,7 +92,7 @@ class adminController {
 
     $form = array_merge($_POST, $_FILES);
 
-    // Valida el formulario para actualizar los datos de un artículo.
+    // Valida el formulario que actualiza los datos de un artículo.
     $data = $validations -> validate($form, array(
       array('field' => 'cover',    'type'     => 'image', 'optional' => true),
       array('field' => 'title',    'trim_all' => true, 'min_length' => 1, 'max_length' => 246),
@@ -159,10 +159,62 @@ class adminController {
 
   // Renderiza la página para eliminar un artículo.
   static public function delete_article() {
-    $token    = csrf::generate();
     $messages = messages::get();
 
-    require_once 'views/pages/confirm-password.php';
+    $validations = new validations(NABU_ROUTES['approve-articles']);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
+    ));
+
+    $slug = $data['slug'];
+
+    $view = NABU_ROUTES['delete-article'] . '&slug=' . $slug;
+
+    if (empty($_POST['confirm-password-form'])) {
+      unset($validations, $data, $slug);
+
+      $token = csrf::generate();
+
+      require_once 'views/pages/confirm-password.php';
+
+      exit();
+    }
+
+    csrf::validate($_POST['csrf']);
+
+    $validations -> route = $view;
+
+    // Valida el formulario para confirmar la contraseña del usuario.
+    $data = $validations -> validate($_POST, array(
+      array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password'])
+    ));
+
+    $adminModel = new adminModel();
+
+    $id = $_SESSION['user']['id'];
+
+    $admin = $adminModel -> get_admin($id);
+
+    if (empty($admin))
+      utils::redirect(NABU_ROUTES['logout']);
+
+    // Valida la contraseña del usuario.
+    if (!password_verify($data['password'], $admin['password'])) {
+      messages::add('La contraseña es incorrecta');
+      utils::redirect($view);
+    }
+
+    // Obtiene los datos del artículo.
+    $article = $adminModel -> get_article($slug);
+
+    if (empty($article))
+      utils::redirect(NABU_ROUTES['approve-articles']);
+
+    messages::add('El artículo se ha eliminado corractamente');
+
+    utils::redirect(NABU_ROUTES['approve-articles']);
   }
 
   // Renderiza la página para autorizar la publicación de un artículo.

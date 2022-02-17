@@ -260,7 +260,7 @@ class profilesController {
 
     $validations = new validations($view);
 
-    // Valida el formulario para eliminar una cuenta de usuario.
+    // Valida el formulario para confirmar la contraseña del usuario.
     $data = $validations -> validate($_POST, array(
       array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password'])
     ));

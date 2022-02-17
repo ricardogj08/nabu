@@ -31,7 +31,7 @@ class authenticationModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($authentication);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar tu clave de verificación de dirección de correo electrónico');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar una clave de verificación de dirección de correo electrónico');
     }
   }
 
@@ -54,7 +54,7 @@ class authenticationModel extends dbConnection {
       return $user;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para validar tu dirección de correo electrónico');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de autenticación de dirección de correo electrónico');
     }
   }
 
@@ -72,7 +72,7 @@ class authenticationModel extends dbConnection {
       $this -> pdo -> prepare($query_profile) -> execute($id);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para activar tu cuenta de usuario');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para activar una cuenta de usuario');
     }
   }
 

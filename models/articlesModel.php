@@ -37,7 +37,7 @@ class articlesModel extends dbConnection {
       return $article;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para validar si tu publicación es única');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener el identificador de un artículo');
     }
   }
 
@@ -50,7 +50,7 @@ class articlesModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($data);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar tu publicación');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar una publicación');
     }
   }
 
