@@ -157,6 +157,18 @@ class adminModel extends dbConnection {
     }
   }
 
+  // Elimina un artículo.
+  public function delete_article(int $id) {
+    $query = 'DELETE FROM articles WHERE id = ?';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($id));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar un artículo');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

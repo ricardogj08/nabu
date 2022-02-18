@@ -214,6 +214,12 @@ class adminController {
     if (empty($article))
       utils::redirect(NABU_ROUTES['approve-articles']);
 
+    // Elimina la portada del artículo.
+    utils::remove_image('cover', $article['cover']);
+
+    // Elimina los comentarios, favoritos, fecha de publicación y registro del artículo.
+    $adminModel -> delete_article($article['id']);
+
     messages::add('El artículo se ha eliminado corractamente');
 
     utils::redirect(NABU_ROUTES['approve-articles']);
