@@ -90,7 +90,7 @@
     </div>
 
     <picture class="form__image-container">
-        <img class="form__image" src="https://cdna.artstation.com/p/assets/images/images/017/677/304/large/kerasumi-1.jpg" alt="">
+        <img class="form__image" src="/assets/images/login.svg" alt="Imagen de login">
     </picture>
 </div>
 <?php require_once 'views/components/footer.php' ?>

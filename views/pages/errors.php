@@ -20,7 +20,7 @@
 <div class="container">
     <main class="error__hero">
         <picture class="error__image-wrapper">
-            <img src="/assets/images/nabu-logo.svg" alt="Nabu error imagen" class="error__img">
+            <img src="/assets/images/404.svg" alt="Nabu error imagen" class="error__img">
         </picture>
         <div class="error__info">
             <h2 class="error__title">¡Whoops!</h2>
