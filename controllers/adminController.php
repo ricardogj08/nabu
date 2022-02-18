@@ -195,9 +195,7 @@ class adminController {
 
     $adminModel = new adminModel();
 
-    $id = $_SESSION['user']['id'];
-
-    $admin = $adminModel -> get_admin($id);
+    $admin = $adminModel -> get_admin($_SESSION['user']['id']);
 
     if (empty($admin))
       utils::redirect(NABU_ROUTES['logout']);
@@ -227,10 +225,70 @@ class adminController {
 
   // Renderiza la página para autorizar la publicación de un artículo.
   static public function authorize_article() {
-    $token    = csrf::generate();
     $messages = messages::get();
 
-    require_once 'views/pages/confirm-password.php';
+    $validations = new validations(NABU_ROUTES['approve-articles']);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
+    ));
+
+    $slug = $data['slug'];
+
+    $view = NABU_ROUTES['authorize-article'] . '&slug=' . $slug;
+
+    if (empty($_POST['confirm-password-form'])) {
+      unset($validations, $data, $slug);
+
+      $token = csrf::generate();
+
+      require_once 'views/pages/confirm-password.php';
+
+      exit();
+    }
+
+    csrf::validate($_POST['csrf']);
+
+    $validations -> route = $view;
+
+    // Valida el formulario para confirmar la contraseña del usuario.
+    $data = $validations -> validate($_POST, array(
+      array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password'])
+    ));
+
+    $adminModel = new adminModel();
+
+    $admin = $adminModel -> get_admin($_SESSION['user']['id']);
+
+    if (empty($admin))
+      utils::redirect(NABU_ROUTES['logout']);
+
+    // Valida la contraseña del usuario.
+    if (!password_verify($data['password'], $admin['password'])) {
+      messages::add('La contraseña es incorrecta');
+      utils::redirect($view);
+    }
+
+    // Obtiene los datos del artículo.
+    $article = $adminModel -> get_article($slug);
+
+    if (empty($article) || !empty($article['authorized']))
+      utils::redirect(NABU_ROUTES['approve-articles']);
+
+    // Autoriza la publicación del artículo.
+    $adminModel -> update_article($article['id'], array('authorized' => true));
+
+    // Registra los datos de publicación del artículo.
+    $adminModel -> record_article(array(
+      'id'                 => $article['id'],
+      'user_id'            => $admin['id'],
+      'authorization_date' => utils::current_date()
+    ));
+
+    messages::add('El artículo se ha publicado correctamente');
+
+    utils::redirect(NABU_ROUTES['approve-articles']);
   }
 
   // Renderiza la página de administración para buscar artículos publicados.

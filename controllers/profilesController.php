@@ -73,12 +73,10 @@ class profilesController {
   static public function edit_profile() {
     utils::check_session(NABU_ROUTES['home']);
 
-    $id = $_SESSION['user']['id'];
-
     $profilesModel = new profilesModel();
 
     // Obtiene los datos de perfil del usuario de sesión.
-    $profile = $profilesModel -> get('id', $id);
+    $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
 
     if (empty($profile))
       utils::redirect(NABU_ROUTES['logout']);
@@ -181,7 +179,7 @@ class profilesController {
     if (!empty($update)) {
       $usersModel = new usersModel();
 
-      $usersModel -> update($id, $update);
+      $usersModel -> update($profile['id'], $update);
 
       unset($usersModel);
 
@@ -236,7 +234,7 @@ class profilesController {
 
     // Actualiza los datos de perfil de un usuario en la base de datos.
     if (!empty($update))
-      $profilesModel -> update($id, $update);
+      $profilesModel -> update($profile['id'], $update);
 
     utils::redirect($view);
   }
@@ -265,11 +263,9 @@ class profilesController {
       array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password'])
     ));
 
-    $id = $_SESSION['user']['id'];
-
     $profilesModel = new profilesModel();
 
-    $profile = $profilesModel -> get('id', $id);
+    $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
 
     if (empty($profile))
       utils::redirect(NABU_ROUTES['logout']);
@@ -287,7 +283,7 @@ class profilesController {
     utils::remove_image('background', $profile['background']);
 
     // Elimina el perfil y desactiva la cuenta del usuario.
-    $profilesModel -> delete($id);
+    $profilesModel -> delete($profile['id']);
 
     utils::redirect(NABU_ROUTES['logout']);
   }

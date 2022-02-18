@@ -83,7 +83,7 @@ class adminModel extends dbConnection {
 
   // @return un array asocitivo con los datos de un artículo.
   public function get_article(string $slug) {
-    $query = 'SELECT id, title, synopsis, body, cover, slug FROM articles WHERE slug = ? LIMIT 1';
+    $query = 'SELECT id, title, synopsis, body, cover, slug, authorized FROM articles WHERE slug = ? LIMIT 1';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
@@ -166,6 +166,19 @@ class adminModel extends dbConnection {
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar un artículo');
+    }
+  }
+
+  // Registra los datos de publicación de un artículo.
+  public function record_article(array $data) {
+    $query = 'INSERT INTO authorizations(id, user_id, authorization_date) ' .
+             'VALUES(:id, :user_id, :authorization_date)';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute($data);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar los datos de publicación de un artículo');
     }
   }
 

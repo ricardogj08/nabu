@@ -25,7 +25,7 @@ class profilesModel extends dbConnection {
 
   // @return un array asociativo con los datos de perfil de un usuario.
   public function get(string $column, $pattern) {
-    $query = 'SELECT u.name, u.username, u.password, p.avatar, p.background, p.description '.
+    $query = 'SELECT u.id, u.name, u.username, u.password, p.avatar, p.background, p.description '.
              'FROM users AS u INNER JOIN profiles AS p ON u.id = p.id ' .
              'WHERE u.' . $column . ' = ? LIMIT 1';
 
