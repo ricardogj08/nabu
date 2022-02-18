@@ -24,3 +24,29 @@
 *   5. Otros
 * Metodología => BEM
 */
+
+.error__hero {
+    flex-direction: row;
+}
+
+.error__info {
+    text-align: initial;
+    margin: 0;
+}
+
+.error__title {
+    font-size: 6rem;
+}
+
+.error__message {
+    font-size: 2rem;
+}
+
+.error__image-wrapper {
+    margin-left: 60px;
+    order: 2;
+}
+
+.error__link-back {
+    text-align: center;
+}
