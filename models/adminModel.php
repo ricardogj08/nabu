@@ -83,7 +83,8 @@ class adminModel extends dbConnection {
 
   // @return un array asocitivo con los datos de un artículo.
   public function get_article(string $slug) {
-    $query = 'SELECT id, title, synopsis, body, cover, slug, authorized FROM articles WHERE slug = ? LIMIT 1';
+    $query = 'SELECT id, title, synopsis, body, cover, slug, authorized ' .
+             'FROM articles WHERE slug = ? LIMIT 1';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
@@ -113,26 +114,6 @@ class adminModel extends dbConnection {
     }
   }
 
-  // Actualiza los datos de un artículo.
-  public function update_article(int $id, array $data) {
-    $columns = array_keys($data);
-    $query   = '';
-
-    foreach ($columns as $column)
-      $query = $query . $column . ' = :' . $column . ', ';
-
-    $query = 'UPDATE articles SET ' . rtrim($query, ', ') . ' WHERE id = :id';
-
-    $data['id'] = $id;
-
-    try {
-      $this -> pdo -> prepare($query) -> execute($data);
-    }
-    catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos de un artículo');
-    }
-  }
-
   // @return los datos de un usuario administrador.
   public function get_admin(int $id) {
     $query = 'SELECT id, role_id AS role, username, email, password FROM users '.
@@ -157,6 +138,46 @@ class adminModel extends dbConnection {
     }
   }
 
+  // Actualiza los datos de un artículo.
+  public function update_article(int $id, array $data) {
+    $columns = array_keys($data);
+    $query   = '';
+
+    foreach ($columns as $column)
+      $query = $query . $column . ' = :' . $column . ', ';
+
+    $query = 'UPDATE articles SET ' . rtrim($query, ', ') . ' WHERE id = :id';
+
+    $data['id'] = $id;
+
+    try {
+      $this -> pdo -> prepare($query) -> execute($data);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar los datos de un artículo');
+    }
+  }
+
+  // Actualiza los datos de publicación de un artículo.
+  public function update_record(int $id, array $data) {
+    $columns = array_keys($data);
+    $query   = '';
+
+    foreach ($columns as $column)
+      $query = $query . $column . ' = :' . $column . ', ';
+
+    $query = 'UPDATE authorizations SET ' . rtrim($query, ', ') . ' WHERE id = :id';
+
+    $data['id'] = $id;
+
+    try {
+      $this -> pdo -> prepare($query) -> execute($data);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para actualizar el registro de publicación de un artículo');
+    }
+  }
+
   // Elimina un artículo.
   public function delete_article(int $id) {
     $query = 'DELETE FROM articles WHERE id = ?';
@@ -170,7 +191,7 @@ class adminModel extends dbConnection {
   }
 
   // Registra los datos de publicación de un artículo.
-  public function record_article(array $data) {
+  public function save_record(array $data) {
     $query = 'INSERT INTO authorizations(id, user_id, authorization_date) ' .
              'VALUES(:id, :user_id, :authorization_date)';
 

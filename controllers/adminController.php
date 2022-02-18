@@ -88,6 +88,11 @@ class adminController {
 
     csrf::validate($_POST['csrf']);
 
+    $admin = $adminModel -> get_admin($_SESSION['user']['id']);
+
+    if (empty($admin))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $validations -> route = $view;
 
     $form = array_merge($_POST, $_FILES);
@@ -151,6 +156,13 @@ class adminController {
       $update['modification_date'] = utils::current_date();
 
       $adminModel -> update_article($article['id'], $update);
+
+      // Actualiza los datos de publicación del artículo.
+      if (!empty($article['authorized']))
+        $adminModel -> update_record($article['id'], array(
+          'user_id'            => $admin['id'],
+          'authorization_date' => utils::current_date()
+        ));
 
       if (!empty($update['slug']))
         $view = NABU_ROUTES['review-article'] . '&slug=' . $update['slug'];
@@ -280,7 +292,7 @@ class adminController {
     $adminModel -> update_article($article['id'], array('authorized' => true));
 
     // Registra los datos de publicación del artículo.
-    $adminModel -> record_article(array(
+    $adminModel -> save_record(array(
       'id'                 => $article['id'],
       'user_id'            => $admin['id'],
       'authorization_date' => utils::current_date()

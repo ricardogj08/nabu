@@ -25,7 +25,8 @@ class authenticationModel extends dbConnection {
 
   // Registra el hash de autenticación de e-mail con tiempo de expiración.
   public function save(array $authentication) {
-    $query = 'INSERT INTO authentications(id, hash, expiration) VALUES(:id, :hash, :expiration)';
+    $query = 'INSERT INTO authentications(id, hash, expiration) ' .
+             'VALUES(:id, :hash, :expiration)';
 
     try {
       $this -> pdo -> prepare($query) -> execute($authentication);
