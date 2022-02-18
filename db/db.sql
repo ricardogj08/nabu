@@ -67,12 +67,12 @@ CREATE TABLE IF NOT EXISTS `articles` (
 );
 
 CREATE TABLE IF NOT EXISTS `authorizations` (
-    `article_id`         INT UNSIGNED                 NOT NULL,
     `user_id`            INT UNSIGNED                 NOT NULL,
+    `article_id`         INT UNSIGNED                 NOT NULL,
     `authorization_date` DATETIME(0)                  NOT NULL,
     CONSTRAINT           authorizations_pk            PRIMARY KEY(article_id, authorization_date),
-    CONSTRAINT           authorizations_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE RESTRICT ON DELETE RESTRICT,
-    CONSTRAINT           authorizations_user_id_fk    FOREIGN KEY(user_id)    REFERENCES users(id)    ON UPDATE RESTRICT ON DELETE RESTRICT
+    CONSTRAINT           authorizations_user_id_fk    FOREIGN KEY(user_id)    REFERENCES users(id)    ON UPDATE RESTRICT ON DELETE RESTRICT,
+    CONSTRAINT           authorizations_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `comments` (
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
     `comment_date` DATETIME(0)            NOT NULL,
     CONSTRAINT     comments_pk            PRIMARY KEY(user_id, comment_date),
     CONSTRAINT     comments_user_id_fk    FOREIGN KEY(user_id)    REFERENCES users(id)    ON UPDATE RESTRICT ON DELETE RESTRICT,
-    CONSTRAINT     comments_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE RESTRICT ON DELETE RESTRICT
+    CONSTRAINT     comments_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `favorites` (
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
     `article_id` INT UNSIGNED            NOT NULL,
     CONSTRAINT   favorites_pk            PRIMARY KEY(user_id, article_id),
     CONSTRAINT   favorites_user_id_fk    FOREIGN KEY(user_id)    REFERENCES users(id)    ON UPDATE RESTRICT ON DELETE RESTRICT,
-    CONSTRAINT   favorites_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE RESTRICT ON DELETE RESTRICT
+    CONSTRAINT   favorites_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO roles(id, name) VALUES(1, 'ADMIN'), (2, 'MODERATOR'), (3, 'USER');

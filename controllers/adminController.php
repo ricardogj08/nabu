@@ -148,6 +148,8 @@ class adminController {
 
     // Actualiza los datos del artículo en la base de datos.
     if (!empty($update)) {
+      $update['modification_date'] = utils::current_date();
+
       $adminModel -> update_article($article['id'], $update);
 
       if (!empty($update['slug']))
