@@ -60,7 +60,7 @@ class validations {
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       if (!str_ends_with($email, '@ugto.mx'))
-        messages::add('Registrate con tu dirección de correo electrónico institucional de la Universidad de Guanajuato');
+        messages::add('Registrate con tu correo electrónico institucional de la Universidad de Guanajuato');
     }
     else
       messages::add('El campo "' . $this -> field . '" contiene una dirección de correo electrónico no válido');

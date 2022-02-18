@@ -24,11 +24,10 @@
         </picture>
         <div class="error__info">
             <h2 class="error__title">¡Whoops!</h2>
-            <p class="error__message">No pudimos encontrar la pagina que buscas</p>
-            <!-- <p><mark><?= $error ?>.</mark></p> -->
-            <a href="/index.php" class="error__link-back">← Volver</a>
+            <p class="error__message"><?= $error ?></p>
+            <a href="<?= NABU_ROUTES['home'] ?>" class="error__link-back">← Volver</a>
         </div>
-    </main> 
+    </main>
     <!-- footer -->
 </div>
 <?php require_once 'views/components/footer.php' ?>

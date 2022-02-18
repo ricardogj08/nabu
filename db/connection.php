@@ -24,7 +24,7 @@ class dbconnection {
 
   public function __construct() {
     if (!file_exists(NABU_DIRECTORY['db']))
-      messages::errors('No se encontró el archivo de configuración de la base de datos ' . NABU_DIRECTORY['db'], 500);
+      messages::errors('No podemos encontrar el archivo de configuración de la base de datos ' . NABU_DIRECTORY['db'], 500);
 
     // Lee el archivo de configuración de la base de datos.
     $config = file_get_contents(NABU_DIRECTORY['db']);

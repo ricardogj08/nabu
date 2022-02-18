@@ -21,7 +21,7 @@ defined('NABU') || exit();
 require_once 'models/profilesModel.php';
 
 class profilesController {
-  // Renderiza la página de un perfil de usuario.
+  // Renderiza la página de perfil de un usuario.
   static public function profile() {
     $validations = new validations(NABU_ROUTES['home']);
 

@@ -32,7 +32,7 @@ class emails {
 
   public function __construct() {
     if (!file_exists(NABU_DIRECTORY['email']))
-      $this -> errors('No se encontró el archivo de configuración del cliente de correo electrónico ' . NABU_DIRECTORY['email']);
+      $this -> errors('No podemos encontrar el archivo de configuración del cliente de correo electrónico ' . NABU_DIRECTORY['email']);
 
     // Carga el archivo de configuración del cliente de e-mail.
     $config = file_get_contents(NABU_DIRECTORY['email']);

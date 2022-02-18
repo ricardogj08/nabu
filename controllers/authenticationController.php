@@ -34,7 +34,7 @@ class authenticationController {
 
     $authenticationModel = new authenticationModel();
 
-    // Busca los datos de autenticación de e-mail de un usuario.
+    // Busca los datos de autenticación de e-mail del usuario.
     $user = $authenticationModel -> get($data['user']);
 
     if (empty($user['hash']) || empty($user['expiration']) || !empty($user['activated']))

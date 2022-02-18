@@ -57,7 +57,7 @@ class usersController {
 
     $users = $usersModel -> find($data['username'], $data['email']);
 
-    $msg   = 'Existe un cuenta registrada con el mismo apodo o dirección de correo electrónico, por favor inténtelo de nuevo';
+    $msg = 'Existe un cuenta registrada con el mismo apodo o dirección de correo electrónico, por favor inténtelo de nuevo';
 
     // Valida si la cuenta es única y elimina cuentas con autenticación expirada.
     foreach ($users as $user) {
@@ -126,7 +126,7 @@ class usersController {
     // Registra el hash de autenticación de e-mail.
     $authenticationModel -> save($authentication);
 
-    messages::add('Su cuenta se ha registrado correctamente, por favor verifica tu dirección de correo electrónico');
+    messages::add('Tu cuenta se ha registrado correctamente, por favor verifica tu dirección de correo electrónico');
 
     utils::redirect($view);
   }
@@ -170,7 +170,7 @@ class usersController {
     // Busca el usuario de acceso.
     $user = $usersModel -> get($column, $data['identity']);
 
-    $msg   = 'La identificación de sesión o la contraseña son incorrectas';
+    $msg = 'La identificación de sesión o la contraseña son incorrectas';
 
     // Valida si existe el usuario.
     if (empty($user)) {
