@@ -163,7 +163,7 @@ class adminController {
       if (!empty($article['authorized']))
         $adminModel -> update_record($article['id'], array(
           'user_id'            => $admin['id'],
-          'authorization_date' => utils::current_date()
+          'authorization_date' => $update['modification_date']
         ));
 
       // Actualiza la URL de edición del artículo si hay cambios en su título.
@@ -297,14 +297,16 @@ class adminController {
     if (empty($article) || !empty($article['authorized']))
       utils::redirect(NABU_ROUTES['approve-articles']);
 
+    $update = array('authorized' => true, 'modification_date' => utils::current_date());
+
     // Autoriza la publicación del artículo.
-    $adminModel -> update_article($article['id'], array('authorized' => true));
+    $adminModel -> update_article($article['id'], $update);
 
     // Registra los datos de publicación del artículo.
     $adminModel -> save_record(array(
       'id'                 => $article['id'],
       'user_id'            => $admin['id'],
-      'authorization_date' => utils::current_date()
+      'authorization_date' => $update['modification_date']
     ));
 
     messages::add('El artículo se ha publicado correctamente');

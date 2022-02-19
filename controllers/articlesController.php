@@ -75,6 +75,8 @@ class articlesController {
     utils::redirect($view);
   }
 
+  // Renderiza la página para listar todos los artículos publicados.
+  // y realiza búsquedas con el método POST.
   static public function all_articles() {
     $view     = NABU_ROUTES['home'];
     $max      = 246;
