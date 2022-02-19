@@ -64,12 +64,11 @@
         </div>
         <div class="articles__cards">
             <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
-            <?php require 'views/components/articles.php' ?>
         </div>
     </section>
+
+    <?php require_once 'views/components/pagination.php' ?>
+
     <section class="CTA">
         <div class="CTA__container">
             <div class="CTA__text">

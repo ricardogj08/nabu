@@ -98,7 +98,7 @@ class usersController {
 
     // Envía primero la URL de autenticación de e-mail antes de registrar al usuario.
     if (!$emails -> send('¡Ya casi está listo!', $body))
-      messages::errors('Tuvimos un problema para enviar tu mensaje de autenticación de e-mail', 500);
+      messages::errors('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos enviar tu mensaje de autenticación de e-mail', 500);
 
     // Cifra la contraseña.
     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT, array('cost' => 12));

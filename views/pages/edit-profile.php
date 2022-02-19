@@ -60,17 +60,17 @@
 
         <label for="username" class="edit__field">
             <span class="edit__entry">Nombre de Usuario</span>
-            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= $profile['username'] ?>" class="edit__input">
+            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= utils:escape($profile['username']) ?>" class="edit__input">
         </label>
         
         <label for="name" class="edit__field">
             <span class="edit__entry">Nombre Completo</span>
-            <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= $profile['name'] ?>" class="edit__input">
+            <input type="text" id="name" name="name" minlength="5" maxlength="255" value="<?= utils::escape($profile['name']) ?>" class="edit__input">
         </label>
         
         <label for="description" class="edit__field">
             <span class="edit__entry">Descripción</span>
-            <textarea id="description" name="description" maxlength="255" rows="5" cols="51" class="edit__input"><?= $profile['description'] ?></textarea>
+            <textarea id="description" name="description" maxlength="255" rows="5" cols="51" class="edit__input"><?= utils::escape($profile['description']) ?></textarea>
         </label>
         
         <label for="password" class="edit__field">

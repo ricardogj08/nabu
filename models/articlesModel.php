@@ -54,6 +54,69 @@ class articlesModel extends dbConnection {
     }
   }
 
+  // @return el número total de artículos autorizados.
+  public function count_all(string $pattern) {
+    $query = 'SELECT COUNT(*) AS total FROM articles WHERE authorized = TRUE';
+
+    if (!empty($pattern))
+      $query = $query . ' AND title LIKE ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute();
+      else
+        $prepare -> execute(array('%' . $pattern . '%'));
+
+      $count = $prepare -> fetch();
+
+      if (empty($count))
+        return $count;
+
+      return $count['total'];
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para calcular el número total de artículos autorizados');
+    }
+  }
+
+  // @return un array asociativo de artículos autorizados.
+  public function all(int $limit, int $accumulation, string $pattern) {
+    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+             'FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
+             'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
+             'WHERE a.authorized = TRUE ';
+
+    if (!empty($pattern))
+      $query = $query . 'AND a.title LIKE ? ';
+
+    $query = $query . 'GROUP BY a.id ORDER BY a.title ASC LIMIT ? OFFSET ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute(array($limit, $accumulation));
+      else
+        $prepare -> execute(array('%' . $pattern . '%', $limit, $accumulation));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos autorizados');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

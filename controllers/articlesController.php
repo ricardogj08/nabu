@@ -21,6 +21,8 @@ defined('NABU') || exit();
 require_once 'models/articlesModel.php';
 
 class articlesController {
+  private const limit = 10;
+
   // Renderiza la página para publicar artículos
   // y envía un artículo para su aprobación con el método POST.
   static public function post_article() {
@@ -75,19 +77,32 @@ class articlesController {
     utils::redirect($view);
   }
 
-  // Renderiza la página para listar todos los artículos publicados.
+  // Renderiza la página para listar todos los artículos autorizados
   // y realiza búsquedas con el método POST.
   static public function all_articles() {
-    $view     = NABU_ROUTES['home'];
     $max      = 246;
+    $search = utils::validate_search(NABU_ROUTES['all-articles'], $max);
+    $query  = $search['query'];
+    $view   = $search['view'];
+
+    $articlesModel = new articlesModel();
+
+    // Obtiene el número total de artículos autorizados.
+    $total = $articlesModel -> count_all($query);
+
+    $pagination = utils::pagination($total, self::limit, $view);
+
+    // Lista de artículos autorizados.
+    $articles = $articlesModel -> all(self::limit, $pagination['accumulation'], $query);
+
+    $page = $pagination['page'];
+
+    unset($search, $articlesModel, $total, $pagination);
+
     $token    = csrf::generate();
-    $articles = array();
+    $messages = messages::get();
 
     require_once 'views/pages/all-articles.php';
-  }
-
-  static public function search() {
-    //
   }
 
   static public function article() {

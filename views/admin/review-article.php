@@ -40,19 +40,19 @@
         <label for="title"><b>Título del artículo</b></label>
     </div>
     <div>
-        <input type="text" id="title" name="title" minlength="1" maxlength="246" size="101" value="<?= $article['title'] ?>" required>
+        <input type="text" id="title" name="title" minlength="1" maxlength="246" size="101" value="<?= utils::escape($article['title']) ?>" required>
     </div>
     <div>
         <label for="synopsis"><b>Resumen del artículo</b></label>
     </div>
     <div>
-        <textarea type="text" id="synopsis" name="synopsis" minlength="1" maxlength="255" rows="3" cols="100" required><?= $article['synopsis'] ?></textarea>
+        <textarea type="text" id="synopsis" name="synopsis" minlength="1" maxlength="255" rows="3" cols="100" required><?= utils::escape($article['synopsis']) ?></textarea>
     </div>
     <div>
         <label for="body"><b>Contenido del artículo <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">formato Markdown</a></b></label>
     </div>
     <div>
-        <textarea type="text" id="body" name="body" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required><?= $article['body'] ?></textarea>
+        <textarea type="text" id="body" name="body" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required><?= utils::escape($article['body']) ?></textarea>
     </div>
     <div>
         <input type="submit" name="review-article-form" value="Enviar">

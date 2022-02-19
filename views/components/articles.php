@@ -20,22 +20,22 @@
 <?php foreach ($articles as $article): ?>
 <article class="card">
     <picture class="banner skeleton">
-        <img src="<?= $article['cover'] ?>" alt="Portada del artículo" class="banner__image">
+        <img src="<?= utils::url_image('cover', $article['cover']) ?>" alt="Portada del artículo" class="banner__image">
     </picture>
     <div class="card__info">
         <div class="card__text">
             <h3 class="card__title">
-                <a href="<?= $article['url'] ?>" class="card__title-link">
-                    <?= $article['title'] ?>
+                <a href="<?= NABU_ROUTES['article'] . '&slug=' . $article['slug'] ?>" class="card__title-link">
+                    <?= utils::escape($article['title']) ?>
                 </a>
             </h3>
-            <p class="card__copy"><?= $article['synopsis'] ?></p>
+            <p class="card__copy"><?= utils::escape($article['synopsis']) ?></p>
         </div>
         <div class="card__details">
             <picture class="profile">
-                <img src="<?= $article['avatar'] ?>" alt="Foto del autor" class="profile__image">
+                <img src="<?= utils::url_image('avatar', $article['avatar']) ?>" alt="Foto del autor" class="profile__image">
             </picture>
-            <a class="card__author" href="<?= $article['profile'] ?>"><?= $article['author'] ?></a>
+            <a class="card__author" href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($article['author']) ?>"><?= utils::escape($article['author']) ?></a>
             <div class="card__stats">
                 <span class = "card__stats-hearth"></span>
                 <span class = "card__stats-numlike"><?= $article['likes'] ?></span>

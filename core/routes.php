@@ -38,6 +38,5 @@ return array(
   'published-articles' => array('route' => 'published-articles', 'controller' => 'adminController',          'view' => 'published_articles'),
   'registered-users'   => array('route' => 'registered-users',   'controller' => 'adminController',          'view' => 'registered_users'),
   'review-article'     => array('route' => 'review-article',     'controller' => 'adminController',          'view' => 'review_article'),
-  'search'             => array('route' => 'search',             'controller' => 'articlesController',       'view' => 'search'),
   'signup'             => array('route' => 'signup',             'controller' => 'usersController',          'view' => 'signup'),
 );
