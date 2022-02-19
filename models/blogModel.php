@@ -32,7 +32,7 @@ class blogModel extends dbConnection {
              'LEFT JOIN profiles AS p ON u.id = p.id ' .
              'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
-             'WHERE a.authorized = TRUE GROUP BY u.id ' .
+             'WHERE a.authorized = TRUE GROUP BY a.id ' .
              'ORDER BY likes DESC, comments DESC LIMIT ?';
 
     try {
