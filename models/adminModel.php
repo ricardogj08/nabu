@@ -81,7 +81,7 @@ class adminModel extends dbConnection {
     }
   }
 
-  // @return un array asocitivo con los datos de un artículo.
+  // @return un array asociativo con los datos de un artículo.
   public function get_article(string $slug) {
     $query = 'SELECT id, title, synopsis, body, cover, slug, authorized ' .
              'FROM articles WHERE slug = ? LIMIT 1';

@@ -43,7 +43,7 @@ nabu/
     * `scripts` - Contiene scripts de `JavaScript`.
     * `styles` - Contiene hojas de estilo `CSS`.
 * `config` - Contiene archivos de configuración de la base de datos y del cliente de correo electrónico.
-* `controllers` - Contienen la lógica de nogocio (lo que debe hacer el programa).
+* `controllers` - Contiene la lógica de negocio (lo que debe hacer el programa).
 * `core` - Contiene herramientas propias de `Nabu`, gestión de mensajes, configuración y sistema de rutas del sitio web.
 * `db` - Contiene el script `SQL` y realiza la conexión con la base de datos.
 * `libs` - Contiene bibliotecas propias de `Nabu` o de terceros.

@@ -81,6 +81,7 @@ class profilesController {
     if (empty($profile))
       utils::redirect(NABU_ROUTES['logout']);
 
+    // Renderiza la página de edición del perfil.
     if (empty($_POST['edit-profile-form'])) {
       unset($profilesModel);
 
@@ -128,7 +129,7 @@ class profilesController {
       if ($data['name'] != $profile['name']) {
         $update['name'] = $data['name'];
 
-        messages::add('Tu nombre completo se ha actualizado correctamente');
+        messages::add('Tu nombre se ha actualizado correctamente');
       }
 
     // Valida si hay cambios en el apodo del usuario.
@@ -190,7 +191,7 @@ class profilesController {
       $update = array();
     }
 
-    // Valida si hay cambios en la descripción de perfil.
+    // Valida si hay cambios en la descripción del perfil.
     if (empty($data['description'])) {
       if (isset($profile['description'])) {
         $update['description'] = null;
@@ -239,12 +240,14 @@ class profilesController {
     utils::redirect($view);
   }
 
-  // Renderiza la página para eliminar una cuenta de usuario.
+  // Renderiza la página para eliminar una cuenta de usuario
+  // y elimina la cuenta de un usuario con el método POST.
   static public function delete_profile() {
     utils::check_session(NABU_ROUTES['home']);
 
     $view = NABU_ROUTES['delete-profile'];
 
+    // Renderiza la página para eliminar una cuenta de usuario.
     if (empty($_POST['confirm-password-form'])) {
       $token    = csrf::generate();
       $messages = messages::get();
@@ -265,6 +268,7 @@ class profilesController {
 
     $profilesModel = new profilesModel();
 
+    // Obtiene los datos de perfil del usuario.
     $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
 
     if (empty($profile))

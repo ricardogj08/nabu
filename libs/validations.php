@@ -60,7 +60,7 @@ class validations {
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       if (!str_ends_with($email, '@ugto.mx'))
-        messages::add('Registrate con tu correo electrónico institucional de la Universidad de Guanajuato');
+        messages::add('Regístrate con tu correo electrónico institucional de la Universidad de Guanajuato');
     }
     else
       messages::add('El campo "' . $this -> field . '" contiene una dirección de correo electrónico no válido');
@@ -78,7 +78,7 @@ class validations {
 
     // Valida el tamaño de la imagen.
     if ($image['size'] > NABU_DEFAULT['image-size'])
-      messages::add('Por favor elija una imagen de menor peso');
+      messages::add('Selecciona una imagen de menor peso');
 
     $formats = explode(',', NABU_DEFAULT['image-formats']);
 
@@ -146,7 +146,7 @@ class validations {
         // Valida si el campo para subir imágenes es obligatorio u opcional.
         if (!$this -> is_file()) {
           if (empty($param['optional']))
-            messages::add('El campo "' . $this -> field . '" require obligatoriamente de un archivo de imagen');
+            messages::add('El campo "' . $this -> field . '" requiere obligatoriamente de un archivo de imagen');
 
           continue;
         }

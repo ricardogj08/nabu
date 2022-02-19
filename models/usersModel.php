@@ -74,8 +74,8 @@ class usersModel extends dbConnection {
 
   // @return un array asociativo con los datos de un solo usuario.
   public function get(string $column, $pattern) {
-    $query = 'SELECT u.id, u.role_id AS role, u.username, u.email, u.password, u.activated, u.registration_date,' .
-             'a.hash, a.expiration FROM users AS u ' .
+    $query = 'SELECT u.id, u.role_id AS role, u.username, u.email, u.password, ' .
+             'u.activated, u.registration_date, a.hash, a.expiration FROM users AS u ' .
              'LEFT JOIN authentications AS a ON u.id = a.id ' .
              'WHERE u.' . $column . ' = ? LIMIT 1';
 

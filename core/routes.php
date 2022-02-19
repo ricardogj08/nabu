@@ -18,6 +18,7 @@
 
 defined('NABU') || exit();
 
+// Definición de rutas del sitio web.
 return array(
   'all-articles'       => array('route' => 'all-articles',       'controller' => 'articlesController',       'view' => 'all_articles'),
   'approve-articles'   => array('route' => 'approve-articles',   'controller' => 'adminController',          'view' => 'approve_articles'),

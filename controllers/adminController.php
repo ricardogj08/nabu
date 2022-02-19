@@ -73,6 +73,7 @@ class adminController {
 
     $view = NABU_ROUTES['review-article'] . '&slug=' . $article['slug'];
 
+    // Renderiza la página de administración para editar un artículo.
     if (empty($_POST['review-article-form'])) {
       unset($adminModel, $validations, $data);
 
@@ -88,6 +89,7 @@ class adminController {
 
     csrf::validate($_POST['csrf']);
 
+    // Obtiene los datos del usuario administrador.
     $admin = $adminModel -> get_admin($_SESSION['user']['id']);
 
     if (empty($admin))
@@ -164,6 +166,7 @@ class adminController {
           'authorization_date' => utils::current_date()
         ));
 
+      // Actualiza la URL de edición del artículo si hay cambios en su título.
       if (!empty($update['slug']))
         $view = NABU_ROUTES['review-article'] . '&slug=' . $update['slug'];
     }
@@ -171,7 +174,8 @@ class adminController {
     utils::redirect($view);
   }
 
-  // Renderiza la página para eliminar un artículo.
+  // Renderiza la página de administración para eliminar un artículo
+  // y elimina los comentarios, favoritos y registro de publicación con el método POST.
   static public function delete_article() {
     $messages = messages::get();
 
@@ -186,6 +190,7 @@ class adminController {
 
     $view = NABU_ROUTES['delete-article'] . '&slug=' . $slug;
 
+    // Renderiza la página de administración para eliminar un artículo.
     if (empty($_POST['confirm-password-form'])) {
       unset($validations, $data, $slug);
 
@@ -207,6 +212,7 @@ class adminController {
 
     $adminModel = new adminModel();
 
+    // Obtiene los datos del usuario administrador.
     $admin = $adminModel -> get_admin($_SESSION['user']['id']);
 
     if (empty($admin))
@@ -230,12 +236,13 @@ class adminController {
     // Elimina los comentarios, favoritos, fecha de publicación y registro del artículo.
     $adminModel -> delete_article($article['id']);
 
-    messages::add('El artículo se ha eliminado corractamente');
+    messages::add('El artículo se ha eliminado correctamente');
 
     utils::redirect(NABU_ROUTES['approve-articles']);
   }
 
-  // Renderiza la página para autorizar la publicación de un artículo.
+  // Renderiza la página de administración para autorizar la publicación de un artículo
+  // y autoriza un artículo con el método POST.
   static public function authorize_article() {
     $messages = messages::get();
 
@@ -250,6 +257,7 @@ class adminController {
 
     $view = NABU_ROUTES['authorize-article'] . '&slug=' . $slug;
 
+    // Renderiza la página de administración para autorizar la publicación de un artículo.
     if (empty($_POST['confirm-password-form'])) {
       unset($validations, $data, $slug);
 
@@ -271,6 +279,7 @@ class adminController {
 
     $adminModel = new adminModel();
 
+    // Obtiene los datos del usuario administrador.
     $admin = $adminModel -> get_admin($_SESSION['user']['id']);
 
     if (empty($admin))

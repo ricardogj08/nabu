@@ -27,6 +27,7 @@ class usersController {
     // Redirecciona a "home" si existe una sesión de usuario.
     utils::session_exists(NABU_ROUTES['home']);
 
+    // Renderiza la página de registro de usuarios.
     if (empty($_POST['signup-form'])) {
       $token    = csrf::generate();
       $messages = messages::get();
@@ -97,7 +98,7 @@ class usersController {
 
     // Envía primero la URL de autenticación de e-mail antes de registrar al usuario.
     if (!$emails -> send('¡Ya casi está listo!', $body))
-      messages::errors('Tuvimos un problema al enviar tu mensaje de autenticación de e-mail', 500);
+      messages::errors('Tuvimos un problema para enviar tu mensaje de autenticación de e-mail', 500);
 
     // Cifra la contraseña.
     $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT, array('cost' => 12));
@@ -136,6 +137,7 @@ class usersController {
   static public function login() {
     utils::session_exists(NABU_ROUTES['home']);
 
+    // Renderiza la página de inicio de sesión.
     if (empty($_POST['login-form'])) {
       $token    = csrf::generate();
       $messages = messages::get();

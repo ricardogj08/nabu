@@ -51,7 +51,7 @@ class emails {
     $this -> mail -> setFrom($config['address'], NABU_DEFAULT['website-name']);
   }
 
-  // Define el destinatario del mensaje,
+  // Define el destinatario del mensaje.
   public function prepare(string $destinatary, string $name) {
     $this -> mail -> addTo($destinatary, $name);
   }
