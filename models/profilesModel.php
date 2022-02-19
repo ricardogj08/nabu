@@ -41,6 +41,55 @@ class profilesModel extends dbConnection {
     }
   }
 
+  // @return el número total de artículos publicados por un usuario.
+  public function count_articles(int $id) {
+    $query = 'SELECT COUNT(*) AS total FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'WHERE a.authorized = TRUE AND u.id = ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id));
+
+      $count = $prepare -> fetch();
+
+      return $count['total'];
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para calcular el número total de artículos publicados por un usuario');
+    }
+  }
+
+  // @return un array asociativo con los artículos publicados por un usuario.
+  public function articles(int $limit, int $accumulation, int $id) {
+    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+             'FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
+             'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
+             'WHERE a.authorized = TRUE AND u.id = ? GROUP BY a.id ' .
+             'ORDER BY a.creation_date DESC LIMIT ? OFFSET ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id, $limit, $accumulation));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos publicados por un usuario');
+    }
+  }
+
   // Actualiza los datos de perfil de un usuario.
   public function update(int $id, array $data) {
     $columns = array_keys($data);

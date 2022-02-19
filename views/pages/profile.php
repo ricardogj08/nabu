@@ -30,7 +30,7 @@
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
       array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 768px)"'),
-      array('file' => 'pages/profile/profile-desktop.css', 'attributes' => 'media="screen and (min-width: 768px)"')
+      array('file' => 'pages/profile/profile-desktop.css',    'attributes' => 'media="screen and (min-width: 768px)"')
 ) ?>
 
 <!-- Archivos de javascript a cargar -->
@@ -64,10 +64,8 @@
     <h2 class='public-posts__title'>Post publicados</h2>
     <div class="public-cards__container">
         <?php require 'views/components/articles.php' ?>
-        <?php require 'views/components/articles.php' ?>
-        <?php require 'views/components/articles.php' ?>
     </div>
 </section>
 
-<?php require_once 'views/components/articles.php' ?>
+<?php require_once 'views/components/pagination.php' ?>
 <?php require_once 'views/components/footer.php' ?>

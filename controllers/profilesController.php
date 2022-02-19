@@ -21,6 +21,8 @@ defined('NABU') || exit();
 require_once 'models/profilesModel.php';
 
 class profilesController {
+  private const limit = 10;
+
   // Renderiza la página de perfil de un usuario.
   static public function profile() {
     $validations = new validations(NABU_ROUTES['home']);
@@ -35,18 +37,28 @@ class profilesController {
     // Obtiene los datos de perfil del usuario.
     $profile = $profilesModel -> get('username', $data['user']);
 
-    unset($profilesModel);
-
     if (empty($profile))
       utils::redirect(NABU_ROUTES['home']);
+
+    // Obtiene el número total de artículos publicados.
+    $total = $profilesModel -> count_articles($profile['id']);
+
+    $view = NABU_ROUTES['profile'] . '&user=' . urlencode($profile['username']);
+
+    $pagination = utils::pagination($total, self::limit, $view);
+
+    // Obtiene los artículos publicados por el usuario.
+    $articles = $profilesModel -> articles(self::limit, $pagination['accumulation'], $profile['id']);
+
+    $page = $pagination['page'];
+
+    unset($profilesModel, $total, $pagination);
 
     $isMyProfile = false;
 
     if (isset($_SESSION['user']))
       if ($_SESSION['user']['username'] == $profile['username'])
         $isMyProfile = true;
-
-    $view = NABU_ROUTES['profile'] . '&user=' . urlencode($profile['username']);
 
     // Escapa los caracteres del nombre completo y el apodo a HTML5.
     $profile['name']     = utils::escape($profile['name']);
@@ -60,10 +72,6 @@ class profilesController {
       $profile['description'] = 'Compartiendo conocimiento...';
 
     $profile['description'] = utils::escape($profile['description']);
-
-    $page = 1;
-
-    $articles = array();
 
     require_once 'views/pages/profile.php';
   }

@@ -40,9 +40,6 @@ class adminModel extends dbConnection {
 
       $count = $prepare -> fetch();
 
-      if (empty($count))
-        return $count;
-
       return $count['total'];
     }
     catch (PDOException $e) {
