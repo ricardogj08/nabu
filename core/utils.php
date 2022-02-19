@@ -138,7 +138,7 @@ class utils {
     $search = array('query' => '', 'view' => $view);
 
     // Selecciona si se realiza una búsqueda por el método POST o GET.
-    if (!empty($_POST['q'])) {
+    if (isset($_POST['q'])) {
       csrf::validate($_POST['csrf']);
 
       $form = $_POST;
