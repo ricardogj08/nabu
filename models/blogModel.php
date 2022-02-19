@@ -23,6 +23,63 @@ class blogModel extends dbConnection {
     parent::__construct();
   }
 
+  // @return un array asociativo de los artículos más populares.
+  public function popular(int $limit) {
+    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+             'FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
+             'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
+             'WHERE a.authorized = TRUE GROUP BY a.id ORDER BY likes DESC, comments DESC LIMIT ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($limit));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos más populares');
+    }
+  }
+
+  // @return un array asociativo de los artículos publicados recientemente.
+  public function recent(int $limit) {
+    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+             'FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
+             'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
+             'WHERE a.authorized = TRUE GROUP BY a.id ORDER BY a.modification_date DESC LIMIT ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($limit));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos más recientes');
+    }
+  }
+
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

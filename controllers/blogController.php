@@ -25,8 +25,10 @@ class blogController {
 
     $blogModel = new blogModel();
 
-    $articles        = array();
-    $recent_articles = array();
+    $articles        = $blogModel -> popular(5);
+    $recent_articles = $blogModel -> recent(10);
+
+    unset($blogModel);
 
     $messages = messages::get();
 

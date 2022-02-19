@@ -21,7 +21,7 @@ defined('NABU') || exit();
 require_once 'models/articlesModel.php';
 
 class articlesController {
-  private const limit = 9;
+  private const limit = 10;
 
   // Renderiza la página para publicar artículos
   // y envía un artículo para su aprobación con el método POST.
