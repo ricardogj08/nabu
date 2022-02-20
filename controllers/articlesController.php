@@ -80,7 +80,7 @@ class articlesController {
   // Renderiza la página para listar todos los artículos autorizados
   // y realiza búsquedas con el método POST.
   static public function all_articles() {
-    $max      = 246;
+    $max    = 246;
     $search = utils::validate_search(NABU_ROUTES['all-articles'], $max);
     $query  = $search['query'];
     $view   = $search['view'];
@@ -92,7 +92,7 @@ class articlesController {
 
     $pagination = utils::pagination($total, self::limit, $view);
 
-    // Lista de artículos autorizados.
+    // Obtiene los artículos autorizados.
     $articles = $articlesModel -> all(self::limit, $pagination['accumulation'], $query);
 
     $page = $pagination['page'];

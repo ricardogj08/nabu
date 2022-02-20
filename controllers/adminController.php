@@ -38,8 +38,8 @@ class adminController {
 
     $pagination = utils::pagination($total, self::limit, $view);
 
-    // Lista de artículos en espera de aprobación.
-    $articles = $adminModel -> sent(self::limit, $pagination['accumulation'], $query);
+    // Obtiene todos los artículos en espera de aprobación.
+    $articles = $adminModel -> find_sent(self::limit, $pagination['accumulation'], $query);
 
     $page = $pagination['page'];
 
@@ -314,11 +314,27 @@ class adminController {
     utils::redirect(NABU_ROUTES['approve-articles']);
   }
 
-  // Renderiza la página de administración para buscar artículos publicados.
+  // Renderiza la página de administración con la lista de artículos
+  // publicados y realiza búsquedas con el método POST.
   static public function published_articles() {
-    $view  = NABU_ROUTES['published-articles'];
-    $max   = 246;
-    $query = '';
+    $max    = 246;
+    $search = utils::validate_search(NABU_ROUTES['published-articles'], $max);
+    $query  = $search['query'];
+    $view   = $search['view'];
+
+    $adminModel = new adminModel();
+
+    // Obtiene el número total de artículos publicados.
+    $total = $adminModel -> count_published($query);
+
+    $pagination = utils::pagination($total, self::limit, $view);
+
+    // Obtiene todos los artículos publicados.
+    $articles = $adminModel -> find_published(self::limit, $pagination['accumulation'], $query);
+
+    $page = $pagination['page'];
+
+    unset($search, $adminModel, $total, $pagination);
 
     $token    = csrf::generate();
     $messages = messages::get();
@@ -326,11 +342,14 @@ class adminController {
     require_once 'views/admin/published-articles.php';
   }
 
-  // Renderiza la página de administración para buscar usuarios registrados.
+  // Renderiza la página de administración con la lista de usuarios
+  // registrado y realiza búsquedas con el método POST.
   static public function registered_users() {
-    $view  = NABU_ROUTES['registered-users'];
-    $max   = 255;
-    $query = '';
+    $max    = 255;
+    $search = utils::validate_search(NABU_ROUTES['registered-users'], $max);
+    $query  = $search['query'];
+    $view   = $search['view'];
+
 
     $token    = csrf::generate();
     $messages = messages::get();

@@ -48,7 +48,7 @@ class adminModel extends dbConnection {
   }
 
   // @return un array asociativo de artículos en espera de aprobación.
-  public function sent(int $limit, int $accumulation, string $pattern) {
+  public function find_sent(int $limit, int $accumulation, string $pattern) {
     $query = 'SELECT a.title, a.slug, u.username AS author ' .
              'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
              'WHERE a.authorized = FALSE ';
@@ -74,7 +74,7 @@ class adminModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos en espera de aprobación');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos en espera de aprobación');
     }
   }
 
@@ -197,6 +197,61 @@ class adminModel extends dbConnection {
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar los datos de publicación de un artículo');
+    }
+  }
+
+  // @return el número total de artículos publicados.
+  public function count_published(string $pattern) {
+    $query = 'SELECT COUNT(*) AS total FROM articles WHERE authorized = TRUE';
+
+    if (!empty($pattern))
+      $query = $query . ' AND title LIKE ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute();
+      else
+        $prepare -> execute(array('%' . $pattern . '%'));
+
+      $count = $prepare -> fetch();
+
+      return $count['total'];
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para calcular el número total de artículos publicados');
+    }
+  }
+
+  // @return un array asociativo de artículos publicados.
+  public function find_published(int $limit, int $accumulation, string $pattern) {
+    $query = 'SELECT a.title, a.slug, u.username AS author ' .
+             'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
+             'WHERE a.authorized = TRUE ';
+
+    if (!empty($pattern))
+      $query = $query . 'AND a.title LIKE ? ';
+
+    $query = $query . 'ORDER BY a.title ASC LIMIT ? OFFSET ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute(array($limit, $accumulation));
+      else
+        $prepare -> execute(array('%' . $pattern . '%', $limit, $accumulation));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos publicados');
     }
   }
 

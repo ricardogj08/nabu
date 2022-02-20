@@ -25,7 +25,10 @@ class blogController {
 
     $blogModel = new blogModel();
 
-    $articles        = $blogModel -> popular(5);
+    // Obtiene los artículos más populares.
+    $articles = $blogModel -> popular(5);
+
+    // Obtiene los artículos más recientes.
     $recent_articles = $blogModel -> recent(10);
 
     unset($blogModel);
