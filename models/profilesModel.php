@@ -71,7 +71,7 @@ class profilesModel extends dbConnection {
              'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
              'WHERE a.authorized = TRUE AND u.id = ? GROUP BY a.id ' .
-             'ORDER BY a.creation_date DESC LIMIT ? OFFSET ?';
+             'ORDER BY a.modification_date DESC LIMIT ? OFFSET ?';
 
     try {
       $prepare = $this -> pdo -> prepare($query);

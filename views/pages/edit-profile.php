@@ -60,7 +60,7 @@
 
         <label for="username" class="edit__field">
             <span class="edit__entry">Nombre de Usuario</span>
-            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= utils:escape($profile['username']) ?>" class="edit__input">
+            <input type="text" id="username" name="username" minlength="1" maxlength="255" value="<?= utils::escape($profile['username']) ?>" class="edit__input">
         </label>
         
         <label for="name" class="edit__field">

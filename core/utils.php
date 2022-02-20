@@ -137,21 +137,21 @@ class utils {
   public static function validate_search(string $view, int $max) {
     $search = array('query' => '', 'view' => $view);
 
+    $form = $_GET;
+
     // Selecciona si se realiza una búsqueda por el método POST o GET.
     if (isset($_POST['q'])) {
       csrf::validate($_POST['csrf']);
 
       $form = $_POST;
     }
-    elseif (!empty($_GET['q']))
-      $form = $_GET;
 
-    if (!empty($form)) {
+    if (!empty($form['q'])) {
       $validations = new validations($view);
 
       // Valida el string de búsqueda.
       $data = $validations -> validate($form, array(
-        array('field' => 'q', 'trim_all' => true, 'min_length' => 0, 'max_length' => $max)
+        array('field' => 'q', 'trim_all' => true, 'min_length' => 1, 'max_length' => $max)
       ));
 
       $search['query'] = $data['q'];
@@ -159,7 +159,7 @@ class utils {
     }
 
     // Redirecciona a una búsqueda por el método GET si se realiza una búsqueda por el método POST.
-    if (!empty($_POST['q']))
+    if (isset($_POST['q']))
       utils::redirect($search['view']);
 
     return $search;
