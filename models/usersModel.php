@@ -23,8 +23,8 @@ class usersModel extends dbConnection {
     parent::__construct();
   }
 
-  // @return una lista de arrays asociativos con los datos de los usuarios.
-  public function find(string $username, string $email) {
+  // @return una lista de arrays asociativos con los datos de varios usuarios.
+  public function find_users(string $username, string $email) {
     $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, ' .
              'a.hash, a.expiration FROM users AS u ' .
              'LEFT JOIN authentications AS a ON u.id = a.id ' .
@@ -48,7 +48,7 @@ class usersModel extends dbConnection {
   }
 
   // Elimina un usuario.
-  public function delete(int $id) {
+  public function delete_user(int $id) {
     $query = 'DELETE FROM users WHERE id = ?';
 
     try {
@@ -60,7 +60,7 @@ class usersModel extends dbConnection {
   }
 
   // Registra un nuevo usuario.
-  public function save(array $data) {
+  public function save_user(array $data) {
     $query = 'INSERT INTO users(name, username, email, password, registration_date) ' .
              'VALUES(:name, :username, :email, :password, :registration_date)';
 
@@ -72,8 +72,8 @@ class usersModel extends dbConnection {
     }
   }
 
-  // @return un array asociativo con los datos de un solo usuario.
-  public function get(string $column, $pattern) {
+  // @return un array asociativo con los datos de un usuario.
+  public function get_user(string $column, $pattern) {
     $query = 'SELECT u.id, u.role_id AS role, u.username, u.email, u.password, ' .
              'u.activated, u.registration_date, a.hash, a.expiration FROM users AS u ' .
              'LEFT JOIN authentications AS a ON u.id = a.id ' .
@@ -99,7 +99,7 @@ class usersModel extends dbConnection {
   }
 
   // Actualiza los datos de un usuario.
-  public function update(int $id, array $data) {
+  public function update_user(int $id, array $data) {
     $columns = array_keys($data);
     $query   = '';
 

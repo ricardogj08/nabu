@@ -24,7 +24,7 @@ class profilesModel extends dbConnection {
   }
 
   // @return un array asociativo con los datos de perfil de un usuario.
-  public function get(string $column, $pattern) {
+  public function get_profile(string $column, $pattern) {
     $query = 'SELECT u.id, u.name, u.username, u.password, p.avatar, p.background, p.description '.
              'FROM users AS u INNER JOIN profiles AS p ON u.id = p.id ' .
              'WHERE u.' . $column . ' = ? LIMIT 1';
@@ -62,7 +62,7 @@ class profilesModel extends dbConnection {
   }
 
   // @return un array asociativo con los artículos publicados por un usuario.
-  public function articles(int $limit, int $accumulation, int $id) {
+  public function get_articles(int $limit, int $accumulation, int $id) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
@@ -86,12 +86,12 @@ class profilesModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos publicados por un usuario');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos publicados por un usuario');
     }
   }
 
   // Actualiza los datos de perfil de un usuario.
-  public function update(int $id, array $data) {
+  public function update_profile(int $id, array $data) {
     $columns = array_keys($data);
     $query   = '';
 
@@ -127,7 +127,7 @@ class profilesModel extends dbConnection {
   }
 
   // Elimina el perfil y desactiva la cuenta de un usuario.
-  public function delete(int $id) {
+  public function delete_profile(int $id) {
     $query_delete  = 'DELETE FROM profiles WHERE id = ?';
     $query_disable = 'UPDATE users SET email = NULL, activated = FALSE WHERE id = ?';
 

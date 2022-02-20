@@ -24,7 +24,7 @@ class articlesModel extends dbConnection {
   }
 
   // @return un array asociativo con los datos de un artículo.
-  public function find(string $slug) {
+  public function find_article(string $slug) {
     $query = 'SELECT id FROM articles WHERE slug = ? LIMIT 1';
 
     try {
@@ -42,7 +42,7 @@ class articlesModel extends dbConnection {
   }
 
   // Registra un artículo en espera de aprobación.
-  public function save(array $data) {
+  public function save_article(array $data) {
     $query = 'INSERT INTO articles(user_id, title, synopsis, body, slug, creation_date) ' .
              'VALUES(:user_id, :title, :synopsis, :body, :slug, :creation_date)';
 
@@ -50,7 +50,7 @@ class articlesModel extends dbConnection {
       $this -> pdo -> prepare($query) -> execute($data);
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar una publicación');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar un artículo');
     }
   }
 
@@ -78,8 +78,8 @@ class articlesModel extends dbConnection {
     }
   }
 
-  // @return un array asociativo de artículos autorizados.
-  public function all(int $limit, int $accumulation, string $pattern) {
+  // @return un array asociativo de artículos publicados.
+  public function get_all(int $limit, int $accumulation, string $pattern) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
@@ -110,7 +110,7 @@ class articlesModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos autorizados');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener todos los artículos publicados');
     }
   }
 

@@ -24,7 +24,7 @@ class blogModel extends dbConnection {
   }
 
   // @return un array asociativo de los artículos más populares.
-  public function popular(int $limit) {
+  public function popular_articles(int $limit) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
@@ -48,12 +48,12 @@ class blogModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos más populares');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos más populares');
     }
   }
 
   // @return un array asociativo de los artículos publicados recientemente.
-  public function recent(int $limit) {
+  public function recent_articles(int $limit) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
@@ -77,7 +77,7 @@ class blogModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para listar los artículos más recientes');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos más recientes');
     }
   }
 

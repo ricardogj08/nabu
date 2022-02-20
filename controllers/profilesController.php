@@ -35,7 +35,7 @@ class profilesController {
     $profilesModel = new profilesModel();
 
     // Obtiene los datos de perfil del usuario.
-    $profile = $profilesModel -> get('username', $data['user']);
+    $profile = $profilesModel -> get_profile('username', $data['user']);
 
     if (empty($profile))
       utils::redirect(NABU_ROUTES['home']);
@@ -48,7 +48,7 @@ class profilesController {
     $pagination = utils::pagination($total, self::limit, $view);
 
     // Obtiene los artículos publicados por el usuario.
-    $articles = $profilesModel -> articles(self::limit, $pagination['accumulation'], $profile['id']);
+    $articles = $profilesModel -> get_articles(self::limit, $pagination['accumulation'], $profile['id']);
 
     $page = $pagination['page'];
 
@@ -84,7 +84,7 @@ class profilesController {
     $profilesModel = new profilesModel();
 
     // Obtiene los datos de perfil del usuario de sesión.
-    $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
+    $profile = $profilesModel -> get_profile('id', $_SESSION['user']['id']);
 
     if (empty($profile))
       utils::redirect(NABU_ROUTES['logout']);
@@ -115,7 +115,7 @@ class profilesController {
 
     $form = array_merge($_POST, $_FILES);
 
-    // Valida el formulario de edición de perfil.
+    // Valida el formulario de edición del perfil.
     $data = $validations -> validate($form, array(
       array('field' => 'avatar',      'type'       => 'image', 'optional'   => true),
       array('field' => 'background',  'type'       => 'image', 'optional'   => true),
@@ -145,7 +145,7 @@ class profilesController {
       if ($data['username'] != $profile['username']) {
         $usersModel = new usersModel();
 
-        $user = $usersModel -> get('username', $data['username']);
+        $user = $usersModel -> get_user('username', $data['username']);
 
         $success = 'Tu apodo se ha actualizado correctamente';
         $exists  = 'Por favor define un apodo diferente';
@@ -161,7 +161,7 @@ class profilesController {
           if (empty($user['activated']) && !empty($user['expiration'])) {
             // Valida si la autenticación está expirada.
             if (time() > $user['expiration']) {
-              $usersModel -> delete($user['id']);
+              $usersModel -> delete_user($user['id']);
 
               $update['username'] = $data['username'];
 
@@ -188,7 +188,7 @@ class profilesController {
     if (!empty($update)) {
       $usersModel = new usersModel();
 
-      $usersModel -> update($profile['id'], $update);
+      $usersModel -> update_user($profile['id'], $update);
 
       unset($usersModel);
 
@@ -243,7 +243,7 @@ class profilesController {
 
     // Actualiza los datos de perfil de un usuario en la base de datos.
     if (!empty($update))
-      $profilesModel -> update($profile['id'], $update);
+      $profilesModel -> update_profile($profile['id'], $update);
 
     utils::redirect($view);
   }
@@ -277,7 +277,7 @@ class profilesController {
     $profilesModel = new profilesModel();
 
     // Obtiene los datos de perfil del usuario.
-    $profile = $profilesModel -> get('id', $_SESSION['user']['id']);
+    $profile = $profilesModel -> get_profile('id', $_SESSION['user']['id']);
 
     if (empty($profile))
       utils::redirect(NABU_ROUTES['logout']);
@@ -295,7 +295,7 @@ class profilesController {
     utils::remove_image('background', $profile['background']);
 
     // Elimina el perfil y desactiva la cuenta del usuario.
-    $profilesModel -> delete($profile['id']);
+    $profilesModel -> delete_profile($profile['id']);
 
     utils::redirect(NABU_ROUTES['logout']);
   }

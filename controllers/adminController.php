@@ -39,7 +39,7 @@ class adminController {
     $pagination = utils::pagination($total, self::limit, $view);
 
     // Obtiene todos los artículos en espera de aprobación.
-    $articles = $adminModel -> find_sent(self::limit, $pagination['accumulation'], $query);
+    $articles = $adminModel -> get_sent(self::limit, $pagination['accumulation'], $query);
 
     $page = $pagination['page'];
 
@@ -166,7 +166,7 @@ class adminController {
           'authorization_date' => $update['modification_date']
         ));
 
-      // Actualiza la URL de edición del artículo si hay cambios en su título.
+      // Actualiza la URL de edición del artículo si hay cambios en el título.
       if (!empty($update['slug']))
         $view = NABU_ROUTES['review-article'] . '&slug=' . $update['slug'];
     }
@@ -330,7 +330,7 @@ class adminController {
     $pagination = utils::pagination($total, self::limit, $view);
 
     // Obtiene todos los artículos publicados.
-    $articles = $adminModel -> find_published(self::limit, $pagination['accumulation'], $query);
+    $articles = $adminModel -> get_published(self::limit, $pagination['accumulation'], $query);
 
     $page = $pagination['page'];
 
@@ -343,13 +343,12 @@ class adminController {
   }
 
   // Renderiza la página de administración con la lista de usuarios
-  // registrado y realiza búsquedas con el método POST.
+  // registrados y realiza búsquedas con el método POST.
   static public function registered_users() {
     $max    = 255;
     $search = utils::validate_search(NABU_ROUTES['registered-users'], $max);
     $query  = $search['query'];
     $view   = $search['view'];
-
 
     $token    = csrf::generate();
     $messages = messages::get();

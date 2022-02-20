@@ -56,7 +56,7 @@ class usersController {
 
     $usersModel = new usersModel();
 
-    $users = $usersModel -> find($data['username'], $data['email']);
+    $users = $usersModel -> find_users($data['username'], $data['email']);
 
     $msg = 'Existe un cuenta registrada con el mismo apodo o dirección de correo electrónico, por favor inténtelo de nuevo';
 
@@ -66,7 +66,7 @@ class usersController {
       if (empty($user['activated']) && !empty($user['expiration'])) {
         // Valida si la autenticación está expirada.
         if (time() > $user['expiration'])
-          $usersModel -> delete($user['id']);
+          $usersModel -> delete_user($user['id']);
         else {
           messages::add($msg);
           messages::check($view);
@@ -96,7 +96,7 @@ class usersController {
 
     $body = require_once 'views/emails/authentication.php';
 
-    // Envía primero la URL de autenticación de e-mail antes de registrar al usuario.
+    // Envía primero la URL de autenticación de e-mail antes de registrar un usuario.
     if (!$emails -> send('¡Ya casi está listo!', $body))
       messages::errors('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos enviar tu mensaje de autenticación de e-mail', 500);
 
@@ -106,10 +106,10 @@ class usersController {
     $data['registration_date'] = utils::current_date();
 
     // Registra el nuevo usuario.
-    $usersModel -> save($data);
+    $usersModel -> save_user($data);
 
     // Consulta el id del nuevo usuario.
-    $user = $usersModel -> get('username', $data['username']);
+    $user = $usersModel -> get_user('username', $data['username']);
 
     unset($usersModel);
 
@@ -125,7 +125,7 @@ class usersController {
     $authenticationModel = new authenticationModel();
 
     // Registra el hash de autenticación de e-mail.
-    $authenticationModel -> save($authentication);
+    $authenticationModel -> save_authentication($authentication);
 
     messages::add('Tu cuenta se ha registrado correctamente, por favor verifica tu dirección de correo electrónico');
 
@@ -169,8 +169,8 @@ class usersController {
 
     $usersModel = new usersModel();
 
-    // Busca el usuario de acceso.
-    $user = $usersModel -> get($column, $data['identity']);
+    // Obtiene los datos del usuario de acceso.
+    $user = $usersModel -> get_user($column, $data['identity']);
 
     $msg = 'La identificación de sesión o la contraseña son incorrectas';
 
@@ -203,7 +203,7 @@ class usersController {
       if (empty($user['activated'])) {
         // Valida si es una cuenta con hash expirado.
         if (time() > $user['expiration']) {
-          $usersModel -> delete($user['id']);
+          $usersModel -> delete_user($user['id']);
           messages::add('Tu cuenta ha expirado, por favor vuelve a registrarte');
         }
         else

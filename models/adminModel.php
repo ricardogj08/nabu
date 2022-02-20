@@ -48,7 +48,7 @@ class adminModel extends dbConnection {
   }
 
   // @return un array asociativo de artículos en espera de aprobación.
-  public function find_sent(int $limit, int $accumulation, string $pattern) {
+  public function get_sent(int $limit, int $accumulation, string $pattern) {
     $query = 'SELECT a.title, a.slug, u.username AS author ' .
              'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
              'WHERE a.authorized = FALSE ';
@@ -74,7 +74,7 @@ class adminModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos en espera de aprobación');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener todos los artículos en espera de aprobación');
     }
   }
 
@@ -225,7 +225,7 @@ class adminModel extends dbConnection {
   }
 
   // @return un array asociativo de artículos publicados.
-  public function find_published(int $limit, int $accumulation, string $pattern) {
+  public function get_published(int $limit, int $accumulation, string $pattern) {
     $query = 'SELECT a.title, a.slug, u.username AS author ' .
              'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
              'WHERE a.authorized = TRUE ';
@@ -251,7 +251,7 @@ class adminModel extends dbConnection {
       return $articles;
     }
     catch (PDOException $e) {
-      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos publicados');
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener todos los artículos publicados');
     }
   }
 

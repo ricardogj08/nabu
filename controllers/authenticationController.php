@@ -34,8 +34,8 @@ class authenticationController {
 
     $authenticationModel = new authenticationModel();
 
-    // Busca los datos de autenticación de e-mail del usuario.
-    $user = $authenticationModel -> get($data['user']);
+    // Obtiene los datos de autenticación de e-mail del usuario.
+    $user = $authenticationModel -> get_authentication($data['user']);
 
     if (empty($user['hash']) || empty($user['expiration']) || !empty($user['activated']))
       utils::redirect(NABU_ROUTES['home']);
@@ -53,7 +53,7 @@ class authenticationController {
       require_once 'models/usersModel.php';
 
       $usersModel = new usersModel();
-      $usersModel -> delete($user['id']);
+      $usersModel -> delete_user($user['id']);
 
       messages::add('Tu cuenta ha expirado, por favor vuelve a registrarte');
 
@@ -61,7 +61,7 @@ class authenticationController {
     }
 
     // Activa la cuenta del usuario y crea su perfil.
-    $authenticationModel -> activate($user['id']);
+    $authenticationModel -> activate_account($user['id']);
 
     messages::add('Tu dirección de correo electrónico se ha verificado correctamente');
 

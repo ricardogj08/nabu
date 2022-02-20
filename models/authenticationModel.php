@@ -23,8 +23,8 @@ class authenticationModel extends dbConnection {
     parent::__construct();
   }
 
-  // Registra el hash de autenticación de e-mail con tiempo de expiración.
-  public function save(array $authentication) {
+  // Registra el hash de autenticación de e-mail con tiempo de expiración de un usuario.
+  public function save_authentication(array $authentication) {
     $query = 'INSERT INTO authentications(id, hash, expiration) ' .
              'VALUES(:id, :hash, :expiration)';
 
@@ -37,7 +37,7 @@ class authenticationModel extends dbConnection {
   }
 
   // @return un array asociativo con los datos de autenticación de e-mail de un usuario.
-  public function get(string $username) {
+  public function get_authentication(string $username) {
     $query = 'SELECT u.id, u.email, u.activated, a.hash, a.expiration ' .
              'FROM users AS u LEFT JOIN authentications AS a ON u.id = a.id ' .
              'WHERE u.username = ? LIMIT 1';
@@ -60,7 +60,7 @@ class authenticationModel extends dbConnection {
   }
 
   // Activa la cuenta, elimina la autenticación y crea el perfil de un usuario.
-  public function activate(int $id) {
+  public function activate_account(int $id) {
     $query_activate = 'UPDATE users SET activated = TRUE WHERE id = ?';
     $query_delete   = 'DELETE FROM authentications WHERE id = ?';
     $query_profile  = 'INSERT INTO profiles(id) VALUES(?)';

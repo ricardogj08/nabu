@@ -59,7 +59,7 @@ class articlesController {
 
     $articlesModel = new articlesModel();
 
-    $article = $articlesModel -> find($data['slug']);
+    $article = $articlesModel -> find_article($data['slug']);
 
     // Valida si el título del artículo es único en el día.
     if (!empty($article)) {
@@ -71,13 +71,13 @@ class articlesController {
     $data['creation_date'] = utils::current_date();
 
     // Registra un artículo para su aprobación.
-    $articlesModel -> save($data);
+    $articlesModel -> save_article($data);
 
-    messages::add('Tu publicación se ha enviado correctamente, en breve autorizaremos tu publicación');
+    messages::add('Tu publicación se ha enviado correctamente, en breve lo autorizaremos');
     utils::redirect($view);
   }
 
-  // Renderiza la página para listar todos los artículos autorizados
+  // Renderiza la página para mostrar todos los artículos publicados
   // y realiza búsquedas con el método POST.
   static public function all_articles() {
     $max    = 246;
@@ -87,13 +87,13 @@ class articlesController {
 
     $articlesModel = new articlesModel();
 
-    // Obtiene el número total de artículos autorizados.
+    // Obtiene el número total de artículos publicados.
     $total = $articlesModel -> count_all($query);
 
     $pagination = utils::pagination($total, self::limit, $view);
 
-    // Obtiene los artículos autorizados.
-    $articles = $articlesModel -> all(self::limit, $pagination['accumulation'], $query);
+    // Obtiene los artículos publicados.
+    $articles = $articlesModel -> get_all(self::limit, $pagination['accumulation'], $query);
 
     $page = $pagination['page'];
 
