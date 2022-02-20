@@ -114,6 +114,27 @@ class articlesModel extends dbConnection {
     }
   }
 
+  // @return el contenido de un artículo.
+  public function get_article(string $slug) {
+    $query = 'SELECT a.title, a.body, a.slug, a.cover, a.modification_date AS date, ' .
+             'u.id AS user_id, u.name AS author, u.username, p.avatar, p.description ' .
+             'FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'WHERE a.authorized = TRUE AND a.slug = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($slug));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener el contenido de un artículo');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

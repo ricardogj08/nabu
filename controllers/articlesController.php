@@ -105,7 +105,103 @@ class articlesController {
     require_once 'views/pages/all-articles.php';
   }
 
+  // Renderiza un artículo publicado
+  // y publica un comentario con el método POST.
   static public function article() {
+    $token    = csrf::generate();
+    $messages = messages::get();
+
+    $validations = new validations(NABU_ROUTES['home']);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
+    ));
+
+    $articlesModel = new articlesModel();
+
+    // Obtiene el contenido del artículo.
+    $article = $articlesModel -> get_article($data['slug']);
+
+    $articles = array();
+
+    if (empty($article))
+      utils::redirect(NABU_ROUTES['home']);
+
+    unset($validatiosn, $data, $articlesModel);
+
+    $login = array('avatar' => null);
+
+    $login['avatar'] = utils::url_image('avatar', $login['avatar']);
+
+    require_once 'libs/parsedown-1.7.4/Parsedown.php';
+
+    // Formatea los datos del artículo.
+    $article['title']    = utils::escape($article['title']);
+    $article['cover']    = utils::url_image('cover', $article['cover']);
+    $article['author']   = utils::escape($article['author']);
+    $article['avatar']   = utils::url_image('avatar', $article['avatar']);
+    $article['profile']  = NABU_ROUTES['profile'] . '&user=' . urlencode($article['username']);
+    $article['username'] = utils::escape($article['username']);
+
+    $parsedown = new Parsedown;
+    $parsedown -> setSafeMode(true);
+
+    // Convierte el artículo Markdown en HTML.
+    $article['body'] = $parsedown -> text($article['body']);
+
+    if (empty($article['description']))
+      $article['description'] = NABU_DEFAULT['description'];
+
+    $article['description'] = utils::escape($article['description']);
+
+    $date = date_parse($article['date']);
+
+    switch ($date['month']) {
+      case 1:
+        $month = 'Enero';
+        break;
+      case 2:
+        $month = 'Febrero';
+        break;
+      case 3:
+        $month = 'Marzo';
+        break;
+      case 4:
+        $month = 'Abril';
+        break;
+      case 5:
+        $month = 'Mayo';
+        break;
+      case 6:
+        $month = 'Junio';
+        break;
+      case 7:
+        $month = 'Julio';
+        break;
+      case 8:
+        $month = 'Agosto';
+        break;
+      case 9:
+        $month = 'Septiembre';
+        break;
+      case 10:
+        $month = 'Octubre';
+        break;
+      case 11:
+        $month = 'Noviembre';
+        break;
+      case 12:
+        $month = 'Diciembre';
+        break;
+      default:
+        $month = '';
+    }
+
+    $article['date'] = $date['day'] . ' de ' . $month . ' del ' . $date['year'];
+
+    $view = NABU_ROUTES['article'] . '&slug=' . $article['slug'];
+
     require_once 'views/pages/article.php';
   }
 }

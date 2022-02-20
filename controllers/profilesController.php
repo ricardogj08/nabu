@@ -69,7 +69,7 @@ class profilesController {
     $profile['background'] = utils::url_image('background', $profile['background']);
 
     if (empty($profile['description']))
-      $profile['description'] = 'Compartiendo conocimiento...';
+      $profile['description'] = NABU_DEFAULT['description'];
 
     $profile['description'] = utils::escape($profile['description']);
 
