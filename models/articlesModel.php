@@ -166,7 +166,7 @@ class articlesModel extends dbConnection {
 
   // @return la foto de perfil de un usuario.
   public function get_avatar(int $id) {
-    $query = 'SELECT avatar FROM profiles WHERE id = ? LIMIT 1';
+    $query = 'SELECT id, avatar FROM profiles WHERE id = ? LIMIT 1';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
@@ -195,7 +195,7 @@ class articlesModel extends dbConnection {
 
   // @return un array con los comentarios de un artículo.
   public function get_comments(int $id) {
-    $query = 'SELECT c.body, c.comment_date AS date, u.name, u.username, p.avatar ' .
+    $query = 'SELECT c.id, c.user_id, c.body, c.comment_date AS date, u.name, u.username, p.avatar ' .
              'FROM comments AS c ' .
              'INNER JOIN users AS u ON c.user_id = u.id ' .
              'LEFT JOIN profiles AS p ON c.user_id = p.id ' .

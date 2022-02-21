@@ -26,6 +26,7 @@ return array(
   'authentication'     => array('route' => 'authentication',     'controller' => 'authenticationController', 'view' => 'authentication'),
   'authorize-article'  => array('route' => 'authorize-article',  'controller' => 'adminController',          'view' => 'authorize_article'),
   'delete-article'     => array('route' => 'delete-article',     'controller' => 'adminController',          'view' => 'delete_article'),
+  'delete-comment'     => array('route' => 'delete-comment',     'controller' => 'communityController',      'view' => 'delete_comment'),
   'delete-profile'     => array('route' => 'delete-profile',     'controller' => 'profilesController',       'view' => 'delete_profile'),
   'edit-profile'       => array('route' => 'edit-profile',       'controller' => 'profilesController',       'view' => 'edit_profile'),
   'errors'             => array('route' => 'errors',             'controller' => 'blogController',           'view' => 'errors'),

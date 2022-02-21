@@ -142,6 +142,8 @@ class articlesController {
       if (isset($_SESSION['user'])) {
         $login = $articlesModel -> get_avatar($_SESSION['user']['id']);
 
+        $login['role'] = $_SESSION['user']['role'];
+
         $login['profile'] = NABU_ROUTES['profile'] . '&user=' . urlencode($_SESSION['user']['username']);
       }
 

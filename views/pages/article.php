@@ -144,6 +144,9 @@
                 <p>
                     <?= utils::escape($comment['body']) ?>
                 </p>
+                <?php if ((isset($login['id']) && $login['id'] == $comment['user_id']) || (isset($login['role']) && ($login['role'] == 'admin' || $login['role'] == 'moderator'))): ?>
+                    <a href="<?= NABU_ROUTES['delete-comment'] . '&id=' . $comment['id'] ?>">Eliminar</a>
+                <?php endif ?>
             </div>
         <?php endforeach ?>
 
