@@ -31,11 +31,11 @@
 
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
-    array('file' => 'components/navbar/navbar-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('file' => 'components/footer/footer-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('file' => 'components/search/search-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('file' => 'pages/all-articles/all-articles-tablet.css',  'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('file' => 'pages/all-articles/all-articles-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
+    array('file' => 'components/navbar/navbar-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/footer/footer-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/search/search-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'pages/all-articles/all-articles-tablet.css',   'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'pages/all-articles/all-articles-desktop.css',  'attributes' => 'media="screen and (min-width: 1024px)"'),
     array('file' => 'components/pagination/pagination-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
 ) ?>
 
