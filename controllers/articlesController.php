@@ -169,48 +169,9 @@ class articlesController {
       // Segmenta la fecha en un array asociativo.
       $date = date_parse($article['date']);
 
-      switch ($date['month']) {
-        case 1:
-          $month = 'Enero';
-          break;
-        case 2:
-          $month = 'Febrero';
-          break;
-        case 3:
-          $month = 'Marzo';
-          break;
-        case 4:
-          $month = 'Abril';
-          break;
-        case 5:
-          $month = 'Mayo';
-          break;
-        case 6:
-          $month = 'Junio';
-          break;
-        case 7:
-          $month = 'Julio';
-          break;
-        case 8:
-          $month = 'Agosto';
-          break;
-        case 9:
-          $month = 'Septiembre';
-          break;
-        case 10:
-          $month = 'Octubre';
-          break;
-        case 11:
-          $month = 'Noviembre';
-          break;
-        case 12:
-          $month = 'Diciembre';
-          break;
-        default:
-          $month = '';
-      }
+      $date = utils::format_month($date);
 
-      $article['date'] = $date['day'] . ' de ' . $month . ' del ' . $date['year'];
+      $article['date'] = $date['day'] . ' de ' . $date['month'] . ' del ' . $date['year'];
 
       unset($validations, $data, $articlesModel, $parsedown, $date, $month);
 

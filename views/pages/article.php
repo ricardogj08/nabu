@@ -60,7 +60,7 @@
             <div class="post__info">
                 <p class="post__author-name">
                     <a href="<?= $article['profile'] ?>">
-                        <?= $article['author'] ?>
+                        <?= $article['username'] ?>
                     </a>
                 </p>
                 <p class="post__date">
