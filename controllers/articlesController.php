@@ -142,9 +142,6 @@ class articlesController {
       if (isset($_SESSION['user'])) {
         $login = $articlesModel -> get_avatar($_SESSION['user']['id']);
 
-        if (empty($login))
-          utils::redirect(NABU_ROUTES['logout']);
-
         $login['profile'] = NABU_ROUTES['profile'] . '&user=' . urlencode($_SESSION['user']['username']);
       }
 
