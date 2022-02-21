@@ -107,6 +107,8 @@
     </div>
 </section>
 
+<?php require_once 'views/components/messages.php' ?>
+
 <section class="comments">
     <div class="comments__container">
         <h2 class="comments__title">Deja tu opinión al autor</h2>
@@ -117,13 +119,13 @@
             <picture class="author-info__image comment__user-image-container">
                 <img class="author__image comment__user-image" src="<?= $login['avatar'] ?>">
             </picture>
-            <form class="comments__form">
+            <form class="comments__form" method="POST" action="<?= $view ?>">
+                <input type="hidden" name="csrf" value="<?= $token ?>">
                 <textarea class="comments__textarea" placeholder="Hazle saber que estuviste aqui"  maxlength="255" name="textarea"></textarea>
-                <input type="submit" class="comments__button" value="Enviar">
+                <input type="submit" name="comments-form" class="comments__button" value="Enviar">
             </form>
         </div>
     </div>
 </section>
 
-<?php require_once 'views/components/messages.php' ?>
 <?php require_once 'views/components/footer.php' ?>

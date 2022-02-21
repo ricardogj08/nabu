@@ -25,7 +25,7 @@ class articlesModel extends dbConnection {
 
   // @return un array asociativo con los datos de un artículo.
   public function find_article(string $slug) {
-    $query = 'SELECT id FROM articles WHERE slug = ? LIMIT 1';
+    $query = 'SELECT id, slug FROM articles WHERE slug = ? LIMIT 1';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
@@ -115,23 +115,39 @@ class articlesModel extends dbConnection {
   }
 
   // @return el contenido de un artículo.
-  public function get_article(string $slug) {
+  public function get_article(int $id) {
     $query = 'SELECT a.title, a.body, a.slug, a.cover, a.modification_date AS date, ' .
              'u.id AS user_id, u.name AS author, u.username, p.avatar, p.description ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
              'LEFT JOIN profiles AS p ON u.id = p.id ' .
-             'WHERE a.authorized = TRUE AND a.slug = ? LIMIT 1';
+             'WHERE a.authorized = TRUE AND a.id = ? LIMIT 1';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
 
-      $prepare -> execute(array($slug));
+      $prepare -> execute(array($id));
 
       return $prepare -> fetch();
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener el contenido de un artículo');
+    }
+  }
+
+  // @return la foto de perfil de un usuario.
+  public function get_avatar(int $id) {
+    $query = 'SELECT avatar FROM profiles WHERE id = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener la foto de perfil de un usuario');
     }
   }
 

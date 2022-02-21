@@ -108,7 +108,6 @@ class articlesController {
   // Renderiza un artículo publicado
   // y publica un comentario con el método POST.
   static public function article() {
-    $token    = csrf::generate();
     $messages = messages::get();
 
     $validations = new validations(NABU_ROUTES['home']);
@@ -120,88 +119,107 @@ class articlesController {
 
     $articlesModel = new articlesModel();
 
-    // Obtiene el contenido del artículo.
-    $article = $articlesModel -> get_article($data['slug']);
-
-    $articles = array();
+    $article = $articlesModel -> find_article($data['slug']);
 
     if (empty($article))
       utils::redirect(NABU_ROUTES['home']);
 
-    unset($validatiosn, $data, $articlesModel);
-
-    $login = array('avatar' => null);
-
-    $login['avatar'] = utils::url_image('avatar', $login['avatar']);
-
-    require_once 'libs/parsedown-1.7.4/Parsedown.php';
-
-    // Formatea los datos del artículo.
-    $article['title']    = utils::escape($article['title']);
-    $article['cover']    = utils::url_image('cover', $article['cover']);
-    $article['author']   = utils::escape($article['author']);
-    $article['avatar']   = utils::url_image('avatar', $article['avatar']);
-    $article['profile']  = NABU_ROUTES['profile'] . '&user=' . urlencode($article['username']);
-    $article['username'] = utils::escape($article['username']);
-
-    $parsedown = new Parsedown;
-    $parsedown -> setSafeMode(true);
-
-    // Convierte el artículo Markdown en HTML.
-    $article['body'] = $parsedown -> text($article['body']);
-
-    if (empty($article['description']))
-      $article['description'] = NABU_DEFAULT['description'];
-
-    $article['description'] = utils::escape($article['description']);
-
-    $date = date_parse($article['date']);
-
-    switch ($date['month']) {
-      case 1:
-        $month = 'Enero';
-        break;
-      case 2:
-        $month = 'Febrero';
-        break;
-      case 3:
-        $month = 'Marzo';
-        break;
-      case 4:
-        $month = 'Abril';
-        break;
-      case 5:
-        $month = 'Mayo';
-        break;
-      case 6:
-        $month = 'Junio';
-        break;
-      case 7:
-        $month = 'Julio';
-        break;
-      case 8:
-        $month = 'Agosto';
-        break;
-      case 9:
-        $month = 'Septiembre';
-        break;
-      case 10:
-        $month = 'Octubre';
-        break;
-      case 11:
-        $month = 'Noviembre';
-        break;
-      case 12:
-        $month = 'Diciembre';
-        break;
-      default:
-        $month = '';
-    }
-
-    $article['date'] = $date['day'] . ' de ' . $month . ' del ' . $date['year'];
-
     $view = NABU_ROUTES['article'] . '&slug=' . $article['slug'];
 
-    require_once 'views/pages/article.php';
+    if (empty($_POST['comments-form'])) {
+      // Obtiene el contenido del artículo.
+      $article = $articlesModel -> get_article($article['id']);
+
+      $articles = array();
+
+      $login = array('avatar' => null);
+
+      // Obtiene la foto de perfil del usuario de sesión para mostrar en los comentarios.
+      if (isset($_SESSION['user'])) {
+        $login = $articlesModel -> get_avatar($_SESSION['user']['id']);
+
+        if (empty($login))
+          utils::redirect(NABU_ROUTES['logout']);
+      }
+
+      $login['avatar'] = utils::url_image('avatar', $login['avatar']);
+
+      require_once 'libs/parsedown-1.7.4/Parsedown.php';
+
+      // Formatea los datos del artículo.
+      $article['title']    = utils::escape($article['title']);
+      $article['cover']    = utils::url_image('cover', $article['cover']);
+      $article['author']   = utils::escape($article['author']);
+      $article['avatar']   = utils::url_image('avatar', $article['avatar']);
+      $article['profile']  = NABU_ROUTES['profile'] . '&user=' . urlencode($article['username']);
+      $article['username'] = utils::escape($article['username']);
+
+      $parsedown = new Parsedown;
+      $parsedown -> setSafeMode(true);
+
+      // Convierte el artículo Markdown en HTML.
+      $article['body'] = $parsedown -> text($article['body']);
+
+      if (empty($article['description']))
+        $article['description'] = NABU_DEFAULT['description'];
+
+      $article['description'] = utils::escape($article['description']);
+
+      // Segmenta la fecha en un array asociativo.
+      $date = date_parse($article['date']);
+
+      switch ($date['month']) {
+        case 1:
+          $month = 'Enero';
+          break;
+        case 2:
+          $month = 'Febrero';
+          break;
+        case 3:
+          $month = 'Marzo';
+          break;
+        case 4:
+          $month = 'Abril';
+          break;
+        case 5:
+          $month = 'Mayo';
+          break;
+        case 6:
+          $month = 'Junio';
+          break;
+        case 7:
+          $month = 'Julio';
+          break;
+        case 8:
+          $month = 'Agosto';
+          break;
+        case 9:
+          $month = 'Septiembre';
+          break;
+        case 10:
+          $month = 'Octubre';
+          break;
+        case 11:
+          $month = 'Noviembre';
+          break;
+        case 12:
+          $month = 'Diciembre';
+          break;
+        default:
+          $month = '';
+      }
+
+      $article['date'] = $date['day'] . ' de ' . $month . ' del ' . $date['year'];
+
+      unset($validations, $data, $articlesModel, $parsedown, $date, $month);
+
+      $token = csrf::generate();
+
+      require_once 'views/pages/article.php';
+
+      exit();
+    }
+
+    csrf::validate($_POST['csrf']);
   }
 }
