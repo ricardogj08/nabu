@@ -1,0 +1,50 @@
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
+*/
+
+/* Estilos para el componente de pginación */
+
+.pages {
+  display: flex;
+  gap: 16px;
+  margin: 15px 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pages__move {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 200;
+    color: var(--color-background);
+    background-color: var(--color-secondary-purple);
+}
+
+.pages__actual {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    display: flex;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--color-black);
+    border: 2px solid var(--color-secondary-purple);
+    background-color: var(--color-background);
+}

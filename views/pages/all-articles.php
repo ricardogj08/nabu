@@ -26,6 +26,7 @@
     'pages/all-articles/all-articles.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
+    'components/pagination/pagination.css',
 ) ?>
 
 <!-- Estilos para el responsive design -->
@@ -35,6 +36,7 @@
     array('file' => 'components/search/search-desktop.css',        'attributes' => 'media="screen and (min-width: 650px)"'),
     array('file' => 'pages/all-articles/all-articles-tablet.css',  'attributes' => 'media="screen and (min-width: 650px)"'),
     array('file' => 'pages/all-articles/all-articles-desktop.css', 'attributes' => 'media="screen and (min-width: 1024px)"'),
+    array('file' => 'components/pagination/pagination-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
 ) ?>
 
 <!-- Archivos de javascript -->

@@ -24,3 +24,85 @@
 *   5. Otros
 * Metodología => BEM
 */
+body {
+    background-color:var(--color-background);
+}
+
+.header {
+    min-width: 320px;
+    width: 100%;
+    background-color: var(--color-secundary-background);
+}
+
+.nav {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Estilos a la seccion de la redaccion del post */
+
+.hero {
+    width: 100%;
+    min-width: 320px;
+    margin-bottom: 30px;
+}
+
+.public__form {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.public__form > *:not(:last-child) {
+    width: 100%;
+    margin-bottom: 5px;
+    outline-color: var(--color-secondary-purple);
+    border: 1px rgba(0, 0, 0, 0.25) inset;
+}
+
+.public__title {
+    padding: 20px 15px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.public__summary {
+    padding: 20px 15px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2.1rem;
+}
+
+.public__content {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--color-black);
+}
+
+.public__send {
+    align-self: center;
+    width: 30%;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    color: var(--color-background);
+    background-color: var(--color-secondary-green);
+}
+
+/* Reescribiendo estilos de footer para esta page */
+.footer {
+    background-color: var(--color-black);
+}
+
+.footer .rights {
+    color: var(--color-background);
+}
+
+.footer .media svg path {
+    fill: var(--color-background);
+}

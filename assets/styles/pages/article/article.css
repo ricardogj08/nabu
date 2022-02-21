@@ -30,6 +30,9 @@ body {
 }
 
 /* Estilos del header */
+.nav__burger-icon {
+    color: white;
+}
 
 header {
     min-width: 320px;
