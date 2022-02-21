@@ -151,6 +151,19 @@ class articlesModel extends dbConnection {
     }
   }
 
+  // Publica un comentario.
+  public function post_comment(array $data) {
+    $query = 'INSERT INTO comments(user_id, article_id, body, comment_date) ' .
+             'VALUES(:user_id, :article_id, :body, :comment_date)';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute($data);
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para publicar un comentario');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

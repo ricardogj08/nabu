@@ -221,5 +221,23 @@ class articlesController {
     }
 
     csrf::validate($_POST['csrf']);
+
+    utils::check_session(NABU_ROUTES['login']);
+
+    $validations -> route = $view;
+
+    // Valida el formulario para publicar un comentario.
+    $data = $validations -> validate($_POST, array(
+      array('field' => 'body', 'trim_all' => true, 'min_length' => 1, 'max_length' => 255),
+    ));
+
+    $data['user_id']      = $_SESSION['user']['id'];
+    $data['article_id']   = $article['id'];
+    $data['comment_date'] = utils::current_date();
+
+    // Publica un comentario.
+    $articlesModel -> post_comment($data);
+
+    utils::redirect($view);
   }
 }
