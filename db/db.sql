@@ -76,19 +76,23 @@ CREATE TABLE IF NOT EXISTS `authorizations` (
 );
 
 CREATE TABLE IF NOT EXISTS `comments` (
+    `id`           BIGINT UNSIGNED        NOT NULL AUTO_INCREMENT,
     `user_id`      INT UNSIGNED           NOT NULL,
     `article_id`   INT UNSIGNED           NOT NULL,
     `body`         VARCHAR(255)           NOT NULL,
     `comment_date` DATETIME(0)            NOT NULL,
-    CONSTRAINT     comments_pk            PRIMARY KEY(user_id, comment_date),
+    CONSTRAINT     comments_pk            PRIMARY KEY(id),
+    CONSTRAINT     comments_uk            UNIQUE(user_id, comment_date),
     CONSTRAINT     comments_user_id_fk    FOREIGN KEY(user_id)    REFERENCES users(id)    ON UPDATE RESTRICT ON DELETE RESTRICT,
     CONSTRAINT     comments_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE CASCADE  ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `favorites` (
+    `id`         BIGINT UNSIGNED         NOT NULL AUTO_INCREMENT,
     `user_id`    INT UNSIGNED            NOT NULL,
     `article_id` INT UNSIGNED            NOT NULL,
-    CONSTRAINT   favorites_pk            PRIMARY KEY(user_id, article_id),
+    CONSTRAINT   favorites_pk            PRIMARY KEY(id),
+    CONSTRAINT   favorites_uk            UNIQUE(user_id, article_id),
     CONSTRAINT   favorites_user_id_fk    FOREIGN KEY(user_id)    REFERENCES users(id)    ON UPDATE RESTRICT ON DELETE RESTRICT,
     CONSTRAINT   favorites_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE CASCADE  ON DELETE CASCADE
 );

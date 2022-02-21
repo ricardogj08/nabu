@@ -40,7 +40,7 @@ define('NABU_DEFAULT', array(
     'article-size'  => 1048576 * 1, // 1 MB (en bytes).
     'avatar'        => NABU_URL . '/assets/images/avatar.svg',
     'background'    => NABU_URL . '/assets/images/background.svg',
-    'cover'         => NABU_URL . '/assets/images/cover.jpg',
+    'cover'         => NABU_URL . '/assets/images/cover.svg',
     'description'   => 'Compartiendo conocimiento...',
     'image-formats' => 'image/gif, image/jpeg, image/png, image/svg+xml',
     'image-size'    => 1048576 * 2, // 2 MB (en bytes).
