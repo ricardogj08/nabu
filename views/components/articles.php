@@ -17,30 +17,30 @@
 
 <?php defined('NABU') || exit() ?>
 
-<?php foreach ($articles as $article): ?>
+<?php foreach ($articles as $post): ?>
 <article class="card">
     <picture class="banner skeleton">
-        <img src="<?= utils::url_image('cover', $article['cover']) ?>" alt="Portada del artículo" class="banner__image">
+        <img src="<?= utils::url_image('cover', $post['cover']) ?>" alt="Portada del artículo" class="banner__image">
     </picture>
     <div class="card__info">
         <div class="card__text">
             <h3 class="card__title">
-                <a href="<?= NABU_ROUTES['article'] . '&slug=' . $article['slug'] ?>" class="card__title-link">
-                    <?= utils::escape($article['title']) ?>
+                <a href="<?= NABU_ROUTES['article'] . '&slug=' . $post['slug'] ?>" class="card__title-link">
+                    <?= utils::escape($post['title']) ?>
                 </a>
             </h3>
-            <p class="card__copy"><?= utils::escape($article['synopsis']) ?></p>
+            <p class="card__copy"><?= utils::escape($post['synopsis']) ?></p>
         </div>
         <div class="card__details">
             <picture class="profile">
-                <img src="<?= utils::url_image('avatar', $article['avatar']) ?>" alt="Foto del autor" class="profile__image">
+                <img src="<?= utils::url_image('avatar', $post['avatar']) ?>" alt="Foto del autor" class="profile__image">
             </picture>
-            <a class="card__author" href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($article['author']) ?>"><?= utils::escape($article['author']) ?></a>
+            <a class="card__author" href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($post['author']) ?>"><?= utils::escape($post['author']) ?></a>
             <div class="card__stats">
                 <span class = "card__stats-hearth"></span>
-                <span class = "card__stats-numlike"><?= $article['likes'] ?></span>
+                <span class = "card__stats-numlike"><?= $post['likes'] ?></span>
                 <span class="card__stats-comment"></span>
-                <span class="card__stats-numcom"><?= $article['comments'] ?></span>
+                <span class="card__stats-numcom"><?= $post['comments'] ?></span>
             </div>
         </div>
     </div>

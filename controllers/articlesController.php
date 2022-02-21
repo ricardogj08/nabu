@@ -130,7 +130,8 @@ class articlesController {
       // Obtiene el contenido del artículo.
       $article = $articlesModel -> get_article($article['id']);
 
-      $articles = array();
+      // Obtiene los artículos más populares del autor.
+      $articles = $articlesModel -> popular_articles($article['author_id'], 3);
 
       $login = array('avatar' => null);
 

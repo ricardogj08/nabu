@@ -117,7 +117,7 @@ class articlesModel extends dbConnection {
   // @return el contenido de un artículo.
   public function get_article(int $id) {
     $query = 'SELECT a.title, a.body, a.slug, a.cover, a.modification_date AS date, ' .
-             'u.id AS user_id, u.name AS author, u.username, p.avatar, p.description ' .
+             'u.id AS author_id, u.name AS author, u.username, p.avatar, p.description ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
              'LEFT JOIN profiles AS p ON u.id = p.id ' .
@@ -132,6 +132,35 @@ class articlesModel extends dbConnection {
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener el contenido de un artículo');
+    }
+  }
+
+  // @return un array asociativo de los artículos más populares de un usuario.
+  public function popular_articles(int $id, int $limit) {
+    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+             'FROM articles AS a ' .
+             'INNER JOIN users AS u ON a.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
+             'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
+             'WHERE a.user_id = ? AND a.authorized = TRUE GROUP BY a.id ' .
+             'ORDER BY likes DESC, comments DESC LIMIT ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id, $limit));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los artículos más populares de un usuario');
     }
   }
 
