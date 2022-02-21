@@ -30,6 +30,10 @@
     z-index: 2;
 }
 
+.nav__burger-icon {
+    color: white;
+}
+
 /* Estilos al header */
 header {
     min-width: 320px;
