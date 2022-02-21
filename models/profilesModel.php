@@ -61,7 +61,7 @@ class profilesModel extends dbConnection {
     }
   }
 
-  // @return un array asociativo con los artículos publicados por un usuario.
+  // @return un array con los artículos publicados por un usuario.
   public function get_articles(int $limit, int $accumulation, int $id) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .

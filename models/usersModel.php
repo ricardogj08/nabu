@@ -23,7 +23,7 @@ class usersModel extends dbConnection {
     parent::__construct();
   }
 
-  // @return una lista de arrays asociativos con los datos de varios usuarios.
+  // @return un array con los datos de varios usuarios.
   public function find_users(string $username, string $email) {
     $query = 'SELECT u.id, u.username, u.email, u.password, u.activated, ' .
              'a.hash, a.expiration FROM users AS u ' .

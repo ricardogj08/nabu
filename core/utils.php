@@ -165,8 +165,10 @@ class utils {
     return $search;
   }
 
-  // Formatea el número de un mes en palabras.
-  public static function format_month(array $date) {
+  // @return un array asociativo con una fecha segmentada.
+  public static function format_date(string $date) {
+    $date = date_parse($date);
+
     switch ($date['month']) {
       case 1:
         $month = 'Enero';

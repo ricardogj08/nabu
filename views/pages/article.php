@@ -93,9 +93,11 @@
 
 <section class="author-info">
     <div class="author-info__container">
-        <picture class="author-info__image">
-            <img class="author__image" src="<?= $article['avatar'] ?>">
-        </picture>
+        <a href="<?= $article['profile'] ?>">
+            <picture class="author-info__image">
+                <img class="author__image" src="<?= $article['avatar'] ?>">
+            </picture>
+        </a>
         <div class="author-info__text">
             <h3 class="author-info__title">
                 <a href="<?= $article['profile'] ?>">
@@ -116,15 +118,35 @@
 
         </div>
         <div class="comments__box">
-            <picture class="author-info__image comment__user-image-container">
-                <img class="author__image comment__user-image" src="<?= $login['avatar'] ?>">
-            </picture>
+            <a href="<?= $login['profile'] ?>">
+                <picture class="author-info__image comment__user-image-container">
+                    <img class="author__image comment__user-image" src="<?= $login['avatar'] ?>">
+                </picture>
+            </a>
             <form class="comments__form" method="POST" action="<?= $view ?>">
                 <input type="hidden" name="csrf" value="<?= $token ?>">
                 <textarea class="comments__textarea" placeholder="Hazle saber que estuviste aqui"  minlength="1" maxlength="255" name="body" required></textarea>
                 <input type="submit" name="comments-form" class="comments__button" value="Enviar">
             </form>
         </div>
+
+        <?php foreach($comments as $comment): ?>
+            <?php $profile = NABU_ROUTES['profile'] . '&user=' . urlencode($comment['username']) ?>
+            <?php $comment['date'] = utils::format_date($comment['date']) ?>
+            <div>
+                <a href="<?= $profile ?>">
+                    <img src="<?= utils::url_image('avatar', $comment['avatar']) ?>">
+                </a>
+                <p>
+                    <a href="<?= $profile ?>"><?= utils::escape($comment['name']) . ' - ' . utils::escape($comment['username']) ?></a>
+                    <?= $comment['date']['day'] . ' de ' . $comment['date']['month'] . ' ' . $comment['date']['year'] ?>
+                </p>
+                <p>
+                    <?= utils::escape($comment['body']) ?>
+                </p>
+            </div>
+        <?php endforeach ?>
+
     </div>
 </section>
 

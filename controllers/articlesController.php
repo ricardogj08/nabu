@@ -133,7 +133,10 @@ class articlesController {
       // Obtiene los artículos más populares del autor.
       $articles = $articlesModel -> popular_articles($article['author_id'], 3);
 
-      $login = array('avatar' => null);
+      // Obtiene los comentarios del artículo.
+      $comments = $articlesModel -> get_comments($article['id']);
+
+      $login = array('avatar' => null, 'profile' => NABU_ROUTES['login']);
 
       // Obtiene la foto de perfil del usuario de sesión para mostrar en los comentarios.
       if (isset($_SESSION['user'])) {
@@ -141,6 +144,8 @@ class articlesController {
 
         if (empty($login))
           utils::redirect(NABU_ROUTES['logout']);
+
+        $login['profile'] = NABU_ROUTES['profile'] . '&user=' . urlencode($_SESSION['user']['username']);
       }
 
       $login['avatar'] = utils::url_image('avatar', $login['avatar']);
@@ -156,7 +161,7 @@ class articlesController {
       $article['username'] = utils::escape($article['username']);
 
       $parsedown = new Parsedown;
-      $parsedown -> setSafeMode(true);
+      //$parsedown -> setSafeMode(true);
 
       // Convierte el artículo Markdown en HTML.
       $article['body'] = $parsedown -> text($article['body']);
@@ -167,9 +172,7 @@ class articlesController {
       $article['description'] = utils::escape($article['description']);
 
       // Segmenta la fecha en un array asociativo.
-      $date = date_parse($article['date']);
-
-      $date = utils::format_month($date);
+      $date = utils::format_date($article['date']);
 
       $article['date'] = $date['day'] . ' de ' . $date['month'] . ' del ' . $date['year'];
 

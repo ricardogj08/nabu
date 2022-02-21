@@ -78,13 +78,13 @@ class articlesModel extends dbConnection {
     }
   }
 
-  // @return un array asociativo de artículos publicados.
+  // @return un array con los artículos publicados.
   public function get_all(int $limit, int $accumulation, string $pattern) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
-             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN profiles AS p ON a.user_id = p.id ' .
              'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
              'WHERE a.authorized = TRUE ';
@@ -116,11 +116,11 @@ class articlesModel extends dbConnection {
 
   // @return el contenido de un artículo.
   public function get_article(int $id) {
-    $query = 'SELECT a.title, a.body, a.slug, a.cover, a.modification_date AS date, ' .
+    $query = 'SELECT a.id, a.title, a.body, a.slug, a.cover, a.modification_date AS date, ' .
              'u.id AS author_id, u.name AS author, u.username, p.avatar, p.description ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
-             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN profiles AS p ON a.user_id = p.id ' .
              'WHERE a.authorized = TRUE AND a.id = ? LIMIT 1';
 
     try {
@@ -135,13 +135,13 @@ class articlesModel extends dbConnection {
     }
   }
 
-  // @return un array asociativo de los artículos más populares de un usuario.
+  // @return un array con los artículos más populares de un usuario.
   public function popular_articles(int $id, int $limit) {
     $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
              'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
-             'LEFT JOIN profiles AS p ON u.id = p.id ' .
+             'LEFT JOIN profiles AS p ON a.user_id = p.id ' .
              'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
              'WHERE a.user_id = ? AND a.authorized = TRUE GROUP BY a.id ' .
@@ -190,6 +190,31 @@ class articlesModel extends dbConnection {
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para publicar un comentario');
+    }
+  }
+
+  // @return un array con los comentarios de un artículo.
+  public function get_comments(int $id) {
+    $query = 'SELECT c.body, c.comment_date AS date, u.name, u.username, p.avatar ' .
+             'FROM comments AS c ' .
+             'INNER JOIN users AS u ON c.user_id = u.id ' .
+             'LEFT JOIN profiles AS p ON c.user_id = p.id ' .
+             'WHERE c.article_id = ? ORDER BY date DESC';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id));
+
+      $comments = $prepare -> fetchAll();
+
+      if (empty($comments))
+        $comments = array();
+
+      return $comments;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los comentarios de un artículo');
     }
   }
 
