@@ -55,7 +55,7 @@ class communityModel extends dbConnection {
 
   // @return un array asociativo con los datos de un artículo.
   public function get_article(string $slug) {
-    $query = 'SELECT id, slug FROM articles WHERE slug = ? LIMIT 1';
+    $query = 'SELECT id, slug FROM articles WHERE slug = ? AND authorized = TRUE LIMIT 1';
 
     try {
       $prepare = $this -> pdo -> prepare($query);

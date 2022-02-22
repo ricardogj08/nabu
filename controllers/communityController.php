@@ -52,9 +52,9 @@ class communityController {
 
   // Registra o elimina el like de un artículo.
   static public function likes() {
-    $view = NABU_ROUTES['home'];
+    utils::check_session(NABU_ROUTES['login']);
 
-    utils::check_session($view);
+    $view = NABU_ROUTES['home'];
 
     $validations = new validations($view);
 
