@@ -23,6 +23,36 @@ class communityModel extends dbConnection {
     parent::__construct();
   }
 
+  // @return un array asociativo con los datos de un comentario.
+  public function get_comment(int $id) {
+    $query = 'SELECT c.id, c.user_id, a.slug FROM comments AS c ' .
+             'INNER JOIN articles AS a ON c.article_id = a.id ' .
+             'WHERE c.id = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de un comentario');
+    }
+  }
+
+  // Elimina un comentario.
+  public function delete_comment(int $id) {
+    $query = 'DELETE FROM comments WHERE id = ?';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($id));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar un comentario');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

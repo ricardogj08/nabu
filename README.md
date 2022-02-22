@@ -87,6 +87,7 @@ Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo
 
 ```shell
 $ cd nabu
+$ mkdir -p config storage/avatars storage/backgrounds storage/covers
 $ php -S localhost:8000
 ```
 

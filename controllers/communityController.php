@@ -23,6 +23,30 @@ require_once 'models/communityModel.php';
 class communityController {
   // Elimina un comentario.
   static public function delete_comment() {
-    //
+    $view = NABU_ROUTES['home'];
+
+    utils::check_session($view);
+
+    if (empty($_GET['id']) || !is_numeric($_GET['id']))
+      utils::redirect($view);
+
+    $communityModel = new communityModel();
+
+    // Obtiene los datos del comentario.
+    $comment = $communityModel -> get_comment($_GET['id']);
+
+    if (empty($comment))
+      utils::redirect($view);
+
+    $user = $_SESSION['user'];
+
+    // Elimina el comentario.
+    if ($comment['user_id'] == $user['id'] || $user['role'] == 'admin' || $user['role'] == 'moderator') {
+      $communityModel -> delete_comment($comment['id']);
+
+      messages::add('El comentario se ha eliminado correctamente');
+    }
+
+    utils::redirect(NABU_ROUTES['article'] . '&slug=' . $comment['slug']);
   }
 }
