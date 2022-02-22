@@ -28,11 +28,13 @@ class articlesController {
   static public function post_article() {
     utils::check_session(NABU_ROUTES['home']);
 
+    // Renderiza la página para publicar un artículo.
     if (empty($_POST['post-article-form'])) {
       $token    = csrf::generate();
       $messages = messages::get();
 
-      require_once 'views/pages/post-article.php';
+      //require_once 'views/pages/post-article.php';
+      require_once 'views/pages/congrats.php';
 
       exit();
     }
@@ -73,8 +75,7 @@ class articlesController {
     // Registra un artículo para su aprobación.
     $articlesModel -> save_article($data);
 
-    messages::add('Tu publicación se ha enviado correctamente, en breve lo autorizaremos');
-    utils::redirect($view);
+    unset($view, $validations, $data, $articlesModel, $article);
   }
 
   // Renderiza la página para mostrar todos los artículos publicados
@@ -126,6 +127,7 @@ class articlesController {
 
     $view = NABU_ROUTES['article'] . '&slug=' . $article['slug'];
 
+    // Renderiza un artículo publicado.
     if (empty($_POST['comments-form'])) {
       // Obtiene el contenido del artículo.
       $article = $articlesModel -> get_article($article['id']);

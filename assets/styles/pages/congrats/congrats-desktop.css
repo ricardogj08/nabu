@@ -14,19 +14,3 @@
 * Debería haber recibido una copia de la Licencia Pública General de GNU Affero
 * junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
-
-.pages {
-    gap: 22px;
-}
-
-.pages__move {
-    width: 44px;
-    height: 44px;
-    font-size: 2.4rem;
-}
-
-.pages__actual { 
-    width: 44px;
-    height: 44px;
-    font-size: 2.4rem;
-}

@@ -1,4 +1,4 @@
-/*
+<!--
 * Este archivo es parte de Nabu.
 *
 * Nabu es software libre: puedes redistribuirlo y/o modificarlo
@@ -13,20 +13,26 @@
 *
 * Debería haber recibido una copia de la Licencia Pública General de GNU Affero
 * junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
-*/
+-->
 
-.pages {
-    gap: 22px;
-}
+<?php defined('NABU') || exit() ?>
 
-.pages__move {
-    width: 44px;
-    height: 44px;
-    font-size: 2.4rem;
-}
+<?php $head_title = '¡Felicidades!' ?>
 
-.pages__actual { 
-    width: 44px;
-    height: 44px;
-    font-size: 2.4rem;
-}
+<!-- Estilos cargados -->
+<?php $styles = array(
+    'pages/congrats/congrats.css'
+) ?>
+
+<!-- Estilos para el responsive design -->
+<?php $desktop_styles = array(
+    array('file' => 'pages/congrats/congrats-desktop.css', 'attributes' => ''),
+) ?>
+
+<!-- Archivos de javascript -->
+<?php $scripts = array(
+    '',
+) ?>
+
+<?php require_once 'views/components/head.php' ?>
+<?php require_once 'views/components/footer.php' ?>
