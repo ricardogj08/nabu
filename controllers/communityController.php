@@ -49,4 +49,39 @@ class communityController {
 
     utils::redirect(NABU_ROUTES['article'] . '&slug=' . $comment['slug']);
   }
+
+  // Registra o elimina el like de un artículo.
+  static public function likes() {
+    $view = NABU_ROUTES['home'];
+
+    utils::check_session($view);
+
+    $validations = new validations($view);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'slug', 'min_length' => 1, 'max_length' => 255)
+    ));
+
+    $communityModel = new communityModel();
+
+    // Obtiene los datos del artículo.
+    $article = $communityModel -> get_article($data['slug']);
+
+    if (empty($article))
+      utils::redirect($view);
+
+    $id = $_SESSION['user']['id'];
+
+    // Obtiene los datos del like del usuario de sesión con el artículo.
+    $like = $communityModel -> get_like($id, $article['id']);
+
+    // Registra el like del artículo si no existe información desde la base de datos.
+    if (empty($like))
+      $communityModel -> save_like($id, $article['id']);
+    else
+      $communityModel -> delete_like($like['id']);
+
+    utils::redirect(NABU_ROUTES['article'] . '&slug=' . $article['slug']);
+  }
 }

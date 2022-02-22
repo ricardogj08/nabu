@@ -53,6 +53,62 @@ class communityModel extends dbConnection {
     }
   }
 
+  // @return un array asociativo con los datos de un artículo.
+  public function get_article(string $slug) {
+    $query = 'SELECT id, slug FROM articles WHERE slug = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($slug));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de un artículo');
+    }
+  }
+
+  // @return un array asociativo con los datos de like de un artículo.
+  public function get_like(int $user_id, int $article_id) {
+    $query = 'SELECT id FROM favorites WHERE user_id = ? AND article_id = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($user_id, $article_id));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de like de un artículo');
+    }
+  }
+
+  // Registra el like de un artículo.
+  public function save_like(int $user_id, int $article_id) {
+    $query = 'INSERT INTO favorites(user_id, article_id) VALUES(?, ?)';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($user_id, $article_id));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar el like de un artículo');
+    }
+  }
+
+  // Elimina el like de un artículo.
+  public function delete_like(int $id) {
+    $query = 'DELETE FROM favorites WHERE id = ?';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($id));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar el like de un artículo');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

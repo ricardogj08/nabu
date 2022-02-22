@@ -32,6 +32,7 @@ return array(
   'errors'             => array('route' => 'errors',             'controller' => 'blogController',           'view' => 'errors'),
   'favorites'          => array('route' => 'favorites',          'controller' => 'profilesController',       'view' => 'favorites'),
   'home'               => array('route' => 'home',               'controller' => 'blogController',           'view' => 'home'),
+  'likes'              => array('route' => 'likes',              'controller' => 'communityController',      'view' => 'likes'),
   'login'              => array('route' => 'login',              'controller' => 'usersController',          'view' => 'login'),
   'logout'             => array('route' => 'logout',             'controller' => 'usersController',          'view' => 'logout'),
   'post-article'       => array('route' => 'post-article',       'controller' => 'articlesController',       'view' => 'post_article'),

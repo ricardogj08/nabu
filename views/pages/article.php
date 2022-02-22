@@ -75,7 +75,7 @@
     <aside class='post__aside'>
         <div class="heart">
             <input type="checkbox" id='toggle__heart'>
-            <label for="toggle__heart">❤</label>
+            <label for="toggle__heart"><a href="<?= NABU_ROUTES['likes'] . '&slug=' . $article['slug'] ?>">❤</a></label>
         </div>
     </aside>
 
