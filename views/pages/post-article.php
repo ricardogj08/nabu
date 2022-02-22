@@ -54,11 +54,11 @@
 
         <input type="text" id="title" name="title" minlength="1" maxlength="246" size="101" required class="public__title" placeholder="Titulo del post">
         
-        <textarea type="text" id="synopsis" name="synopsis" minlength="1" maxlength="255" rows="3" cols="100" required class="public__summary" placeholder="Cuentame lo más interesante de tu post"></textarea>
+        <textarea type="text" id="synopsis" name="synopsis" minlength="1" maxlength="255"  required class="public__summary" placeholder="Cuentame lo más interesante de tu post"></textarea>
         
         <!-- <label for="body"><b>Contenido del artículo <a href="https://www.markdownguide.org/basic-syntax/" target="_blank">formato Markdown</a></b></label> -->
 
-        <textarea type="text" id="body" name="body" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" rows="32" cols="100" required class="public__content" placeholder="Escribe lo que tienes para compartir"></textarea>
+        <textarea type="text" id="body" name="body" minlength="1" maxlength="<?= NABU_DEFAULT['article-size'] ?>" required class="public__content" placeholder="Escribe lo que tienes para compartir"></textarea>
         <input type="submit" name="post-article-form" value="Enviar" class="public__send">
     </form>
 
