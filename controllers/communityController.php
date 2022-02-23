@@ -84,4 +84,8 @@ class communityController {
 
     utils::redirect(NABU_ROUTES['article'] . '&slug=' . $article['slug']);
   }
+
+  static public function favorites() {
+    //
+  }
 }

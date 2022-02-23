@@ -255,6 +255,59 @@ class adminModel extends dbConnection {
     }
   }
 
+  // @return el número total de usuarios registrados.
+  public function count_users(string $pattern) {
+    $query = 'SELECT COUNT(*) AS total FROM users WHERE activated = TRUE';
+
+    if (!empty($pattern))
+      $query = $query . ' AND (name LIKE ? OR username LIKE ?)';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute();
+      else
+        $prepare -> execute(array('%' . $pattern . '%', '%' . $pattern . '%'));
+
+      $count = $prepare -> fetch();
+
+      return $count['total'];
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para calcular el número total de usuarios registrados');
+    }
+  }
+
+  // @return un array con los usuarios registrados.
+  public function get_users(int $limit, int $accumulation, string $pattern) {
+    $query = 'SELECT name, username, email, role_id AS role FROM users WHERE activated = TRUE ';
+
+    if (!empty($pattern))
+      $query = $query . 'AND (name LIKE ? OR username LIKE ?) ';
+
+    $query = $query . 'ORDER BY name ASC LIMIT ? OFFSET ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      if (empty($pattern))
+        $prepare -> execute(array($limit, $accumulation));
+      else
+        $prepare -> execute(array('%' . $pattern . '%', '%' . $pattern . '%', $limit, $accumulation));
+
+      $articles = $prepare -> fetchAll();
+
+      if (empty($articles))
+        $articles = array();
+
+      return $articles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener todos los usuarios registrados');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

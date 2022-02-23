@@ -299,8 +299,4 @@ class profilesController {
 
     utils::redirect(NABU_ROUTES['logout']);
   }
-
-  static public function favorites() {
-    //
-  }
 }

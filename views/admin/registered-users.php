@@ -25,4 +25,22 @@
 
 <?php require_once 'views/components/search.php' ?>
 
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Apodo</th>
+        <th>Correo institucional</th>
+        <th>Rol</th>
+    </tr>
+    <?php foreach($users as $user): ?>
+    <tr>
+      <td><a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['name']) ?></a></td>
+      <td><?= utils::escape($user['username']) ?></td>
+      <td><?= utils::escape($user['email']) ?></td>
+      <td><?= $user['role'] ?></td>
+    </tr>
+    <?php endforeach ?>
+</table>
+
+<?php require_once 'views/components/pagination.php' ?>
 <?php require_once 'views/components/footer.php' ?>

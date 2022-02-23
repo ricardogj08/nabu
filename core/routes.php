@@ -30,7 +30,7 @@ return array(
   'delete-profile'     => array('route' => 'delete-profile',     'controller' => 'profilesController',       'view' => 'delete_profile'),
   'edit-profile'       => array('route' => 'edit-profile',       'controller' => 'profilesController',       'view' => 'edit_profile'),
   'errors'             => array('route' => 'errors',             'controller' => 'blogController',           'view' => 'errors'),
-  'favorites'          => array('route' => 'favorites',          'controller' => 'profilesController',       'view' => 'favorites'),
+  'favorites'          => array('route' => 'favorites',          'controller' => 'communityController',      'view' => 'favorites'),
   'home'               => array('route' => 'home',               'controller' => 'blogController',           'view' => 'home'),
   'likes'              => array('route' => 'likes',              'controller' => 'communityController',      'view' => 'likes'),
   'login'              => array('route' => 'login',              'controller' => 'usersController',          'view' => 'login'),

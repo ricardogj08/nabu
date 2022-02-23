@@ -342,13 +342,27 @@ class adminController {
     require_once 'views/admin/published-articles.php';
   }
 
-  // Renderiza la página de administración con la lista de usuarios
-  // registrados y realiza búsquedas con el método POST.
+  // Renderiza la página de administración con la lista de usuarios registrados
+  // y realiza búsquedas con el método POST.
   static public function registered_users() {
     $max    = 255;
     $search = utils::validate_search(NABU_ROUTES['registered-users'], $max);
     $query  = $search['query'];
     $view   = $search['view'];
+
+    $adminModel = new adminModel();
+
+    // Obtiene el número total de usuarios registrados.
+    $total = $adminModel -> count_users($query);
+
+    $pagination = utils::pagination($total, self::limit, $view);
+
+    // Obtiene todos los usuarios registrados.
+    $users = $adminModel -> get_users(self::limit, $pagination['accumulation'], $query);
+
+    $page = $pagination['page'];
+
+    unset($search, $adminModel, $total, $pagination);
 
     $token    = csrf::generate();
     $messages = messages::get();
