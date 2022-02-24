@@ -1,0 +1,84 @@
+/*
+* Este archivo es parte de Nabu.
+*
+* Nabu es software libre: puedes redistribuirlo y/o modificarlo
+* bajo los términos de la Licencia Pública General de GNU Affero publicada por
+* la Free Software Foundation, ya sea la versión 3 de la Licencia, o
+* (a su elección) cualquier versión posterior.
+*
+* Nabu se distribuye con la esperanza de que sea de utilidad,
+* pero SIN NINGUNA GARANTÍA; incluso sin la garantía implícita de
+* COMERCIABILIDAD o APTITUD PARA UN PROPÓSITO PARTICULAR. Consulte la
+* Licencia Pública General de GNU Affero para obtener más detalles.
+*
+* Debería haber recibido una copia de la Licencia Pública General de GNU Affero
+* junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
+*/
+
+/*
+* Orden de los estilos
+*   1. Posicionamiento
+*   2. Modelo de caja
+*   3. Tipografía
+*   4. Visuales
+*   5. Otros
+* Metodología => BEM
+*/
+:root {
+    --height-modal: 300px;
+    --width-modal: 70%;
+}
+
+.modal {
+    width: var(--width-modal);
+    min-width: 300px;
+    max-width: 500px;
+    height: var(--height-modal);
+    position: fixed;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    padding: 25px;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1),
+                0 0 0 1000px rgba(255,255,255,0.95);
+    transition: all ease-in-out 300ms;
+}
+
+.modal__message {
+    font-size: 1.4rem;
+    line-height: 30px;
+    text-align: center;
+}
+
+.modal__close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.8rem;
+    background-color: var(--color-primary-red);
+    color: var(--color-background);
+}
+
+input[type='checkbox']:checked ~ .modal{
+    display: none;
+}
+
+input[type='checkbox']:checked {
+    display: none;
+}
+
+input[type='checkbox'] {
+    visibility: hidden;
+}
