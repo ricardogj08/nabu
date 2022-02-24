@@ -44,7 +44,7 @@
 
         <main class="sign-up">
             <section class="sign-up__title">
-                <h1 class="sign-up__text">Registrate en <strong>Nabu</strong></h1>
+                <h1 class="sign-up__text">Regístrate en <strong>Nabu</strong></h1>
                 <span class="sign-up__plane"></span>
             </section>
             <section class="form__container">

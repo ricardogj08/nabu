@@ -67,7 +67,7 @@
                     </div>
 
                     <p class="form__already">¿No tienes una cuenta?
-                         <a href="<?= NABU_ROUTES['signup'] ?>">Registrate</a>.
+                         <a href="<?= NABU_ROUTES['signup'] ?>">Regístrate</a>.
                     </p>
                 </form>
             </section>

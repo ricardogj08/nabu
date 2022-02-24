@@ -37,14 +37,15 @@
 <!-- Componente head -->
 <?php require_once 'views/components/head.php' ?>
 
-
 <!-- HTML body -->
 <canvas class="congrats__canvas"></canvas>
 <div class="congrats__wrapper">
     <main class="congrats">
         <h1 class="congrats__title">¡Felicidades!</h1>
-        <p class="congrats__text">🚀 Pronto tendrás noticias acerca de tu post gracias por compartir lo que sabes 💜</p>
-        <a href="<?= NABU_ROUTES['home'] ?>" class="congrats__btn">Ir al muro</a>
+        <p class="congrats__text">&#x1F680; Pronto tendrás noticias acerca de tu post, gracias por compartir lo que sabes &#x1F49C;</p>
+        <a href="<?= NABU_ROUTES['all-articles'] ?>" class="congrats__btn">Ir al muro</a>
     </main>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</body>
+</html>

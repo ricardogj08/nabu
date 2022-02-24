@@ -76,8 +76,8 @@
     <section class="CTA">
         <div class="CTA__container">
             <div class="CTA__text">
-                <h2 class="CTA__title">Interesante, ¿No? 🤔</h2>
-                <p class="CTA__description">Déjanos tu e-mail y te compartiremos los posts más recientes, además de recursos para mejorar tu escritura en medios digitales. 😉</p>
+                <h2 class="CTA__title">Interesante, ¿No? &#x1F914;</h2>
+                <p class="CTA__description">Déjanos tu e-mail y te compartiremos los posts más recientes, además de recursos para mejorar tu escritura en medios digitales. &#x1F609;</p>
                 <div class="CTA__mail">
                     <form class="CTA__form" method="POST" action="">
                         <input class = "form__input-mail" type="text" minlength="1" placeholder="Tu e-mail" maxlength="246" required>

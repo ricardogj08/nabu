@@ -33,8 +33,8 @@ class articlesController {
       $token    = csrf::generate();
       $messages = messages::get();
 
-      //require_once 'views/pages/post-article.php';
-      require_once 'views/pages/congrats.php';
+      require_once 'views/pages/post-article.php';
+      //require_once 'views/pages/congrats.php';
 
       exit();
     }
@@ -76,6 +76,8 @@ class articlesController {
     $articlesModel -> save_article($data);
 
     unset($view, $validations, $data, $articlesModel, $article);
+
+    require_once 'views/pages/congrats.php';
   }
 
   // Renderiza la página para mostrar todos los artículos publicados
