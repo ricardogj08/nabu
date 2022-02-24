@@ -20,6 +20,7 @@
 <!-- Estilos a cargar -->
 <?php $styles = array(
     'components/navbar/navbar.css',
+    'components/messages/messages.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
     'pages/home/home.css'
@@ -40,7 +41,6 @@
 
 <!-- Componente head -->
 <?php require_once 'views/components/head.php' ?>
-
 <?php require_once 'views/components/messages.php' ?>
 
 <header class="header">

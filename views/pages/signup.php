@@ -22,6 +22,7 @@
 <!-- Estilos a cargar -->
 <?php $styles = array(
     'components/footer/footer.css',
+    'components/messages/messages.css',
     'pages/signup/signup.css'
 ) ?>
 

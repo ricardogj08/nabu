@@ -24,6 +24,7 @@
     'components/navbar/navbar.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
+    'components/messages/messages.css',
     'pages/article/article.css'
 ) ?>
 

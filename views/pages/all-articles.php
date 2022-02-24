@@ -26,6 +26,7 @@
     'pages/all-articles/all-articles.css',
     'components/articles/articles.css',
     'components/footer/footer.css',
+    'components/messages/messages.css',
     'components/pagination/pagination.css',
 ) ?>
 

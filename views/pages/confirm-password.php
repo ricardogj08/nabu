@@ -22,6 +22,7 @@
 <!-- Estilos a cargar -->
 <?php $styles = array(
     'pages/confirm-password/confirm-password.css',
+    'components/messages/messages.css',
 ) ?>
 
 <!-- Estilos a cargar para el responsive design -->

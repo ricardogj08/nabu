@@ -23,6 +23,7 @@
 <?php $styles = array(
     'components/navbar/navbar.css',
     'components/footer/footer.css',
+    'components/messages/messages.css',
     'pages/post-article/post-article.css',
 ) ?>
 
