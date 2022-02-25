@@ -93,6 +93,18 @@ $ php -S localhost:8000
 
 * <http://localhost:8000/>
 
+```text
+* Usuario: root
+* Contraseña: 123456
+```
+
+## Modifica el correo electrónico del usuario `root`
+
+```sql
+> USE nabu;
+> UPDATE users SET email = 'root@example.com' WHERE id = 1;
+```
+
 ## Licencia
 
 ```text

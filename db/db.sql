@@ -98,3 +98,5 @@ CREATE TABLE IF NOT EXISTS `favorites` (
 );
 
 INSERT INTO roles(id, name) VALUES(1, 'ADMIN'), (2, 'MODERATOR'), (3, 'USER');
+INSERT INTO users VALUES(1, 1, 'root', 'root', 'root@example.com', '$2y$12$.1ycdL5xs4nOpQ3GXga7m.IFNtfMgV5nKVe4R87B3CypgigBaJ55C', TRUE, NOW());
+INSERT INTO profiles(id) VALUES(1);
