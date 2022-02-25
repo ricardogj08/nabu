@@ -24,11 +24,6 @@
     'pages/congrats/congrats.css'
 ) ?>
 
-<!-- Estilos para el responsive design -->
-<?php $desktop_styles = array(
-    array('file' => 'pages/congrats/congrats-desktop.css', 'attributes' => ''),
-) ?>
-
 <!-- Archivos de javascript -->
 <?php $scripts = array(
     'congrats/congrats.js',
