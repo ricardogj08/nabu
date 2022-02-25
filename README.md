@@ -55,6 +55,25 @@ nabu/
     * `emails` - Contiene plantillas de mensajes de correo electrónico.
     * `pages` - Contiene plantillas que construyen el sitio web (página principal, inicio de sesión, registro de usuarios, vista de artículos, etc.).
 
+## Ejecuta Nabu en un servidor local
+
+```shell
+$ cd nabu
+$ mkdir -p config storage/avatars storage/backgrounds storage/covers
+$ php -S localhost:8000
+```
+
+Ejecuta el script SQL `db/db.sql` en `MariaDB`, para crear la base de datos de `Nabu`.
+
+Enlace del sitio web:
+
+* <http://localhost:8000/>
+
+```text
+* Usuario: root
+* Contraseña: 123456
+```
+
 ## Configuración de la base de datos
 
 Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo de configuración `config/db.json`:
@@ -83,22 +102,7 @@ Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo
 }
 ```
 
-## Ejecuta Nabu en un servidor local
-
-```shell
-$ cd nabu
-$ mkdir -p config storage/avatars storage/backgrounds storage/covers
-$ php -S localhost:8000
-```
-
-* <http://localhost:8000/>
-
-```text
-* Usuario: root
-* Contraseña: 123456
-```
-
-## Modifica el correo electrónico del usuario `root`
+## Modifica el correo electrónico del usuario root
 
 ```sql
 > USE nabu;
