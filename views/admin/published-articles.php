@@ -29,6 +29,7 @@
     <tr>
         <th>Título</th>
         <th>Autor</th>
+        <th>Correo institucional</th>
         <th></th>
         <th></th>
     </tr>
@@ -36,6 +37,7 @@
     <tr>
       <td><?= utils::escape($article['title']) ?></td>
       <td><a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($article['author']) ?>"><?= utils::escape($article['author']) ?></a></td>
+      <td><?= utils::escape($article['email']) ?></td>
       <td><a href="<?= NABU_ROUTES['review-article'] . '&slug=' . $article['slug'] ?>">Editar</a></td>
       <td><a href="<?= NABU_ROUTES['delete-article'] . '&slug=' . $article['slug'] ?>">Eliminar</a></td>
     </tr>

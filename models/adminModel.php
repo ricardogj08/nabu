@@ -49,7 +49,7 @@ class adminModel extends dbConnection {
 
   // @return un array con los artículos en espera de aprobación.
   public function get_sent(int $limit, int $accumulation, string $pattern) {
-    $query = 'SELECT a.title, a.slug, u.username AS author ' .
+    $query = 'SELECT a.title, a.slug, u.username AS author, u.email ' .
              'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
              'WHERE a.authorized = FALSE ';
 
@@ -226,7 +226,7 @@ class adminModel extends dbConnection {
 
   // @return un array con los artículos publicados.
   public function get_published(int $limit, int $accumulation, string $pattern) {
-    $query = 'SELECT a.title, a.slug, u.username AS author ' .
+    $query = 'SELECT a.title, a.slug, u.username AS author, u.email ' .
              'FROM articles AS a INNER JOIN users AS u ON a.user_id = u.id ' .
              'WHERE a.authorized = TRUE ';
 

@@ -31,6 +31,8 @@
         <th>Apodo</th>
         <th>Correo institucional</th>
         <th>Rol</th>
+        <th></th>
+        <th></th>
     </tr>
     <?php foreach($users as $user): ?>
     <tr>
@@ -38,6 +40,8 @@
       <td><?= utils::escape($user['username']) ?></td>
       <td><?= utils::escape($user['email']) ?></td>
       <td><?= $user['role'] ?></td>
+      <td>Eliminar</td>
+      <td>Cambiar rol</td>
     </tr>
     <?php endforeach ?>
 </table>
