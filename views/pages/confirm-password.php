@@ -25,32 +25,32 @@
     'components/messages/messages.css',
 ) ?>
 
-<!-- Estilos a cargar para el responsive design -->
-<?php $desktop_styles = array(
-    array('file' => 'pages/confirm-password/confirm-password-desktop.css', 'attributes' => ''),
-) ?>
-
+<!-- HTML head -->
 <?php require_once 'views/components/head.php' ?>
 
-<h1>Confirmar contraseña</h1>
-
+<!-- HTML BODY -->
 <?php require_once 'views/components/messages.php' ?>
-
-<p>Ingresa tu contraseña para completar la operación.</p>
-
-<form method="POST" action="<?= $view ?>">
-    <input type="hidden" name="csrf" value="<?= $token ?>">
-    <div>
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" minleght="6" maxlenght="255" required>
-    </div>
-    <div>
-        <label for="confirm-password">Confirmar contraseña</label>
-        <input type="password" id="confirm-password" name="confirm-password" minlenght="6" maxlenght="255" required>
-    </div>
-    <div>
-        <input type="submit" name="confirm-password-form" value="Enviar">
-    </div>
-</form>
-
-<?php require_once 'views/components/footer.php' ?>
+<div class="wrapper__confirm">
+    <section class="confirm__pass">
+        <h2 class="confirm__title">Sentimos que tengas que irte</h2>
+        <picture class="confirm__image-wrapper">
+            <img src="/assets/images/EliminarPerfil.svg" alt="Buho triste" class="confirm__image">
+        </picture>
+        <!-- <p class="confirm__text">Ingresa tu contraseña para completar la operación</p> -->
+        <form method="POST" action="<?= $view ?>" class="confirm__form">
+            <input type="hidden" name="csrf" value="<?= $token ?>">
+            
+            <label for="password" class="pass__field">
+                <span class="pass__text">Contraseña</span>
+                <input type="password" id="password" name="password" minleght="6" maxlenght="255" required class="pass__input">
+            </label>
+            
+            <label for="confirm-password" class="pass__field">
+                <span class="pass__text">Confirmar Contraseña</span>
+                <input type="password" id="confirm-password" name="confirm-password" minlenght="6" maxlenght="255" required class="pass__input">
+            </label>
+            
+            <input type="submit" name="confirm-password-form" value="Eliminar permanentemente" class="confirm__btn">
+        </form>
+    </section>
+</div>
