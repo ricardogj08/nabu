@@ -59,6 +59,11 @@
     justify-content: center;
 }
 
+
+.recent-cards__container > .card {
+    width: 300px;
+}
+
 .CTA__button {
     width: 40%;
 }

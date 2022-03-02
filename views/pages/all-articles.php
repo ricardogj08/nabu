@@ -23,21 +23,21 @@
 <?php $styles = array(
     'components/navbar/navbar.css',
     'components/search/search.css',
-    'pages/all-articles/all-articles.css',
     'components/articles/articles.css',
-    'components/footer/footer.css',
     'components/messages/messages.css',
     'components/pagination/pagination.css',
+    'components/footer/footer.css',
+    'pages/all-articles/all-articles.css',
 ) ?>
 
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
     array('file' => 'components/navbar/navbar-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('file' => 'components/footer/footer-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
     array('file' => 'components/search/search-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/pagination/pagination-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/footer/footer-desktop.css',         'attributes' => 'media="screen and (min-width: 650px)"'),
     array('file' => 'pages/all-articles/all-articles-tablet.css',   'attributes' => 'media="screen and (min-width: 650px)"'),
     array('file' => 'pages/all-articles/all-articles-desktop.css',  'attributes' => 'media="screen and (min-width: 1024px)"'),
-    array('file' => 'components/pagination/pagination-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
 ) ?>
 
 <!-- Archivos de javascript -->
@@ -64,7 +64,7 @@
     <section class="articles">
         <div class="articles__data">
             <h1 class = "articles__title">Muro</h1>
-            <span class="articles__icon"></span>
+            <span class="articles__icon">❯</span>
         </div>
         <div class="articles__cards">
             <?php require 'views/components/articles.php' ?>

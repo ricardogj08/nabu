@@ -55,13 +55,19 @@
 }
 
 .articles__icon {
-    display: block;
-    width: 51px;
-    height: 28px;
-    background-image: url(../../../icons/arrow-muro.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    display: inline-block;
+    font-size: 9rem;
+    color: var(--color-black);
+    animation: idle 500ms infinite alternate;
+}
+
+@keyframes idle {
+    0%{
+        transform: translateY(0) rotate(90deg);
+    }
+    100% {
+        transform: translateY(-25px) rotate(90deg);
+    }
 }
 
 .articles__cards {
@@ -72,6 +78,10 @@
     align-content: center;
     align-items: center;
     /* margin: 0 30px; */
+}
+
+.articles__cards > .card {
+    width: 300px;
 }
 
 /* Texto del CTA */

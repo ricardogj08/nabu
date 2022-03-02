@@ -60,6 +60,11 @@ body {
     gap: 30px;
 }
 
+/* Estilos para mantener la altura en todos lso articulos */
+.articles__cards > .card {
+    height: 100%;
+}
+
 /* Estilos para la sección del CTA */
 
 .CTA {

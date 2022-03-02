@@ -23,6 +23,7 @@
 <?php $styles = array(
     'components/navbar/navbar.css',
     'components/articles/articles.css',
+    'components/pagination/pagination.css',
     'components/footer/footer.css',
     'pages/profile/profile.css',
 ) ?>
@@ -30,6 +31,7 @@
 <!-- Estilos para el responsive design -->
 <?php $desktop_styles = array(
       array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 768px)"'),
+      array('file' => 'components/pagination/pagination-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
       array('file' => 'pages/profile/profile-desktop.css',    'attributes' => 'media="screen and (min-width: 768px)"')
 ) ?>
 

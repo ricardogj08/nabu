@@ -181,14 +181,20 @@ header::before {
     cursor: pointer;
 }
 
+.heart > a {
+    display: inline-block;
+    text-decoration: none;
+    color: #aab8c2;
+}
+
 .post__aside [id='toggle__heart'] {
    visibility: hidden;
 }
 
-.post__aside [id='toggle__heart']:checked + label {
+.post__aside [id='toggle__heart']:checked + label{
     color: #e2264d;
     animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
-  }
+}
   
 @keyframes heart { 
     0%, 

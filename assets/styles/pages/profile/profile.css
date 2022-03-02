@@ -121,19 +121,27 @@ header::before {
 }
 
 .public-posts {
-    margin-top: 100px;
+    margin-top: 110px;
     width: 100%;
     min-width: 320px;
     padding: 23px 0;
     text-align: center;
 }
 .public-posts__title {
-    font-size: 1.8rem;
+    font-size: 2rem;
+    color: var(--color-black);
 }
 
 .public-cards__container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 90%;
     margin: 0 auto;
+}
+
+.public-cards__container .card {
+    margin: 20px 0;
 }
 
 /* Reescribiendo estilos de footer para esta page */

@@ -51,6 +51,11 @@
     max-width: 280px;
 }
 
+/* Arreglar la altura de la la informacion, restarle la altura del banner */
+.popular-cards__container .card .card__info {
+    height: calc(100% - 259px);
+}
+
 .popular-cards__container .card:not(.card:last-child) {
     min-width: initial;
     width: 80px;
@@ -75,3 +80,8 @@
     right: -200px;
 }
 */
+
+/* estilso para la seccion de articulos mas recientes */
+.recent-cards__container > .card {
+    width: 330px;
+}
