@@ -31,7 +31,7 @@ body {
 .header {
     min-width: 320px;
     width: 100%;
-    background-color: var(--color-secundary-background);
+    background-color: var(--color-background);
 }
 
 .nav {
