@@ -76,12 +76,20 @@ header {
 }
 
 .public-posts__title { 
-    font-size: 2.8rem;
+    font-size: 2.4rem;
 }
 
 .public-cards__container {
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: initial;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(288px, 1fr));
+    gap: 30px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.public-cards__container .card {
+    height: 100%;
+    width: 330px;
 }

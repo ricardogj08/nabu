@@ -127,6 +127,7 @@ header::before {
     padding: 23px 0;
     text-align: center;
 }
+
 .public-posts__title {
     font-size: 2rem;
     color: var(--color-black);
