@@ -77,7 +77,7 @@
     <section class = "CTA">
         <span class="CTA__plane"></span>
         <div class="CTA__container">
-            <h3 class="CTA__title">Tus palabras merecen ser leídas, escribe algo e inicia un viaje al descubrimiento</h3>
+            <h3 class="CTA__title">Tus palabras merecen ser leídas, escribe algo e inicia un viaje de descubrimiento</h3>
             <a href="<?= NABU_ROUTES['signup'] ?>" class="CTA__button">Quiero compartir lo que sé</a>
         </div>
     </section>

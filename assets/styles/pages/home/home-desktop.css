@@ -81,7 +81,12 @@
 }
 */
 
-/* estilso para la seccion de articulos mas recientes */
+/* Estilos para la seccion de articulos mas recientes */
 .recent-cards__container > .card {
     width: 330px;
+}
+
+/* Estilos para el CTA */
+.CTA__title {
+    font-size: 2.4rem;
 }
