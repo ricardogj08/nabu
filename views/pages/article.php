@@ -47,7 +47,7 @@
 <!-- HTML body -->
 <header>
     <!-- Imagen de fondo dl post -->
-    <img src="/assets/images/cover.svg" alt="Imagen de fondo del post" class="post__back-image">
+    <img src="<?= $article['cover'] ?>" alt="Imagen de fondo del post" class="post__back-image">
     <!-- Nav bar -->
     <?php require_once 'views/components/navbar.php' ?>
     <div class="post__head">
