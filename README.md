@@ -63,7 +63,7 @@ $ mkdir -p config storage/avatars storage/backgrounds storage/covers
 $ php -S localhost:8000
 ```
 
-Ejecuta el script SQL `db/db.sql` en `MariaDB`, para crear la base de datos de `Nabu`.
+Ejecuta en `MariaDB` el script SQL `db/db.sql`, para crear la base de datos de `Nabu`.
 
 Enlace del sitio web:
 
