@@ -69,6 +69,9 @@ body {
 
 .CTA {
     position: relative;
+    height: auto;
+    min-height: 400px;
+    margin-top: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,4 +131,5 @@ body {
     background-color: var(--color-primary-red);
     color: #fff;
     border: none;
+    cursor: pointer;
 }
