@@ -87,11 +87,19 @@
 /* Texto del CTA */
 
 .CTA__title {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
     line-height: 5.4rem;
 }
 
 .CTA__description {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 2.2rem;
+}
+
+.form__input-mail {
+    font-size: 1.2rem;
+}
+
+.form__join {
+    font-size: 1.4rem;
 }

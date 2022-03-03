@@ -46,6 +46,8 @@
 
 <!-- HTML body -->
 <header>
+    <!-- Imagen de fondo dl post -->
+    <img src="/assets/images/cover.svg" alt="Imagen de fondo del post" class="post__back-image">
     <!-- Nav bar -->
     <?php require_once 'views/components/navbar.php' ?>
     <div class="post__head">
@@ -115,13 +117,10 @@
 <section class="comments">
     <div class="comments__container">
         <h2 class="comments__title">Deja tu opinión al autor</h2>
-        <div class="comments__list">
-
-        </div>
         <div class="comments__box">
-            <a href="<?= $login['profile'] ?>">
+            <a href="<?= $login['profile'] ?>" class="comments__user-link">
                 <picture class="author-info__image comment__user-image-container">
-                    <img class="author__image comment__user-image" src="<?= $login['avatar'] ?>">
+                    <img class="comment__user-image" src="<?= $login['avatar'] ?>">
                 </picture>
             </a>
             <form class="comments__form" method="POST" action="<?= $view ?>">
@@ -130,27 +129,32 @@
                 <input type="submit" name="comments-form" class="comments__button" value="Enviar">
             </form>
         </div>
-
-        <?php foreach($comments as $comment): ?>
-            <?php $profile = NABU_ROUTES['profile'] . '&user=' . urlencode($comment['username']) ?>
-            <?php $comment['date'] = utils::format_date($comment['date']) ?>
-            <div>
-                <a href="<?= $profile ?>">
-                    <img src="<?= utils::url_image('avatar', $comment['avatar']) ?>">
-                </a>
-                <p>
-                    <a href="<?= $profile ?>"><?= utils::escape($comment['name']) . ' - ' . utils::escape($comment['username']) ?></a>
-                    <?= $comment['date']['day'] . ' de ' . $comment['date']['month'] . ' ' . $comment['date']['year'] ?>
-                </p>
-                <p>
-                    <?= utils::escape($comment['body']) ?>
-                </p>
-                <?php if ((isset($login['id']) && $login['id'] == $comment['user_id']) || (isset($login['role']) && ($login['role'] == 'admin' || $login['role'] == 'moderator'))): ?>
-                    <a href="<?= NABU_ROUTES['delete-comment'] . '&id=' . $comment['id'] ?>">Eliminar</a>
-                <?php endif ?>
-            </div>
-        <?php endforeach ?>
-
+        <section class="comments__list">
+            <?php foreach($comments as $comment): ?>
+                <?php $profile = NABU_ROUTES['profile'] . '&user=' . urlencode($comment['username']) ?>
+                <?php $comment['date'] = utils::format_date($comment['date']) ?>
+                <artcile class="comments__item">
+                    <a href="<?= $profile ?>" class="comments__user-link">
+                        <picture class="author-info__image comment__user-image-container">
+                            <img src="<?= utils::url_image('avatar', $comment['avatar']) ?>" class="comment__user-image">
+                        </picture>
+                    </a>
+                    <p class="commnets__text">
+                        <?= utils::escape($comment['body']) ?>
+                    </p>
+                    
+                    <div class="comments__info">
+                        <p class="comments__data">
+                            <a class="comments__user-name" href="<?= $profile ?>"><?=  utils::escape($comment['username']) ?></a>
+                            <?= $comment['date']['day'] . ' de ' . $comment['date']['month'] . ' ' . $comment['date']['year'] ?>
+                        </p>
+                        <?php if ((isset($login['id']) && $login['id'] == $comment['user_id']) || (isset($login['role']) && ($login['role'] == 'admin' || $login['role'] == 'moderator'))): ?>
+                            <a href="<?= NABU_ROUTES['delete-comment'] . '&id=' . $comment['id'] ?>" class="comments__delete-btn">Eliminar</a>
+                        <?php endif ?> 
+                    </div>
+                </artcile>
+            <?php endforeach ?>
+        </section>
     </div>
 </section>
 

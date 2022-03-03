@@ -149,3 +149,24 @@ header:hover {
 .comments__button {
     font-size: 1.4rem;
 }
+
+/* Estilos a las respuestas de comentarios */
+.comments__item {
+    max-width: 600px;
+    grid-template-columns: 80px auto;
+}
+
+.commnets__text {
+    font-size: 1.2rem;
+}
+
+.comments__data {
+    font-size: 1rem
+}
+
+.comments__delete-btn {
+    padding: 4px;
+    font-size: 1rem;
+    border-radius: 7px;
+}
+

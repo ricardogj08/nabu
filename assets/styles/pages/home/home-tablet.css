@@ -63,6 +63,11 @@
 .recent-cards__container > .card {
     width: 300px;
 }
+/* Estilos para el CTA */
+
+.CTA__title {
+    font-size: 2rem;
+}
 
 .CTA__button {
     width: 40%;
