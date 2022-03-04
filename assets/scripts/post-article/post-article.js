@@ -55,7 +55,7 @@ const easyMDE = new EasyMDE({
         shortcuts: {
             drawTable: "Ctrl-Alt-T"
         },
-        spellChecker: true,
+        spellChecker: false,
         sideBySideFullscreen: false,
         status: ["autosave", "lines", "words", "cursor"],
         showIcons: ['strikethrough', 'code', 'table', 'redo', 'heading', 'undo', 'clean-block', 'horizontal-rule'],
