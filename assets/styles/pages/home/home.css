@@ -133,7 +133,6 @@ body {
     min-width: 320px;
     text-align: center;
     padding: 33px 0;
-    /* background-color: var(--color-background); */
 }
 
 .recent-posts__title {
@@ -182,6 +181,14 @@ body {
     font-size: 1.8rem;
     font-weight: 600;
     line-height: 2.7rem;
+}
+
+.CTA__title .CTA__mark {
+    text-decoration: wavy;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-secondary-purple);
+    text-decoration-thickness: 2px;
+    text-decoration-skip-ink: none;
 }
 
 .CTA__button {

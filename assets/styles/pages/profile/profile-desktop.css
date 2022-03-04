@@ -34,13 +34,17 @@ header {
     display: none;
 }
 
+.nav__item {
+    padding: 3px 20px;
+}
+
 .nav__item a{
     color: white;
 }
-
+/* 
 .nav__item:nth-child(2) a {
     padding: 10px 15px;
-}
+} */
 
 .profile-own {
     bottom: -125px;

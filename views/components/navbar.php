@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="nav__item">
-                <span></span><a href="<?= NABU_ROUTES['all-articles'] ?>">Muro</a>
+                <span>☷</span><a class="nav__link-underline" href="<?= NABU_ROUTES['all-articles'] ?>">Muro</a>
             </li>
             <?php if (isset($_SESSION['user'])): ?>
                 <?php $user = $_SESSION['user'] ?>
@@ -43,23 +43,23 @@
                     </li>
                 <?php endif ?>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
+                    <span>➣</span> <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
                 </li>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['favorites'] ?>">Favoritos</a>
+                    <span>✮</span> <a class="nav__link-underline" href="<?= NABU_ROUTES['favorites'] ?>">Favoritos</a>
                 </li>
                 <li class="nav__item">
-                    <a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>
+                    <span>☻</span> <a class="nav__link-underline" href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>
                 </li>
                 <li class="nav__item">
-                    <span></span><a href="<?= NABU_ROUTES['logout'] ?>">Cerrar sesión</a>
+                    <span class="close__icon">➲</span><a href="<?= NABU_ROUTES['logout'] ?>">Cerrar sesión</a>
                 </li>
             <?php else: ?>
                 <li class="nav__item">
-                    <span></span><a href="<?= NABU_ROUTES['login'] ?>">Inicia sesión</a>
+                    <span>➲</span><a href="<?= NABU_ROUTES['login'] ?>">Inicia sesión</a>
                 </li>
                 <li class="nav__item">
-                    <span></span><a href="<?= NABU_ROUTES['signup'] ?>">Comienza a escribir</a>
+                    <span>✒</span><a href="<?= NABU_ROUTES['signup'] ?>">Comienza a escribir</a>
                 </li>
             <?php endif ?>
         </ul>
