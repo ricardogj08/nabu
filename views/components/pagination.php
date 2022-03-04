@@ -18,7 +18,7 @@
 <?php defined('NABU') || exit() ?>
 
 <div class="pages">
-    <a href="<?= $view . '&page=' . $page - 1 ?>" class = "pages__move">🡠</a>
+    <a href="<?= $view . '&page=' . $page - 1 ?>" class = "pages__move">&#x2190;</a>
     <span class = "pages__actual"><?= $page ?></span>
-    <a href="<?= $view . '&page=' . $page + 1 ?>" class = "pages__move">🡢</a>
+    <a href="<?= $view . '&page=' . $page + 1 ?>" class = "pages__move">&#x2192;</a>
 </div>
