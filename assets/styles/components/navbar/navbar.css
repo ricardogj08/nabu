@@ -125,23 +125,20 @@
 }
 
 .nav__item span {
-    display: block;
-    width: 16px;
-    height: 16px;
-    background-position: center;
-    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-background);
+    background-color: var(--color-secondary-purple);
 }
 
-.nav__item:nth-child(2) span {
-    background-image: url('../../../icons/articles-icon.svg');
-}
-
-.nav__item:nth-child(3) span {
-    background-image: url('../../../icons/login-icon.svg');
-}
-
-.nav__item:nth-child(4) span {
-    background-image: url('../../../icons/write-icon.svg');
+.nav__item .close__icon {
+    transform: rotate(180deg);
 }
 
 /* Estilos para la visualización del menú */

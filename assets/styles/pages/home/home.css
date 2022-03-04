@@ -133,7 +133,6 @@ body {
     min-width: 320px;
     text-align: center;
     padding: 33px 0;
-    /* background-color: var(--color-background); */
 }
 
 .recent-posts__title {
