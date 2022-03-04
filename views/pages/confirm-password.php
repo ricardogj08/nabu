@@ -32,7 +32,7 @@
 <?php require_once 'views/components/messages.php' ?>
 <div class="wrapper__confirm">
     <section class="confirm__pass">
-        <h2 class="confirm__title">Sentimos que tengas que irte</h2>
+        <h3 class="confirm__title">Ingresa tu contraseña para completar la operación</h3>
         <picture class="confirm__image-wrapper">
             <img src="/assets/images/EliminarPerfil.svg" alt="Buho triste" class="confirm__image">
         </picture>
@@ -50,7 +50,7 @@
                 <input type="password" id="confirm-password" name="confirm-password" minlenght="6" maxlenght="255" required class="pass__input">
             </label>
             
-            <input type="submit" name="confirm-password-form" value="Eliminar permanentemente" class="confirm__btn">
+            <input type="submit" name="confirm-password-form" value="Enviar" class="confirm__btn">
         </form>
     </section>
 </div>
