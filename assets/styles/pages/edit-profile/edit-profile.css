@@ -161,6 +161,7 @@ header::before {
 
 .edit__input {
     padding: 12px;
+    outline-color: var(--color-secondary-purple);
     border: 2px solid var(--color-black);
     border-radius: 10px;
     font-size: 1.4rem;
@@ -191,8 +192,16 @@ header::before {
     background-color: var(--color-primary-red);
 }
 
+.edit__buttons .edit__btn:first-child:hover {
+    background-color: rgba(242, 120, 130, 0.85);
+}
+
 .edit__buttons .edit__btn:last-child {
     background-color: var(--color-secondary-green);
+}
+
+.edit__buttons .edit__btn:last-child:hover {
+    background-color: rgba(106, 185, 170, 0.85);
 }
 
 
