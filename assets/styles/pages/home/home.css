@@ -183,6 +183,14 @@ body {
     line-height: 2.7rem;
 }
 
+.CTA__title .CTA__mark {
+    text-decoration: wavy;
+    text-decoration-line: underline;
+    text-decoration-color: var(--color-secondary-purple);
+    text-decoration-thickness: 2px;
+    text-decoration-skip-ink: none;
+}
+
 .CTA__button {
     display: inline-block;
     min-width: 215px;

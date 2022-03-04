@@ -29,7 +29,7 @@
 <!-- Estilos a cargar para el responsive design -->
 <?php $desktop_styles = array(
     array('file' => 'components/footer/footer-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
-    array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/navbar/navbar-desktop.css', 'attributes' => 'media="screen and (min-width: 760px)"'),
     array('file' => 'pages/home/home-tablet.css',           'attributes' => 'media="screen and (min-width: 650px)"'),
     array('file' => 'pages/home/home-desktop.css',          'attributes' => 'media="screen and (min-width: 1024px)"')
 ) ?>
@@ -77,7 +77,7 @@
     <section class = "CTA">
         <span class="CTA__plane"></span>
         <div class="CTA__container">
-            <h3 class="CTA__title">Tus palabras merecen ser leídas, escribe algo e inicia un viaje de descubrimiento</h3>
+            <h3 class="CTA__title">Tus <strong class="CTA__mark">palabras</strong> merecen ser leídas, <strong class="CTA__mark">escribe</strong> algo e inicia un viaje de <strong class="CTA__mark">descubrimiento</strong></h3>
             <a href="<?= NABU_ROUTES['signup'] ?>" class="CTA__button">Quiero compartir lo que sé</a>
         </div>
     </section>
