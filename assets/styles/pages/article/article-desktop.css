@@ -55,6 +55,10 @@ header:hover {
     color: #FFF;
 }
 
+.nav__item .nav__link-underline {
+    text-decoration: none;
+}
+
 /* Estilos al heart like */
 .heart {
     top: -120px;
