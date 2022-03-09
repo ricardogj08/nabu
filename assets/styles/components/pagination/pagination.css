@@ -51,6 +51,10 @@
     background-color: var(--color-secondary-purple);
 }
 
+.pages .pages__move:first-child {
+  transform: rotate(180deg);
+}
+
 .pages__actual {
     width: 30px;
     height: 30px;
