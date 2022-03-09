@@ -86,7 +86,7 @@ header {
 .public-cards__container {
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(288px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(288px, 1fr));
     gap: 30px;
     justify-content: center;
     align-content: center;
@@ -95,5 +95,5 @@ header {
 
 .public-cards__container .card {
     height: 100%;
-    width: 330px;
+    width: 100%;
 }
