@@ -40,6 +40,14 @@ body {
     opacity: 0.8;
 }
 
+@-moz-document url-prefix() {  
+    body {
+        background-blend-mode: none;
+        background: rgb(192,179,214);
+        background: linear-gradient(0deg, rgba(192,179,214,1) 0%, rgba(166,177,212,1) 100%);
+    } /* Firefox */
+}
+
 /* Contenedor */
 
 .wrapper {
