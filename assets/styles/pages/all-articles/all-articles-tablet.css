@@ -72,7 +72,7 @@
 
 .articles__cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(288px, 1fr));
+    grid-template-columns: repeat(auto-fit,minmax(288px, 1fr));
     gap: 30px 10px;
     justify-content: center;
     align-content: center;
@@ -81,7 +81,7 @@
 }
 
 .articles__cards > .card {
-    width: 300px;
+    width: 100%;
 }
 
 /* Texto del CTA */

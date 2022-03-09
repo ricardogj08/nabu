@@ -82,8 +82,13 @@
 */
 
 /* Estilos para la seccion de articulos mas recientes */
+.recent-posts__title {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+}
+
 .recent-cards__container > .card {
-    width: 330px;
+    width: 100%;
 }
 
 /* Estilos para el CTA */

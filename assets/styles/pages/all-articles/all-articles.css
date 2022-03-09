@@ -60,6 +60,10 @@ body {
     gap: 30px;
 }
 
+.articles__icon {
+    display: none;
+}
+
 /* Estilos para mantener la altura en todos lso articulos */
 .articles__cards > .card {
     height: 100%;

@@ -64,7 +64,7 @@
     <section class="articles">
         <div class="articles__data">
             <h1 class = "articles__title">Muro</h1>
-            <span class="articles__icon">❯</span>
+            <span class="articles__icon">&#10095;</span>
         </div>
         <div class="articles__cards">
             <?php require 'views/components/articles.php' ?>
