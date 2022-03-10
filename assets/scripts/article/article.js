@@ -25,3 +25,22 @@ post.addEventListener("click", () => {
         heart.classList.remove("beat");
     }, 1200);
 });
+
+
+// Fix some styles for the content post
+const imagesPost = document.querySelectorAll('.post__copy img');
+
+// Get the media query
+const mediaQuery = window.matchMedia('(min-width: 768px)');
+mediaQuery.addEventListener('change',handleDeviceChange);
+
+//handle the event when changes the size and get the media query 
+function handleDeviceChange(e){
+    imagesPost.forEach(image => {
+        image.parentElement.classList.toggle('post__container-img')    
+    });
+}
+
+// execute for the fisrt time when the page load and apply the changes
+handleDeviceChange();
+

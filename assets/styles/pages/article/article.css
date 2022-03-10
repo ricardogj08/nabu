@@ -293,6 +293,12 @@ header::before {
     height: 100%;
     object-fit: cover;
 }
+
+/* Acomodar las imagenes en medio, se agrega esta clasea al contenedor de la imagen desde JS */
+.post__container-img {
+    text-align: center;
+}
+
 /* Estilos para los enlaces */
 .post__copy a {
     color: var(--color-black);
@@ -312,6 +318,27 @@ header::before {
 
 .post__copy blockquote p {
   display: inline;
+}
+
+/* Estilos para el codigo incrustado */
+.post__copy pre {
+    tab-width: 4;
+}
+
+.post__copy pre[data-lang]::before { 
+    content: attr(data-lang); 
+    display: block; 
+}
+
+.post__copy pre code {
+    display: block;
+    background: none;
+    white-space: pre;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: scroll;
+    max-width: 100%;
+    min-width: 100px;
+    padding: 0;
 }
 
 /* Estilos de la sección de otros post para mostrar */

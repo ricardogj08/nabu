@@ -37,12 +37,12 @@
 <!-- Archivos de javascript a cargar -->
 <?php $scripts = array(
     'home.js',
-    'article/article.js',
 ) ?>
 
 <!-- HTML head -->
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/messages.php' ?>
+<link href="https://{{cdn}}/prismjs@v1.x/themes/prism.css" rel="stylesheet" />
 
 <!-- HTML body -->
 <header>
@@ -159,3 +159,5 @@
 </section>
 
 <?php require_once 'views/components/footer.php' ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" defer></script>
+<script src="/assets/scripts/article/article.js" defer></script>
