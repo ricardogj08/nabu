@@ -15,6 +15,10 @@
 * junto con este programa. De lo contrario, consulte <https://www.gnu.org/licenses/>.
 */
 
+// ---------------------- Init the hightlight functionality ------------------
+hljs.highlightAll();
+
+// ---------------------- Animation heart ------------------
 const post = document.querySelector('.post__copy');
 const heart = document.querySelector('.icon');
 
@@ -26,8 +30,7 @@ post.addEventListener("click", () => {
     }, 1200);
 });
 
-
-// Fix some styles for the content post
+// ---------------------- Fix images for the content post ------------------
 const imagesPost = document.querySelectorAll('.post__copy img');
 
 // Get the media query

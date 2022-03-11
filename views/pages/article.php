@@ -40,9 +40,10 @@
 ) ?>
 
 <!-- HTML head -->
+<link rel="stylesheet" href="/assets/highlight/dracula.css">
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/messages.php' ?>
-<link href="https://{{cdn}}/prismjs@v1.x/themes/prism.css" rel="stylesheet" />
+
 
 <!-- HTML body -->
 <header>
@@ -83,6 +84,11 @@
     </aside>
 
     <article class="post__copy">
+        <pre>
+            <code>
+                const hi = 2;
+            </code>
+        </pre>
         <?= $article['body'] ?>
     </article>
 </section>
@@ -159,5 +165,5 @@
 </section>
 
 <?php require_once 'views/components/footer.php' ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js" defer></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js" defer></script>
 <script src="/assets/scripts/article/article.js" defer></script>

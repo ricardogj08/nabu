@@ -260,6 +260,7 @@ header::before {
 .post__copy h4,
 .post__copy h5,
 .post__copy h6 {
+    margin: 0;
     margin-top: 2.2rem;
 }
 
@@ -321,8 +322,14 @@ header::before {
 }
 
 /* Estilos para el codigo incrustado */
+.hljs {
+    background: transparent;
+}
+
 .post__copy pre {
-    tab-width: 4;
+    padding: 20px;
+    background-color: #383A59;
+    color: white;
 }
 
 .post__copy pre[data-lang]::before { 
@@ -331,14 +338,14 @@ header::before {
 }
 
 .post__copy pre code {
-    display: block;
-    background: none;
-    white-space: pre;
-    -webkit-overflow-scrolling: touch;
-    overflow-x: scroll;
     max-width: 100%;
     min-width: 100px;
     padding: 0;
+    display: block;
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Estilos de la sección de otros post para mostrar */
