@@ -84,11 +84,6 @@
     </aside>
 
     <article class="post__copy">
-        <pre>
-            <code>
-                const hi = 2;
-            </code>
-        </pre>
         <?= $article['body'] ?>
     </article>
 </section>
