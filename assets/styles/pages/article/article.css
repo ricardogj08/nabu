@@ -262,12 +262,6 @@ header::before {
 .post__copy h6 {
     margin: 0;
     margin-top: 2.2rem;
-}
-
-.post__copy > h3 {
-    font-size: 2.2rem;
-    line-height: 2.8rem;
-    font-weight: 600;
     word-wrap: break-word;
 }
 
@@ -287,6 +281,7 @@ header::before {
     letter-spacing: -0.03px;
     word-wrap: break-word;
 }
+
 
 /* Estilos para las imagenes */
 .post__copy img {
@@ -344,9 +339,66 @@ header::before {
     display: block;
     white-space: pre;
     overflow-x: auto;
-    font-size: 0.8rem;
+    font-size: 1rem;
     -webkit-overflow-scrolling: touch;
 }
+
+/* Estilos para las listas */
+.post__copy ul, .post__copy ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.post__copy ul ::marker {
+    color: var(--color-black);
+}
+
+.post__copy li:not(:last-child) {
+    margin: 10px 0;
+}
+
+.post__copy li {
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    letter-spacing: -.25px;
+}
+
+.post__body table {
+    width: 100%;
+    margin: 15px 0;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+}
+
+.post__body table td, table th {
+    padding: 8px;
+    color: var(--color-black);
+}
+
+.post__body table th{
+   font-size: 1.4rem;
+   font-weight: 700;
+   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+   border: 1px solid var(--color-secondary-purple);
+   color: var(--color-background);
+   background-color: var(--color-secondary-purple);
+}
+
+.post__body table td{
+    font-size: 1.2rem;
+    border: 1px solid #ddd;
+}
+
+.post__body tbody tr:nth-child(odd){
+    background-color: #eee;
+}
+
+.post__body tbody tr:nth-child(even){
+    background-color: #fff;
+}
+
+
+
 
 /* Estilos de la sección de otros post para mostrar */
 

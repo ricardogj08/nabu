@@ -114,6 +114,23 @@ header:hover {
     font-size: 1.2rem;
 }
 
+/* Estilos para las listas */
+.post__copy ul, .post__copy ol {
+    padding-left: 40px;
+}
+
+.post__copy li {
+    line-height: 2.8rem;
+}
+
+/* Estilos para las tablas */
+.post__body table th{
+    font-size: 1.6rem;
+ }
+ 
+ .post__body table td{
+     font-size: 1.4rem;
+ }
 
 /* Estilos para la seccion de popular posts */
 .popular-posts {
