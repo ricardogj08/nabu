@@ -79,9 +79,10 @@
                 <h2 class="CTA__title">Interesante, ¿No? &#x1F914;</h2>
                 <p class="CTA__description">Déjanos tu e-mail y te compartiremos los posts más recientes, además de recursos para mejorar tu escritura en medios digitales. &#x1F609;</p>
                 <div class="CTA__mail">
-                    <form class="CTA__form" method="POST" action="">
-                        <input class = "form__input-mail" type="text" minlength="1" placeholder="Tu e-mail" maxlength="246" required>
-                        <input class = "form__join" type="submit" name="mail-submit" value="Unirme">
+                    <form class="CTA__form" method="POST" action="<?= NABU_ROUTES['suscription'] ?>">
+                        <input type="hidden" name="csrf" value="<?= $token ?>">
+                        <input class = "form__input-mail" type="email" name="email" minlength="5" placeholder="Tu e-mail" maxlength="255" required>
+                        <input class = "form__join" type="submit" name="suscription-form" value="Unirme">
                     </form>
                 </div>
             </div>

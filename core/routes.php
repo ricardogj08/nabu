@@ -41,4 +41,5 @@ return array(
   'registered-users'   => array('route' => 'registered-users',   'controller' => 'adminController',          'view' => 'registered_users'),
   'review-article'     => array('route' => 'review-article',     'controller' => 'adminController',          'view' => 'review_article'),
   'signup'             => array('route' => 'signup',             'controller' => 'usersController',          'view' => 'signup'),
+  'suscription'        => array('route' => 'suscription',        'controller' => 'communityController',      'view' => 'suscription'),
 );

@@ -97,6 +97,14 @@ CREATE TABLE IF NOT EXISTS `favorites` (
     CONSTRAINT   favorites_article_id_fk FOREIGN KEY(article_id) REFERENCES articles(id) ON UPDATE CASCADE  ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS `suscriptions` (
+    `id`       INT UNSIGNED          NOT NULL AUTO_INCREMENT,
+    `email`    VARCHAR(255)          NOT NULL,
+    `hash`     VARCHAR(255)          NOT NULL,
+    CONSTRAINT suscriptions_pk       PRIMARY KEY(id),
+    CONSTRAINT suscriptions_email_uk UNIQUE(email)
+);
+
 INSERT INTO roles(id, name) VALUES(1, 'ADMIN'), (2, 'MODERATOR'), (3, 'USER');
 INSERT INTO users VALUES(1, 1, 'root', 'root', 'root@example.com', '$2y$12$.1ycdL5xs4nOpQ3GXga7m.IFNtfMgV5nKVe4R87B3CypgigBaJ55C', TRUE, NOW());
 INSERT INTO profiles(id) VALUES(1);

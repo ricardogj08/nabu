@@ -109,6 +109,34 @@ class communityModel extends dbConnection {
     }
   }
 
+  // Obtiene los datos de suscripción de un e-mail.
+  public function get_suscription(string $email) {
+    $query = 'SELECT * FROM suscriptions WHERE email = ? LIMIT 1';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($email));
+
+      return $prepare -> fetch();
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener los datos de una suscripción');
+    }
+  }
+
+  // Registra una suscripción.
+  public function save_suscription(string $email, string $hash) {
+    $query = 'INSERT INTO suscriptions(email, hash) VALUES(?, ?)';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($email, $hash));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para registrar una suscripción');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;
