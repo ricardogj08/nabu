@@ -37,12 +37,13 @@
 <!-- Archivos de javascript a cargar -->
 <?php $scripts = array(
     'home.js',
-    'article/article.js',
 ) ?>
 
 <!-- HTML head -->
+<link rel="stylesheet" href="/assets/highlight/dracula.css">
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/messages.php' ?>
+
 
 <!-- HTML body -->
 <header>
@@ -83,6 +84,11 @@
     </aside>
 
     <article class="post__copy">
+        <pre>
+            <code>
+                const hi = 2;
+            </code>
+        </pre>
         <?= $article['body'] ?>
     </article>
 </section>
@@ -159,3 +165,5 @@
 </section>
 
 <?php require_once 'views/components/footer.php' ?>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js" defer></script>
+<script src="/assets/scripts/article/article.js" defer></script>

@@ -103,9 +103,19 @@ header:hover {
     width: initial;
 } */
 
+/* Estilos generales para el contenido del articulo */
+
+.post__copy img {
+    width: 50%;
+}
+
+/* Estilos para el codigo incrustado */
+.post__copy pre code {
+    font-size: 1.2rem;
+}
 
 
-
+/* Estilos para la seccion de popular posts */
 .popular-posts {
     width: 100%;
     background-color: initial;
