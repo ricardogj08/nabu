@@ -88,7 +88,7 @@ class communityController {
   // Cancela la suscripción de un correo con el método GET
   // y registra un e-mail al boletín de los artículos más recientes con el método POST.
   static public function suscription() {
-    $view = NABU_ROUTES['all-articles'];
+    $view = NABU_ROUTES['home'];
 
     $validations = new validations($view);
 
@@ -115,12 +115,25 @@ class communityController {
       if (empty($suscription))
         utils::redirect($view);
 
+      // Reconstruye el hash con la llave de autenticación de la URL.
+      $hash = hash_hmac('sha256', $suscription['email'], $data['key']);
+
+      if (!hash_equals($suscription['hash'], $hash))
+        utils::redirect($view);
+
+      // Elimina la suscripción.
+      $communityModel -> delete_suscription($suscription['id']);
+
       messages::add('Tu suscripción se ha cancelado correctamente');
 
       utils::redirect($view);
     }
 
     csrf::validate($_POST['csrf']);
+
+    $view = NABU_ROUTES['all-articles'];
+
+    $validations -> route = $view;
 
     // Valida el email de la suscripción.
     $data = $validations -> validate($_POST, array(
@@ -157,7 +170,7 @@ class communityController {
       $body = require_once 'views/emails/suscription.php';
 
       // Envía primero un mensaje de suscripción antes de registrarlo.
-      if (!$emails -> send('¡Gracias por suscribirte!', $body))
+      if (!$emails -> send('¡Bienvenido a la comunidad!', $body))
         messages::errors('¡Lo sentimos mucho! &#x1F61E;, por el momento no podemos enviar tu mensaje de suscripción', 500);
 
       // Registra la suscripción.

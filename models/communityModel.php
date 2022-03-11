@@ -137,6 +137,18 @@ class communityModel extends dbConnection {
     }
   }
 
+  // Elimina una suscripción.
+  public function delete_suscription(int $id) {
+    $query = 'DELETE FROM suscriptions WHERE id = ?';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($id));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para eliminar una suscripción');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;
