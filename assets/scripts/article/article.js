@@ -19,16 +19,16 @@
 hljs.highlightAll();
 
 // ---------------------- Animation heart ------------------
-const post = document.querySelector('.post__copy');
-const heart = document.querySelector('.icon');
+// const post = document.querySelector('.post__copy');
+// const heart = document.querySelector('.icon');
 
-post.addEventListener("click", () => {
-    heart.classList.add("beat");
-    // countEl.innerHTML = count;
-    setTimeout(() => {
-        heart.classList.remove("beat");
-    }, 1200);
-});
+// post.addEventListener("click", () => {
+//     heart.classList.add("beat");
+//     // countEl.innerHTML = count;
+//     setTimeout(() => {
+//         heart.classList.remove("beat");
+//     }, 1200);
+// });
 
 // ---------------------- Fix images for the content post ------------------
 const imagesPost = document.querySelectorAll('.post__copy img');
