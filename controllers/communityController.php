@@ -88,29 +88,43 @@ class communityController {
   // Cancela la suscripción de un correo con el método GET
   // y registra un e-mail al boletín de los artículos más recientes con el método POST.
   static public function suscription() {
-    $view = NABU_ROUTES['home'];
+    $view = NABU_ROUTES['all-articles'];
 
     $validations = new validations($view);
+
+    $form = $_POST;
+
+    if (empty($_POST['suscription-form'])) {
+      $view = NABU_ROUTES['home'];
+      $validations -> route = $view;
+      $form = $_GET;
+    }
+    else
+      csrf::validate($_POST['csrf']);
+
+    // Valida el email de la suscripción.
+    $data = $validations -> validate($form, array(
+      array('field' => 'email', 'trim' => true, 'min_length' => 5, 'max_length' => 255, 'not_spaces' => true),
+    ));
+
+    $email = strtolower($data['email']);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      messages::add('Por favor ingresa una dirección de correo electrónico válido');
+      utils::redirect($view);
+    }
+
+    $communityModel = new communityModel();
+
+    // Obtiene los datos de suscripción.
+    $suscription = $communityModel -> get_suscription($email);
 
     // Cancela la suscripción.
     if (empty($_POST['suscription-form'])) {
       // Valida los parámetros de la URL.
       $data = $validations -> validate($_GET, array(
-        array('field' => 'email', 'trim'       => true, 'min_length' => 5, 'max_length' => 255, 'not_spaces' => true),
-        array('field' => 'key',   'min_length' => 1,    'max_length' => 255)
+        array('field' => 'key', 'min_length' => 1, 'max_length' => 255)
       ));
-
-      $email = strtolower($data['email']);
-
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        messages::add('Por favor ingresa una dirección de correo electrónico válido');
-        utils::redirect($view);
-      }
-
-      $communityModel = new communityModel();
-
-      // Obtiene los datos de suscripción.
-      $suscription = $communityModel -> get_suscription($email);
 
       if (empty($suscription))
         utils::redirect($view);
@@ -128,29 +142,6 @@ class communityController {
 
       utils::redirect($view);
     }
-
-    csrf::validate($_POST['csrf']);
-
-    $view = NABU_ROUTES['all-articles'];
-
-    $validations -> route = $view;
-
-    // Valida el email de la suscripción.
-    $data = $validations -> validate($_POST, array(
-      array('field' => 'email', 'trim' => true, 'min_length' => 5, 'max_length' => 255, 'not_spaces' => true),
-    ));
-
-    $email = strtolower($data['email']);
-
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      messages::add('Por favor ingresa una dirección de correo electrónico válido');
-      utils::redirect($view);
-    }
-
-    $communityModel = new communityModel();
-
-    // Obtiene los datos de suscripción.
-    $suscription = $communityModel -> get_suscription($email);
 
     if (empty($suscription)) {
       // Genera una llave aleatoria de cancelación de suscripción.
