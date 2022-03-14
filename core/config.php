@@ -46,6 +46,16 @@ define('NABU_DEFAULT', array(
     'image-size'    => 1048576 * 2, // 2 MB (en bytes).
 ));
 
+$routes = array();
+
+// Genera la URL completa de todas las rutas.
+foreach ($components as $alias => $component)
+  $routes[$alias] = NABU_URL . '/index.php?view=' . $component['route'];
+
+define('NABU_ROUTES', $routes);
+
+unset($routes);
+
 // Define la zona horario de todas las funciones de fecha/tiempo.
 date_default_timezone_set('America/Mexico_City');
 

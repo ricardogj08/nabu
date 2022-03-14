@@ -18,7 +18,11 @@
 
 defined('NABU') || exit();
 
-return '<p>A partir de ahora recibirás correos de parte de nuestro equipo en los que compartiremos ' .
-       'contigo blogposts que te pudiesen interesar, así como tips para que tu escritura en medios ' .
-       'digitales sea una de tus más grandes cualidades.</p>' .
-       '<p><a href="' . $url . '">Cancelar suscripción.</a></p>';
+$body = '<h1>Los artículos más recientes del mes<h1>';
+
+foreach ($articles as $article) {
+  $body = $body . '<h2><a href="' . NABU_ROUTES['article'] . '&slug=' . $article['slug'] . '">' . utils::escape($article['title']) . '</a></h2>' .
+          '<p>' . utils::escape($article['synopsis']) . '</p>';
+}
+
+return $body;

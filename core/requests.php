@@ -20,22 +20,14 @@ defined('NABU') || exit();
 
 session_start();
 
+$components = require 'core/routes.php';
+
 require_once 'core/config.php';
 require_once 'core/utils.php';
 require_once 'core/messages.php';
 require_once 'db/connection.php';
 require_once 'libs/csrf.php';
 require_once 'libs/validations.php';
-
-$components = require 'core/routes.php';
-
-$routes = array();
-
-// Genera la URL completa de todas las rutas.
-foreach ($components as $alias => $component)
-  $routes[$alias] = NABU_URL . '/index.php?view=' . $component['route'];
-
-define('NABU_ROUTES', $routes);
 
 // Selecciona el controlador y la vista de una ruta solicitada.
 if (isset($_GET['view']))
@@ -46,10 +38,10 @@ if (isset($_GET['view']))
       break;
     }
 
+unset($components);
+
 if (empty($controller) || empty($view))
   utils::redirect(NABU_ROUTES['home']);
-
-unset($components, $routes);
 
 require_once 'controllers/' . $controller . '.php';
 

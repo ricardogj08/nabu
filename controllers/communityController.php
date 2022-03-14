@@ -104,7 +104,7 @@ class communityController {
 
     // Valida el email de la suscripción.
     $data = $validations -> validate($form, array(
-      array('field' => 'email', 'trim' => true, 'min_length' => 5, 'max_length' => 255, 'not_spaces' => true),
+      array('field' => 'email', 'trim' => true, 'min_length' => 5, 'max_length' => 255, 'not_spaces' => true)
     ));
 
     $email = strtolower($data['email']);
