@@ -77,7 +77,7 @@ $bolletin = new class extends dbConnection {
     }
 
     if (empty($subscribers))
-      $subscribers = array();
+      exit();
 
     $body = require_once 'views/emails/bolletin.php';
 

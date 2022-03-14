@@ -109,6 +109,16 @@ Por defecto, `Nabu` escanea desde la raíz de la carpeta del programa el archivo
 > UPDATE users SET email = 'root@example.com' WHERE id = 1;
 ```
 
+## Automatización de suscripciones
+
+Mediante una tarea en `cron`:
+
+```shell
+0  12  1  *  *  php /var/www/nabu/bolletin.php
+```
+
+> Envía los artículos más recientes a sus suscriptores el primer día de cada mes a las 12:00 pm.
+
 ## Licencia
 
 ```text
