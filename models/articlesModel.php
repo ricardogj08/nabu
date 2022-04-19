@@ -249,6 +249,25 @@ class articlesModel extends dbConnection {
     }
   }
 
+  // @return boolean si un usuario le ha dado like a un artículo.
+  public function get_like(int $user_id, int $article_id) {
+    $query = 'SELECT * from favorites WHERE user_id = ? AND article_id = ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($user_id, $article_id));
+
+      if (empty($prepare -> fetch()))
+        return false;
+
+      return true;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener información de like de un artículo');
+    }
+  }
+
   public function __destruct() {
     parent::__destruct();
     $this -> pdo = null;

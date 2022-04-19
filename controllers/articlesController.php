@@ -142,6 +142,8 @@ class articlesController {
 
       $login = array('avatar' => null, 'profile' => NABU_ROUTES['login']);
 
+      $have_like = false;
+
       // Obtiene la foto de perfil del usuario de sesión para mostrar en los comentarios.
       if (isset($_SESSION['user'])) {
         $login = $articlesModel -> get_avatar($_SESSION['user']['id']);
@@ -149,6 +151,8 @@ class articlesController {
         $login['role'] = $_SESSION['user']['role'];
 
         $login['profile'] = NABU_ROUTES['profile'] . '&user=' . urlencode($_SESSION['user']['username']);
+
+        $have_like = $articlesModel -> get_like($_SESSION['user']['id'], $article['id']);
       }
 
       $login['avatar'] = utils::url_image('avatar', $login['avatar']);

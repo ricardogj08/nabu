@@ -44,7 +44,6 @@
 <?php require_once 'views/components/head.php' ?>
 <?php require_once 'views/components/messages.php' ?>
 
-
 <!-- HTML body -->
 <header>
     <!-- Imagen de fondo dl post -->
@@ -77,7 +76,9 @@
 
 <section class="post__body">
     <aside class='post__aside'>
-        <div class="heart">
+        <!-- Define la clase CSS para el corazón de like cuando false: heart y true: ?. -->
+        <?php $heart_class = empty($have_like) ? 'heart' : '' ?>
+        <div class="<?= $heart_class ?>">
             <input type="checkbox" id='toggle__heart'>
             <label for="toggle__heart"><a href="<?= NABU_ROUTES['likes'] . '&slug=' . $article['slug'] ?>">❤</a></label>
         </div>
