@@ -80,12 +80,11 @@ class articlesModel extends dbConnection {
 
   // @return un array con los artículos publicados.
   public function get_all(int $limit, int $accumulation, string $pattern) {
-    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
-             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+    $query = 'SELECT a.id, a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
              'LEFT JOIN profiles AS p ON a.user_id = p.id ' .
-             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
              'WHERE a.authorized = TRUE ';
 
@@ -103,6 +102,22 @@ class articlesModel extends dbConnection {
         $prepare -> execute(array('%' . $pattern . '%', $limit, $accumulation));
 
       $articles = $prepare -> fetchAll();
+
+      if (!empty($articles)) {
+        $query = 'SELECT COUNT(*) AS comments FROM comments WHERE article_id = ?';
+
+        $prepare = $this -> pdo -> prepare($query);
+
+        foreach ($articles as &$article) {
+          $prepare -> execute(array($article['id']));
+
+          $data = $prepare -> fetch();
+
+          $article['comments'] = $data['comments'];
+        }
+
+        unset($article);
+      }
 
       if (empty($articles))
         $articles = array();
@@ -137,15 +152,15 @@ class articlesModel extends dbConnection {
 
   // @return un array con los artículos más populares de un usuario.
   public function popular_articles(int $id, int $limit) {
-    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
-             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+    $query = 'SELECT a.id, a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
              'LEFT JOIN profiles AS p ON a.user_id = p.id ' .
-             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
-             'WHERE a.user_id = ? AND a.authorized = TRUE GROUP BY a.id ' .
-             'ORDER BY likes DESC, comments DESC LIMIT ?';
+             'WHERE a.user_id = ? AND a.authorized = TRUE '.
+             'GROUP BY a.id ' .
+             'ORDER BY likes DESC LIMIT ?';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
@@ -153,6 +168,22 @@ class articlesModel extends dbConnection {
       $prepare -> execute(array($id, $limit));
 
       $articles = $prepare -> fetchAll();
+
+      if (!empty($articles)) {
+        $query = 'SELECT COUNT(*) AS comments FROM comments WHERE article_id = ?';
+
+        $prepare = $this -> pdo -> prepare($query);
+
+        foreach ($articles as &$article) {
+          $prepare -> execute(array($article['id']));
+
+          $data = $prepare -> fetch();
+
+          $article['comments'] = $data['comments'];
+        }
+
+        unset($article);
+      }
 
       if (empty($articles))
         $articles = array();

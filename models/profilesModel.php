@@ -63,14 +63,14 @@ class profilesModel extends dbConnection {
 
   // @return un array con los artículos publicados por un usuario.
   public function get_articles(int $limit, int $accumulation, int $id) {
-    $query = 'SELECT a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
-             'COUNT(c.article_id) AS comments, COUNT(f.article_id) AS likes ' .
+    $query = 'SELECT a.id, a.title, a.synopsis, a.slug, a.cover, u.username AS author, p.avatar, ' .
+             'COUNT(f.article_id) AS likes ' .
              'FROM articles AS a ' .
              'INNER JOIN users AS u ON a.user_id = u.id ' .
              'LEFT JOIN profiles AS p ON u.id = p.id ' .
-             'LEFT JOIN comments AS c ON a.id = c.article_id ' .
              'LEFT JOIN favorites AS f ON a.id = f.article_id ' .
-             'WHERE a.authorized = TRUE AND u.id = ? GROUP BY a.id ' .
+             'WHERE a.authorized = TRUE AND u.id = ? '.
+             'GROUP BY a.id ' .
              'ORDER BY a.modification_date DESC LIMIT ? OFFSET ?';
 
     try {
@@ -79,6 +79,22 @@ class profilesModel extends dbConnection {
       $prepare -> execute(array($id, $limit, $accumulation));
 
       $articles = $prepare -> fetchAll();
+
+      if (!empty($articles)) {
+        $query = 'SELECT COUNT(*) AS comments FROM comments WHERE article_id = ?';
+
+        $prepare = $this -> pdo -> prepare($query);
+
+        foreach ($articles as &$article) {
+          $prepare -> execute(array($article['id']));
+
+          $data = $prepare -> fetch();
+
+          $article['comments'] = $data['comments'];
+        }
+
+        unset($article);
+      }
 
       if (empty($articles))
         $articles = array();

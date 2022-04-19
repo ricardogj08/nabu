@@ -45,9 +45,11 @@
                 <li class="nav__item">
                     <span>&#10146;</span> <a href="<?= NABU_ROUTES['post-article'] ?>">Publicar un post</a>
                 </li>
+                <!--
                 <li class="nav__item">
                     <span>&#10029;</span> <a class="nav__link-underline" href="<?= NABU_ROUTES['favorites'] ?>">Favoritos</a>
                 </li>
+                !-->
                 <li class="nav__item">
                     <span>&#9787;</span> <a class="nav__link-underline" href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['username']) ?></a>
                 </li>

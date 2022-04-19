@@ -405,7 +405,7 @@ class adminController {
 
     $user = $data['user'];
 
-    if ($user == 'root')
+    if ($user == 'root' || $user == $_SESSION['user']['username'])
       utils::redirect(NABU_ROUTES['registered-users']);
 
     $view = NABU_ROUTES['delete-user'] . '&user=' . $user;
