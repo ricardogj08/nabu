@@ -34,7 +34,7 @@
     <section class="confirm__pass">
         <h3 class="confirm__title">Ingresa tu contraseña para completar la operación</h3>
         <picture class="confirm__image-wrapper">
-            <img src="/assets/images/EliminarPerfil.svg" alt="Buho triste" class="confirm__image">
+            <img src="<?= NABU_DIRECTORY['images'] ?>/EliminarPerfil.svg" alt="Buho triste" class="confirm__image">
         </picture>
         <!-- <p class="confirm__text">Ingresa tu contraseña para completar la operación</p> -->
         <form method="POST" action="<?= $view ?>" class="confirm__form">
@@ -54,3 +54,5 @@
         </form>
     </section>
 </div>
+</body>
+</html>

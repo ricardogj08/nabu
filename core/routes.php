@@ -28,6 +28,7 @@ return array(
   'delete-article'     => array('route' => 'delete-article',     'controller' => 'adminController',          'view' => 'delete_article'),
   'delete-comment'     => array('route' => 'delete-comment',     'controller' => 'communityController',      'view' => 'delete_comment'),
   'delete-profile'     => array('route' => 'delete-profile',     'controller' => 'profilesController',       'view' => 'delete_profile'),
+  'delete-user'        => array('route' => 'delete-user',        'controller' => 'adminController',          'view' => 'delete_user'),
   'edit-profile'       => array('route' => 'edit-profile',       'controller' => 'profilesController',       'view' => 'edit_profile'),
   'errors'             => array('route' => 'errors',             'controller' => 'blogController',           'view' => 'errors'),
   'favorites'          => array('route' => 'favorites',          'controller' => 'communityController',      'view' => 'favorites'),

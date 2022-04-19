@@ -40,7 +40,7 @@
       <td><?= utils::escape($user['username']) ?></td>
       <td><?= utils::escape($user['email']) ?></td>
       <td><?= $user['role'] ?></td>
-      <td>Eliminar</td>
+      <td><a href="<?= NABU_ROUTES['delete-user'] . '&user=' . urlencode($user['username']) ?>">Eliminar</a></td>
       <td>Cambiar rol</td>
     </tr>
     <?php endforeach ?>

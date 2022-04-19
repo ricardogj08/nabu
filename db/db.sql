@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `suscriptions` (
     `id`       INT UNSIGNED          NOT NULL AUTO_INCREMENT,
     `email`    VARCHAR(255)          NOT NULL,
     `hash`     VARCHAR(255)          NOT NULL,
-    CONSTRAINT suscriptions_pk       PRIMARY KEY(id),
+    CONSTRAINT suscriptions_id_pk    PRIMARY KEY(id),
     CONSTRAINT suscriptions_email_uk UNIQUE(email)
 );
 

@@ -26,6 +26,9 @@ class adminController {
   // Renderiza la página de administración con la lista de artículos
   // en espera de aprobación y realiza búsquedas con el método POST.
   static public function approve_articles() {
+    if (!($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'moderator'))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $max    = 246;
     $search = utils::validate_search(NABU_ROUTES['approve-articles'], $max);
     $query  = $search['query'];
@@ -54,6 +57,9 @@ class adminController {
   // Renderiza la página de administración para editar un artículo
   // y actualiza los datos de un artículo con el método POST.
   static public function review_article() {
+    if (!($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'moderator'))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $messages = messages::get();
 
     $validations = new validations(NABU_ROUTES['approve-articles']);
@@ -177,6 +183,9 @@ class adminController {
   // Renderiza la página de administración para eliminar un artículo
   // y elimina los comentarios, favoritos y registro de publicación con el método POST.
   static public function delete_article() {
+    if (!($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'moderator'))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $messages = messages::get();
 
     $validations = new validations(NABU_ROUTES['approve-articles']);
@@ -244,6 +253,9 @@ class adminController {
   // Renderiza la página de administración para autorizar la publicación de un artículo
   // y autoriza un artículo con el método POST.
   static public function authorize_article() {
+    if (!($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'moderator'))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $messages = messages::get();
 
     $validations = new validations(NABU_ROUTES['approve-articles']);
@@ -317,6 +329,9 @@ class adminController {
   // Renderiza la página de administración con la lista de artículos
   // publicados y realiza búsquedas con el método POST.
   static public function published_articles() {
+    if (!($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'moderator'))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $max    = 246;
     $search = utils::validate_search(NABU_ROUTES['published-articles'], $max);
     $query  = $search['query'];
@@ -345,6 +360,9 @@ class adminController {
   // Renderiza la página de administración con la lista de usuarios registrados
   // y realiza búsquedas con el método POST.
   static public function registered_users() {
+    if (!($_SESSION['user']['role'] == 'admin' || $_SESSION['user']['role'] == 'moderator'))
+      utils::redirect(NABU_ROUTES['logout']);
+
     $max    = 255;
     $search = utils::validate_search(NABU_ROUTES['registered-users'], $max);
     $query  = $search['query'];
@@ -368,5 +386,77 @@ class adminController {
     $messages = messages::get();
 
     require_once 'views/admin/registered-users.php';
+  }
+
+  // Renderiza la página de administración para eliminar un usuario
+  // y elimina un usuario con el método POST.
+  static public function delete_user() {
+    if ($_SESSION['user']['role'] != 'admin')
+      utils::redirect(NABU_ROUTES['registered-users']);
+
+    $messages = messages::get();
+
+    $validations = new validations(NABU_ROUTES['registered-users']);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'user', 'min_length' => 1, 'max_length' => 255, 'not_spaces' => true)
+    ));
+
+    $user = $data['user'];
+
+    if ($user == 'root')
+      utils::redirect(NABU_ROUTES['registered-users']);
+
+    $view = NABU_ROUTES['delete-user'] . '&user=' . $user;
+
+    // Renderiza la página de administración para eliminar un artículo.
+    if (empty($_POST['confirm-password-form'])) {
+      unset($validations, $data, $user);
+
+      $token = csrf::generate();
+
+      require_once 'views/pages/confirm-password.php';
+
+      exit();
+    }
+
+    csrf::validate($_POST['csrf']);
+
+    $validations -> route = $view;
+
+    // Valida el formulario para confirmar la contraseña del usuario.
+    $data = $validations -> validate($_POST, array(
+      array('field' => 'password', 'min_length' => 6, 'max_length' => 255, 'not_spaces' => true, 'equal' => $_POST['confirm-password'])
+    ));
+
+    $adminModel = new adminModel();
+
+    // Obtiene los datos del usuario administrador.
+    $admin = $adminModel -> get_admin($_SESSION['user']['id']);
+
+    if (empty($admin))
+      utils::redirect(NABU_ROUTES['logout']);
+
+    // Valida la contraseña del usuario.
+    if (!password_verify($data['password'], $admin['password'])) {
+      messages::add('La contraseña es incorrecta');
+      utils::redirect($view);
+    }
+
+    require_once 'models/profilesModel.php';
+
+    $profilesModel = new profilesModel();
+
+    $profile = $profilesModel -> get_profile('username', $user);
+
+    if (empty($profile))
+      utils::redirect(NABU_ROUTES['registered-users']);
+
+    $profilesModel -> delete_profile($profile['id']);
+
+    messages::add('El usuario se ha eliminado correctamente');
+
+    utils::redirect(NABU_ROUTES['registered-users']);
   }
 }

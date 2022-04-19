@@ -281,12 +281,15 @@ class adminModel extends dbConnection {
 
   // @return un array con los usuarios registrados.
   public function get_users(int $limit, int $accumulation, string $pattern) {
-    $query = 'SELECT name, username, email, role_id AS role FROM users WHERE activated = TRUE ';
+    $query = 'SELECT u.name, u.username, u.email, r.name AS role ' .
+             'FROM users AS u ' .
+             'INNER JOIN roles AS r ON u.role_id = r.id ' .
+             'WHERE u.activated = TRUE ';
 
     if (!empty($pattern))
-      $query = $query . 'AND (name LIKE ? OR username LIKE ?) ';
+      $query = $query . 'AND (u.name LIKE ? OR u.username LIKE ?) ';
 
-    $query = $query . 'ORDER BY name ASC LIMIT ? OFFSET ?';
+    $query = $query . 'ORDER BY u.name ASC LIMIT ? OFFSET ?';
 
     try {
       $prepare = $this -> pdo -> prepare($query);
