@@ -33,6 +33,7 @@ return array(
   'errors'             => array('route' => 'errors',             'controller' => 'blogController',           'view' => 'errors'),
   'favorites'          => array('route' => 'favorites',          'controller' => 'communityController',      'view' => 'favorites'),
   'home'               => array('route' => 'home',               'controller' => 'blogController',           'view' => 'home'),
+  'change-role'        => array('route' => 'change-role',        'controller' => 'adminController',          'view' => 'change_role'),
   'likes'              => array('route' => 'likes',              'controller' => 'communityController',      'view' => 'likes'),
   'login'              => array('route' => 'login',              'controller' => 'usersController',          'view' => 'login'),
   'logout'             => array('route' => 'logout',             'controller' => 'usersController',          'view' => 'logout'),

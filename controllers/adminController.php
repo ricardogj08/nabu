@@ -380,6 +380,8 @@ class adminController {
 
     $page = $pagination['page'];
 
+    $roles = $adminModel -> get_roles();
+
     unset($search, $adminModel, $total, $pagination);
 
     $token    = csrf::generate();
@@ -458,5 +460,52 @@ class adminController {
     messages::add('El usuario se ha eliminado correctamente');
 
     utils::redirect(NABU_ROUTES['registered-users']);
+  }
+
+  // Modifica el rol de un usuario con el método POST.
+  static public function change_role() {
+    csrf::validate($_POST['csrf']);
+
+    $view = NABU_ROUTES['registered-users'];
+
+    if ($_SESSION['user']['role'] != 'admin')
+      utils::redirect($views);
+
+    $messages = messages::get();
+
+    $validations = new validations($view);
+
+    // Valida la URL del artículo.
+    $data = $validations -> validate($_GET, array(
+      array('field' => 'user', 'min_length' => 1, 'max_length' => 255, 'not_spaces' => true)
+    ));
+
+    $user = $data['user'];
+
+    if ($user == 'root' || $user == $_SESSION['user']['username'] || empty($_POST['change-role-form']))
+      utils::redirect($view);
+
+    // Valida el formulario para modificar el rol del usuario.
+    if (!is_numeric($_POST['role']))
+      utils::redirect($view);
+
+    $role = $_POST['role'];
+
+    $adminModel = new adminModel();
+
+    // Obtiene los datos del usuario administrador.
+    $admin = $adminModel -> get_admin($_SESSION['user']['id']);
+
+    if (empty($admin))
+      utils::redirect(NABU_ROUTES['logout']);
+
+    if (empty($adminModel -> find_role($role)))
+      utils::redirect($view);
+
+    $adminModel -> change_role($user, $role);
+
+    messages::add('El rol del usuario se ha modificado correctamente');
+
+    utils::redirect($view);
   }
 }

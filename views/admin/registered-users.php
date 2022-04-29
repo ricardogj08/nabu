@@ -30,18 +30,29 @@
         <th>Nombre</th>
         <th>Apodo</th>
         <th>Correo institucional</th>
-        <th>Rol</th>
-        <th></th>
-        <th></th>
+        <th>Eliminar</th>
+        <th>Cambiar rol</th>
     </tr>
     <?php foreach($users as $user): ?>
     <tr>
       <td><a href="<?= NABU_ROUTES['profile'] . '&user=' . urlencode($user['username']) ?>"><?= utils::escape($user['name']) ?></a></td>
       <td><?= utils::escape($user['username']) ?></td>
       <td><?= utils::escape($user['email']) ?></td>
-      <td><?= $user['role'] ?></td>
       <td><a href="<?= NABU_ROUTES['delete-user'] . '&user=' . urlencode($user['username']) ?>">Eliminar</a></td>
-      <td>Cambiar rol</td>
+      <td>
+        <form method="POST" action="<?= NABU_ROUTES['change-role'] . '&user=' . utils::escape($user['username']) ?>" >
+          <select name="role" id="role">
+            <option value="<?= $user['roleId'] ?>"><?= $user['role'] ?></option>
+            <?php foreach($roles as $role): ?>
+              <?php if($role['id'] != $user['roleId']): ?>
+                <option value="<?= $role['id'] ?>"><?= $role['name'] ?></option>
+              <?php endif ?>
+            <?php endforeach ?>
+          </select>
+          <input type="hidden" name="csrf" value="<?= $token ?>">
+          <input type="submit" name="change-role-form" value="Guardar">
+        </form>
+      </td>
     </tr>
     <?php endforeach ?>
 </table>

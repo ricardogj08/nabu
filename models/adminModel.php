@@ -281,7 +281,7 @@ class adminModel extends dbConnection {
 
   // @return un array con los usuarios registrados.
   public function get_users(int $limit, int $accumulation, string $pattern) {
-    $query = 'SELECT u.name, u.username, u.email, r.name AS role ' .
+    $query = 'SELECT u.name, u.username, u.email, r.id AS roleId, r.name AS role ' .
              'FROM users AS u ' .
              'INNER JOIN roles AS r ON u.role_id = r.id ' .
              'WHERE u.activated = TRUE ';
@@ -308,6 +308,60 @@ class adminModel extends dbConnection {
     }
     catch (PDOException $e) {
       $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener todos los usuarios registrados');
+    }
+  }
+
+  // @return un array con los roles del sistema.
+  public function get_roles() {
+    $query = 'SELECT * FROM roles ORDER BY name ASC';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute();
+
+      $roles = $prepare -> fetchAll();
+
+      if (empty($roles))
+        $roles = array();
+
+      return $roles;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para obtener todos los roles del sistema');
+    }
+  }
+
+  // @return un array de un rol del sistema.
+  public function find_role(int $id) {
+    $query = 'SELECT * FROM roles WHERE id = ?';
+
+    try {
+      $prepare = $this -> pdo -> prepare($query);
+
+      $prepare -> execute(array($id));
+
+      $role = $prepare -> fetch();
+
+      if (empty($role))
+        $role = array();
+
+      return $role;
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para buscar un rol del sistema');
+    }
+  }
+
+  // Actualiza el rol de un usuario.
+  public function change_role(string $user, int $role) {
+    $query = 'UPDATE users SET role_id = ? WHERE username = ?';
+
+    try {
+      $this -> pdo -> prepare($query) -> execute(array($role, $user));
+    }
+    catch (PDOException $e) {
+      $this -> errors($e -> getMessage(), 'tuvimos un problema para modificar el rol de un usuario');
     }
   }
 
