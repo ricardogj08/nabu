@@ -286,15 +286,11 @@ header::before {
 /* Estilos para las imagenes */
 .post__copy img {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     object-fit: cover;
 }
 
 /* Acomodar las imagenes en medio, se agrega esta clasea al contenedor de la imagen desde JS */
-.post__container-img {
-    text-align: center;
-}
-
 /* Estilos para los enlaces */
 .post__copy a {
     color: var(--color-black);
@@ -556,7 +552,7 @@ header::before {
 
 /* Estilos a las respuestas de comentarios */
 .comments__list {
-    margin-top: 50px;
+    margin: 50px 0;
 }
 
 .comments__item {

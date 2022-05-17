@@ -84,6 +84,7 @@ body {
     align-self: center;
     width: 30%;
     max-width: 320px;
+    min-width: 180px;
     margin-top: 20px;
     padding: 15px;
     font-size: 2rem;
@@ -109,6 +110,7 @@ body {
 /* Reescribiendo estilos de footer para esta page */
 .footer {
     background-color: var(--color-black);
+    position: initial;
 }
 
 .footer .rights {

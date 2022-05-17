@@ -26,8 +26,14 @@
 */
 
 .footer {
+    --footer-height: 70px;
+    position: absolute;
+    left: 0;
+    bottom: calc(-1 * var(--footer-height));
+    width: 100%;
+    height: var(--footer-height);
     min-width: 320px;
-    padding: 13.5px 29px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;

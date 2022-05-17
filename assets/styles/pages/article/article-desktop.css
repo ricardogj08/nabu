@@ -107,6 +107,11 @@ header:hover {
 
 .post__copy img {
     width: 50%;
+    max-width: 400px;
+}
+
+.post__container-img {
+    text-align: center;
 }
 
 /* Estilos para el codigo incrustado */

@@ -208,6 +208,7 @@ header::before {
 /* Estilos para footer, sobreescribir para cambiar color */
 .footer {
     background-color: var(--color-black);
+    position: initial;
 }
 
 .footer .rights {
