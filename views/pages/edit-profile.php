@@ -54,10 +54,14 @@
     <form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data" class='edit__form'>
         <input type="hidden" name="csrf" value="<?= $token ?>">
 
-      
-        <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>"  class='edit__btn-photo btn-photo'>
+        <label for="avatar" class="edit__field-out edit__field-avatar">
+            <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>"  class='edit__btn-photo btn-photo'>
+        </label>
+
+        <label for="background" class="edit__field-out edit__field-background">
+            <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>" class='edit__btn-photo btn-backPhoto'>
+        </label>
        
-        <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>" class='edit__btn-photo btn-backPhoto'>
 
         <label for="username" class="edit__field">
             <span class="edit__entry">Nombre de Usuario</span>

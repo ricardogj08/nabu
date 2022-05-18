@@ -112,7 +112,19 @@ header::before {
     visibility: hidden;
 }
 
-.edit__btn-photo::before {
+.edit__btn-photo::-moz-file-upload-button {
+    visibility: hidden;
+}
+
+input[type="file"] {
+    -moz-appearance:initial; // Hack for Firefox Browsers
+    opacity: 0;
+    visibility: hidden;
+    color: black;
+    background-color: red;
+}
+
+.edit__field-out::before {
     content: '✎';
     color: white;
     display: inline-block;
@@ -129,17 +141,17 @@ header::before {
     transition: all ease-in 300ms;
 }
 
-.btn-photo::before {
-    top: -70px;
+.edit__field-avatar::before {
+    top: -90px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.8rem;
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.btn-backPhoto::before {
+.edit__field-background::before {
     right: 0;
-    top: -25%;
+    top: -40%;
     font-size: 2rem;
 }
 
