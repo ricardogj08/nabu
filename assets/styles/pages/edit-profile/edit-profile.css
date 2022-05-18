@@ -142,7 +142,7 @@ input[type="file"] {
 }
 
 .edit__field-avatar::before {
-    top: -90px;
+    top: -70px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.8rem;
@@ -151,7 +151,7 @@ input[type="file"] {
 
 .edit__field-background::before {
     right: 0;
-    top: -40%;
+    top: -25%;
     font-size: 2rem;
 }
 
