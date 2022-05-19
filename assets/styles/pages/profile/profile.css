@@ -112,11 +112,18 @@ header::before {
 }
 
 .profile__link-edit {
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     right: 25px;
     font-size: 2.4rem;
     text-decoration: none;
-    color: var(--color-black);
+    color: var(--color-background);
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 100%;
 }
 
 .public-posts {
