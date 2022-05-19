@@ -25,13 +25,12 @@
 * Metodología => BEM
 */
 
-html {
+/* html {
     position: relative;
     min-height: 100%;
-}
+} */
 
 body {
-    margin-bottom: 90px;
     background-color: rgba(0, 183, 255, 0.4);
     background-size: cover;
     background-repeat: no-repeat;
@@ -188,10 +187,8 @@ body {
 /* Cambia los estilos del footer */
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     background-color: var(--color-black);
+    bottom: auto;
 }
 
 .footer .rights {

@@ -29,18 +29,12 @@ header {
 }
 
 .profile-own__image-wrapper {
-    width: 50%;
-}
-
-.profile-own__image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    max-width: 180px;
 }
 
 /* Estilos para los bototnes de editar fotos de perfil y fondo */
 .edit__field-avatar::before {
-    top: -100px;
+    top: -120px;
     font-size: 2.8rem;
 }
 
