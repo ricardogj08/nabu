@@ -55,11 +55,11 @@
         <input type="hidden" name="csrf" value="<?= $token ?>">
 
         <label for="avatar" class="edit__field-out edit__field-avatar">
-            <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>"  class='edit__btn-photo btn-photo'>
+            <input type="file" id="avatar" name="avatar" accept="<?= NABU_DEFAULT['image-formats'] ?>"  class='edit__btn-photo'>
         </label>
 
         <label for="background" class="edit__field-out edit__field-background">
-            <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>" class='edit__btn-photo btn-backPhoto'>
+            <input type="file" id="background" name="background" accept="<?= NABU_DEFAULT['image-formats'] ?>" class='edit__btn-photo'>
         </label>
        
 
