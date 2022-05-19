@@ -81,26 +81,25 @@ header::before {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: -105px;
+    bottom: -120px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    /* background-color: tomato; */
 }
 
 .profile-own__image-wrapper {
-    display: flex;
-    width: 45%;
-    min-width: 40px;
-    max-width: 200px;
-    border-radius: 50%;
+    display: inline-flex;
+    max-width: 120px;
+    border-radius: 100%;
     overflow: hidden;
+    background-color: var(--color-black);
 }
 
 .profile-own__image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
 }
 
 .profile-own__title {
@@ -121,7 +120,7 @@ header::before {
 }
 
 .public-posts {
-    margin-top: 110px;
+    margin-top: 150px;
     width: 100%;
     min-width: 320px;
     padding: 23px 0;
