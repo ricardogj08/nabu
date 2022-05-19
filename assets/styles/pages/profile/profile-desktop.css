@@ -47,7 +47,7 @@ header {
 } */
 
 .profile-own {
-    bottom: -125px;
+    bottom: -135px;
 }
 
 .profile-own__title {
@@ -69,7 +69,7 @@ header {
 }
 
 .public-posts {
-    margin-top: 140px;
+    margin-top: 160px;
 }
 
 .public-posts__title { 

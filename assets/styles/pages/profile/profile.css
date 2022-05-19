@@ -81,11 +81,10 @@ header::before {
     align-items: center;
     justify-content: center;
     position: absolute;
-    bottom: -105px;
+    bottom: -120px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
-    /* background-color: tomato; */
 }
 
 .profile-own__image-wrapper {
@@ -121,7 +120,7 @@ header::before {
 }
 
 .public-posts {
-    margin-top: 110px;
+    margin-top: 150px;
     width: 100%;
     min-width: 320px;
     padding: 23px 0;
