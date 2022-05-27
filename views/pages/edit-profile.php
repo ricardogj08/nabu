@@ -31,10 +31,6 @@
     array('file' => 'pages/edit-profile/edit-profile-desktop.css', 'attributes' => 'media="screen and (min-width: 768px)"'),
 ) ?>
 
-<!-- Archivos de javascript a cargar -->
-<?php $scripts = array(
-    'home.js'
-) ?>
 
 <!-- HTML head -->
 <?php require_once 'views/components/head.php' ?>
@@ -42,6 +38,11 @@
 <?php require_once 'views/components/messages.php' ?>
 <!-- HTML body -->
 <header style='background-image: url("<?= $profile['background']?>");'>
+    <figure class="nav__logo-wrapper">
+            <a href="<?= NABU_ROUTES['home'] ?>">
+                <img class="nav__logo" src="<?= NABU_DIRECTORY['images'] ?>/nabu-logo.svg" alt="Logo de nabu">
+            </a>
+    </figure>
     <div class="profile-own">
         <picture class="profile-own__image-wrapper">
             <img src="<?= $profile['avatar'] ?>" class="profile-own__image" alt='Foto de Perfil'>
@@ -51,6 +52,7 @@
 </header>
 
 <section class='profile__edit'>
+    <p class="profile__instructions">Cambia los campos que desees y guarda para ver los cambios</p>
     <form method="POST" action="<?= NABU_ROUTES['edit-profile'] ?>" enctype="multipart/form-data" class='edit__form'>
         <input type="hidden" name="csrf" value="<?= $token ?>">
 
@@ -79,7 +81,7 @@
         </label>
         
         <label for="password" class="edit__field">
-            <span class="edit__entry">Nueva Contraseña</span>
+            <span class="edit__entry">Cambiar Contraseña</span>
             <input type="password" id="password" name="password" minlength="6" maxlength="255" class="edit__input">
         </label>
        

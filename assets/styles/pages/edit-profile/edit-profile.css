@@ -50,6 +50,23 @@ header::before {
     background: rgba(0, 0, 0, .5);
 }
 
+/* Styles for the logo */
+.nav__logo-wrapper {
+    width:  60px;
+    position: absolute;
+    left: 6%;
+    top: 10%;
+    padding: 7px;
+    border-radius: 8px;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.nav__logo {
+    width: 100%;
+}
+
+
 .profile-own {
     width: 65%;
     max-width: 250px;
@@ -95,6 +112,11 @@ header::before {
     position: relative;
     margin: 0 auto;
     margin-bottom: 30px;
+}
+
+.profile__instructions {
+    font-size: 1.4rem;
+    padding-top: 40px;
 }
 
 .edit__form {
@@ -150,7 +172,7 @@ input[type="file"] {
 
 .edit__field-background::before {
     right: 0;
-    top: -25%;
+    top: -22%;
     font-size: 2rem;
 }
 

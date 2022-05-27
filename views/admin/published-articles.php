@@ -19,6 +19,25 @@
 
 <?php $head_title = 'Artículos publicados' ?>
 
+<!-- Estilos a cargar -->
+<?php $styles = array(
+    'components/messages/messages.css',
+    'components/search/search.css',
+    'components/pagination/pagination.css',
+    'components/footer/footer.css',
+) ?>
+
+<!-- Estilos a cargar para el responsive design -->
+<?php $desktop_styles = array(
+    array('file' => 'components/footer/footer-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/search/search-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+    array('file' => 'components/pagination/pagination-desktop.css', 'attributes' => 'media="screen and (min-width: 650px)"'),
+) ?>
+
+<!-- Componente head -->
+<?php require_once 'views/components/head.php' ?>
+
+<!-- Body -->
 <?php require_once 'views/components/dashboard.php' ?>
 
 <h1>Artículos publicados</h1>

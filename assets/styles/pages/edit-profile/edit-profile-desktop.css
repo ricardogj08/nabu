@@ -19,6 +19,12 @@ header {
     min-height: 220px;
     margin-bottom: 70px;
 }
+/* Styles for the logo link */
+.nav__logo-wrapper {
+    width:  80px;
+    left: 13%;
+    top: 8%;
+}
 
 .profile-own {
     bottom: -83px;
