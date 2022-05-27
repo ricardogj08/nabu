@@ -171,12 +171,7 @@ header::before {
 }
 
 /* Heart toggle animation */
-.heart {
-    position: absolute;
-    z-index: 1;
-    top: -90px;
-    right: 0;
-}
+
 
 .post__aside [for='toggle__heart'] {
     font-size: 4rem;
@@ -184,10 +179,13 @@ header::before {
     cursor: pointer;
 }
 
-.heart > a {
-    display: inline-block;
+.heart__link  {
     text-decoration: none;
     color: #aab8c2;
+    position: absolute;
+    z-index: 1;
+    top: -90px;
+    right: 0;
 }
 
 .post__aside [id='toggle__heart'] {
@@ -205,6 +203,14 @@ header::before {
       font-size: 0; 
     } 
 }
+
+.heart {
+    animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+ }
+ 
+ .heart > .heart__link {
+     color: #e2264d;
+ }
 
 
 /* Estilos para el copy */

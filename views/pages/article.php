@@ -78,9 +78,11 @@
     <aside class='post__aside'>
         <!-- Define la clase CSS para el corazón de like cuando false: heart y true: ?. -->
         <?php $heart_class = empty($have_like) ? 'heart' : '' ?>
-        <div class="<?= $heart_class ?>">
+        <div>
             <input type="checkbox" id='toggle__heart'>
-            <label for="toggle__heart"><a href="<?= NABU_ROUTES['likes'] . '&slug=' . $article['slug'] ?>">❤</a></label>
+            <label for="toggle__heart" class="<?= $heart_class ?>">
+                <a href="<?= NABU_ROUTES['likes'] . '&slug=' . $article['slug'] ?>" class="heart__link" >❤</a>
+            </label>
         </div>
     </aside>
 
